@@ -7,6 +7,14 @@ using System.Text;
 
 namespace ImageQuilityPublisher
 {
+    class FITSData
+    {
+        Int32 StarsNumber = 0;
+        Double FWHM = 0.0;
+        Double AspecRatio = 0.0;
+        Double SkyBackground = 0.0;
+    }
+
     class FITSHeaderParser
     {
 

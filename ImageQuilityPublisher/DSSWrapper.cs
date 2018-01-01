@@ -11,10 +11,10 @@ namespace ImageQuilityPublisher
 
     class FITSQualityEstimate
     {
-        Int32 StarsNumber = 0;
-        Double FWHM = 0.0;
-        Double AspecRatio = 0.0;
-        Double SkyBackground = 0.0;
+        public Int32 StarsNumber = 0;
+        public Double FWHM = 0.0;
+        public Double AspecRatio = 0.0;
+        public Double SkyBackground = 0.0;
     }
 
     class DSSWrapper
@@ -23,16 +23,23 @@ namespace ImageQuilityPublisher
         public string DSSCLPath = @"c:\Program Files (x86)\DeepSkyStacker\DeepSkyStackerCL.exe";
         public string DSSimagelist = Path.GetTempPath() + "dss_list.txt";
 
-
         public string FITSFileName = "";
-        public string FITSFilePath = "";
+        public string FITSFilePath = ""; //with slash!
+
+        public FITSQualityEstimate QualityEstimate = new FITSQualityEstimate();
 
         private Process objProcess = new Process();
 
 
-        public void EvaluateFile(string FullFITSFileName)
+        public void EvaluateFile(string FullFITSFileNameExt = "")
         {
-            //string FullFITSFileName = FITSFilePath + FITSFileName;
+            //0. Compose image FileName
+            if (FullFITSFileNameExt != "")
+            {
+                FITSFileName = Path.GetFileName(FullFITSFileNameExt);
+                FITSFilePath = Path.GetDirectoryName(FullFITSFileNameExt);
+            }
+            string FullFITSFileName = FITSFilePath + FITSFileName;
 
             //1. Create image list for DSS
             try
@@ -65,11 +72,41 @@ namespace ImageQuilityPublisher
 
         public void GetEvaluationResults()
         {
+            //0. Compose file name
+            string InfoFileName = FITSFilePath + Path.GetFileNameWithoutExtension(FITSFileName) + ".Info.txt";
 
+            //1. Read info file
+            try
+            {
+                using (StreamReader InfoFileStream = new StreamReader(InfoFileName))
+                {
+                    string line = "";
+                    while ((line = InfoFileStream.ReadLine()) != null)
+                    {
+                        ParseInfoFileLine(line);
+                    }
+                }
+                Logging.AddLog("Info file [" + InfoFileName + "] readed", LogLevel.Debug);
+            }
+            catch (Exception ex)
+            {
+                Logging.AddLog("Cant read info file [" + InfoFileName + "]", LogLevel.Important, Highlight.Error);
+                Logging.AddLog(MethodBase.GetCurrentMethod().Name + "error! [" + ex.ToString() + "]", LogLevel.Debug, Highlight.Error);
+            }
         }
 
-        private void GetDSSInfoFileHeader()
+        private void ParseInfoFileLine(string LineSt)
         {
+            //SkyBackground = 0.0269
+            if (LineSt.Contains("SkyBackground"))
+            {
+                int beg1 = LineSt.LastIndexOf("=")+1;
+                string BgVal = LineSt.Substring(beg1).Trim();
+
+                if (!Utils.TryParseToDouble(BgVal, out QualityEstimate.SkyBackground))
+                    QualityEstimate.SkyBackground = 0.0;
+            }
+            
             //1 Read file
 
             //2 Get overal key parameters from header

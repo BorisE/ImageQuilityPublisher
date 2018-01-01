@@ -25,8 +25,8 @@ namespace ImageQuilityPublisher
 
         private void btnStart_Click(object sender, EventArgs e)
         {
-
-            DSSObj.EvaluateFile(@"c:\Users\Emchenko Boris\Documents\DSlrRemote\NGC247 CetusGalaxy\Attempt 2017-12-31\c_SUMs\NGC247_20170928_L_600s_1x1_-30degC_0.0degN_000003726_c_cc_r_x212.fit");
+            DSSObj.EvaluateFile(@"d:\NGC247_20171020_R_600s_1x1_-25degC_0.0degN_000004460_c_cc_r_a.fit");
+            DSSObj.GetEvaluationResults();
         }
 
         private void btnExit_Click(object sender, EventArgs e)
