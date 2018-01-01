@@ -1,0 +1,18 @@
+﻿FITS Quality Publisher
+(C) by Boris Emchenko 2017-2018 with the help of Oleg Milantiev
+http://astromania.info
+
+For FWHM estimate it uses DeepSkyStacker program by Luc Coiffier http://deepskystacker.free.fr/
+
+to do:
+- send data to DB
+
+bugs:
+- :)
+
+0.1 [31.12.17]
+- form draft
+- fitsheader reader drfat
+- DSSCL quality reader
+
+
