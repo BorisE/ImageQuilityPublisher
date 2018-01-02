@@ -10,6 +10,9 @@ to do:
 bugs:
 - :)
 
+1.0 [01.01.18]
+- working monitoring software with reading from directory and publishing it in interface
+
 0.1 [31.12.17]
 - form draft
 - fitsheader reader drfat
