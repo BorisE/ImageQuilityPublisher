@@ -1,4 +1,4 @@
-﻿namespace ImageQuilityPublisher
+﻿namespace ImageQualityPublisher
 {
     partial class MainForm
     {

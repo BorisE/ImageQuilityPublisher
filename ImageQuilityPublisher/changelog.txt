@@ -10,6 +10,9 @@ to do:
 bugs:
 - :)
 
+1.0.1 [02.01.18]
+- fits header parsing working!
+
 1.0 [01.01.18]
 - working monitoring software with reading from directory and publishing it in interface
 

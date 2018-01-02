@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ImageQuilityPublisher.Properties
+namespace ImageQualityPublisher.Properties
 {
 
 

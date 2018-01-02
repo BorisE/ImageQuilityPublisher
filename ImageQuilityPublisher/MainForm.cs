@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace ImageQuilityPublisher
+namespace ImageQualityPublisher
 {
     public partial class MainForm : Form
     {

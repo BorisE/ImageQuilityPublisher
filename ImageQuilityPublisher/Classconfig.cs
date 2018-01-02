@@ -8,7 +8,7 @@ using System.Windows.Forms;
 using System.Xml;
 
 
-namespace ImageQuilityPublisher
+namespace ImageQualityPublisher
 {
 
     /// <summary>

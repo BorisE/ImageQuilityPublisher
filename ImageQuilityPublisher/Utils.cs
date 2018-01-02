@@ -13,7 +13,7 @@ using System.Diagnostics;
 using System.Web;
 using System.Collections.Specialized;
 
-namespace ImageQuilityPublisher
+namespace ImageQualityPublisher
 {
     class AuxilaryProc
     {

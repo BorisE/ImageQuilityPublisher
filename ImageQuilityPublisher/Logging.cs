@@ -9,7 +9,7 @@ using System.Windows.Forms;
 using System.Drawing;
 using System.Diagnostics;
 
-namespace ImageQuilityPublisher
+namespace ImageQualityPublisher
 {
     public class LogRecord
     {
