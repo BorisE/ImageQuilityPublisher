@@ -5,10 +5,18 @@ http://astromania.info
 For FWHM estimate it uses DeepSkyStacker program by Luc Coiffier http://deepskystacker.free.fr/
 
 to do:
-- send data to DB
+- option: publishing url
+- option: path to dss
+- option: autostart monitoring
+- option: rebuild dss info files
+- save/autoload options
+- new mode: parse dir with subdirs (instead of monitoring)
 
 bugs:
 - :)
+
+1.0.2 [02.01.18]
+- fully working program: incl publish json to server
 
 1.0.1 [02.01.18]
 - fits header parsing working!

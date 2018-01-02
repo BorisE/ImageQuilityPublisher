@@ -11,7 +11,6 @@ namespace ImageQualityPublisher
     public class FITSQualityData
     {
         public Int32 StarsNumber = 0;
-        public Double FWHM = 0.0;
         public Double AspecRatio = 0.0;
         public Double SkyBackground = 0.0;
 
@@ -29,7 +28,14 @@ namespace ImageQualityPublisher
         }
     }
 
-    public class DSSQualityEstimator
+    /************************************************************************************************************************************************/
+    /// <summary>
+    /// Main class for getting QulityEstimation data
+    /// 1. Run EvaluateFile()
+    /// 2. After this run GetEvaluationResults()
+    /// 3. Get result in QualityEstimate field
+    /// </summary>
+    public class DSSQualityReader
     {
         //settings
         public string settingsDSSCLPath;
@@ -44,12 +50,12 @@ namespace ImageQualityPublisher
         //process obj
         private Process objProcess = new Process();
 
-        public DSSQualityEstimator(string DSSCLPath)
+        public DSSQualityReader(string DSSCLPath)
         {
             settingsDSSCLPath = DSSCLPath;
         }
 
-        public DSSQualityEstimator()
+        public DSSQualityReader()
                 :this(  @"c:\Program Files (x86)\DeepSkyStacker\DeepSkyStackerCL.exe")
         {}
 

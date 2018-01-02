@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageQualityPublisher", "ImageQuilityPublisher\ImageQualityPublisher.csproj", "{8BF74C9D-6B7B-4245-B2C8-666E0A530AA5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageQualityPublisher", "ImageQualityPublisher\ImageQualityPublisher.csproj", "{8BF74C9D-6B7B-4245-B2C8-666E0A530AA5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

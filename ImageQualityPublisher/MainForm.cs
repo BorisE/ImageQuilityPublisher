@@ -12,14 +12,14 @@ namespace ImageQualityPublisher
 {
     public partial class MainForm : Form
     {
-        public MonitorClass Monitor;
-
-        public FITSHeaderParser FITSobj;
+        public MonitorClass MonitorObj;
+        public WebPublish WebPublishObj;
 
         public MainForm()
         {
-            Monitor = new MonitorClass(this);
-            FITSobj = new FITSHeaderParser();
+            MonitorObj = new MonitorClass(this);
+
+            WebPublishObj = new WebPublish();
 
             InitializeComponent();
         }
@@ -38,8 +38,8 @@ namespace ImageQualityPublisher
             Logging.DumpToFile();
 
 
-            Monitor.FileMonitorPath = @"d:\2";
-            txtMonitorPath.Text = Monitor.FileMonitorPath;
+            MonitorObj.FileMonitorPath = @"d:\2";
+            txtMonitorPath.Text = MonitorObj.FileMonitorPath;
 
             //Init Log DropDown box
             foreach (LogLevel C in Enum.GetValues(typeof(LogLevel)))
@@ -98,8 +98,6 @@ namespace ImageQualityPublisher
             txtBgLevel.Text = LastImageQuality.SkyBackground.ToString();
             txtMeanRadius.Text = LastImageQuality.MeanRadius.ToString();
             txtStarsNum.Text = LastImageQuality.StarsNumber.ToString();
-            txtSumMeas.Text = LastImageQuality.MeanRadiusSum.ToString();
-            txtNumMeasur.Text = LastImageQuality.MeanRadiusNum.ToString();
 
             int curRowIndex = dataGridFileData.Rows.Add();
             dataGridFileData.Rows[curRowIndex].Cells["dataGridData_filename"].Value = Path.GetFileName(LastImageName);
@@ -108,6 +106,30 @@ namespace ImageQualityPublisher
             dataGridFileData.Rows[curRowIndex].Cells["dataGridData_Stars"].Value = LastImageQuality.StarsNumber.ToString();
 
         }
+
+        public void PublishFITSData(FileParseResult FileResObj)
+        {
+            //Last image block
+            txtLastFileName.Text = FileResObj.FITSFileName;
+
+            txtBgLevel.Text = FileResObj.QualityData.SkyBackground.ToString();
+            txtMeanRadius.Text = FileResObj.QualityData.MeanRadius.ToString();
+            txtStarsNum.Text = FileResObj.QualityData.StarsNumber.ToString();
+
+            //Grid block
+            int curRowIndex = dataGridFileData.Rows.Add();
+            dataGridFileData.Rows[curRowIndex].Cells["dataGridData_filename"].Value = Path.GetFileName(FileResObj.FITSFileName);
+            dataGridFileData.Rows[curRowIndex].Cells["dataGridData_Bg"].Value = FileResObj.QualityData.SkyBackground.ToString();
+            dataGridFileData.Rows[curRowIndex].Cells["dataGridData_MeanRadius"].Value = FileResObj.QualityData.MeanRadius.ToString();
+            dataGridFileData.Rows[curRowIndex].Cells["dataGridData_Stars"].Value = FileResObj.QualityData.StarsNumber.ToString();
+
+            dataGridFileData.Rows[curRowIndex].Cells["dataGridData_Alt"].Value = FileResObj.HeaderData.ObjAlt.ToString();
+            dataGridFileData.Rows[curRowIndex].Cells["dataGridData_Exp"].Value = FileResObj.HeaderData.ImageExposure.ToString();
+            dataGridFileData.Rows[curRowIndex].Cells["dataGridData_DateTime"].Value = FileResObj.HeaderData.DateObsUTC.ToString();
+            dataGridFileData.Rows[curRowIndex].Cells["dataGridData_FWHM"].Value = FileResObj.FWHM.ToString();
+
+        }
+
 
         private void btnExit_Click(object sender, EventArgs e)
         {
@@ -124,8 +146,8 @@ namespace ImageQualityPublisher
             if (result == DialogResult.OK)
             {
                 txtMonitorPath.Text = folderBrowserDialog1.SelectedPath;
-                Monitor.FileMonitorPath = txtMonitorPath.Text;
-                Monitor.ClearFileList(); //очисить список
+                MonitorObj.FileMonitorPath = txtMonitorPath.Text;
+                MonitorObj.ClearFileList(); //очисить список
             }
 
         }
@@ -162,7 +184,7 @@ namespace ImageQualityPublisher
             {
                 AlreadyRunning = true;
 
-                Monitor.CheckForNewFiles();
+                MonitorObj.CheckForNewFiles();
                 
                 AlreadyRunning = false;
             }
@@ -170,7 +192,11 @@ namespace ImageQualityPublisher
 
         private void btnTest_Click(object sender, EventArgs e)
         {
-            FITSobj.ReadFITSHeader(@"d:\2\NGC247_20171212_L_600s_1x1_-30degC_0.0degN_000005308.FIT");
+            FileParseResult FileResObj = new FileParseResult();
+            FileResObj = MonitorObj.RunQualityEstimation(@"d:\2\NGC247_20171212_L_600s_1x1_-30degC_0.0degN_000005308.FIT");
+
+            WebPublishObj.PublishData(FileResObj);
+
         }
     }
 }
