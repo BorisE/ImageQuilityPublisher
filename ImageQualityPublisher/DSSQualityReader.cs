@@ -81,7 +81,6 @@ namespace ImageQualityPublisher
             dsslistFileName = Path.Combine(Path.GetTempPath(), dsslistFileName);
             try
             {
-
                 using (StreamWriter DssListStream = new StreamWriter(dsslistFileName))
                 {
                     DssListStream.WriteLine("DSS file list"); //Header 1st line

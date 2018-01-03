@@ -49,8 +49,8 @@ namespace ImageQualityPublisher
         public static List<LogRecord> LOGLIST;
 
         public static string LOG_FOLDER_NAME = "Logs";
-        public static string LOG_FILE_NAME_ALL = "observatory_trace_"; //Text log
-        public static string LOG_FILE_NAME_MAIN = "observatory_"; //Text log
+        public static string LOG_FILE_NAME_ALL = "imagepublisher_trace_"; //Text log
+        public static string LOG_FILE_NAME_MAIN = "imagepublisher_"; //Text log
         public static string LOG_FILE_EXT = "log"; //Text log
 
         public static string LogFilePath = Path.Combine(ConfigManagement.ProgDocumentsPath, LOG_FOLDER_NAME) + "\\";
@@ -174,7 +174,7 @@ namespace ImageQualityPublisher
             for (var i = 0; i < LOGLIST.Count; i++)
             {
                 // if current line wasn't written to file
-                if (!LOGLIST[i].dumpedToFile)
+                if (LOGLIST[i] != null && !LOGLIST[i].dumpedToFile) //Always check for null due to multithreading!!!
                 {
                     LogListNewAll.Add(LOGLIST[i]); //add to newrecords array
                     if (LOGLIST[i].LogLevel <= LogLevel.Debug)
@@ -272,7 +272,7 @@ namespace ImageQualityPublisher
             for (var i = 0; i < LOGLIST.Count; i++)
             {
                 // if current line wasn't displayed
-                if (!LOGLIST[i].displayed)
+                if (LOGLIST[i] !=null && !LOGLIST[i].displayed) //Always check for null due to multithreading!!!
                 {
                     LogListNew.Add(LOGLIST[i]); //add to newrecords array
                     LOGLIST[i].displayed = true; //mark as written

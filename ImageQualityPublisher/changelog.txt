@@ -1,21 +1,24 @@
 ﻿FITS Quality Publisher
 (C) by Boris Emchenko 2017-2018 with the help of Oleg Milantiev
 http://astromania.info
+Part of Astrohostel.ru Project
+http://astrohostel.ru
 
 For FWHM estimate it uses DeepSkyStacker program by Luc Coiffier http://deepskystacker.free.fr/
 
 to do:
-- option: publishing url
-- option: path to dss
-- option: autostart monitoring
-- option: rebuild dss info files
-- save/autoload options
-- asnyc web requests
+- add option: rebuild dss info files
 - several websites to send data (common and personal)
+- several paths to monitor	
 - new mode: parse dir with subdirs (instead of monitoring)
 
 bugs:
 - :)
+
+1.0.3 [03.01.18]
+- options: publishing url, path to dss
+- option: autostart monitoring
+- save/autoload options into .xml file
 
 1.0.2 [02.01.18]
 - fully working program: incl publish json to server

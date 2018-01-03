@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+
+<monitorPath>
+    <Dir1 value="d:\2" />
+</monitorPath>
+
+<publishURL>
+    <url1 value="http://localhost/astropublisher/fitspublish.php" />
+</publishURL>
+
+
+<options>
+    <AUTOSTARTMONITORING value="false" />
+    <DSS_PATH value="c:\Program Files (x86)\DeepSkyStacker\DeepSkyStackerCL.exe" />
+    <PUBLISHTOGROUP value="true" />
+    <PUBLISHPRIVATE value="false" />
+</options>
+
+ <!-- 
+TYPE:
+"command" or omitted    - this is command (will try to run)
+type="parameter"        - this is parameter 
+
+RUN:
+"true" or omitted = run command
+"false" = not run
+ -->
+</configuration>

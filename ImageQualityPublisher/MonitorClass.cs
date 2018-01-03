@@ -43,7 +43,9 @@ namespace ImageQualityPublisher
     public class MonitorClass
     {
         //path to monitor files
-        public string FileMonitorPath=""; 
+        public string FileMonitorPath="";
+
+        public bool settingsPublishToGroup = true;
 
         //file list where to keep already parsed file
         private Dictionary<string, bool> FileList = new Dictionary<string, bool>();
@@ -80,36 +82,19 @@ namespace ImageQualityPublisher
 
                     //run async
                     Thread childThread = new Thread(delegate () {
-                        RunQualityEstimationAndPublish(filename);
+                        RunQualityEstimation(filename, settingsPublishToGroup);
                     });
                     childThread.Start();
                 }
             }
         }
 
-        public FileParseResult RunQualityEstimationAndPublish(string FileName)
+
+        public FileParseResult RunQualityEstimation(string FileName, bool PublishToWeb = true)
         {
             string FullFileName = Path.Combine(FileMonitorPath, FileName); //in case filename contains full path - it will be used. If no - monitor path would be added
 
-            //Run usual estimatation and then publish
-            FileParseResult FileResObj = new FileParseResult();
-            FileResObj= RunQualityEstimation(FullFileName);
-
-            //Pulbish to form
-            ParentMF.Invoke(new Action(() => ParentMF.PublishFITSData(FileResObj)));
-
-            //Publsh to web
-            ParentMF.WebPublishObj.PublishData(FileResObj);
-
-            return FileResObj;
-        }
-
-
-        public FileParseResult RunQualityEstimation(string FileName)
-        {
-            string FullFileName = Path.Combine(FileMonitorPath, FileName); //in case filename contains full path - it will be used. If no - monitor path would be added
-
-            DSSQualityReader DSSObj = new DSSQualityReader();
+            DSSQualityReader DSSObj = new DSSQualityReader(ParentMF.settingsDSSCLPath);
             FITSHeaderReader FITSobj = new FITSHeaderReader();
 
             //Run evaluation in sync mode
@@ -128,6 +113,14 @@ namespace ImageQualityPublisher
             FileResObj.FITSFileName = FullFileName;
             FileResObj.QualityData = DSSObj.QualityEstimate;
             FileResObj.HeaderData = FITSobj.FITSData;
+
+            //Pulbish to form
+            ParentMF.Invoke(new Action(() => ParentMF.PublishFITSData(FileResObj)));
+
+            //Publsh to web (GROUP)
+            if (PublishToWeb)
+                ParentMF.WebPublishObj.PublishData(FileResObj);
+
 
             return FileResObj;
         }
