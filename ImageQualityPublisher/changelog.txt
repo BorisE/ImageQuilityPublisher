@@ -10,6 +10,8 @@ to do:
 - option: autostart monitoring
 - option: rebuild dss info files
 - save/autoload options
+- asnyc web requests
+- several websites to send data (common and personal)
 - new mode: parse dir with subdirs (instead of monitoring)
 
 bugs:
