@@ -34,7 +34,7 @@ namespace ImageQualityPublisher
 
         public void PublishData(FileParseResult DataToPublish)
         {
-            Logging.AddLog("Publishing data on ["+ DataToPublish.FITSFileName + "] to "+ PublishURL, LogLevel.Activity);
+            Logging.AddLog("Publishing data on ["+ DataToPublish.FITSFileName + "] to "+ PublishURL, LogLevel.Debug);
             try
             {
                 var httpWebRequest = (HttpWebRequest)WebRequest.Create(PublishURL);
@@ -53,12 +53,13 @@ namespace ImageQualityPublisher
                 {
                     var result = streamReader.ReadToEnd();
 
-                    Logging.AddLog("Data on file [" + DataToPublish.FITSFileName + "] was published:  " + result, LogLevel.Activity);
+                    Logging.AddLog("Data on file [" + DataToPublish.FITSFileName + "] was published to [" + PublishURL + "]", LogLevel.Activity);
+                    Logging.AddLog("Published result:" + result, LogLevel.Debug);
                 }
             }
             catch (Exception ex)
             {
-                Logging.AddLog("Data wasn't published [" + DataToPublish.FITSFileName + "]", LogLevel.Important, Highlight.Error);
+                Logging.AddLog("Data wasn't published [" + DataToPublish.FITSFileName + "] to [" + PublishURL + "]", LogLevel.Important, Highlight.Error);
                 Logging.AddLog(MethodBase.GetCurrentMethod().Name + "error! [" + ex.ToString() + "]", LogLevel.Debug, Highlight.Error);
             }
         }

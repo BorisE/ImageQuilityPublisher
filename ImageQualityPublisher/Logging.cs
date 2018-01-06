@@ -303,6 +303,10 @@ namespace ImageQualityPublisher
                         {
                             LogTextBox.SelectionColor = Color.Red;
                         }
+                        else if (LogListNew[i].Highlight == Highlight.Emphasize)
+                        {
+                            LogTextBox.SelectionFont = new Font(LogTextBox.Font, FontStyle.Bold);
+                        }
 
                         RetStr = String.Format("{0} {1}", LogListNew[i].Time.ToString("yyyy-MM-dd"), LogListNew[i].Time.ToString("HH:mm:ss"));
                         RetStr += String.Format(": {0}", LogListNew[i].Message) + Environment.NewLine;

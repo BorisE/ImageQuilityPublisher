@@ -7,13 +7,21 @@ http://astrohostel.ru
 For FWHM estimate it uses DeepSkyStacker program by Luc Coiffier http://deepskystacker.free.fr/
 
 to do:
-- add option: rebuild dss info files
-- several websites to send data (common and personal)
 - several paths to monitor	
-- new mode: parse dir with subdirs (instead of monitoring)
+- add option: rebuild dss info files
+- new mode: parse dir with subdirs (only once, instead of constant monitoring)
+- minimize to tray
 
 bugs:
 - :)
+
+1.1.1 [06.01.18]
+- updated configmanagement class for adding new nodes
+- several websites to send data (common and personal)
+
+1.1.0 [06.01.18]
+- localization 
+- reset and reload information on all images
 
 1.0.3 [03.01.18]
 - options: publishing url, path to dss

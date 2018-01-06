@@ -7,23 +7,15 @@
 
 <publishURL>
     <url1 value="http://localhost/astropublisher/fitspublish.php" />
+    <url2 value="http://localhost/astropublisher/fitspublish.php" />
 </publishURL>
 
-
 <options>
+    <Language value="ru-RU" />
     <AUTOSTARTMONITORING value="false" />
     <DSS_PATH value="c:\Program Files (x86)\DeepSkyStacker\DeepSkyStackerCL.exe" />
     <PUBLISHTOGROUP value="true" />
-    <PUBLISHPRIVATE value="false" />
+    <PUBLISHTOPRIVATE value="false" />
 </options>
-
- <!-- 
-TYPE:
-"command" or omitted    - this is command (will try to run)
-type="parameter"        - this is parameter 
-
-RUN:
-"true" or omitted = run command
-"false" = not run
- -->
+ 
 </configuration>

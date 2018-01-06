@@ -35,7 +35,7 @@ namespace ImageQualityPublisher
         // 3. A рабочий лежит в \Documents\ObservatoryControl\Config\ObservatoryControl.config 
         // Обновлять лучше так: редактируем дефолтный (txt) в папке с SourceCode (ПОМНИ НЕ .../DEBUG!!!), при компиляции он скопируется сам, а рабочий просто удаляем (при запуске перепишется). Ну или рабочий копировать в текстовый, но опять же - в папку с SourceCode.
 
-        public static string CONFIG_FILENAME = "ImageQualityPublisher.defaultconfig.config";
+        public static string CONFIG_FILENAME = "ImageQualityPublisher.config";
         public static string CONFIG_PATH = Path.Combine(ProgDocumentsPath, "Config") + "\\";
         public static string DEFAULT_CONFIG_FILENAME = "ImageQualityPublisher.defaultconfig.txt"; //Default config file
 
@@ -206,7 +206,7 @@ namespace ImageQualityPublisher
         /// <param name="sectionName">Section</param>
         /// <param name="curName">Node name</param>
         /// <param name="curValue">New value to set</param>
-        public static void UpdateConfigValue(string sectionName, string curName = "", string curValue = "")
+        public static void UpdateConfigValue____(string sectionName, string curName = "", string curValue = "")
         {
             
             try
@@ -251,6 +251,75 @@ namespace ImageQualityPublisher
                 Logging.AddLog(FullMessage, LogLevel.Important, Highlight.Error);
             }
         }
+
+        /// <summary>
+        /// Used to change config value before saving
+        /// if not found - create it
+        /// </summary>
+        /// <param name="sectionName">Section</param>
+        /// <param name="curName">Node name</param>
+        /// <param name="curValue">New value to set</param>
+        public static void UpdateConfigValue(string sectionName, string curName = "", string curValue = "")
+        {
+            try
+            {
+                // Получить перечень Узлов из текущей секции
+                XmlNode xnlNodes = ConfigManagement.configXML.SelectSingleNode("//" + sectionName);
+                bool bFound = false;
+                // Перебрать их всех и поправить аттрибуты для текущего
+                foreach (XmlNode xndNode in xnlNodes.ChildNodes)
+                {
+                    //Update data
+                    if (xndNode.Name == curName)
+                    {
+                        bFound = true;
+                        if (curValue != "")
+                        {
+                            XmlAttribute att = ConfigManagement.configXML.CreateAttribute("value");
+                            att.Value = curValue;
+                            xndNode.Attributes.SetNamedItem(att);
+                        }
+                    }
+                } //foreach
+
+                if (!bFound)
+                //Если не найдено, то сначала создать его
+                {
+                    XmlNode newNode = ConfigManagement.configXML.CreateNode(XmlNodeType.Element, curName, null);
+                    if (curValue != "")
+                    {
+                        XmlAttribute att = ConfigManagement.configXML.CreateAttribute("value");
+                        att.Value = curValue;
+                        newNode.Attributes.SetNamedItem(att);
+                    }
+                    xnlNodes.AppendChild(newNode);
+                }
+ 
+            }
+            catch (Exception ex)
+            {
+                StackTrace st = new StackTrace(ex, true);
+                StackFrame[] frames = st.GetFrames();
+                string messstr = "";
+
+                // Iterate over the frames extracting the information you need
+                foreach (StackFrame frame in frames)
+                {
+                    messstr += String.Format("{0}:{1}({2},{3})", frame.GetFileName(), frame.GetMethod().Name, frame.GetFileLineNumber(), frame.GetFileColumnNumber());
+                }
+
+                string FullMessage = "Exception when loading CONFIG XML sections" + Environment.NewLine;
+                FullMessage += Environment.NewLine + Environment.NewLine + "Debug information:" + Environment.NewLine + "IOException source: " + ex.Data + " " + ex.Message
+                        + Environment.NewLine + Environment.NewLine + messstr;
+                FullMessage += Environment.NewLine + "Section name: " + sectionName + ", xmlNode: " + curName;
+
+
+                MessageBox.Show(FullMessage, "Invalid value", MessageBoxButtons.OK);
+
+                Logging.AddLog(FullMessage, LogLevel.Important, Highlight.Error);
+            }
+        }
+
 
         /// <summary>
         /// Copy default config to CONFIG dir

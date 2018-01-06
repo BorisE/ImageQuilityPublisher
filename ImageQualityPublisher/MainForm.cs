@@ -7,7 +7,10 @@ using System.Drawing;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Reflection;
+using System.Resources;
 using System.Text;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace ImageQualityPublisher
@@ -15,7 +18,17 @@ namespace ImageQualityPublisher
     public partial class MainForm : Form
     {
         public MonitorClass MonitorObj;
-        public WebPublish WebPublishObj;
+        public WebPublish WebPublishObj;    //for public
+        public WebPublish WebPublishObj2;   //for private
+
+
+        /// <summary>
+        /// Link to NON LOCALISED resource manager
+        /// </summary>
+        ResourceManager LocRM;
+        ResourceManager LocWinFormRM;
+        public string currentLang = "";
+        internal string currentLangDefault = "ru-RU";
 
         //Settings
         public bool settingsAutoStartMonitoring = false;
@@ -30,6 +43,19 @@ namespace ImageQualityPublisher
         {
             MonitorObj = new MonitorClass(this);
             WebPublishObj = new WebPublish();
+            WebPublishObj2 = new WebPublish();
+
+            //Load config file
+            ConfigManagement.Load();
+            //Change parameters according to configuration
+            LoadParamsFromConfigFiles();
+
+            //Load language on form creation //need to be before formload-fix
+            Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo(currentLang);
+            Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo(currentLang);
+            LocRM = new ResourceManager("ImageQualityPublisher.WinStrings", Assembly.GetExecutingAssembly()); //create resource manager
+            LocWinFormRM = new ResourceManager("ImageQualityPublisher.MainForm", Assembly.GetExecutingAssembly()); //create resource manager
+
             InitializeComponent();
         }
 
@@ -37,31 +63,17 @@ namespace ImageQualityPublisher
         {
             DefBackColor = btnExit.BackColor;
 
-            //Load config file
-            ConfigManagement.Load();
-            //Change parameters according to configuration
-            LoadParamsFromConfigFiles();
-            //Update interface Settings
+            //Update interface for current Settings values (after they was loaded in constructor)
             UpdateSettingsDialogFields();
-
 
             //Dump log, because interface may hang wating for connection
             Logging.DumpToFile();
-
-
-            //Init Log DropDown box
-            foreach (LogLevel C in Enum.GetValues(typeof(LogLevel)))
-            {
-                toolStripDropDownLogLevel.DropDownItems.Add(Enum.GetName(typeof(LogLevel), C));
-            }
-            toolStripDropDownLogLevel.Text = Enum.GetName(typeof(LogLevel), LogLevel.Activity);
 
             //Init versiondata static class
             //Display about information
             VersionData.initVersionData();
             LoadAboutData();
 
-            
             //Run all timers at the end
             logRefreshTimer.Enabled = true;
 
@@ -73,41 +85,11 @@ namespace ImageQualityPublisher
         }
 
 
-        private void btnStart_Click(object sender, EventArgs e)
-        {
-            if (monitorTimer.Enabled)
-            // if runnig - stop
-            {
-                monitorTimer.Enabled = false;
-                btnStart.Text = "Start";
-                btnStart.BackColor = DefBackColor;
-            }
-            else
-            {
-                monitorTimer.Enabled = true;
-                btnStart.Text = "Stop";
-                btnStart.BackColor = OnColor;
-            }
 
-            //Monitor.CheckForNewFiles();
-
-            /*
-            string FileName = @"d:\2\NGC247_20171021_R_600s_1x1_-25degC_0.0degN_000004463_c_cc_r_a.fit";
-            txtLastFileName.Text = FileName;
-
-            DSSObj.EvaluateFile(FileName);
-
-            DSSObj.GetEvaluationResults();
-
-            txtBgLevel.Text = DSSObj.QualityEstimate.SkyBackground.ToString();
-            txtMeanRadius.Text = DSSObj.QualityEstimate.MeanRadius.ToString();
-            txtStarsNum.Text= DSSObj.QualityEstimate.StarsNumber.ToString();
-            txtSumMeas.Text = DSSObj.QualityEstimate.MeanRadiusSum.ToString();
-            txtNumMeasur.Text = DSSObj.QualityEstimate.MeanRadiusNum.ToString();
-            */
-        }
-
-
+        /// <summary>
+        /// Method which ivoked by from other class to add to grid
+        /// </summary>
+        /// <param name="FileResObj"></param>
         public void PublishFITSData(FileParseResult FileResObj)
         {
             //Last image block
@@ -131,31 +113,24 @@ namespace ImageQualityPublisher
 
             ImagesCount++;
 
-            toolStripStatus_Images.Text = "Images: " + ImagesCount;
-
-
+            toolStripStatus_Images.Text = LocRM.GetString("statusbar_images") + ": " + ImagesCount;
         }
 
-
-        private void btnExit_Click(object sender, EventArgs e)
+        public void ClearFITSData()
         {
-            this.Close();
-        }
+            //Last image block
+            txtLastFileName.Text = "";
 
-        private void btnChooseFolder_Click(object sender, EventArgs e)
-        {
-            folderBrowserDialog1.ShowNewFolderButton = false;
-            //folderBrowserDialog1.RootFolder = Environment.SpecialFolder.Personal;
+            txtBgLevel.Text = "";
+            txtMeanRadius.Text = "";
+            txtStarsNum.Text = "";
 
-            DialogResult result = folderBrowserDialog1.ShowDialog();
+            //clear Grid block
+            dataGridFileData.Rows.Clear();
 
-            if (result == DialogResult.OK)
-            {
-                txtMonitorPath.Text = folderBrowserDialog1.SelectedPath;
-                MonitorObj.FileMonitorPath = txtMonitorPath.Text;
-                MonitorObj.ClearFileList(); //очисить список
-            }
-
+            //update status bar
+            ImagesCount = 0;
+            toolStripStatus_Images.Text = LocRM.GetString("statusbar_images") + ": " + ImagesCount;
         }
 
         /// <summary>
@@ -186,14 +161,62 @@ namespace ImageQualityPublisher
 
         private void monitorTmer_Tick(object sender, EventArgs e)
         {
-            if (! AlreadyRunning)
+            if (!AlreadyRunning)
             {
                 AlreadyRunning = true;
 
                 MonitorObj.CheckForNewFiles();
-                
+
                 AlreadyRunning = false;
             }
+        }
+
+
+        private void btnStart_Click(object sender, EventArgs e)
+        {
+            if (monitorTimer.Enabled)
+            // if runnig - stop
+            {
+                monitorTimer.Enabled = false;
+                btnStart.Text = LocWinFormRM.GetString("btnStart.Text");
+                btnStart.BackColor = DefBackColor;
+            }
+            else
+            {
+                monitorTimer.Enabled = true;
+                btnStart.Text = LocRM.GetString("btnStart_StopText");
+                btnStart.BackColor = OnColor;
+            }
+        }
+
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnChooseFolder_Click(object sender, EventArgs e)
+        {
+            folderBrowserDialog1.ShowNewFolderButton = false;
+            //folderBrowserDialog1.RootFolder = Environment.SpecialFolder.Personal;
+
+            DialogResult result = folderBrowserDialog1.ShowDialog();
+
+            if (result == DialogResult.OK)
+            {
+                txtMonitorPath.Text = folderBrowserDialog1.SelectedPath;
+                MonitorObj.FileMonitorPath = txtMonitorPath.Text;
+                MonitorObj.ClearFileList(); //очисить список
+                Logging.AddLog(LocRM.GetString("Log_startmonitoring") +" ["+ txtMonitorPath.Text + "]", LogLevel.Activity, Highlight.Emphasize);
+            }
+
+        }
+
+        private void btnRecheck_Click(object sender, EventArgs e)
+        {
+            Logging.AddLog("Resetting data and rereading it from scratch", LogLevel.Activity, Highlight.Emphasize);
+            MonitorObj.ClearFileList();
+            ClearFITSData();
         }
 
         private void btnTest_Click(object sender, EventArgs e)
@@ -205,7 +228,9 @@ namespace ImageQualityPublisher
 
         }
 
+        /**************************************************************************************************/
         #region //// Settings //////////////////////////////////////
+
         private void LoadParamsFromConfigFiles()
         {
             MonitorObj.FileMonitorPath = ConfigManagement.getString("monitorPath","Dir1") ?? Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
@@ -216,16 +241,42 @@ namespace ImageQualityPublisher
             MonitorObj.settingsPublishToGroup = ConfigManagement.getBool("options", "PUBLISHTOGROUP") ?? true;
             WebPublishObj.SetURL(ConfigManagement.getString("publishURL", "url1") ?? "http://localhost");
 
+            MonitorObj.settingsPublishToPrivate = ConfigManagement.getBool("options", "PUBLISHTOPRIVATE") ?? true;
+            WebPublishObj2.SetURL(ConfigManagement.getString("publishURL", "url2") ?? "http://localhost");
+
+            currentLang = ConfigManagement.getString("options", "Language") ?? currentLangDefault;
+
             Logging.AddLog("Program parameters were set according to configuration file", LogLevel.Activity);
         }
-
+  
+        /// <summary>
+        /// Update form fields from actual settings
+        /// </summary>
         private void UpdateSettingsDialogFields()
         {
+            //Init Log DropDown box (в statusbar)
+            foreach (LogLevel C in Enum.GetValues(typeof(LogLevel)))
+            {
+                toolStripDropDownLogLevel.DropDownItems.Add(Enum.GetName(typeof(LogLevel), C));
+            }
+            toolStripDropDownLogLevel.Text = Enum.GetName(typeof(LogLevel), LogLevel.Activity);
+
             //Технически - добавить ссылку для LinkLabel
             LinkLabel.Link link = new LinkLabel.Link();
             link.LinkData = "http://deepskystacker.free.fr/english/download.htm";
             linkDSS.Links.Add(link);
 
+            //Init Language ComboBox list
+            cmbLang.DataSource = new CultureInfo[]{
+                CultureInfo.GetCultureInfo("en-US"),
+                CultureInfo.GetCultureInfo("ru-RU")
+            };
+            cmbLang.DisplayMember = "NativeName";
+            cmbLang.ValueMember = "Name";
+            cmbLang.SelectedValue = currentLang;
+
+
+            //Установить значения из ранее загруженных данных в диалоге настройка
             txtMonitorPath.Text = MonitorObj.FileMonitorPath;
 
             chkSettings_Autostart.Checked = settingsAutoStartMonitoring;
@@ -233,16 +284,34 @@ namespace ImageQualityPublisher
 
             chkSettings_publishgroup.Checked = MonitorObj.settingsPublishToGroup;
             txtSettings_urlgorup.Text = WebPublishObj.PublishURL;
+
+            chkSettings_publishprivate.Checked = MonitorObj.settingsPublishToPrivate;
+            txtSettings_urlprivate.Text = WebPublishObj2.PublishURL;
+
         }
 
+        /// <summary>
+        /// Save current settings. And reload them
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSettings_Save_Click(object sender, EventArgs e)
         {
             //Update ConfigXML
             ConfigManagement.UpdateConfigValue("monitorPath", "Dir1", txtMonitorPath.Text);
+
+            ConfigManagement.UpdateConfigValue("options", "Language", cmbLang.SelectedValue.ToString());
+
             ConfigManagement.UpdateConfigValue("options", "AUTOSTARTMONITORING", chkSettings_Autostart.Checked.ToString());
             ConfigManagement.UpdateConfigValue("options", "DSS_PATH", txtSettings_DSS.Text);
+
             ConfigManagement.UpdateConfigValue("options", "PUBLISHTOGROUP", chkSettings_publishgroup.Checked.ToString());
             ConfigManagement.UpdateConfigValue("publishURL", "url1", txtSettings_urlgorup.Text);
+
+            ConfigManagement.UpdateConfigValue("options", "PUBLISHTOPRIVATE", chkSettings_publishprivate.Checked.ToString());
+            ConfigManagement.UpdateConfigValue("publishURL", "url2", txtSettings_urlprivate.Text);
+
+
             //Save ConfigXML to disk
             ConfigManagement.Save();
 
@@ -266,9 +335,8 @@ namespace ImageQualityPublisher
 
         }
 
-
-        #endregion Settings
-
+        #endregion end of =Settings=
+        /**************************************************************************************************/
 
 
         #region //// About information //////////////////////////////////////
@@ -303,6 +371,5 @@ namespace ImageQualityPublisher
 
 
         #endregion About information
-
     }
 }

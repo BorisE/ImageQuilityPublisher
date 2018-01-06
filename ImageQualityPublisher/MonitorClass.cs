@@ -46,6 +46,7 @@ namespace ImageQualityPublisher
         public string FileMonitorPath="";
 
         public bool settingsPublishToGroup = true;
+        public bool settingsPublishToPrivate = false;
 
         //file list where to keep already parsed file
         private Dictionary<string, bool> FileList = new Dictionary<string, bool>();
@@ -82,7 +83,7 @@ namespace ImageQualityPublisher
 
                     //run async
                     Thread childThread = new Thread(delegate () {
-                        RunQualityEstimation(filename, settingsPublishToGroup);
+                        RunQualityEstimation(filename, settingsPublishToGroup, settingsPublishToPrivate);
                     });
                     childThread.Start();
                 }
@@ -90,7 +91,7 @@ namespace ImageQualityPublisher
         }
 
 
-        public FileParseResult RunQualityEstimation(string FileName, bool PublishToWeb = true)
+        public FileParseResult RunQualityEstimation(string FileName, bool PublishToWeb = true, bool PublishToWeb2 = false)
         {
             string FullFileName = Path.Combine(FileMonitorPath, FileName); //in case filename contains full path - it will be used. If no - monitor path would be added
 
@@ -121,6 +122,9 @@ namespace ImageQualityPublisher
             if (PublishToWeb)
                 ParentMF.WebPublishObj.PublishData(FileResObj);
 
+            //Publsh to web (PRIVATE)
+            if (PublishToWeb2)
+                ParentMF.WebPublishObj2.PublishData(FileResObj);
 
             return FileResObj;
         }
