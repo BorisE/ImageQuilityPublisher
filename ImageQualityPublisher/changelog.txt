@@ -7,13 +7,19 @@ http://astrohostel.ru
 For FWHM estimate it uses DeepSkyStacker program by Luc Coiffier http://deepskystacker.free.fr/
 
 to do:
-- several paths to monitor	
 - add option: rebuild dss info files
 - new mode: parse dir with subdirs (only once, instead of constant monitoring)
 - minimize to tray
+- alert when changing language
+- max threads setting
+- status bar: queque images stat
 
 bugs:
 - :)
+
+1.2 [07.01.18]
+- several paths to monitor
+- configmanagement class enhanced
 
 1.1.1 [06.01.18]
 - updated configmanagement class for adding new nodes

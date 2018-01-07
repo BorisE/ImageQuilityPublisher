@@ -42,16 +42,19 @@ namespace ImageQualityPublisher
     /// </summary>
     public class MonitorClass
     {
-        //path to monitor files
-        public string FileMonitorPath="";
+        public List<string> FileMonitorPath = new List<string>();
 
-        public bool settingsPublishToGroup = true;
-        public bool settingsPublishToPrivate = false;
+        public bool settingsPublishToGroup = true;      //publish to web - group resource
+        public bool settingsPublishToPrivate = false;   //publish to web - private resource
+        public string settingsExtensionToSearch = "*.fit*"; //which extension to loop
+        public uint settingsMaxThreads = 1;             //how many threads run simultaneously
+
+        private uint curActiveThreads = 0;              //currently active threads
 
         //file list where to keep already parsed file
         private Dictionary<string, bool> FileList = new Dictionary<string, bool>();
 
-        //link to mainform
+        //link to mainform for callback functions
         private MainForm ParentMF;
 
         public MonitorClass(MainForm extMF)
@@ -59,14 +62,32 @@ namespace ImageQualityPublisher
             ParentMF = extMF;
         }
 
+
         /// <summary>
-        /// Main method to call
+        /// Check for new files in DIRECTORIES
+        /// Overload where directories as LIST<string>
         /// </summary>
-        public void CheckForNewFiles()
+        /// <param name="FileMonitorPathList">List of directories to check</param>
+        public void CheckForNewFiles(List<string> FileMonitorPathList)
+        {
+            //LOOP throug all directory path and run overload method for every dir
+            foreach(string curDir in FileMonitorPathList)
+            {
+                CheckForNewFiles(curDir);
+            }
+        }
+
+        /// <summary>
+        /// Check for new files in one DIRECTORIE
+        /// Overload where directory is only one<string>
+        /// </summary>
+        /// <param name="FileMonitorPathSt"></param>
+        public void CheckForNewFiles(string FileMonitorPathSt)
         {
             //get all files
-            string[] fileArray = Directory.GetFiles(FileMonitorPath, "*.fit*");
+            string[] fileArray = Directory.GetFiles(FileMonitorPathSt, settingsExtensionToSearch);
 
+            //check them all
             foreach(string filename in fileArray)
             {
                 string FileNameOnly = Path.GetFileName(filename);
@@ -78,22 +99,41 @@ namespace ImageQualityPublisher
                 }
                 else
                 {
-                    //add to filelist
-                    FileList.Add(FileNameOnly, true);
+                    if (curActiveThreads < settingsMaxThreads)
+                    {
+                        Logging.AddLog("New file [" + filename + "] was detected...", LogLevel.Activity, Highlight.Emphasize);
 
-                    //run async
-                    Thread childThread = new Thread(delegate () {
-                        RunQualityEstimation(filename, settingsPublishToGroup, settingsPublishToPrivate);
-                    });
-                    childThread.Start();
+                        //add to filelist
+                        FileList.Add(FileNameOnly, true);
+
+                        //run async
+                        Thread childThread = new Thread(delegate ()
+                        {
+                            RunFileFullProcessing(filename, settingsPublishToGroup, settingsPublishToPrivate);
+                            curActiveThreads--;
+                        });
+                        childThread.Start();
+                        curActiveThreads++;
+                    }
+                    else
+                    {
+                        Logging.AddLog("New file [" + filename + "] waiting in queque", LogLevel.Activity);
+                    }
                 }
             }
         }
 
-
-        public FileParseResult RunQualityEstimation(string FileName, bool PublishToWeb = true, bool PublishToWeb2 = false)
+        /// <summary>
+        /// Quality estimator method 
+        /// </summary>
+        /// <param name="FileName"></param>
+        /// <param name="PublishToWeb"></param>
+        /// <param name="PublishToWeb2"></param>
+        /// <returns></returns>
+        public FileParseResult RunFileFullProcessing(string FileName, bool PublishToWeb = true, bool PublishToWeb2 = false)
         {
-            string FullFileName = Path.Combine(FileMonitorPath, FileName); //in case filename contains full path - it will be used. If no - monitor path would be added
+            //string FullFileName = Path.Combine(sFileMonitorPath, FileName); //in case filename contains full path - it will be used. If no - monitor path would be added
+            string FullFileName = FileName; //there is no default path now :(
 
             DSSQualityReader DSSObj = new DSSQualityReader(ParentMF.settingsDSSCLPath);
             FITSHeaderReader FITSobj = new FITSHeaderReader();

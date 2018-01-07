@@ -30,21 +30,11 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this.txtMonitorPath = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnChooseFolder = new System.Windows.Forms.Button();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.txtStarsNum = new System.Windows.Forms.TextBox();
-            this.txtMeanRadius = new System.Windows.Forms.TextBox();
-            this.txtBgLevel = new System.Windows.Forms.TextBox();
-            this.txtTest = new System.Windows.Forms.TextBox();
+            this.cmbMonitorPath = new System.Windows.Forms.ComboBox();
+            this.btnDelFolder = new System.Windows.Forms.Button();
+            this.btnAddFolder = new System.Windows.Forms.Button();
             this.btnTest = new System.Windows.Forms.Button();
-            this.txtLastFileName = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.btnExit = new System.Windows.Forms.Button();
             this.btnRecheck = new System.Windows.Forms.Button();
             this.btnStart = new System.Windows.Forms.Button();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
@@ -58,7 +48,6 @@
             this.chkSettings_Autostart = new System.Windows.Forms.CheckBox();
             this.txtLog = new System.Windows.Forms.RichTextBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabLog = new System.Windows.Forms.TabPage();
             this.tabList = new System.Windows.Forms.TabPage();
             this.dataGridFileData = new System.Windows.Forms.DataGridView();
             this.dataGridData_filename = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -69,6 +58,7 @@
             this.dataGridData_MeanRadius = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridData_Bg = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridData_Exp = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabLog = new System.Windows.Forms.TabPage();
             this.tabSettings = new System.Windows.Forms.TabPage();
             this.btnSettings_Save = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
@@ -94,83 +84,52 @@
             this.monitorTimer = new System.Windows.Forms.Timer(this.components);
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
-            this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tabControl1.SuspendLayout();
-            this.tabLog.SuspendLayout();
             this.tabList.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridFileData)).BeginInit();
+            this.tabLog.SuspendLayout();
             this.tabSettings.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.tabAbout.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.statusBar.SuspendLayout();
+            this.groupBox5.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // txtMonitorPath
-            // 
-            resources.ApplyResources(this.txtMonitorPath, "txtMonitorPath");
-            this.txtMonitorPath.Name = "txtMonitorPath";
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.btnChooseFolder);
-            this.groupBox1.Controls.Add(this.txtMonitorPath);
-            this.groupBox1.Controls.Add(this.groupBox3);
-            this.groupBox1.Controls.Add(this.btnExit);
-            this.groupBox1.Controls.Add(this.btnRecheck);
-            this.groupBox1.Controls.Add(this.btnStart);
+            this.groupBox1.Controls.Add(this.cmbMonitorPath);
+            this.groupBox1.Controls.Add(this.btnDelFolder);
+            this.groupBox1.Controls.Add(this.btnAddFolder);
             resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
             // 
-            // btnChooseFolder
+            // cmbMonitorPath
             // 
-            resources.ApplyResources(this.btnChooseFolder, "btnChooseFolder");
-            this.btnChooseFolder.Name = "btnChooseFolder";
-            this.btnChooseFolder.UseVisualStyleBackColor = true;
-            this.btnChooseFolder.Click += new System.EventHandler(this.btnChooseFolder_Click);
+            this.cmbMonitorPath.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbMonitorPath.FormattingEnabled = true;
+            resources.ApplyResources(this.cmbMonitorPath, "cmbMonitorPath");
+            this.cmbMonitorPath.Name = "cmbMonitorPath";
             // 
-            // groupBox3
+            // btnDelFolder
             // 
-            resources.ApplyResources(this.groupBox3, "groupBox3");
-            this.groupBox3.Controls.Add(this.txtStarsNum);
-            this.groupBox3.Controls.Add(this.txtMeanRadius);
-            this.groupBox3.Controls.Add(this.txtBgLevel);
-            this.groupBox3.Controls.Add(this.txtTest);
-            this.groupBox3.Controls.Add(this.btnTest);
-            this.groupBox3.Controls.Add(this.txtLastFileName);
-            this.groupBox3.Controls.Add(this.label4);
-            this.groupBox3.Controls.Add(this.label3);
-            this.groupBox3.Controls.Add(this.label2);
-            this.groupBox3.Controls.Add(this.label1);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.TabStop = false;
+            resources.ApplyResources(this.btnDelFolder, "btnDelFolder");
+            this.btnDelFolder.Name = "btnDelFolder";
+            this.toolTip1.SetToolTip(this.btnDelFolder, resources.GetString("btnDelFolder.ToolTip"));
+            this.btnDelFolder.UseVisualStyleBackColor = true;
+            this.btnDelFolder.Click += new System.EventHandler(this.btnDelFolder_Click);
             // 
-            // txtStarsNum
+            // btnAddFolder
             // 
-            resources.ApplyResources(this.txtStarsNum, "txtStarsNum");
-            this.txtStarsNum.Name = "txtStarsNum";
-            this.txtStarsNum.ReadOnly = true;
-            // 
-            // txtMeanRadius
-            // 
-            resources.ApplyResources(this.txtMeanRadius, "txtMeanRadius");
-            this.txtMeanRadius.Name = "txtMeanRadius";
-            this.txtMeanRadius.ReadOnly = true;
-            // 
-            // txtBgLevel
-            // 
-            resources.ApplyResources(this.txtBgLevel, "txtBgLevel");
-            this.txtBgLevel.Name = "txtBgLevel";
-            this.txtBgLevel.ReadOnly = true;
-            // 
-            // txtTest
-            // 
-            resources.ApplyResources(this.txtTest, "txtTest");
-            this.txtTest.Name = "txtTest";
-            this.txtTest.ReadOnly = true;
+            resources.ApplyResources(this.btnAddFolder, "btnAddFolder");
+            this.btnAddFolder.Name = "btnAddFolder";
+            this.toolTip1.SetToolTip(this.btnAddFolder, resources.GetString("btnAddFolder.ToolTip"));
+            this.btnAddFolder.UseVisualStyleBackColor = true;
+            this.btnAddFolder.Click += new System.EventHandler(this.btnAddFolder_Click);
             // 
             // btnTest
             // 
@@ -178,40 +137,6 @@
             this.btnTest.Name = "btnTest";
             this.btnTest.UseVisualStyleBackColor = true;
             this.btnTest.Click += new System.EventHandler(this.btnTest_Click);
-            // 
-            // txtLastFileName
-            // 
-            resources.ApplyResources(this.txtLastFileName, "txtLastFileName");
-            this.txtLastFileName.Name = "txtLastFileName";
-            this.txtLastFileName.ReadOnly = true;
-            // 
-            // label4
-            // 
-            resources.ApplyResources(this.label4, "label4");
-            this.label4.Name = "label4";
-            // 
-            // label3
-            // 
-            resources.ApplyResources(this.label3, "label3");
-            this.label3.Name = "label3";
-            // 
-            // label2
-            // 
-            resources.ApplyResources(this.label2, "label2");
-            this.label2.Name = "label2";
-            // 
-            // label1
-            // 
-            resources.ApplyResources(this.label1, "label1");
-            this.label1.Name = "label1";
-            // 
-            // btnExit
-            // 
-            this.btnExit.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            resources.ApplyResources(this.btnExit, "btnExit");
-            this.btnExit.Name = "btnExit";
-            this.btnExit.UseVisualStyleBackColor = true;
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // btnRecheck
             // 
@@ -300,13 +225,6 @@
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             // 
-            // tabLog
-            // 
-            this.tabLog.Controls.Add(this.txtLog);
-            resources.ApplyResources(this.tabLog, "tabLog");
-            this.tabLog.Name = "tabLog";
-            this.tabLog.UseVisualStyleBackColor = true;
-            // 
             // tabList
             // 
             this.tabList.Controls.Add(this.dataGridFileData);
@@ -382,6 +300,13 @@
             resources.ApplyResources(this.dataGridData_Exp, "dataGridData_Exp");
             this.dataGridData_Exp.Name = "dataGridData_Exp";
             this.dataGridData_Exp.ReadOnly = true;
+            // 
+            // tabLog
+            // 
+            this.tabLog.Controls.Add(this.txtLog);
+            resources.ApplyResources(this.tabLog, "tabLog");
+            this.tabLog.Name = "tabLog";
+            this.tabLog.UseVisualStyleBackColor = true;
             // 
             // tabSettings
             // 
@@ -542,27 +467,33 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.btnRecheck);
+            this.groupBox5.Controls.Add(this.btnStart);
+            this.groupBox5.Controls.Add(this.btnTest);
+            resources.ApplyResources(this.groupBox5, "groupBox5");
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.TabStop = false;
+            // 
             // MainForm
             // 
             this.AcceptButton = this.btnStart;
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.CancelButton = this.btnExit;
+            this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.statusBar);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.groupBox1);
             this.Name = "MainForm";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.tabControl1.ResumeLayout(false);
-            this.tabLog.ResumeLayout(false);
             this.tabList.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridFileData)).EndInit();
+            this.tabLog.ResumeLayout(false);
             this.tabSettings.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
@@ -571,36 +502,25 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.statusBar.ResumeLayout(false);
             this.statusBar.PerformLayout();
+            this.groupBox5.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox txtMonitorPath;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button btnChooseFolder;
+        private System.Windows.Forms.Button btnAddFolder;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.CheckBox chkSettings_Autostart;
         private System.Windows.Forms.Button btnStart;
-        private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.RichTextBox txtLog;
-        private System.Windows.Forms.TextBox txtLastFileName;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.TextBox txtStarsNum;
-        private System.Windows.Forms.TextBox txtMeanRadius;
-        private System.Windows.Forms.TextBox txtBgLevel;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabLog;
         private System.Windows.Forms.TabPage tabList;
         private System.Windows.Forms.DataGridView dataGridFileData;
         private System.Windows.Forms.TabPage tabSettings;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Timer logRefreshTimer;
         private System.Windows.Forms.StatusStrip statusBar;
         public System.Windows.Forms.ToolStripStatusLabel toolStripStatus_Images;
@@ -608,7 +528,6 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripLogSize;
         private System.Windows.Forms.Timer monitorTimer;
         private System.Windows.Forms.Button btnTest;
-        private System.Windows.Forms.TextBox txtTest;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.TextBox txtSettings_urlprivate;
         private System.Windows.Forms.TextBox txtSettings_urlgorup;
@@ -642,6 +561,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridData_MeanRadius;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridData_Bg;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridData_Exp;
+        private System.Windows.Forms.ComboBox cmbMonitorPath;
+        private System.Windows.Forms.Button btnDelFolder;
+        private System.Windows.Forms.GroupBox groupBox5;
     }
 }
 

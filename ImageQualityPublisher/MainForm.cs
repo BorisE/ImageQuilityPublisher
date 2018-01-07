@@ -61,7 +61,7 @@ namespace ImageQualityPublisher
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            DefBackColor = btnExit.BackColor;
+            DefBackColor = btnStart.BackColor;
 
             //Update interface for current Settings values (after they was loaded in constructor)
             UpdateSettingsDialogFields();
@@ -92,13 +92,6 @@ namespace ImageQualityPublisher
         /// <param name="FileResObj"></param>
         public void PublishFITSData(FileParseResult FileResObj)
         {
-            //Last image block
-            txtLastFileName.Text = FileResObj.FITSFileName;
-
-            txtBgLevel.Text = FileResObj.QualityData.SkyBackground.ToString("P", CultureInfo.InvariantCulture);
-            txtMeanRadius.Text = FileResObj.QualityData.MeanRadius.ToString("N2", CultureInfo.InvariantCulture);
-            txtStarsNum.Text = FileResObj.QualityData.StarsNumber.ToString("N0", CultureInfo.InvariantCulture);
-
             //Grid block
             int curRowIndex = dataGridFileData.Rows.Add();
             dataGridFileData.Rows[curRowIndex].Cells["dataGridData_filename"].Value = Path.GetFileName(FileResObj.FITSFileName);
@@ -118,13 +111,6 @@ namespace ImageQualityPublisher
 
         public void ClearFITSData()
         {
-            //Last image block
-            txtLastFileName.Text = "";
-
-            txtBgLevel.Text = "";
-            txtMeanRadius.Text = "";
-            txtStarsNum.Text = "";
-
             //clear Grid block
             dataGridFileData.Rows.Clear();
 
@@ -165,7 +151,8 @@ namespace ImageQualityPublisher
             {
                 AlreadyRunning = true;
 
-                MonitorObj.CheckForNewFiles();
+                List<string> dirList = cmbMonitorPath.Items.Cast<String>().ToList();
+                MonitorObj.CheckForNewFiles(dirList);
 
                 AlreadyRunning = false;
             }
@@ -188,14 +175,14 @@ namespace ImageQualityPublisher
                 btnStart.BackColor = OnColor;
             }
         }
+        
 
-
-        private void btnExit_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void btnChooseFolder_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Add new dir
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnAddFolder_Click(object sender, EventArgs e)
         {
             folderBrowserDialog1.ShowNewFolderButton = false;
             //folderBrowserDialog1.RootFolder = Environment.SpecialFolder.Personal;
@@ -204,13 +191,62 @@ namespace ImageQualityPublisher
 
             if (result == DialogResult.OK)
             {
-                txtMonitorPath.Text = folderBrowserDialog1.SelectedPath;
-                MonitorObj.FileMonitorPath = txtMonitorPath.Text;
-                MonitorObj.ClearFileList(); //очисить список
-                Logging.AddLog(LocRM.GetString("Log_startmonitoring") +" ["+ txtMonitorPath.Text + "]", LogLevel.Activity, Highlight.Emphasize);
+                //add to combobox
+                cmbMonitorPath.Items.Add(folderBrowserDialog1.SelectedPath);
+                cmbMonitorPath.SelectedItem = folderBrowserDialog1.SelectedPath;
+
+                //update lists
+                UpdateDirList();
+
+                //MonitorObj.ClearFileList(); //очисить список
+                Logging.AddLog(LocRM.GetString("Log_startmonitoring") +" ["+ folderBrowserDialog1.SelectedPath + "]", LogLevel.Activity, Highlight.Emphasize);
             }
 
         }
+
+        /// <summary>
+        /// Delete current dir from the list
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnDelFolder_Click(object sender, EventArgs e)
+        {
+            //remove from combobox
+            cmbMonitorPath.Items.RemoveAt(cmbMonitorPath.SelectedIndex);
+            if (cmbMonitorPath.Items.Count > 0)
+                cmbMonitorPath.SelectedIndex = 0;
+
+            //update lists
+            UpdateDirList();
+        }
+
+
+        /// <summary>
+        /// Updates all dir lists from combobox list
+        /// </summary>
+        private void UpdateDirList()
+        {
+            //1. Empty current lists
+            //Monitoring list
+            MonitorObj.FileMonitorPath.Clear();
+            //Config
+            ConfigManagement.ClearSection("monitorPath"); //clear entire section
+
+            //2. Make new lists
+            for (int i = 0; i < cmbMonitorPath.Items.Count; i++)
+            {
+                string curDir = cmbMonitorPath.GetItemText(cmbMonitorPath.Items[i]);
+
+                //Add to monitor list
+                MonitorObj.FileMonitorPath.Add(curDir);
+                //Add to config list
+                ConfigManagement.UpdateConfigValue("monitorPath", "Dir" + (i + 1), curDir);
+            }
+
+            //3. Save config
+            ConfigManagement.Save();
+        }
+
 
         private void btnRecheck_Click(object sender, EventArgs e)
         {
@@ -221,10 +257,12 @@ namespace ImageQualityPublisher
 
         private void btnTest_Click(object sender, EventArgs e)
         {
-            FileParseResult FileResObj = new FileParseResult();
-            FileResObj = MonitorObj.RunQualityEstimation(@"d:\2\NGC247_20171212_L_600s_1x1_-30degC_0.0degN_000005308.FIT");
+            List<string> DirList = new List<string>();
 
-            WebPublishObj.PublishData(FileResObj);
+            DirList.Add(@"D:\2");
+            DirList.Add(@"D:\2\2");
+
+            MonitorObj.CheckForNewFiles(DirList);
 
         }
 
@@ -233,7 +271,11 @@ namespace ImageQualityPublisher
 
         private void LoadParamsFromConfigFiles()
         {
-            MonitorObj.FileMonitorPath = ConfigManagement.getString("monitorPath","Dir1") ?? Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            List<string> dirNodesList = ConfigManagement.getAllSectionNamesList("monitorPath");
+            foreach (string curDirNode in dirNodesList)
+            {
+                MonitorObj.FileMonitorPath.Add(ConfigManagement.getString("monitorPath", curDirNode));
+            }
 
             settingsAutoStartMonitoring = ConfigManagement.getBool("options", "AUTOSTARTMONITORING") ?? false;
             settingsDSSCLPath = ConfigManagement.getString("options", "DSS_PATH") ?? Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86),@"\DeepSkyStacker\DeepSkyStackerCL.exe");
@@ -277,7 +319,12 @@ namespace ImageQualityPublisher
 
 
             //Установить значения из ранее загруженных данных в диалоге настройка
-            txtMonitorPath.Text = MonitorObj.FileMonitorPath;
+            cmbMonitorPath.Items.Clear();
+            foreach (string curDir in MonitorObj.FileMonitorPath)
+            {
+                cmbMonitorPath.Items.Add(curDir);
+            }
+            cmbMonitorPath.SelectedIndex = 0;
 
             chkSettings_Autostart.Checked = settingsAutoStartMonitoring;
             txtSettings_DSS.Text = settingsDSSCLPath;
@@ -297,8 +344,15 @@ namespace ImageQualityPublisher
         /// <param name="e"></param>
         private void btnSettings_Save_Click(object sender, EventArgs e)
         {
-            //Update ConfigXML
-            ConfigManagement.UpdateConfigValue("monitorPath", "Dir1", txtMonitorPath.Text);
+            //1. Update ConfigXML
+
+            //Save dirlist
+            ConfigManagement.ClearSection("monitorPath"); //clear entire section
+            for (int i = 0; i < cmbMonitorPath.Items.Count; i++)
+            {
+                string curDir = cmbMonitorPath.GetItemText(cmbMonitorPath.Items[i]);
+                ConfigManagement.UpdateConfigValue("monitorPath", "Dir"+(i+1), curDir);
+            }
 
             ConfigManagement.UpdateConfigValue("options", "Language", cmbLang.SelectedValue.ToString());
 
@@ -312,10 +366,10 @@ namespace ImageQualityPublisher
             ConfigManagement.UpdateConfigValue("publishURL", "url2", txtSettings_urlprivate.Text);
 
 
-            //Save ConfigXML to disk
+            //2. Save ConfigXML to disk
             ConfigManagement.Save();
 
-            //Load config from disk
+            //3. Load config from disk
             ConfigManagement.Load();
             LoadParamsFromConfigFiles();
         }
@@ -371,5 +425,6 @@ namespace ImageQualityPublisher
 
 
         #endregion About information
+
     }
 }

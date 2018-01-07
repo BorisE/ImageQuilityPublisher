@@ -112,6 +112,8 @@ namespace ImageQualityPublisher
             return res;
         }
 
+        // GET VALUES ///////////////////////////////////////////////////
+
         public static string getString(string section, string key)
         {
             string res = null;
@@ -183,21 +185,62 @@ namespace ImageQualityPublisher
             return res;
         }
 
-        public static XmlNode getXMLNode(string section)
+        // SECTION CONTENTS ///////////////////////////////////////////////////
+
+        public static List<string> getAllSectionNamesList(string sectionName)
         {
-            XmlNode res = null;
+            List<string> res = new List<string>();
+
             try
             {
-                XmlNode nodeAppSet = configXML.SelectSingleNode("//" + section);
-                res = nodeAppSet;
+                XmlNode xnlNodes = ConfigManagement.configXML.SelectSingleNode("//" + sectionName);
+                // Перебрать все вложеннные узлы и добавить их в List
+                foreach (XmlNode xndNode in xnlNodes.ChildNodes)
+                {
+                    res.Add(xndNode.Name);
+                }
             }
             catch (Exception ex)
             {
-                Logging.AddLog("getXMLNode [" + section + "] error: " + ex.Message, LogLevel.Important, Highlight.Error);
+                Logging.AddLog("Config section [" + sectionName + "] not found: " + ex.Message, LogLevel.Activity, Highlight.Error);
                 Logging.AddLog("Exception details: " + ex.ToString(), LogLevel.Debug, Highlight.Debug);
                 res = null;
             }
             return res;
+        }
+
+        public static XmlNode getXMLNode(string sectionName)
+        {
+            XmlNode res = null;
+            try
+            {
+                XmlNode nodeAppSet = configXML.SelectSingleNode("//" + sectionName);
+                res = nodeAppSet;
+            }
+            catch (Exception ex)
+            {
+                Logging.AddLog("getXMLNode [" + sectionName + "] error: " + ex.Message, LogLevel.Important, Highlight.Error);
+                Logging.AddLog("Exception details: " + ex.ToString(), LogLevel.Debug, Highlight.Debug);
+                res = null;
+            }
+            return res;
+        }
+
+        public static void ClearSection(string sectionName)
+        {
+            try
+            {
+                XmlNode xnlNodes = ConfigManagement.configXML.SelectSingleNode("//" + sectionName);
+                for (int i = xnlNodes.ChildNodes.Count - 1; i >= 0; i--)
+                {
+                    xnlNodes.RemoveChild(xnlNodes.ChildNodes[i]);
+                }
+            }
+            catch (Exception ex)
+            {
+                Logging.AddLog("ClearSection [" + sectionName + "] error: " + ex.Message, LogLevel.Important, Highlight.Error);
+                Logging.AddLog("Exception details: " + ex.ToString(), LogLevel.Debug, Highlight.Debug);
+            }
         }
 
         /// <summary>

@@ -2,7 +2,6 @@
 <configuration>
 
 <monitorPath>
-    <Dir1 value="d:\2" />
 </monitorPath>
 
 <publishURL>
