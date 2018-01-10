@@ -119,7 +119,7 @@
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="chkSearchSubdirs.Size" type="System.Drawing.Size, System.Drawing">
-    <value>273, 29</value>
+    <value>144, 17</value>
   </data>
   <data name="chkSearchSubdirs.Text" xml:space="preserve">
     <value>Искать в подкаталогах</value>
@@ -133,8 +133,11 @@
   <data name="lblDirsMonitoring.ToolTip" xml:space="preserve">
     <value />
   </data>
+  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>485, 43</value>
+  </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 25</value>
+    <value>63, 13</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
     <value>Каталогов:</value>
@@ -164,7 +167,7 @@
     <value />
   </data>
   <data name="label38.Size" type="System.Drawing.Size, System.Drawing">
-    <value>192, 25</value>
+    <value>99, 13</value>
   </data>
   <data name="label38.Text" xml:space="preserve">
     <value>Язык интерфейса</value>
@@ -173,7 +176,7 @@
     <value />
   </data>
   <data name="linkDSS.Size" type="System.Drawing.Size, System.Drawing">
-    <value>161, 25</value>
+    <value>84, 13</value>
   </data>
   <data name="linkDSS.Text" xml:space="preserve">
     <value>Загрузить DSS</value>
@@ -185,7 +188,7 @@
     <value />
   </data>
   <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>242, 25</value>
+    <value>124, 13</value>
   </data>
   <data name="label5.Text" xml:space="preserve">
     <value>Путь к DeepSkyStacker</value>
@@ -197,7 +200,7 @@
     <value />
   </data>
   <data name="chkSettings_Autostart.Size" type="System.Drawing.Size, System.Drawing">
-    <value>311, 29</value>
+    <value>163, 17</value>
   </data>
   <data name="chkSettings_Autostart.Text" xml:space="preserve">
     <value>Автосзапуск  мониторинга</value>
@@ -272,31 +275,31 @@
     <value />
   </data>
   <data name="txtSettings_urlprivate.Location" type="System.Drawing.Point, System.Drawing">
-    <value>380, 72</value>
+    <value>197, 36</value>
   </data>
   <data name="txtSettings_urlprivate.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1049, 31</value>
+    <value>508, 20</value>
   </data>
   <data name="txtSettings_urlprivate.ToolTip" xml:space="preserve">
     <value />
   </data>
   <data name="txtSettings_urlgorup.Location" type="System.Drawing.Point, System.Drawing">
-    <value>380, 30</value>
+    <value>197, 16</value>
   </data>
   <data name="txtSettings_urlgorup.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1049, 31</value>
+    <value>508, 20</value>
   </data>
   <data name="txtSettings_urlgorup.ToolTip" xml:space="preserve">
     <value />
   </data>
   <data name="chkSettings_publishprivate.Size" type="System.Drawing.Size, System.Drawing">
-    <value>358, 29</value>
+    <value>185, 17</value>
   </data>
   <data name="chkSettings_publishprivate.Text" xml:space="preserve">
     <value>Публиковать на личный ресурс</value>
   </data>
   <data name="chkSettings_publishgroup.Size" type="System.Drawing.Size, System.Drawing">
-    <value>349, 29</value>
+    <value>181, 17</value>
   </data>
   <data name="chkSettings_publishgroup.Text" xml:space="preserve">
     <value>Публиковать на общий ресурс</value>
@@ -313,8 +316,11 @@
   <data name="tabSettings.ToolTip" xml:space="preserve">
     <value />
   </data>
+  <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
+    <value>491, 36</value>
+  </data>
   <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>251, 25</value>
+    <value>130, 13</value>
   </data>
   <data name="label7.Text" xml:space="preserve">
     <value>и Олегом Милантьевым</value>
@@ -329,7 +335,7 @@
     <value />
   </data>
   <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>296, 25</value>
+    <value>149, 13</value>
   </data>
   <data name="label6.Text" xml:space="preserve">
     <value>Часть проекта Astrohostel.ru</value>
@@ -338,7 +344,7 @@
     <value />
   </data>
   <data name="label17.Size" type="System.Drawing.Size, System.Drawing">
-    <value>282, 25</value>
+    <value>142, 13</value>
   </data>
   <data name="label17.Text" xml:space="preserve">
     <value>(C) 2018 Борисом Емченко</value>
@@ -350,7 +356,7 @@
     <value />
   </data>
   <data name="linkMilantiev.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1250, 69</value>
+    <value>620, 36</value>
   </data>
   <data name="linkMilantiev.ToolTip" xml:space="preserve">
     <value />
@@ -482,7 +488,7 @@
   <data name="toolStripDropDownLogLevel.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAAHYcAAB2HAY/l8WUAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
         YKxG6WBogkMZKgPNCEVJFBGdGETEvgwyO9DJE5syZw3PIlPEE9pgBCLZ5XvdMB8Ew8gXbl54nuf63dd9
         0OGSnwCahxbPRNPAPMw9Xpg6ZmF46kZZ0xSKzJPIrhpDWsVnpBhGkKx3nAX8Pv7z1zg8OoY/cITdn4fw
         bf/C0kYAN3Ma/w3gWfZL5kzTKBxjWyK2DftwI9tyMYCZKXbNHaD91bLYJrDXsYbrWfUKwJrPE9M2M1Oc

@@ -479,6 +479,8 @@
             // dataGridData_DateTime
             // 
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.Format = "G";
+            dataGridViewCellStyle1.NullValue = null;
             this.dataGridData_DateTime.DefaultCellStyle = dataGridViewCellStyle1;
             resources.ApplyResources(this.dataGridData_DateTime, "dataGridData_DateTime");
             this.dataGridData_DateTime.Name = "dataGridData_DateTime";

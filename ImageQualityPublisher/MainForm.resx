@@ -515,7 +515,7 @@
     <value>True</value>
   </data>
   <data name="linkDSS.Location" type="System.Drawing.Point, System.Drawing">
-    <value>595, 42</value>
+    <value>623, 42</value>
   </data>
   <data name="linkDSS.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 0, 2, 0</value>
@@ -545,7 +545,7 @@
     <value>Top, Right</value>
   </data>
   <data name="btnLoadDSSPath.Location" type="System.Drawing.Point, System.Drawing">
-    <value>553, 38</value>
+    <value>581, 38</value>
   </data>
   <data name="btnLoadDSSPath.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -614,7 +614,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="txtSettings_DSS.Size" type="System.Drawing.Size, System.Drawing">
-    <value>370, 20</value>
+    <value>398, 20</value>
   </data>
   <data name="txtSettings_DSS.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -674,7 +674,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>688, 85</value>
+    <value>716, 85</value>
   </data>
   <data name="groupBox2.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -704,7 +704,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="txtLog.Size" type="System.Drawing.Size, System.Drawing">
-    <value>698, 210</value>
+    <value>728, 281</value>
   </data>
   <data name="txtLog.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -748,6 +748,9 @@
   <data name="dataGridData_DateTime.MinimumWidth" type="System.Int32, mscorlib">
     <value>50</value>
   </data>
+  <data name="dataGridData_DateTime.ToolTipText" xml:space="preserve">
+    <value>Time of exposure, UTC time</value>
+  </data>
   <data name="dataGridData_DateTime.Width" type="System.Int32, mscorlib">
     <value>120</value>
   </data>
@@ -757,6 +760,9 @@
   <data name="dataGridData_Alt.HeaderText" xml:space="preserve">
     <value>Alt</value>
   </data>
+  <data name="dataGridData_Alt.ToolTipText" xml:space="preserve">
+    <value>Altitude of object during exposure</value>
+  </data>
   <data name="dataGridData_Alt.Width" type="System.Int32, mscorlib">
     <value>30</value>
   </data>
@@ -765,6 +771,9 @@
   </metadata>
   <data name="dataGridData_Stars.HeaderText" xml:space="preserve">
     <value>Stars</value>
+  </data>
+  <data name="dataGridData_Stars.ToolTipText" xml:space="preserve">
+    <value>Number of detected stars (DSS)</value>
   </data>
   <data name="dataGridData_Stars.Width" type="System.Int32, mscorlib">
     <value>35</value>
@@ -788,7 +797,7 @@
     <value>MeanRadius</value>
   </data>
   <data name="dataGridData_MeanRadius.ToolTipText" xml:space="preserve">
-    <value>Mean Radius DSS</value>
+    <value>Mean Radius (DSS)</value>
   </data>
   <data name="dataGridData_MeanRadius.Width" type="System.Int32, mscorlib">
     <value>40</value>
@@ -798,6 +807,9 @@
   </metadata>
   <data name="dataGridData_Bg.HeaderText" xml:space="preserve">
     <value>Bg</value>
+  </data>
+  <data name="dataGridData_Bg.ToolTipText" xml:space="preserve">
+    <value>Background brightness (DSS)</value>
   </data>
   <data name="dataGridData_Bg.Width" type="System.Int32, mscorlib">
     <value>40</value>
@@ -809,7 +821,7 @@
     <value>Exp</value>
   </data>
   <data name="dataGridData_Exp.ToolTipText" xml:space="preserve">
-    <value>Exposure length</value>
+    <value>Exposure length, sec</value>
   </data>
   <data name="dataGridData_Exp.Width" type="System.Int32, mscorlib">
     <value>35</value>
@@ -881,7 +893,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="tabLog.Size" type="System.Drawing.Size, System.Drawing">
-    <value>698, 210</value>
+    <value>728, 281</value>
   </data>
   <data name="tabLog.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -941,7 +953,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="txtSettings_urlprivate.Size" type="System.Drawing.Size, System.Drawing">
-    <value>499, 20</value>
+    <value>527, 20</value>
   </data>
   <data name="txtSettings_urlprivate.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -968,7 +980,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="txtSettings_urlgorup.Size" type="System.Drawing.Size, System.Drawing">
-    <value>499, 20</value>
+    <value>527, 20</value>
   </data>
   <data name="txtSettings_urlgorup.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -1058,7 +1070,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="groupBox4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>688, 72</value>
+    <value>716, 72</value>
   </data>
   <data name="groupBox4.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -1088,7 +1100,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="tabSettings.Size" type="System.Drawing.Size, System.Drawing">
-    <value>698, 210</value>
+    <value>728, 281</value>
   </data>
   <data name="tabSettings.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -1518,7 +1530,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="tabAbout.Size" type="System.Drawing.Size, System.Drawing">
-    <value>698, 210</value>
+    <value>728, 281</value>
   </data>
   <data name="tabAbout.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
