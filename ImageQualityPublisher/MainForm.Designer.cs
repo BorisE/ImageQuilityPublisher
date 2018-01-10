@@ -33,7 +33,9 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cmbMonitorPath = new System.Windows.Forms.ComboBox();
             this.btnDelFolder = new System.Windows.Forms.Button();
+            this.lblDirsMonitoring = new System.Windows.Forms.Label();
             this.btnAddFolder = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.btnTest = new System.Windows.Forms.Button();
             this.btnRecheck = new System.Windows.Forms.Button();
             this.btnStart = new System.Windows.Forms.Button();
@@ -78,13 +80,16 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.logRefreshTimer = new System.Windows.Forms.Timer(this.components);
             this.statusBar = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatus_Images = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatus_FilesFound = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatus_FilesProcessed = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatus_FilesWaiting = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripDropDownLogLevel = new System.Windows.Forms.ToolStripDropDownButton();
             this.toolStripLogSize = new System.Windows.Forms.ToolStripStatusLabel();
             this.monitorTimer = new System.Windows.Forms.Timer(this.components);
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.chkSearchSubdirs = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -101,9 +106,12 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.chkSearchSubdirs);
             this.groupBox1.Controls.Add(this.cmbMonitorPath);
             this.groupBox1.Controls.Add(this.btnDelFolder);
+            this.groupBox1.Controls.Add(this.lblDirsMonitoring);
             this.groupBox1.Controls.Add(this.btnAddFolder);
+            this.groupBox1.Controls.Add(this.label1);
             resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
@@ -123,6 +131,11 @@
             this.btnDelFolder.UseVisualStyleBackColor = true;
             this.btnDelFolder.Click += new System.EventHandler(this.btnDelFolder_Click);
             // 
+            // lblDirsMonitoring
+            // 
+            resources.ApplyResources(this.lblDirsMonitoring, "lblDirsMonitoring");
+            this.lblDirsMonitoring.Name = "lblDirsMonitoring";
+            // 
             // btnAddFolder
             // 
             resources.ApplyResources(this.btnAddFolder, "btnAddFolder");
@@ -130,6 +143,11 @@
             this.toolTip1.SetToolTip(this.btnAddFolder, resources.GetString("btnAddFolder.ToolTip"));
             this.btnAddFolder.UseVisualStyleBackColor = true;
             this.btnAddFolder.Click += new System.EventHandler(this.btnAddFolder_Click);
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
             // 
             // btnTest
             // 
@@ -435,17 +453,29 @@
             // 
             this.statusBar.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.statusBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatus_Images,
+            this.toolStripStatus_FilesFound,
+            this.toolStripStatus_FilesProcessed,
+            this.toolStripStatus_FilesWaiting,
             this.toolStripDropDownLogLevel,
             this.toolStripLogSize});
             resources.ApplyResources(this.statusBar, "statusBar");
             this.statusBar.Name = "statusBar";
             this.statusBar.ShowItemToolTips = true;
             // 
-            // toolStripStatus_Images
+            // toolStripStatus_FilesFound
             // 
-            resources.ApplyResources(this.toolStripStatus_Images, "toolStripStatus_Images");
-            this.toolStripStatus_Images.Name = "toolStripStatus_Images";
+            resources.ApplyResources(this.toolStripStatus_FilesFound, "toolStripStatus_FilesFound");
+            this.toolStripStatus_FilesFound.Name = "toolStripStatus_FilesFound";
+            // 
+            // toolStripStatus_FilesProcessed
+            // 
+            resources.ApplyResources(this.toolStripStatus_FilesProcessed, "toolStripStatus_FilesProcessed");
+            this.toolStripStatus_FilesProcessed.Name = "toolStripStatus_FilesProcessed";
+            // 
+            // toolStripStatus_FilesWaiting
+            // 
+            resources.ApplyResources(this.toolStripStatus_FilesWaiting, "toolStripStatus_FilesWaiting");
+            this.toolStripStatus_FilesWaiting.Name = "toolStripStatus_FilesWaiting";
             // 
             // toolStripDropDownLogLevel
             // 
@@ -476,6 +506,13 @@
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.TabStop = false;
             // 
+            // chkSearchSubdirs
+            // 
+            resources.ApplyResources(this.chkSearchSubdirs, "chkSearchSubdirs");
+            this.chkSearchSubdirs.Name = "chkSearchSubdirs";
+            this.chkSearchSubdirs.UseVisualStyleBackColor = true;
+            this.chkSearchSubdirs.CheckedChanged += new System.EventHandler(this.chkSearchSubdirs_CheckedChanged);
+            // 
             // MainForm
             // 
             this.AcceptButton = this.btnStart;
@@ -488,6 +525,7 @@
             this.Name = "MainForm";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.tabControl1.ResumeLayout(false);
@@ -523,7 +561,7 @@
         private System.Windows.Forms.TabPage tabSettings;
         private System.Windows.Forms.Timer logRefreshTimer;
         private System.Windows.Forms.StatusStrip statusBar;
-        public System.Windows.Forms.ToolStripStatusLabel toolStripStatus_Images;
+        public System.Windows.Forms.ToolStripStatusLabel toolStripStatus_FilesFound;
         private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownLogLevel;
         private System.Windows.Forms.ToolStripStatusLabel toolStripLogSize;
         private System.Windows.Forms.Timer monitorTimer;
@@ -564,6 +602,11 @@
         private System.Windows.Forms.ComboBox cmbMonitorPath;
         private System.Windows.Forms.Button btnDelFolder;
         private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.Label lblDirsMonitoring;
+        private System.Windows.Forms.Label label1;
+        public System.Windows.Forms.ToolStripStatusLabel toolStripStatus_FilesProcessed;
+        public System.Windows.Forms.ToolStripStatusLabel toolStripStatus_FilesWaiting;
+        private System.Windows.Forms.CheckBox chkSearchSubdirs;
     }
 }
 

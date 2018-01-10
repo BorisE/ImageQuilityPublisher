@@ -17,7 +17,9 @@ namespace ImageQualityPublisher
 {
     public partial class MainForm : Form
     {
-        public MonitorClass MonitorObj;
+        public FileMonitoring MonitorObj;
+        public FileProcessing ProcessingObj;
+
         public WebPublish WebPublishObj;    //for public
         public WebPublish WebPublishObj2;   //for private
 
@@ -32,16 +34,20 @@ namespace ImageQualityPublisher
 
         //Settings
         public bool settingsAutoStartMonitoring = false;
-        public string settingsDSSCLPath = @"c:\Program Files (x86)\DeepSkyStacker\DeepSkyStackerCL.exe";
+        public List<string> FileMonitorPath = new List<string>();
 
-        private uint ImagesCount = 0;
+        //Statistics
+        private uint statImagesProcessed = 0;
+        private uint statImagesFound = 0;
+        private uint statImagesWaiting = 0;
 
         Color OnColor = Color.DarkSeaGreen;
         Color DefBackColor;
 
         public MainForm()
         {
-            MonitorObj = new MonitorClass(this);
+            ProcessingObj = new FileProcessing(this);
+            MonitorObj = new FileMonitoring(this);
             WebPublishObj = new WebPublish();
             WebPublishObj2 = new WebPublish();
 
@@ -104,19 +110,24 @@ namespace ImageQualityPublisher
             dataGridFileData.Rows[curRowIndex].Cells["dataGridData_DateTime"].Value = FileResObj.HeaderData.DateObsUTC.ToString();
             dataGridFileData.Rows[curRowIndex].Cells["dataGridData_FWHM"].Value = FileResObj.FWHM.ToString("N2", CultureInfo.InvariantCulture);
 
-            ImagesCount++;
+            statImagesProcessed++;
 
-            toolStripStatus_Images.Text = LocRM.GetString("statusbar_images") + ": " + ImagesCount;
+            UpdateStatistics(); // on every invoke
         }
 
         public void ClearFITSData()
         {
+            //Clear queque
+            ProcessingObj.Clear();
+            
             //clear Grid block
             dataGridFileData.Rows.Clear();
 
-            //update status bar
-            ImagesCount = 0;
-            toolStripStatus_Images.Text = LocRM.GetString("statusbar_images") + ": " + ImagesCount;
+            //update statistics
+            statImagesFound = 0;
+            statImagesProcessed = 0;
+            statImagesWaiting = 0;
+            UpdateStatistics();
         }
 
         /// <summary>
@@ -147,24 +158,48 @@ namespace ImageQualityPublisher
 
         private void monitorTmer_Tick(object sender, EventArgs e)
         {
+            //Update statistics
+            UpdateStatistics();
+
+            //Give time quants to objects
             if (!AlreadyRunning)
             {
                 AlreadyRunning = true;
 
+                //1. Give some time to MonitorObj
                 List<string> dirList = cmbMonitorPath.Items.Cast<String>().ToList();
-                MonitorObj.CheckForNewFiles(dirList);
+                MonitorObj.CheckForNewFiles_async(dirList);
+
+                //2. Give some time to FileQueQue processing
+                ProcessingObj.ProcessAll();
 
                 AlreadyRunning = false;
             }
         }
 
 
+        private void UpdateStatistics()
+        {
+            //calc
+            statImagesWaiting = ProcessingObj.QuequeLen(); 
+            statImagesFound = statImagesProcessed + statImagesWaiting; //пока так
+
+            //status 
+            toolStripStatus_FilesFound.Text = LocRM.GetString("statusbar_images") + ": " + statImagesFound;
+            toolStripStatus_FilesProcessed.Text = LocRM.GetString("statusbar_imagesprocessed") + ": " + statImagesProcessed;
+            toolStripStatus_FilesWaiting.Text = LocRM.GetString("statusbar_imageswaiting") + ": " + statImagesWaiting;
+        }
+
         private void btnStart_Click(object sender, EventArgs e)
         {
             if (monitorTimer.Enabled)
             // if runnig - stop
             {
+                //stop timer
                 monitorTimer.Enabled = false;
+                //end monitor thread
+                MonitorObj.AbortThread();
+                
                 btnStart.Text = LocWinFormRM.GetString("btnStart.Text");
                 btnStart.BackColor = DefBackColor;
             }
@@ -223,12 +258,13 @@ namespace ImageQualityPublisher
 
         /// <summary>
         /// Updates all dir lists from combobox list
+        /// Из элемента формы обновляются данные в XML и в переменных
         /// </summary>
         private void UpdateDirList()
         {
             //1. Empty current lists
             //Monitoring list
-            MonitorObj.FileMonitorPath.Clear();
+            FileMonitorPath.Clear();
             //Config
             ConfigManagement.ClearSection("monitorPath"); //clear entire section
 
@@ -238,15 +274,22 @@ namespace ImageQualityPublisher
                 string curDir = cmbMonitorPath.GetItemText(cmbMonitorPath.Items[i]);
 
                 //Add to monitor list
-                MonitorObj.FileMonitorPath.Add(curDir);
+                FileMonitorPath.Add(curDir);
                 //Add to config list
                 ConfigManagement.UpdateConfigValue("monitorPath", "Dir" + (i + 1), curDir);
             }
-
+            
             //3. Save config
             ConfigManagement.Save();
+
+            //4. Обновить инфо о количестве подакаталог
+            lblDirsMonitoring.Text = cmbMonitorPath.Items.Count.ToString();
         }
 
+        private void chkSearchSubdirs_CheckedChanged(object sender, EventArgs e)
+        {
+            MonitorObj.settingsScanSubdirs = chkSearchSubdirs.Checked;
+        }
 
         private void btnRecheck_Click(object sender, EventArgs e)
         {
@@ -268,22 +311,28 @@ namespace ImageQualityPublisher
 
         /**************************************************************************************************/
         #region //// Settings //////////////////////////////////////
+        // Как устроена загрузка:
+        //  1. [LoadParamsFromConfigFiles] загружает из XML в переменные
+        //  2. [UpdateSettingsDialogFields] из переменных обновляет элементы формы
+        // Как устроено сохранение:
+        //  1. [btnSettings_Save_Click] сохраняет из элементов форм в XML
+        //  2. [LoadParamsFromConfigFiles] загружает из XML в переменные
 
         private void LoadParamsFromConfigFiles()
         {
             List<string> dirNodesList = ConfigManagement.getAllSectionNamesList("monitorPath");
             foreach (string curDirNode in dirNodesList)
             {
-                MonitorObj.FileMonitorPath.Add(ConfigManagement.getString("monitorPath", curDirNode));
+                FileMonitorPath.Add(ConfigManagement.getString("monitorPath", curDirNode));
             }
 
             settingsAutoStartMonitoring = ConfigManagement.getBool("options", "AUTOSTARTMONITORING") ?? false;
-            settingsDSSCLPath = ConfigManagement.getString("options", "DSS_PATH") ?? Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86),@"\DeepSkyStacker\DeepSkyStackerCL.exe");
+            ProcessingObj.settingsDSSCLPath = ConfigManagement.getString("options", "DSS_PATH") ?? Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86),@"\DeepSkyStacker\DeepSkyStackerCL.exe");
 
-            MonitorObj.settingsPublishToGroup = ConfigManagement.getBool("options", "PUBLISHTOGROUP") ?? true;
+            ProcessingObj.settingsPublishToGroup = ConfigManagement.getBool("options", "PUBLISHTOGROUP") ?? true;
             WebPublishObj.SetURL(ConfigManagement.getString("publishURL", "url1") ?? "http://localhost");
 
-            MonitorObj.settingsPublishToPrivate = ConfigManagement.getBool("options", "PUBLISHTOPRIVATE") ?? true;
+            ProcessingObj.settingsPublishToPrivate = ConfigManagement.getBool("options", "PUBLISHTOPRIVATE") ?? true;
             WebPublishObj2.SetURL(ConfigManagement.getString("publishURL", "url2") ?? "http://localhost");
 
             currentLang = ConfigManagement.getString("options", "Language") ?? currentLangDefault;
@@ -320,19 +369,20 @@ namespace ImageQualityPublisher
 
             //Установить значения из ранее загруженных данных в диалоге настройка
             cmbMonitorPath.Items.Clear();
-            foreach (string curDir in MonitorObj.FileMonitorPath)
+            foreach (string curDir in FileMonitorPath)
             {
                 cmbMonitorPath.Items.Add(curDir);
             }
             cmbMonitorPath.SelectedIndex = 0;
+            lblDirsMonitoring.Text = cmbMonitorPath.Items.Count.ToString();
 
             chkSettings_Autostart.Checked = settingsAutoStartMonitoring;
-            txtSettings_DSS.Text = settingsDSSCLPath;
+            txtSettings_DSS.Text = ProcessingObj.settingsDSSCLPath;
 
-            chkSettings_publishgroup.Checked = MonitorObj.settingsPublishToGroup;
+            chkSettings_publishgroup.Checked = ProcessingObj.settingsPublishToGroup;
             txtSettings_urlgorup.Text = WebPublishObj.PublishURL;
 
-            chkSettings_publishprivate.Checked = MonitorObj.settingsPublishToPrivate;
+            chkSettings_publishprivate.Checked = ProcessingObj.settingsPublishToPrivate;
             txtSettings_urlprivate.Text = WebPublishObj2.PublishURL;
 
         }

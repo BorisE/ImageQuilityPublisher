@@ -124,6 +124,12 @@
     <value>Мониторим новые файлы в папке</value>
   </data>
   <data name="statusbar_images" xml:space="preserve">
-    <value>Изображений</value>
+    <value>Найдено файлов</value>
+  </data>
+  <data name="statusbar_imagesprocessed" xml:space="preserve">
+    <value>Обработано</value>
+  </data>
+  <data name="statusbar_imageswaiting" xml:space="preserve">
+    <value>Ожидает</value>
   </data>
 </root>

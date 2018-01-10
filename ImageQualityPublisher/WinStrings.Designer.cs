@@ -79,11 +79,29 @@ namespace ImageQualityPublisher {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Images.
+        ///   Looks up a localized string similar to Files found.
         /// </summary>
         internal static string statusbar_images {
             get {
                 return ResourceManager.GetString("statusbar_images", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Files processed.
+        /// </summary>
+        internal static string statusbar_imagesprocessed {
+            get {
+                return ResourceManager.GetString("statusbar_imagesprocessed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Files waiting.
+        /// </summary>
+        internal static string statusbar_imageswaiting {
+            get {
+                return ResourceManager.GetString("statusbar_imageswaiting", resourceCulture);
             }
         }
     }

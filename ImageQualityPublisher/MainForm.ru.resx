@@ -117,27 +117,51 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="btnExit.Text" xml:space="preserve">
-    <value>Выход</value>
+  <data name="cmbMonitorPath.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblDirsMonitoring.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 25</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Каталогов:</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>Остлеживать</value>
+  </data>
+  <data name="groupBox1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="btnTest.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="btnRecheck.Text" xml:space="preserve">
-    <value>Сброс</value>
+    <value>Заново</value>
   </data>
   <data name="btnRecheck.ToolTip" xml:space="preserve">
     <value>После нажатия на кнопку ранее загруженная информация будет сброшена, и файлы будут обработы заново</value>
   </data>
   <data name="btnStart.Text" xml:space="preserve">
-    <value>Старт</value>
+    <value>Запуск</value>
   </data>
-  <data name="groupBox1.Text" xml:space="preserve">
-    <value>Остлеживать</value>
+  <data name="btnStart.ToolTip" xml:space="preserve">
+    <value />
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="label38.Size" type="System.Drawing.Size, System.Drawing">
     <value>192, 25</value>
   </data>
   <data name="label38.Text" xml:space="preserve">
     <value>Язык интерфейса</value>
+  </data>
+  <data name="label38.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="linkDSS.Size" type="System.Drawing.Size, System.Drawing">
     <value>161, 25</value>
@@ -145,11 +169,23 @@
   <data name="linkDSS.Text" xml:space="preserve">
     <value>Загрузить DSS</value>
   </data>
+  <data name="linkDSS.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="btnLoadDSSPath.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
     <value>242, 25</value>
   </data>
   <data name="label5.Text" xml:space="preserve">
     <value>Путь к DeepSkyStacker</value>
+  </data>
+  <data name="label5.ToolTip" xml:space="preserve">
+    <value>Сохранить настройки</value>
+  </data>
+  <data name="txtSettings_DSS.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="chkSettings_Autostart.Size" type="System.Drawing.Size, System.Drawing">
     <value>311, 29</value>
@@ -157,11 +193,17 @@
   <data name="chkSettings_Autostart.Text" xml:space="preserve">
     <value>Автосзапуск  мониторинга</value>
   </data>
+  <data name="chkSettings_Autostart.ToolTip" xml:space="preserve">
+    <value>Автосзапуск  мониторинга вместе с запуском программы</value>
+  </data>
   <data name="groupBox2.Text" xml:space="preserve">
     <value>Общие настройки</value>
   </data>
-  <data name="tabLog.Text" xml:space="preserve">
-    <value>Лог</value>
+  <data name="groupBox2.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="txtLog.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="dataGridData_filename.HeaderText" xml:space="preserve">
     <value>Имя файла</value>
@@ -199,11 +241,29 @@
   <data name="dataGridData_Exp.ToolTipText" xml:space="preserve">
     <value>в секундах</value>
   </data>
+  <data name="dataGridFileData.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="tabList.Text" xml:space="preserve">
     <value>Изображения</value>
   </data>
-  <data name="btnSettings_Save.Text" xml:space="preserve">
-    <value>Сохранить настройки</value>
+  <data name="tabList.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="tabLog.Text" xml:space="preserve">
+    <value>Лог</value>
+  </data>
+  <data name="tabLog.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="btnSettings_Save.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="txtSettings_urlprivate.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="txtSettings_urlgorup.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="chkSettings_publishprivate.Size" type="System.Drawing.Size, System.Drawing">
     <value>270, 29</value>
@@ -217,8 +277,17 @@
   <data name="chkSettings_publishgroup.Text" xml:space="preserve">
     <value>Публиковать в общий</value>
   </data>
+  <data name="chkSettings_publishgroup.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="groupBox4.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="tabSettings.Text" xml:space="preserve">
     <value>Настройки</value>
+  </data>
+  <data name="tabSettings.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
     <value>251, 25</value>
@@ -226,11 +295,23 @@
   <data name="label7.Text" xml:space="preserve">
     <value>и Олегом Милантьевым</value>
   </data>
+  <data name="label7.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblVersion.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label14.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
     <value>296, 25</value>
   </data>
   <data name="label6.Text" xml:space="preserve">
     <value>Часть проекта Astrohostel.ru</value>
+  </data>
+  <data name="label6.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="label17.Size" type="System.Drawing.Size, System.Drawing">
     <value>282, 25</value>
@@ -238,8 +319,20 @@
   <data name="label17.Text" xml:space="preserve">
     <value>(C) 2018 Борисом Емченко</value>
   </data>
+  <data name="label17.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="linkAstrohostel.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="linkMilantiev.Location" type="System.Drawing.Point, System.Drawing">
     <value>1250, 69</value>
+  </data>
+  <data name="linkMilantiev.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="linkAstromania.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="pictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -350,8 +443,17 @@
         pzQ2TbN7SmPTNLvmwqXeCvfUQP1j4F+nAAAAAElFTkSuQmCC
 </value>
   </data>
+  <data name="pictureBox1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="tabAbout.Text" xml:space="preserve">
     <value>О программе</value>
+  </data>
+  <data name="tabAbout.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="tabControl1.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="toolStripDropDownLogLevel.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -367,6 +469,15 @@
         kx0g8BTA3aZlButjSTyjODq/WcQcW/B/Je4OQhLvKQDnzN1mp0nnkvAhR8VuMzNrpm1mpjgkoVwB/v8D
         TgDQASA1MVpwzwAAAABJRU5ErkJggg==
 </value>
+  </data>
+  <data name="statusBar.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="groupBox5.Text" xml:space="preserve">
+    <value>Действия</value>
+  </data>
+  <data name="groupBox5.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -6539,5 +6650,8 @@
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=
 </value>
+  </data>
+  <data name="$this.ToolTip" xml:space="preserve">
+    <value />
   </data>
 </root>

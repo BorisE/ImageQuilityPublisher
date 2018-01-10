@@ -124,6 +124,12 @@
     <value>Starting monitoring in folder</value>
   </data>
   <data name="statusbar_images" xml:space="preserve">
-    <value>Images</value>
+    <value>Files found</value>
+  </data>
+  <data name="statusbar_imagesprocessed" xml:space="preserve">
+    <value>Files processed</value>
+  </data>
+  <data name="statusbar_imageswaiting" xml:space="preserve">
+    <value>Files waiting</value>
   </data>
 </root>
