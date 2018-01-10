@@ -117,15 +117,18 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="groupBox1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="chkSearchSubdirs.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="chkSearchSubdirs.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 44</value>
+    <value>6, 42</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="chkSearchSubdirs.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
   </data>
@@ -150,6 +153,9 @@
   <data name="&gt;&gt;chkSearchSubdirs.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="cmbMonitorPath.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
   <data name="cmbMonitorPath.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 17</value>
   </data>
@@ -157,7 +163,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="cmbMonitorPath.Size" type="System.Drawing.Size, System.Drawing">
-    <value>413, 21</value>
+    <value>497, 21</value>
   </data>
   <data name="cmbMonitorPath.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -174,11 +180,14 @@
   <data name="&gt;&gt;cmbMonitorPath.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="btnDelFolder.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
   <data name="btnDelFolder.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="btnDelFolder.Location" type="System.Drawing.Point, System.Drawing">
-    <value>456, 15</value>
+    <value>538, 14</value>
   </data>
   <data name="btnDelFolder.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -210,6 +219,9 @@
   <data name="&gt;&gt;btnDelFolder.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <data name="lblDirsMonitoring.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
   <data name="lblDirsMonitoring.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -217,7 +229,7 @@
     <value>NoControl</value>
   </data>
   <data name="lblDirsMonitoring.Location" type="System.Drawing.Point, System.Drawing">
-    <value>538, 21</value>
+    <value>552, 43</value>
   </data>
   <data name="lblDirsMonitoring.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 0, 2, 0</value>
@@ -246,8 +258,11 @@
   <data name="&gt;&gt;lblDirsMonitoring.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <data name="btnAddFolder.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
   <data name="btnAddFolder.Location" type="System.Drawing.Point, System.Drawing">
-    <value>426, 15</value>
+    <value>507, 14</value>
   </data>
   <data name="btnAddFolder.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -276,11 +291,14 @@
   <data name="&gt;&gt;btnAddFolder.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
+  <data name="label1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
   <data name="label1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>500, 21</value>
+    <value>504, 43</value>
   </data>
   <data name="label1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 0, 2, 0</value>
@@ -316,7 +334,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>556, 72</value>
+    <value>569, 62</value>
   </data>
   <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -367,13 +385,13 @@
     <value>2</value>
   </data>
   <data name="btnRecheck.Location" type="System.Drawing.Point, System.Drawing">
-    <value>64, 14</value>
+    <value>92, 12</value>
   </data>
   <data name="btnRecheck.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
   </data>
   <data name="btnRecheck.Size" type="System.Drawing.Size, System.Drawing">
-    <value>54, 26</value>
+    <value>67, 26</value>
   </data>
   <data name="btnRecheck.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -397,13 +415,13 @@
     <value>0</value>
   </data>
   <data name="btnStart.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 14</value>
+    <value>4, 12</value>
   </data>
   <data name="btnStart.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
   </data>
   <data name="btnStart.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 26</value>
+    <value>67, 26</value>
   </data>
   <data name="btnStart.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -436,7 +454,7 @@
     <value>NoControl</value>
   </data>
   <data name="label38.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 65</value>
+    <value>12, 63</value>
   </data>
   <data name="label38.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 0, 2, 0</value>
@@ -463,7 +481,7 @@
     <value>0</value>
   </data>
   <data name="cmbLang.Location" type="System.Drawing.Point, System.Drawing">
-    <value>178, 63</value>
+    <value>178, 60</value>
   </data>
   <data name="cmbLang.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -490,11 +508,14 @@
   <data name="&gt;&gt;cmbLang.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="linkDSS.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
   <data name="linkDSS.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="linkDSS.Location" type="System.Drawing.Point, System.Drawing">
-    <value>648, 43</value>
+    <value>595, 42</value>
   </data>
   <data name="linkDSS.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 0, 2, 0</value>
@@ -520,8 +541,11 @@
   <data name="&gt;&gt;linkDSS.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <data name="btnLoadDSSPath.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
   <data name="btnLoadDSSPath.Location" type="System.Drawing.Point, System.Drawing">
-    <value>608, 38</value>
+    <value>553, 38</value>
   </data>
   <data name="btnLoadDSSPath.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -551,7 +575,7 @@
     <value>True</value>
   </data>
   <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 43</value>
+    <value>12, 42</value>
   </data>
   <data name="label5.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 0, 2, 0</value>
@@ -580,14 +604,17 @@
   <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
+  <data name="txtSettings_DSS.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
   <data name="txtSettings_DSS.Location" type="System.Drawing.Point, System.Drawing">
-    <value>178, 41</value>
+    <value>178, 39</value>
   </data>
   <data name="txtSettings_DSS.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
   </data>
   <data name="txtSettings_DSS.Size" type="System.Drawing.Size, System.Drawing">
-    <value>423, 20</value>
+    <value>370, 20</value>
   </data>
   <data name="txtSettings_DSS.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -608,7 +635,7 @@
     <value>True</value>
   </data>
   <data name="chkSettings_Autostart.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 19</value>
+    <value>12, 17</value>
   </data>
   <data name="chkSettings_Autostart.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -647,7 +674,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>741, 85</value>
+    <value>688, 85</value>
   </data>
   <data name="groupBox2.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -677,7 +704,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="txtLog.Size" type="System.Drawing.Size, System.Drawing">
-    <value>753, 306</value>
+    <value>698, 210</value>
   </data>
   <data name="txtLog.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -797,7 +824,7 @@
     <value>10</value>
   </data>
   <data name="dataGridFileData.Size" type="System.Drawing.Size, System.Drawing">
-    <value>747, 274</value>
+    <value>728, 281</value>
   </data>
   <data name="dataGridFileData.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -824,7 +851,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="tabList.Size" type="System.Drawing.Size, System.Drawing">
-    <value>751, 280</value>
+    <value>728, 281</value>
   </data>
   <data name="tabList.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -854,7 +881,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="tabLog.Size" type="System.Drawing.Size, System.Drawing">
-    <value>751, 280</value>
+    <value>698, 210</value>
   </data>
   <data name="tabLog.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -904,14 +931,17 @@
   <data name="groupBox4.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
   </data>
+  <data name="txtSettings_urlprivate.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
   <data name="txtSettings_urlprivate.Location" type="System.Drawing.Point, System.Drawing">
-    <value>178, 37</value>
+    <value>178, 36</value>
   </data>
   <data name="txtSettings_urlprivate.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
   </data>
   <data name="txtSettings_urlprivate.Size" type="System.Drawing.Size, System.Drawing">
-    <value>538, 20</value>
+    <value>499, 20</value>
   </data>
   <data name="txtSettings_urlprivate.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -928,6 +958,9 @@
   <data name="&gt;&gt;txtSettings_urlprivate.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="txtSettings_urlgorup.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
   <data name="txtSettings_urlgorup.Location" type="System.Drawing.Point, System.Drawing">
     <value>178, 16</value>
   </data>
@@ -935,7 +968,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="txtSettings_urlgorup.Size" type="System.Drawing.Size, System.Drawing">
-    <value>538, 20</value>
+    <value>499, 20</value>
   </data>
   <data name="txtSettings_urlgorup.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -1025,7 +1058,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="groupBox4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>741, 72</value>
+    <value>688, 72</value>
   </data>
   <data name="groupBox4.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -1055,7 +1088,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="tabSettings.Size" type="System.Drawing.Size, System.Drawing">
-    <value>751, 280</value>
+    <value>698, 210</value>
   </data>
   <data name="tabSettings.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -1485,7 +1518,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="tabAbout.Size" type="System.Drawing.Size, System.Drawing">
-    <value>740, 283</value>
+    <value>698, 210</value>
   </data>
   <data name="tabAbout.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -1506,13 +1539,13 @@
     <value>3</value>
   </data>
   <data name="tabControl1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 81</value>
+    <value>4, 71</value>
   </data>
   <data name="tabControl1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
   </data>
   <data name="tabControl1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>759, 306</value>
+    <value>736, 307</value>
   </data>
   <data name="tabControl1.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -1602,13 +1635,13 @@
     <value>LogRec:</value>
   </data>
   <data name="statusBar.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 389</value>
+    <value>0, 380</value>
   </data>
   <data name="statusBar.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 0, 14, 0</value>
   </data>
   <data name="statusBar.Size" type="System.Drawing.Size, System.Drawing">
-    <value>759, 22</value>
+    <value>742, 22</value>
   </data>
   <data name="statusBar.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -1634,8 +1667,11 @@
   <metadata name="openFileDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>956, 17</value>
   </metadata>
+  <data name="groupBox5.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
   <data name="groupBox5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>564, 6</value>
+    <value>577, 6</value>
   </data>
   <data name="groupBox5.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -1644,7 +1680,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="groupBox5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>193, 72</value>
+    <value>163, 61</value>
   </data>
   <data name="groupBox5.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -1671,7 +1707,7 @@
     <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>759, 411</value>
+    <value>742, 402</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -7847,6 +7883,12 @@
   </data>
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
+  </data>
+  <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>728, 369</value>
+  </data>
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>CenterScreen</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>ImageQualityPublisher</value>

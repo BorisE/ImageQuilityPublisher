@@ -111,13 +111,13 @@
             // 
             // groupBox1
             // 
+            resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Controls.Add(this.chkSearchSubdirs);
             this.groupBox1.Controls.Add(this.cmbMonitorPath);
             this.groupBox1.Controls.Add(this.btnDelFolder);
             this.groupBox1.Controls.Add(this.lblDirsMonitoring);
             this.groupBox1.Controls.Add(this.btnAddFolder);
             this.groupBox1.Controls.Add(this.label1);
-            resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
             // 
@@ -130,9 +130,9 @@
             // 
             // cmbMonitorPath
             // 
+            resources.ApplyResources(this.cmbMonitorPath, "cmbMonitorPath");
             this.cmbMonitorPath.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbMonitorPath.FormattingEnabled = true;
-            resources.ApplyResources(this.cmbMonitorPath, "cmbMonitorPath");
             this.cmbMonitorPath.Name = "cmbMonitorPath";
             // 
             // btnDelFolder
@@ -461,10 +461,10 @@
             // 
             // groupBox5
             // 
+            resources.ApplyResources(this.groupBox5, "groupBox5");
             this.groupBox5.Controls.Add(this.btnRecheck);
             this.groupBox5.Controls.Add(this.btnStart);
             this.groupBox5.Controls.Add(this.btnTest);
-            resources.ApplyResources(this.groupBox5, "groupBox5");
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.TabStop = false;
             // 
