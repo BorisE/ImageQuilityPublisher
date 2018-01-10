@@ -115,8 +115,10 @@ namespace ImageQualityPublisher
             UpdateStatistics(); // on every invoke
         }
 
-        public void ClearFITSData()
+        public void ResetData()
         {
+            //reset already monitored filelist
+            MonitorObj.ClearFileList();
             //Clear queque
             ProcessingObj.Clear();
             
@@ -264,8 +266,7 @@ namespace ImageQualityPublisher
         private void btnRecheck_Click(object sender, EventArgs e)
         {
             Logging.AddLog("Resetting data and rereading it from scratch", LogLevel.Activity, Highlight.Emphasize);
-            MonitorObj.ClearFileList();
-            ClearFITSData();
+            ResetData();
         }
 
         /// <summary>
@@ -276,6 +277,22 @@ namespace ImageQualityPublisher
             SaveSettingsToConfigFile();
         }
 
+        private void toolStripDropDownLogLevel_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+            if (e.ClickedItem.Text == "Clear")
+            {
+                txtLog.Clear();
+            }
+            else
+            {
+                toolStripDropDownLogLevel.Text = e.ClickedItem.Text;
+                for (int i = 0; i < toolStripDropDownLogLevel.DropDownItems.Count; i++)
+                { 
+                    if (toolStripDropDownLogLevel.DropDownItems[i].Text == e.ClickedItem.Text)
+                        toolStripDropDownLogLevel.DropDownItems[i].BackColor = OnColor; //not working
+                }
+            }
+        }
         private void btnTest_Click(object sender, EventArgs e)
         {
             List<string> DirList = new List<string>();
@@ -303,10 +320,11 @@ namespace ImageQualityPublisher
             {
                 FileMonitorPath.Add(ConfigManagement.getString("monitorPath", curDirNode));
             }
-            
-            settingsAutoStartMonitoring = ConfigManagement.getBool("options", "AUTOSTARTMONITORING") ?? false;
+
             MonitorObj.settingsScanSubdirs = ConfigManagement.getBool("options", "ScanSubDirs") ?? false;
+            settingsAutoStartMonitoring = ConfigManagement.getBool("options", "AUTOSTARTMONITORING") ?? false;
             ProcessingObj.settingsDSSCLPath = ConfigManagement.getString("options", "DSS_PATH") ?? Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86),@"\DeepSkyStacker\DeepSkyStackerCL.exe");
+            currentLang = ConfigManagement.getString("options", "Language") ?? currentLangDefault;
 
             ProcessingObj.settingsPublishToGroup = ConfigManagement.getBool("options", "PUBLISHTOGROUP") ?? true;
             WebPublishObj.SetURL(ConfigManagement.getString("publishURL", "url1") ?? "http://localhost");
@@ -314,7 +332,6 @@ namespace ImageQualityPublisher
             ProcessingObj.settingsPublishToPrivate = ConfigManagement.getBool("options", "PUBLISHTOPRIVATE") ?? true;
             WebPublishObj2.SetURL(ConfigManagement.getString("publishURL", "url2") ?? "http://localhost");
 
-            currentLang = ConfigManagement.getString("options", "Language") ?? currentLangDefault;
 
             Logging.AddLog("Program parameters were set according to configuration file", LogLevel.Activity);
         }
@@ -329,6 +346,10 @@ namespace ImageQualityPublisher
             {
                 toolStripDropDownLogLevel.DropDownItems.Add(Enum.GetName(typeof(LogLevel), C));
             }
+            ToolStripSeparator s = new ToolStripSeparator();
+            toolStripDropDownLogLevel.DropDownItems.Add(s);
+            toolStripDropDownLogLevel.DropDownItems.Add("Clear");
+
             toolStripDropDownLogLevel.Text = Enum.GetName(typeof(LogLevel), LogLevel.Activity);
 
             //Технически - добавить ссылку для LinkLabel
@@ -353,8 +374,9 @@ namespace ImageQualityPublisher
             {
                 cmbMonitorPath.Items.Add(curDir);
             }
-            cmbMonitorPath.SelectedIndex = 0;
-            lblDirsMonitoring.Text = cmbMonitorPath.Items.Count.ToString();
+            cmbMonitorPath.SelectedIndex = (cmbMonitorPath.Items.Count ==0 ? -1 : 0);
+
+            lblDirsMonitoringCount.Text = cmbMonitorPath.Items.Count.ToString();
 
             chkSearchSubdirs.Checked = MonitorObj.settingsScanSubdirs;
 
@@ -381,10 +403,10 @@ namespace ImageQualityPublisher
                 ConfigManagement.UpdateConfigValue("monitorPath", "Dir" + (i + 1), curDir);
             }
 
-            ConfigManagement.UpdateConfigValue("options", "Language", cmbLang.SelectedValue.ToString());
-
+            ConfigManagement.UpdateConfigValue("options", "ScanSubDirs", chkSearchSubdirs.Checked.ToString());
             ConfigManagement.UpdateConfigValue("options", "AUTOSTARTMONITORING", chkSettings_Autostart.Checked.ToString());
             ConfigManagement.UpdateConfigValue("options", "DSS_PATH", txtSettings_DSS.Text);
+            ConfigManagement.UpdateConfigValue("options", "Language", cmbLang.SelectedValue.ToString());
 
             ConfigManagement.UpdateConfigValue("options", "PUBLISHTOGROUP", chkSettings_publishgroup.Checked.ToString());
             ConfigManagement.UpdateConfigValue("publishURL", "url1", txtSettings_urlgorup.Text);
@@ -429,7 +451,7 @@ namespace ImageQualityPublisher
             ConfigManagement.Save();
 
             //4. Обновить инфо о количестве подакаталогов
-            lblDirsMonitoring.Text = cmbMonitorPath.Items.Count.ToString();
+            lblDirsMonitoringCount.Text = cmbMonitorPath.Items.Count.ToString();
         }
 
 
@@ -493,6 +515,7 @@ namespace ImageQualityPublisher
 
 
         #endregion About information
+
 
     }
 }
