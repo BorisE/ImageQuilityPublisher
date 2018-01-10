@@ -126,13 +126,13 @@
     <value>12, 85</value>
   </data>
   <data name="chkSearchSubdirs.Size" type="System.Drawing.Size, System.Drawing">
-    <value>278, 29</value>
+    <value>271, 29</value>
   </data>
   <data name="chkSearchSubdirs.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
   </data>
   <data name="chkSearchSubdirs.Text" xml:space="preserve">
-    <value>Including subdorectories</value>
+    <value>Including subdirectories</value>
   </data>
   <data name="&gt;&gt;chkSearchSubdirs.Name" xml:space="preserve">
     <value>chkSearchSubdirs</value>
@@ -806,7 +806,7 @@
     <value>14, 350</value>
   </data>
   <data name="btnSettings_Save.Size" type="System.Drawing.Size, System.Drawing">
-    <value>153, 43</value>
+    <value>225, 43</value>
   </data>
   <data name="btnSettings_Save.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -878,13 +878,13 @@
     <value>25, 74</value>
   </data>
   <data name="chkSettings_publishprivate.Size" type="System.Drawing.Size, System.Drawing">
-    <value>210, 29</value>
+    <value>255, 29</value>
   </data>
   <data name="chkSettings_publishprivate.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
   <data name="chkSettings_publishprivate.Text" xml:space="preserve">
-    <value>Publish to private</value>
+    <value>Publish to private web</value>
   </data>
   <data name="chkSettings_publishprivate.ToolTip" xml:space="preserve">
     <value>Publish data to private web resouce</value>
@@ -908,13 +908,13 @@
     <value>25, 37</value>
   </data>
   <data name="chkSettings_publishgroup.Size" type="System.Drawing.Size, System.Drawing">
-    <value>200, 29</value>
+    <value>247, 29</value>
   </data>
   <data name="chkSettings_publishgroup.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
   <data name="chkSettings_publishgroup.Text" xml:space="preserve">
-    <value>Publish to group</value>
+    <value>Publish to public web</value>
   </data>
   <data name="&gt;&gt;chkSettings_publishgroup.Name" xml:space="preserve">
     <value>chkSettings_publishgroup</value>

@@ -117,13 +117,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="chkSearchSubdirs.Size" type="System.Drawing.Size, System.Drawing">
+    <value>273, 29</value>
+  </data>
+  <data name="chkSearchSubdirs.Text" xml:space="preserve">
+    <value>Искать в подкаталогах</value>
+  </data>
+  <data name="chkSearchSubdirs.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="cmbMonitorPath.ToolTip" xml:space="preserve">
     <value />
   </data>
   <data name="lblDirsMonitoring.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
     <value>121, 25</value>
   </data>
@@ -134,7 +143,7 @@
     <value />
   </data>
   <data name="groupBox1.Text" xml:space="preserve">
-    <value>Остлеживать</value>
+    <value>Отслеживать</value>
   </data>
   <data name="groupBox1.ToolTip" xml:space="preserve">
     <value />
@@ -256,26 +265,41 @@
   <data name="tabLog.ToolTip" xml:space="preserve">
     <value />
   </data>
+  <data name="btnSettings_Save.Text" xml:space="preserve">
+    <value>Сохранить настройки</value>
+  </data>
   <data name="btnSettings_Save.ToolTip" xml:space="preserve">
     <value />
   </data>
+  <data name="txtSettings_urlprivate.Location" type="System.Drawing.Point, System.Drawing">
+    <value>380, 72</value>
+  </data>
+  <data name="txtSettings_urlprivate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1049, 31</value>
+  </data>
   <data name="txtSettings_urlprivate.ToolTip" xml:space="preserve">
     <value />
+  </data>
+  <data name="txtSettings_urlgorup.Location" type="System.Drawing.Point, System.Drawing">
+    <value>380, 30</value>
+  </data>
+  <data name="txtSettings_urlgorup.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1049, 31</value>
   </data>
   <data name="txtSettings_urlgorup.ToolTip" xml:space="preserve">
     <value />
   </data>
   <data name="chkSettings_publishprivate.Size" type="System.Drawing.Size, System.Drawing">
-    <value>270, 29</value>
+    <value>358, 29</value>
   </data>
   <data name="chkSettings_publishprivate.Text" xml:space="preserve">
-    <value>Публиковать в личный</value>
+    <value>Публиковать на личный ресурс</value>
   </data>
   <data name="chkSettings_publishgroup.Size" type="System.Drawing.Size, System.Drawing">
-    <value>261, 29</value>
+    <value>349, 29</value>
   </data>
   <data name="chkSettings_publishgroup.Text" xml:space="preserve">
-    <value>Публиковать в общий</value>
+    <value>Публиковать на общий ресурс</value>
   </data>
   <data name="chkSettings_publishgroup.ToolTip" xml:space="preserve">
     <value />

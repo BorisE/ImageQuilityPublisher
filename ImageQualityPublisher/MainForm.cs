@@ -231,7 +231,7 @@ namespace ImageQualityPublisher
                 cmbMonitorPath.SelectedItem = folderBrowserDialog1.SelectedPath;
 
                 //update lists
-                UpdateDirList();
+                SaveDirList();
 
                 //MonitorObj.ClearFileList(); //очисить список
                 Logging.AddLog(LocRM.GetString("Log_startmonitoring") +" ["+ folderBrowserDialog1.SelectedPath + "]", LogLevel.Activity, Highlight.Emphasize);
@@ -252,39 +252,9 @@ namespace ImageQualityPublisher
                 cmbMonitorPath.SelectedIndex = 0;
 
             //update lists
-            UpdateDirList();
+            SaveDirList();
         }
 
-
-        /// <summary>
-        /// Updates all dir lists from combobox list
-        /// Из элемента формы обновляются данные в XML и в переменных
-        /// </summary>
-        private void UpdateDirList()
-        {
-            //1. Empty current lists
-            //Monitoring list
-            FileMonitorPath.Clear();
-            //Config
-            ConfigManagement.ClearSection("monitorPath"); //clear entire section
-
-            //2. Make new lists
-            for (int i = 0; i < cmbMonitorPath.Items.Count; i++)
-            {
-                string curDir = cmbMonitorPath.GetItemText(cmbMonitorPath.Items[i]);
-
-                //Add to monitor list
-                FileMonitorPath.Add(curDir);
-                //Add to config list
-                ConfigManagement.UpdateConfigValue("monitorPath", "Dir" + (i + 1), curDir);
-            }
-            
-            //3. Save config
-            ConfigManagement.Save();
-
-            //4. Обновить инфо о количестве подакаталог
-            lblDirsMonitoring.Text = cmbMonitorPath.Items.Count.ToString();
-        }
 
         private void chkSearchSubdirs_CheckedChanged(object sender, EventArgs e)
         {
@@ -296,6 +266,14 @@ namespace ImageQualityPublisher
             Logging.AddLog("Resetting data and rereading it from scratch", LogLevel.Activity, Highlight.Emphasize);
             MonitorObj.ClearFileList();
             ClearFITSData();
+        }
+
+        /// <summary>
+        /// Save settings on exit
+        /// </summary>
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            SaveSettingsToConfigFile();
         }
 
         private void btnTest_Click(object sender, EventArgs e)
@@ -422,6 +400,36 @@ namespace ImageQualityPublisher
             ConfigManagement.Load();
             LoadParamsFromConfigFile();
 
+        }
+
+        /// <summary>
+        /// Updates all dir lists from combobox list
+        /// Из элемента формы обновляются данные в XML и в переменных
+        /// </summary>
+        private void SaveDirList()
+        {
+            //1. Empty current lists
+            //Monitoring list
+            FileMonitorPath.Clear();
+            //Config
+            ConfigManagement.ClearSection("monitorPath"); //clear entire section
+
+            //2. Make new lists
+            for (int i = 0; i < cmbMonitorPath.Items.Count; i++)
+            {
+                string curDir = cmbMonitorPath.GetItemText(cmbMonitorPath.Items[i]);
+
+                //Add to monitor list
+                FileMonitorPath.Add(curDir);
+                //Add to config list
+                ConfigManagement.UpdateConfigValue("monitorPath", "Dir" + (i + 1), curDir);
+            }
+
+            //3. Save config
+            ConfigManagement.Save();
+
+            //4. Обновить инфо о количестве подакаталогов
+            lblDirsMonitoring.Text = cmbMonitorPath.Items.Count.ToString();
         }
 
 
