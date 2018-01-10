@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.chkSearchSubdirs = new System.Windows.Forms.CheckBox();
             this.cmbMonitorPath = new System.Windows.Forms.ComboBox();
             this.btnDelFolder = new System.Windows.Forms.Button();
             this.lblDirsMonitoring = new System.Windows.Forms.Label();
@@ -89,7 +90,6 @@
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.chkSearchSubdirs = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -115,6 +115,13 @@
             resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
+            // 
+            // chkSearchSubdirs
+            // 
+            resources.ApplyResources(this.chkSearchSubdirs, "chkSearchSubdirs");
+            this.chkSearchSubdirs.Name = "chkSearchSubdirs";
+            this.chkSearchSubdirs.UseVisualStyleBackColor = true;
+            this.chkSearchSubdirs.CheckedChanged += new System.EventHandler(this.chkSearchSubdirs_CheckedChanged);
             // 
             // cmbMonitorPath
             // 
@@ -505,13 +512,6 @@
             resources.ApplyResources(this.groupBox5, "groupBox5");
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.TabStop = false;
-            // 
-            // chkSearchSubdirs
-            // 
-            resources.ApplyResources(this.chkSearchSubdirs, "chkSearchSubdirs");
-            this.chkSearchSubdirs.Name = "chkSearchSubdirs";
-            this.chkSearchSubdirs.UseVisualStyleBackColor = true;
-            this.chkSearchSubdirs.CheckedChanged += new System.EventHandler(this.chkSearchSubdirs_CheckedChanged);
             // 
             // MainForm
             // 

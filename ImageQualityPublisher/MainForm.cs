@@ -54,7 +54,7 @@ namespace ImageQualityPublisher
             //Load config file
             ConfigManagement.Load();
             //Change parameters according to configuration
-            LoadParamsFromConfigFiles();
+            LoadParamsFromConfigFile();
 
             //Load language on form creation //need to be before formload-fix
             Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo(currentLang);
@@ -312,21 +312,22 @@ namespace ImageQualityPublisher
         /**************************************************************************************************/
         #region //// Settings //////////////////////////////////////
         // Как устроена загрузка:
-        //  1. [LoadParamsFromConfigFiles] загружает из XML в переменные
+        //  1. [LoadParamsFromConfigFile] загружает из XML в переменные
         //  2. [UpdateSettingsDialogFields] из переменных обновляет элементы формы
         // Как устроено сохранение:
-        //  1. [btnSettings_Save_Click] сохраняет из элементов форм в XML
-        //  2. [LoadParamsFromConfigFiles] загружает из XML в переменные
+        //  1. [SaveSettingsToConfigFile] сохраняет из элементов форм в XML
+        //  2. [LoadParamsFromConfigFile] загружает из XML в переменные
 
-        private void LoadParamsFromConfigFiles()
+        private void LoadParamsFromConfigFile()
         {
             List<string> dirNodesList = ConfigManagement.getAllSectionNamesList("monitorPath");
             foreach (string curDirNode in dirNodesList)
             {
                 FileMonitorPath.Add(ConfigManagement.getString("monitorPath", curDirNode));
             }
-
+            
             settingsAutoStartMonitoring = ConfigManagement.getBool("options", "AUTOSTARTMONITORING") ?? false;
+            MonitorObj.settingsScanSubdirs = ConfigManagement.getBool("options", "ScanSubDirs") ?? false;
             ProcessingObj.settingsDSSCLPath = ConfigManagement.getString("options", "DSS_PATH") ?? Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86),@"\DeepSkyStacker\DeepSkyStackerCL.exe");
 
             ProcessingObj.settingsPublishToGroup = ConfigManagement.getBool("options", "PUBLISHTOGROUP") ?? true;
@@ -368,6 +369,7 @@ namespace ImageQualityPublisher
 
 
             //Установить значения из ранее загруженных данных в диалоге настройка
+            //перечень подкаталогов
             cmbMonitorPath.Items.Clear();
             foreach (string curDir in FileMonitorPath)
             {
@@ -375,6 +377,8 @@ namespace ImageQualityPublisher
             }
             cmbMonitorPath.SelectedIndex = 0;
             lblDirsMonitoring.Text = cmbMonitorPath.Items.Count.ToString();
+
+            chkSearchSubdirs.Checked = MonitorObj.settingsScanSubdirs;
 
             chkSettings_Autostart.Checked = settingsAutoStartMonitoring;
             txtSettings_DSS.Text = ProcessingObj.settingsDSSCLPath;
@@ -387,12 +391,7 @@ namespace ImageQualityPublisher
 
         }
 
-        /// <summary>
-        /// Save current settings. And reload them
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btnSettings_Save_Click(object sender, EventArgs e)
+        private void SaveSettingsToConfigFile()
         {
             //1. Update ConfigXML
 
@@ -401,7 +400,7 @@ namespace ImageQualityPublisher
             for (int i = 0; i < cmbMonitorPath.Items.Count; i++)
             {
                 string curDir = cmbMonitorPath.GetItemText(cmbMonitorPath.Items[i]);
-                ConfigManagement.UpdateConfigValue("monitorPath", "Dir"+(i+1), curDir);
+                ConfigManagement.UpdateConfigValue("monitorPath", "Dir" + (i + 1), curDir);
             }
 
             ConfigManagement.UpdateConfigValue("options", "Language", cmbLang.SelectedValue.ToString());
@@ -421,9 +420,20 @@ namespace ImageQualityPublisher
 
             //3. Load config from disk
             ConfigManagement.Load();
-            LoadParamsFromConfigFiles();
+            LoadParamsFromConfigFile();
+
         }
 
+
+        /// <summary>
+        /// Save current settings. And reload them
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnSettings_Save_Click(object sender, EventArgs e)
+        {
+            SaveSettingsToConfigFile();
+        }
 
         private void btnLoadDSSPath_Click(object sender, EventArgs e)
         {

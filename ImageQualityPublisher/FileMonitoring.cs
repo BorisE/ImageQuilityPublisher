@@ -19,8 +19,8 @@ namespace ImageQualityPublisher
     /// </summary>
     public class FileMonitoring
     {
-        public string settingsExtensionToSearch = "*.doc*"; //which extension to loop
-        public bool settingsScanSubdirs = true;
+        public string settingsExtensionToSearch = "*.fit*"; //which extension to loop
+        public bool settingsScanSubdirs = false;             //scan subdirs also
 
         //file list where to keep already parsed file
         private Dictionary<string, bool> FileList = new Dictionary<string, bool>();

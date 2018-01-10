@@ -782,7 +782,7 @@
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabLog.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1479, 596</value>
+    <value>1479, 547</value>
   </data>
   <data name="tabLog.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -959,7 +959,7 @@
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabSettings.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1479, 596</value>
+    <value>1479, 547</value>
   </data>
   <data name="tabSettings.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -1386,7 +1386,7 @@
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabAbout.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1479, 596</value>
+    <value>1479, 547</value>
   </data>
   <data name="tabAbout.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -1437,7 +1437,7 @@
     <value>False</value>
   </data>
   <data name="toolStripStatus_FilesFound.Size" type="System.Drawing.Size, System.Drawing">
-    <value>190, 33</value>
+    <value>160, 33</value>
   </data>
   <data name="toolStripStatus_FilesFound.Text" xml:space="preserve">
     <value>Files found: 0</value>
@@ -1449,7 +1449,7 @@
     <value>False</value>
   </data>
   <data name="toolStripStatus_FilesProcessed.Size" type="System.Drawing.Size, System.Drawing">
-    <value>210, 33</value>
+    <value>160, 33</value>
   </data>
   <data name="toolStripStatus_FilesProcessed.Text" xml:space="preserve">
     <value>File processed: 0</value>
@@ -1461,7 +1461,7 @@
     <value>False</value>
   </data>
   <data name="toolStripStatus_FilesWaiting.Size" type="System.Drawing.Size, System.Drawing">
-    <value>250, 33</value>
+    <value>160, 33</value>
   </data>
   <data name="toolStripStatus_FilesWaiting.Text" xml:space="preserve">
     <value>Quequed: 0</value>
