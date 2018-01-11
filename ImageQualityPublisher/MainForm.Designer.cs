@@ -207,6 +207,7 @@
             resources.ApplyResources(this.cmbLang, "cmbLang");
             this.cmbLang.Name = "cmbLang";
             this.toolTip1.SetToolTip(this.cmbLang, resources.GetString("cmbLang.ToolTip"));
+            this.cmbLang.SelectionChangeCommitted += new System.EventHandler(this.cmbLang_SelectionChangeCommitted);
             // 
             // linkDSS
             // 

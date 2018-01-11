@@ -332,6 +332,10 @@ namespace ImageQualityPublisher
             ProcessingObj.settingsPublishToPrivate = ConfigManagement.getBool("options", "PUBLISHTOPRIVATE") ?? true;
             WebPublishObj2.SetURL(ConfigManagement.getString("publishURL", "url2") ?? "http://localhost");
 
+            //hidden settings
+            MonitorObj.settingsExtensionToSearch = ConfigManagement.getString("options", "extensionsToSearch") ?? "*.fit*";
+            ProcessingObj.settingsMaxThreads = (uint) (ConfigManagement.getInt("options", "checkThreads_max") ?? 1);
+
 
             Logging.AddLog("Program parameters were set according to configuration file", LogLevel.Activity);
         }
@@ -414,6 +418,9 @@ namespace ImageQualityPublisher
             ConfigManagement.UpdateConfigValue("options", "PUBLISHTOPRIVATE", chkSettings_publishprivate.Checked.ToString());
             ConfigManagement.UpdateConfigValue("publishURL", "url2", txtSettings_urlprivate.Text);
 
+            //hidden settings
+            ConfigManagement.UpdateConfigValue("options", "extensionsToSearch", MonitorObj.settingsExtensionToSearch);
+            ConfigManagement.UpdateConfigValue("options", "checkThreads_max", ProcessingObj.settingsMaxThreads.ToString());
 
             //2. Save ConfigXML to disk
             ConfigManagement.Save();
@@ -514,8 +521,13 @@ namespace ImageQualityPublisher
         }
 
 
+
         #endregion About information
 
-
+        
+        private void cmbLang_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            MessageBox.Show(LocRM.GetString("ChangeLanguage_text"), LocRM.GetString("ChangeLanguage_caption"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
     }
 }

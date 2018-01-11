@@ -70,6 +70,15 @@ namespace ImageQualityPublisher {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Для изменения языка, перезапустите программу.
+        /// </summary>
+        internal static string ChangeLanguage_text {
+            get {
+                return ResourceManager.GetString("ChangeLanguage_text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Starting monitoring in folder.
         /// </summary>
         internal static string Log_startmonitoring {

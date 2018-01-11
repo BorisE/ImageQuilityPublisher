@@ -132,4 +132,7 @@
   <data name="statusbar_imageswaiting" xml:space="preserve">
     <value>Files waiting</value>
   </data>
+  <data name="ChangeLanguage_text" xml:space="preserve">
+    <value>Для изменения языка, перезапустите программу</value>
+  </data>
 </root>

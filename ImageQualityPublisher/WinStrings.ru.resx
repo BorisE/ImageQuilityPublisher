@@ -132,4 +132,7 @@
   <data name="statusbar_imageswaiting" xml:space="preserve">
     <value>Ожидает</value>
   </data>
+  <data name="ChangeLanguage_text" xml:space="preserve">
+    <value>To change Interface language restart now the program</value>
+  </data>
 </root>

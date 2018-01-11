@@ -8,14 +8,17 @@ For FWHM estimate it uses DeepSkyStacker program by Luc Coiffier http://deepskys
 
 to do:
 - add option: force rebuild dss info files 
-- max threads setting
 - minimize to tray
-- alert when changing language 
 - check for not publishing already published images (IMS technology)
+
 
 bugs:
 - if no DSS nothing happens in result list and publish.Is it ok?
-- hang on docx scanning
+- hang on during test on *.DOC* files
+
+1.3.3 [11.01.18]
+- max threads setting
+- alert when changing language 
 
 1.3.2 [10.01.18]
 - interface changes to low DPI displays
