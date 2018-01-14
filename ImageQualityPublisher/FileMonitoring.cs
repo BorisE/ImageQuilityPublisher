@@ -10,8 +10,8 @@ namespace ImageQualityPublisher
     /// <summary>
     /// Monitor folder for new files and run estimation procedures
     /// 1. Run CheckForNewFiles to check new files
-    /// 2. for each new file RunQualityEstimation_async in separate thread
-    /// 3. RunQualityEstimation_async in separate thread runs:
+    /// 2. For each new file RunQualityEstimation_async in separate thread
+    /// RunQualityEstimation_async in separate thread runs:
     ///     - quality estimation through DSSQualityReader class
     ///     - fits header data reading through FITSHeaderReader class
     ///     - publish result with the help of FileParseResult class to form
@@ -22,23 +22,36 @@ namespace ImageQualityPublisher
         public string settingsExtensionToSearch = "*.fit*"; //which extension to loop
         public bool settingsScanSubdirs = false;             //scan subdirs also
 
+        /**************************************************************************************************
+        * Private vars
+        **************************************************************************************************/
         //file list where to keep already parsed file
-        private Dictionary<string, bool> FileList = new Dictionary<string, bool>();
+        private Dictionary<string, DateTime> FileListParsed = new Dictionary<string, DateTime>();
+        //Dir list as point of entry
+        private Dictionary<string, DateTime> DirListToMonitor = new Dictionary<string, DateTime>();
 
         //link to mainform for callback functions
         private MainForm ParentMF;
 
         //status flag not to overlap threads
-        bool bMonitoringThreadRun = false;
+        private bool bMonitoringThreadRun = false;
 
         private Thread monitorThread;
 
+        private DateTime VERY_OLD_TIME = new DateTime(1970, 1, 1);
+
+        /**************************************************************************************************
+        * Methods
+        **************************************************************************************************/
         public FileMonitoring(MainForm extMF)
         {
             ParentMF = extMF;
         }
 
-
+        /// <summary>
+        /// Main methods - run checking for new files
+        /// </summary>
+        /// <param name="FileMonitorPathList"></param>
         public void CheckForNewFiles_async(List<string> FileMonitorPathList)
         {
             if (!bMonitoringThreadRun)
@@ -52,6 +65,10 @@ namespace ImageQualityPublisher
             }
         }
 
+
+        /// <summary>
+        /// Abort checking
+        /// </summary>
         public void AbortThread()
         {
             monitorThread.Abort();
@@ -69,6 +86,13 @@ namespace ImageQualityPublisher
             //LOOP throug all directory path and run overload method for every dir
             foreach (string curDir in FileMonitorPathList)
             {
+                //1. Add current dir to dirlist with LAST TIME
+                if (!DirListToMonitor.ContainsKey(curDir))
+                {
+                    DirListToMonitor.Add(curDir, VERY_OLD_TIME);
+                }
+
+                //2. Run check directory
                 CheckForNewFiles(curDir);
             }
             bMonitoringThreadRun = false;
@@ -83,22 +107,24 @@ namespace ImageQualityPublisher
         {
             //1. SCAN CURRENT DIR
             //get all files
-            string[] fileArray = Directory.GetFiles(FileMonitorPathSt, settingsExtensionToSearch);
+            //string[] fileArray = Directory.GetFiles(FileMonitorPathSt, settingsExtensionToSearch);
+
+            DirectoryInfo dir = new DirectoryInfo(FileMonitorPathSt);
+            FileInfo[] fileArray = dir.GetFiles(settingsExtensionToSearch).OrderBy(p => p.LastWriteTime).ToArray();
 
             //check them all
-            foreach(string filename in fileArray)
+            foreach (FileInfo fileEl in fileArray)
             {
                 //string FileNameOnly = Path.GetFileName(filename);
-                
+                string filename = fileEl.FullName;
+
                 //is the file new?
-                if (FileList.ContainsKey(filename))
-                {
-                    //do nothing
-                }
-                else
-                {
-                    //add to filelist
-                    FileList.Add(filename, true);
+                if (!FileListParsed.ContainsKey(filename))
+                { 
+                    //1. Add to filelist with time
+                    FileListParsed.Add(filename, fileEl.LastWriteTime);
+
+                    //3. PROCESS
                     ParentMF.ProcessingObj.QuequeAdd(filename);
 
                     Logging.AddLog("New file [" + filename + "] was detected and added to queque...", LogLevel.Activity, Highlight.Emphasize);
@@ -124,7 +150,40 @@ namespace ImageQualityPublisher
         /// </summary>
         public void ClearFileList()
         {
-            FileList.Clear();
+            FileListParsed.Clear();
+        }
+
+
+        /// <summary>
+        /// Check if FileDate is newer then Directory IMS
+        /// </summary>
+        /// <param name="FileName"></param>
+        /// <returns></returns>
+        public bool CheckFileForIMS(string FileName)
+        {
+            DateTime FileDate = FileListParsed[FileName];
+
+            string DirName = Path.GetDirectoryName(FileName);
+            DateTime DirIMSDate = DirListToMonitor[DirName];
+
+            bool res = (FileDate > DirIMSDate);
+
+            return res;
+
+        }
+
+        /// <summary>
+        /// Update Directory IMS if FileDate is newer
+        /// </summary>
+        /// <param name="FileName"></param>
+        public void UpdateDirIMS(string FileName)
+        {
+            DateTime FileDate = FileListParsed[FileName];
+
+            string DirName = Path.GetDirectoryName(FileName);
+            DateTime DirIMSDate = DirListToMonitor[DirName];
+
+            if (DirIMSDate < FileDate) DirListToMonitor[DirName] = FileDate;
         }
 
     }

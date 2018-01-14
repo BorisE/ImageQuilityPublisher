@@ -6,20 +6,22 @@ using System.Threading;
 
 namespace ImageQualityPublisher
 {
+    /// <summary>
+    /// Class FileParseResult
+    /// Contains all results to use
+    /// </summary>
     public class FileParseResult
     {
         public string FITSFileName = "";
-        public FITSQualityData QualityData;
+        public DSSQualityData QualityData;
         public FITSHeaderData HeaderData;
         public double PixelResolution
         {
             get
             {
-                //  Formula:   (   Pixel Size   /   Telescope Focal Length   )   X 206.265
-                return HeaderData.CameraPixelSizeX / HeaderData.TelescopeFocusLen * 206.265;
+                return HeaderData.CameraPixelSizeX / HeaderData.TelescopeFocusLen * 206.265;    //  Formula:   (   Pixel Size   /   Telescope Focal Length   )   X 206.265
             }
         }
-
         public double FWHM
         {
             get
@@ -29,6 +31,10 @@ namespace ImageQualityPublisher
         }
     }
 
+
+    /// <summary>
+    /// Process FileQueque
+    /// </summary>
     public class FileProcessing
     {
         //file list where to keep already parsed file
@@ -42,8 +48,10 @@ namespace ImageQualityPublisher
         public bool settingsPublishToGroup = true;      //publish to web - group resource
         public bool settingsPublishToPrivate = false;   //publish to web - private resource
         public uint settingsMaxThreads = 1;             //how many threads run simultaneously
+        public bool settingsSkipIMSfiles = true;        //use IMS setting (check last modified file in directory)
+        public bool settingsDSSForceRecheck = false;    //rebuild .info files always
 
-        public uint curActiveThreads = 0;              //currently active threads
+        internal uint curActiveThreads = 0;              //currently active threads
 
         //link to mainform for callback functions
         private MainForm ParentMF;
@@ -53,12 +61,19 @@ namespace ImageQualityPublisher
             ParentMF = extMF;
         }
 
+        /// <summary>
+        /// Add file to queque
+        /// </summary>
+        /// <param name="filename"></param>
         public void QuequeAdd(string filename)
         {
             FileQuequeList.Enqueue(filename);
             LastProcessedTime = DateTime.Now;
         }
 
+        /// <summary>
+        /// Process All Queque
+        /// </summary>
         public void ProcessAll()
         {
             while (FileQuequeList.Count > 0 && curActiveThreads < settingsMaxThreads)
@@ -67,6 +82,9 @@ namespace ImageQualityPublisher
             }
         }
 
+        /// <summary>
+        /// Process first file in queque
+        /// </summary>
         public void ProcessOne()
         {
             //if there is free threads
@@ -106,38 +124,48 @@ namespace ImageQualityPublisher
             FileParseResult FileResObj = new FileParseResult();
             try
             {
+                //1. Init vars and objects
                 //string FullFileName = Path.Combine(sFileMonitorPath, FileName); //in case filename contains full path - it will be used. If no - monitor path would be added
                 string FullFileName = FileName; //there is no default path now :(
 
                 DSSQualityReader DSSObj = new DSSQualityReader(settingsDSSCLPath);
+                DSSObj.settingsDSSForceRecheck = settingsDSSForceRecheck; //copy setting
                 FITSHeaderReader FITSobj = new FITSHeaderReader();
 
-                //Run evaluation in sync mode
-                DSSObj.EvaluateFile(FullFileName);
-                Logging.AddLog("Quality evaluatoion procedrure for file [" + FullFileName + "] finished", LogLevel.Activity);
+                //2. Run evaluation in sync mode
+                DSSObj.EvaluateFile(FullFileName,false);
+                Logging.AddLog("Quality evaluation procedure for file [" + FullFileName + "] finished", LogLevel.Activity);
 
-                //Parse evaluation results
+                //3. Parse evaluation results
                 DSSObj.GetEvaluationResults();
                 Logging.AddLog("Quality results for file [" + FullFileName + "] were read", LogLevel.Activity);
 
-                //Get FITS Header fields
+                //4. Get FITS Header fields
                 FITSobj.ReadFITSHeader(FullFileName);
 
-                //Make Res obj
+                //5. Make Res obj
                 FileResObj.FITSFileName = FullFileName;
                 FileResObj.QualityData = DSSObj.QualityEstimate;
                 FileResObj.HeaderData = FITSobj.FITSData;
 
-                //Pulbish to form
+                //6. Pulbish to form
                 ParentMF.Invoke(new Action(() => ParentMF.PublishFITSData(FileResObj)));
 
-                //Publsh to web (GROUP)
+                //7. Publsh to web (GROUP)
                 if (PublishToWeb)
-                    ParentMF.WebPublishObj.PublishData(FileResObj);
+                { 
+                    if (!settingsSkipIMSfiles || (settingsSkipIMSfiles && ParentMF.MonitorObj.CheckFileForIMS(FullFileName)))
+                    {
+                        ParentMF.WebPublishObj.PublishData(FileResObj);
+                    }
+                }
 
-                //Publsh to web (PRIVATE)
+                //8. Publsh to web (PRIVATE)
                 if (PublishToWeb2)
                     ParentMF.WebPublishObj2.PublishData(FileResObj);
+
+                //9. Update IMS Directory date
+                ParentMF.MonitorObj.UpdateDirIMS(FullFileName);
             }
             catch (Exception ex)
             {
@@ -147,13 +175,19 @@ namespace ImageQualityPublisher
             return FileResObj;
         }
 
-
+        /// <summary>
+        /// Clear QueQue
+        /// </summary>
         public void Clear()
         {
             FileQuequeList.Clear();
             LastProcessedTime = new DateTime(2015, 01, 01);
         }
 
+        /// <summary>
+        /// Get QueQue len
+        /// </summary>
+        /// <returns></returns>
         public uint QuequeLen()
         {
             return (uint)FileQuequeList.Count();

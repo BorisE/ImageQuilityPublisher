@@ -8,7 +8,7 @@ using System.Text;
 
 namespace ImageQualityPublisher
 {
-    public class FITSQualityData
+    public class DSSQualityData
     {
         public Int32 StarsNumber = 0;
         public Double AspecRatio = 0.0;
@@ -39,13 +39,14 @@ namespace ImageQualityPublisher
     {
         //settings
         public string settingsDSSCLPath;
+        public bool settingsDSSForceRecheck = false;
 
         //current File
         public string FITSFileName = "";
         public string FITSFilePath = ""; //without slash - except root dir ;)
 
         //result data
-        public FITSQualityData QualityEstimate = new FITSQualityData();
+        public DSSQualityData QualityEstimate = new DSSQualityData();
 
         //process obj
         private Process objProcess = new Process();
@@ -73,7 +74,7 @@ namespace ImageQualityPublisher
                 FITSFileName = Path.GetFileName(FullFITSFileNameExt);
                 FITSFilePath = Path.GetDirectoryName(FullFITSFileNameExt);
             }
-            string FullFITSFileName = Path.Combine(FITSFilePath,FITSFileName);
+            string FullFITSFileName = Path.Combine(FITSFilePath, FITSFileName);
 
             //1. Create image list for DSS
             string dsslistFileName = Path.GetRandomFileName();
@@ -97,26 +98,37 @@ namespace ImageQualityPublisher
 
 
             //2. Запуск DSS для измерения
-            objProcess.StartInfo.FileName = settingsDSSCLPath;
-            objProcess.StartInfo.WindowStyle = ProcessWindowStyle.Minimized;
-            objProcess.StartInfo.UseShellExecute = true;
-            objProcess.StartInfo.Arguments = " /r "+ dsslistFileName; // /R for rechecking
-            objProcess.Start();
-
-            Logging.AddLog("DSSLiveCL thread for evaluating file [" + FullFITSFileName + "] started", LogLevel.Activity);
-
-            if (asyncrun == false)
+            string DSSOption = "/r";
+            if (settingsDSSForceRecheck) DSSOption = "/R";
+            try
             {
-                objProcess.WaitForExit();
+                objProcess.StartInfo.FileName = settingsDSSCLPath;
+                objProcess.StartInfo.WindowStyle = ProcessWindowStyle.Minimized;
+                objProcess.StartInfo.UseShellExecute = true;
+                objProcess.StartInfo.Arguments = " " + DSSOption + " " + dsslistFileName; // /R for rechecking
+                objProcess.Start();
+
+                Logging.AddLog("DSSLiveCL thread for evaluating file [" + FullFITSFileName + "] started", LogLevel.Activity);
+
+                if (asyncrun == false)
+                {
+                    objProcess.WaitForExit();
+                }
+            }
+            catch (Exception ex)
+            {
+                Logging.AddLog("Cant run DSSLiveCL", LogLevel.Important, Highlight.Error);
+                Logging.AddLog(MethodBase.GetCurrentMethod().Name + "error! [" + ex.ToString() + "]", LogLevel.Debug, Highlight.Error);
             }
         }
+    
 
 
         /// <summary>
         /// 2. Get result
         /// After running his function get FITSQualityData
         /// </summary>
-        public void GetEvaluationResults()
+        public DSSQualityData GetEvaluationResults()
         {
             //0. Compose file name
             string InfoFileName = Path.Combine(FITSFilePath, Path.GetFileNameWithoutExtension(FITSFileName) + ".Info.txt");
@@ -139,6 +151,7 @@ namespace ImageQualityPublisher
                 Logging.AddLog("Cant read info file [" + InfoFileName + "]", LogLevel.Important, Highlight.Error);
                 Logging.AddLog(MethodBase.GetCurrentMethod().Name + "error! [" + ex.ToString() + "]", LogLevel.Debug, Highlight.Error);
             }
+            return QualityEstimate;
         }
 
         private void ParseInfoFileLine(string LineSt)

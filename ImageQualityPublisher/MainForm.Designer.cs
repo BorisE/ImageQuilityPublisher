@@ -517,7 +517,7 @@
             // monitorTimer
             // 
             this.monitorTimer.Interval = 1000;
-            this.monitorTimer.Tick += new System.EventHandler(this.monitorTmer_Tick);
+            this.monitorTimer.Tick += new System.EventHandler(this.monitorTimer_Tick);
             // 
             // openFileDialog1
             // 

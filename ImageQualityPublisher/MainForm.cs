@@ -44,6 +44,11 @@ namespace ImageQualityPublisher
         Color OnColor = Color.DarkSeaGreen;
         Color DefBackColor;
 
+        private bool AlreadyRunning = false; //flag to block concurent timer run
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public MainForm()
         {
             ProcessingObj = new FileProcessing(this);
@@ -65,6 +70,11 @@ namespace ImageQualityPublisher
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Load event. Ininitalize some actions
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MainForm_Load(object sender, EventArgs e)
         {
             DefBackColor = btnStart.BackColor;
@@ -90,47 +100,7 @@ namespace ImageQualityPublisher
             }
         }
 
-
-
-        /// <summary>
-        /// Method which ivoked by from other class to add to grid
-        /// </summary>
-        /// <param name="FileResObj"></param>
-        public void PublishFITSData(FileParseResult FileResObj)
-        {
-            //Grid block
-            int curRowIndex = dataGridFileData.Rows.Add();
-            dataGridFileData.Rows[curRowIndex].Cells["dataGridData_filename"].Value = Path.GetFileName(FileResObj.FITSFileName);
-            dataGridFileData.Rows[curRowIndex].Cells["dataGridData_Bg"].Value = FileResObj.QualityData.SkyBackground.ToString("P", CultureInfo.InvariantCulture); 
-            dataGridFileData.Rows[curRowIndex].Cells["dataGridData_MeanRadius"].Value = FileResObj.QualityData.MeanRadius.ToString("N2", CultureInfo.InvariantCulture);
-            dataGridFileData.Rows[curRowIndex].Cells["dataGridData_Stars"].Value = FileResObj.QualityData.StarsNumber.ToString("N0", CultureInfo.InvariantCulture);
-
-            dataGridFileData.Rows[curRowIndex].Cells["dataGridData_Alt"].Value = FileResObj.HeaderData.ObjAlt.ToString("N0", CultureInfo.InvariantCulture);
-            dataGridFileData.Rows[curRowIndex].Cells["dataGridData_Exp"].Value = FileResObj.HeaderData.ImageExposure.ToString("N0", CultureInfo.InvariantCulture);
-            dataGridFileData.Rows[curRowIndex].Cells["dataGridData_DateTime"].Value = FileResObj.HeaderData.DateObsUTC.ToString();
-            dataGridFileData.Rows[curRowIndex].Cells["dataGridData_FWHM"].Value = FileResObj.FWHM.ToString("N2", CultureInfo.InvariantCulture);
-
-            statImagesProcessed++;
-
-            UpdateStatistics(); // on every invoke
-        }
-
-        public void ResetData()
-        {
-            //reset already monitored filelist
-            MonitorObj.ClearFileList();
-            //Clear queque
-            ProcessingObj.Clear();
-            
-            //clear Grid block
-            dataGridFileData.Rows.Clear();
-
-            //update statistics
-            statImagesFound = 0;
-            statImagesProcessed = 0;
-            statImagesWaiting = 0;
-            UpdateStatistics();
-        }
+      
 
         /// <summary>
         /// Log refresh cycle
@@ -155,10 +125,15 @@ namespace ImageQualityPublisher
             Logging.DumpToFile();
 
         }
-
-        private bool AlreadyRunning = false;
-
-        private void monitorTmer_Tick(object sender, EventArgs e)
+        
+        
+        /******************************************************************************************************************/
+        /// <summary>
+        /// MAIN TIMER CYCLE
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void monitorTimer_Tick(object sender, EventArgs e)
         {
             //Update statistics
             UpdateStatistics();
@@ -178,8 +153,52 @@ namespace ImageQualityPublisher
                 AlreadyRunning = false;
             }
         }
+        /******************************************************************************************************************/
 
+        /// <summary>
+        /// Method which ivoked from other class to add to grid
+        /// </summary>
+        /// <param name="FileResObj"></param>
+        public void PublishFITSData(FileParseResult FileResObj)
+        {
+            //Grid block
+            int curRowIndex = dataGridFileData.Rows.Add();
+            dataGridFileData.Rows[curRowIndex].Cells["dataGridData_filename"].Value = Path.GetFileName(FileResObj.FITSFileName);
+            dataGridFileData.Rows[curRowIndex].Cells["dataGridData_Bg"].Value = FileResObj.QualityData.SkyBackground.ToString("P", CultureInfo.InvariantCulture);
+            dataGridFileData.Rows[curRowIndex].Cells["dataGridData_MeanRadius"].Value = FileResObj.QualityData.MeanRadius.ToString("N2", CultureInfo.InvariantCulture);
+            dataGridFileData.Rows[curRowIndex].Cells["dataGridData_Stars"].Value = FileResObj.QualityData.StarsNumber.ToString("N0", CultureInfo.InvariantCulture);
 
+            dataGridFileData.Rows[curRowIndex].Cells["dataGridData_Alt"].Value = FileResObj.HeaderData.ObjAlt.ToString("N0", CultureInfo.InvariantCulture);
+            dataGridFileData.Rows[curRowIndex].Cells["dataGridData_Exp"].Value = FileResObj.HeaderData.ImageExposure.ToString("N0", CultureInfo.InvariantCulture);
+            dataGridFileData.Rows[curRowIndex].Cells["dataGridData_DateTime"].Value = FileResObj.HeaderData.DateObsUTC.ToString();
+            dataGridFileData.Rows[curRowIndex].Cells["dataGridData_FWHM"].Value = FileResObj.FWHM.ToString("N2", CultureInfo.InvariantCulture);
+
+            statImagesProcessed++;
+
+            UpdateStatistics(); // on every invoke
+        }
+
+        /// <summary>
+        /// Reset all data (on pressing button)
+        /// </summary>
+        public void ResetData()
+        {
+            //Stop current processing activity
+            MonitorObj.AbortThread();
+            //reset already monitored filelist
+            MonitorObj.ClearFileList();
+            //Clear queque
+            ProcessingObj.Clear();
+
+            //clear Grid block
+            dataGridFileData.Rows.Clear();
+
+            //update statistics
+            statImagesFound = 0;
+            statImagesProcessed = 0;
+            statImagesWaiting = 0;
+            UpdateStatistics();
+        }
         private void UpdateStatistics()
         {
             //calc
@@ -192,6 +211,9 @@ namespace ImageQualityPublisher
             toolStripStatus_FilesWaiting.Text = LocRM.GetString("statusbar_imageswaiting") + ": " + statImagesWaiting;
         }
 
+
+        /**************************************************************************************************/
+        #region Events Handlers
         private void btnStart_Click(object sender, EventArgs e)
         {
             if (monitorTimer.Enabled)
@@ -304,6 +326,14 @@ namespace ImageQualityPublisher
 
         }
 
+        private void cmbLang_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            MessageBox.Show(LocRM.GetString("ChangeLanguage_text"), LocRM.GetString("ChangeLanguage_caption"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
+
+        #endregion Events hadler
+        /**************************************************************************************************/
+
         /**************************************************************************************************/
         #region //// Settings //////////////////////////////////////
         // Как устроена загрузка:
@@ -335,6 +365,8 @@ namespace ImageQualityPublisher
             //hidden settings
             MonitorObj.settingsExtensionToSearch = ConfigManagement.getString("options", "extensionsToSearch") ?? "*.fit*";
             ProcessingObj.settingsMaxThreads = (uint) (ConfigManagement.getInt("options", "checkThreads_max") ?? 1);
+            ProcessingObj.settingsSkipIMSfiles = ConfigManagement.getBool("options", "checkDirIMS") ?? true;
+            ProcessingObj.settingsDSSForceRecheck = ConfigManagement.getBool("options", "alwaysRebuildDSSInfoFile") ?? false;
 
 
             Logging.AddLog("Program parameters were set according to configuration file", LogLevel.Activity);
@@ -421,6 +453,9 @@ namespace ImageQualityPublisher
             //hidden settings
             ConfigManagement.UpdateConfigValue("options", "extensionsToSearch", MonitorObj.settingsExtensionToSearch);
             ConfigManagement.UpdateConfigValue("options", "checkThreads_max", ProcessingObj.settingsMaxThreads.ToString());
+            ConfigManagement.UpdateConfigValue("options", "checkDirIMS", ProcessingObj.settingsSkipIMSfiles.ToString());
+            ConfigManagement.UpdateConfigValue("options", "alwaysRebuildDSSInfoFile", ProcessingObj.settingsDSSForceRecheck.ToString());
+
 
             //2. Save ConfigXML to disk
             ConfigManagement.Save();
@@ -489,7 +524,7 @@ namespace ImageQualityPublisher
         #endregion end of =Settings=
         /**************************************************************************************************/
 
-
+        /**************************************************************************************************/
         #region //// About information //////////////////////////////////////
         private void LoadAboutData()
         {
@@ -523,11 +558,6 @@ namespace ImageQualityPublisher
 
 
         #endregion About information
-
-        
-        private void cmbLang_SelectionChangeCommitted(object sender, EventArgs e)
-        {
-            MessageBox.Show(LocRM.GetString("ChangeLanguage_text"), LocRM.GetString("ChangeLanguage_caption"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        }
+        /**************************************************************************************************/
     }
 }
