@@ -55,6 +55,8 @@ namespace ImageQualityPublisher
         public FITSHeaderData FITSData = new FITSHeaderData();
 
         internal UInt16 BlockLen = 2880;
+        internal UInt16 MAX_FITS_DATA_BLOCKS = 2; //max header units to read (in case of bad fits file)
+
 
         //Each header or data unit is a multiple of 2880 bytes long. If necessary, the header or data unit is padded out to the required length with ASCII blanks or NULLs depending on the type of unit.
         //Each header unit contains a sequence of fixed-length 80 - character keyword records which have the general form:
@@ -97,7 +99,7 @@ namespace ImageQualityPublisher
                     {
                         stBlock += ReadFITSBlock(i);
 
-                        if (stBlock.Contains("END"))
+                        if (stBlock.Contains("END") || i > MAX_FITS_DATA_BLOCKS)
                         {
                             bHeaderRead = true;
                         }

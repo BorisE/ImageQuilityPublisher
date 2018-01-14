@@ -296,6 +296,9 @@ namespace ImageQualityPublisher
         /// </summary>
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
+            //Stop current processing activity
+            MonitorObj.AbortThread();
+            //Save settings
             SaveSettingsToConfigFile();
         }
 

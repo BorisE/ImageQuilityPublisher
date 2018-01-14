@@ -10,15 +10,17 @@ to do:
 - minimize to tray
 
 bugs:
-- if no DSS nothing happens in result list and publish.Is it ok?
-- hang on during test on *.DOC* files
+- ?
 
 1.3.4 [14.01.18]
-- add option: force rebuild dss info files 
-- check for not publishing already published images (IMS technology)
+- add option: force rebuild dss info files [xml only]
+- check for not publishing already published images (IMS technology) (add option in xml)
+- which extension to check [xml only]
+- corrected bug: if no dss, still process file
+- corrected bug: hang on during test on *.DOC* files
 
 1.3.3 [11.01.18]
-- max threads setting
+- max threads setting [xml only]
 - alert when changing language 
 
 1.3.2 [10.01.18]

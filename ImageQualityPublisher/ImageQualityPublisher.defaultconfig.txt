@@ -11,10 +11,15 @@
 
 <options>
     <Language value="ru-RU" />
-    <AUTOSTARTMONITORING value="false" />
+    <AUTOSTARTMONITORING value="False" />
     <DSS_PATH value="c:\Program Files (x86)\DeepSkyStacker\DeepSkyStackerCL.exe" />
-    <PUBLISHTOGROUP value="true" />
-    <PUBLISHTOPRIVATE value="false" />
+    <PUBLISHTOGROUP value="True" />
+    <PUBLISHTOPRIVATE value="False" />
+    <ScanSubDirs value="False" />
+    <extensionsToSearch value="*.fit*" />
+    <checkThreads_max value="1" />
+    <checkDirIMS value="True" />
+    <alwaysRebuildDSSInfoFile value="False" />
 </options>
  
 </configuration>
