@@ -190,6 +190,9 @@ namespace ImageQualityPublisher
             //Clear queque
             ProcessingObj.Clear();
 
+            //Clear IMS data
+            MonitorObj.ClearDirIMSData();
+
             //clear Grid block
             dataGridFileData.Rows.Clear();
 

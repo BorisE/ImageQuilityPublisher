@@ -153,6 +153,17 @@ namespace ImageQualityPublisher
             FileListParsed.Clear();
         }
 
+        /// <summary>
+        /// Clear IMS Data
+        /// </summary>
+        public void ClearDirIMSData()
+        {
+            foreach(string curDirName in DirListToMonitor.Keys)
+            {
+                DirListToMonitor[curDirName] = VERY_OLD_TIME;
+            }
+        }
+
 
         /// <summary>
         /// Check if FileDate is newer then Directory IMS
