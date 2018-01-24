@@ -108,9 +108,17 @@ namespace ImageQualityPublisher
             //1. SCAN CURRENT DIR
             //get all files
             //string[] fileArray = Directory.GetFiles(FileMonitorPathSt, settingsExtensionToSearch);
-
-            DirectoryInfo dir = new DirectoryInfo(FileMonitorPathSt);
-            FileInfo[] fileArray = dir.GetFiles(settingsExtensionToSearch).OrderBy(p => p.LastWriteTime).ToArray();
+            FileInfo[] fileArray;
+            try { 
+                DirectoryInfo dir = new DirectoryInfo(FileMonitorPathSt);
+                fileArray = dir.GetFiles(settingsExtensionToSearch).OrderBy(p => p.LastWriteTime).ToArray();
+            }
+            catch (Exception ex)
+            {
+                //dir doesn't exists - EXIT
+                Logging.AddLog("Monitor dir ["+ FileMonitorPathSt + "] exception ["+ ex.Message + "]", LogLevel.Important, Highlight.Error);
+                return;
+            }
 
             //check them all
             foreach (FileInfo fileEl in fileArray)
