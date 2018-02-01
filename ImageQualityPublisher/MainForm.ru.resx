@@ -119,7 +119,7 @@
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="chkSearchSubdirs.Size" type="System.Drawing.Size, System.Drawing">
-    <value>144, 17</value>
+    <value>212, 24</value>
   </data>
   <data name="chkSearchSubdirs.Text" xml:space="preserve">
     <value>Искать в подкаталогах</value>
@@ -137,7 +137,7 @@
     <value>485, 43</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>63, 13</value>
+    <value>94, 20</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
     <value>Каталогов:</value>
@@ -167,7 +167,7 @@
     <value />
   </data>
   <data name="label38.Size" type="System.Drawing.Size, System.Drawing">
-    <value>99, 13</value>
+    <value>147, 20</value>
   </data>
   <data name="label38.Text" xml:space="preserve">
     <value>Язык интерфейса</value>
@@ -176,7 +176,7 @@
     <value />
   </data>
   <data name="linkDSS.Size" type="System.Drawing.Size, System.Drawing">
-    <value>84, 13</value>
+    <value>125, 20</value>
   </data>
   <data name="linkDSS.Text" xml:space="preserve">
     <value>Загрузить DSS</value>
@@ -188,7 +188,7 @@
     <value />
   </data>
   <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>124, 13</value>
+    <value>182, 20</value>
   </data>
   <data name="label5.Text" xml:space="preserve">
     <value>Путь к DeepSkyStacker</value>
@@ -200,7 +200,7 @@
     <value />
   </data>
   <data name="chkSettings_Autostart.Size" type="System.Drawing.Size, System.Drawing">
-    <value>163, 17</value>
+    <value>229, 24</value>
   </data>
   <data name="chkSettings_Autostart.Text" xml:space="preserve">
     <value>Автозапуск  мониторинга</value>
@@ -224,7 +224,7 @@
     <value>Время съемки</value>
   </data>
   <data name="dataGridData_DateTime.ToolTipText" xml:space="preserve">
-    <value>(время UTC)</value>
+    <value>(время местное)</value>
   </data>
   <data name="dataGridData_Alt.ToolTipText" xml:space="preserve">
     <value>Высота</value>
@@ -278,7 +278,7 @@
     <value>197, 38</value>
   </data>
   <data name="txtSettings_urlprivate.Size" type="System.Drawing.Size, System.Drawing">
-    <value>508, 20</value>
+    <value>508, 26</value>
   </data>
   <data name="txtSettings_urlprivate.ToolTip" xml:space="preserve">
     <value />
@@ -287,19 +287,19 @@
     <value>197, 16</value>
   </data>
   <data name="txtSettings_urlgorup.Size" type="System.Drawing.Size, System.Drawing">
-    <value>508, 20</value>
+    <value>508, 26</value>
   </data>
   <data name="txtSettings_urlgorup.ToolTip" xml:space="preserve">
     <value />
   </data>
   <data name="chkSettings_publishprivate.Size" type="System.Drawing.Size, System.Drawing">
-    <value>185, 17</value>
+    <value>272, 24</value>
   </data>
   <data name="chkSettings_publishprivate.Text" xml:space="preserve">
     <value>Публиковать на личный ресурс</value>
   </data>
   <data name="chkSettings_publishgroup.Size" type="System.Drawing.Size, System.Drawing">
-    <value>181, 17</value>
+    <value>264, 24</value>
   </data>
   <data name="chkSettings_publishgroup.Text" xml:space="preserve">
     <value>Публиковать на общий ресурс</value>
@@ -320,7 +320,7 @@
     <value>491, 36</value>
   </data>
   <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>130, 13</value>
+    <value>192, 20</value>
   </data>
   <data name="label7.Text" xml:space="preserve">
     <value>и Олегом Милантьевым</value>
@@ -335,16 +335,13 @@
     <value />
   </data>
   <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 13</value>
+    <value>225, 20</value>
   </data>
   <data name="label6.Text" xml:space="preserve">
     <value>Часть проекта Astrohostel.ru</value>
   </data>
   <data name="label6.ToolTip" xml:space="preserve">
     <value />
-  </data>
-  <data name="label17.Size" type="System.Drawing.Size, System.Drawing">
-    <value>142, 13</value>
   </data>
   <data name="label17.Text" xml:space="preserve">
     <value>(C) 2018 Борисом Емченко</value>
@@ -487,17 +484,17 @@
   </data>
   <data name="toolStripDropDownLogLevel.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wwAADsMBx2+oZAAAAgNJREFUOE+lkutLk2EYxvePhJaHShFBUTEPiCieQOmDiEZgrEbpYGiCQxkqA80I
-        RUkUEZ0YRMS+DDI70MkTmzJnDc8iU8QT2mAEItnle90wHwTDyBduXnie5/rd133Q4ZKfAJqHFs9E08A8
-        zD1emDpmYXjqRlnTFIrMk8iuGkNaxWekGEaQrHecBfw+/vPXODw6hj9whN2fh/Bt/8LSRgA3cxr/DeBZ
-        9kvmTNMoHGNbIrYN+3Aj23IxgJkpds0doP3VstgmsNexhutZ9QrAms8T0zYzU5xXM46kcjsmvfvoeL2i
-        AeoUgA07T8yaaZuZKab1rzN74jgys1YB2O2gmBZzH49LODXrrJlnzEzxe9cOLH1ziMioVgCOiuIFX0CE
-        Q+/WYf+yieiCFrRp9tkwxnP7Kt5MbKGm6wfC000KwDlTXNLgEvHMkh+Db32o7fYivtQm1l9+3IBOp5P7
-        yjYPwlKNCsAluWudxgvtknb5t9oWcL/VLU2Mvd2JFq3uqs7vAtE/ceNayiMF4KiYMSjmY2O7B4Ua+NaD
-        YQGEJumRbvyG1IcfBHI12aAAXM8R57aIWTNrLLY4tfNPiCvpR1SeVeu6WWzHFD6THSDwFMDdpmUG62NJ
-        PKM4Or9ZxBxb8H8l7g5CEu8pAOfM3WanSeeS8CFHxW4zM2umbWamOCShXAH+/wNOANABIDUxWnDPAAAA
-        AElFTkSuQmCC
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
+        YKxG6WBogkMZKgPNCEVJFBGdGETEvgwyO9DJE5syZw3PIlPEE9pgBCLZ5XvdMB8Ew8gXbl54nuf63dd9
+        0OGSnwCahxbPRNPAPMw9Xpg6ZmF46kZZ0xSKzJPIrhpDWsVnpBhGkKx3nAX8Pv7z1zg8OoY/cITdn4fw
+        bf/C0kYAN3Ma/w3gWfZL5kzTKBxjWyK2DftwI9tyMYCZKXbNHaD91bLYJrDXsYbrWfUKwJrPE9M2M1Oc
+        VzOOpHI7Jr376Hi9ogHqFIANO0/MmmmbmSmm9a8ze+I4MrNWAdjtoJgWcx+PSzg166yZZ8xM8XvXDix9
+        c4jIqFYAjoriBV9AhEPv1mH/sonogha0afbZMMZz+yreTGyhpusHwtNNCsA5U1zS4BLxzJIfg299qO32
+        Ir7UJtZfftyATqeT+8o2D8JSjQrAJblrncYL7ZJ2+bfaFnC/1S1NjL3diRat7qrO7wLRP3HjWsojBeCo
+        mDEo5mNjuweFGvjWg2EBhCbpkW78htSHHwRyNdmgAFzPEee2iFkzayy2OLXzT4gr6UdUnlXrullsxxQ+
+        kx0g8BTA3aZlButjSTyjODq/WcQcW/B/Je4OQhLvKQDnzN1mp0nnkvAhR8VuMzNrpm1mpjgkoVwB/v8D
+        TgDQASA1MVpwzwAAAABJRU5ErkJggg==
 </value>
   </data>
   <data name="statusBar.ToolTip" xml:space="preserve">
