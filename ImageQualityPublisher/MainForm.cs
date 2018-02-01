@@ -229,12 +229,14 @@ namespace ImageQualityPublisher
                 
                 btnStart.Text = LocWinFormRM.GetString("btnStart.Text");
                 btnStart.BackColor = DefBackColor;
+                Logging.AddLog("Montoring has been stoped", LogLevel.Activity);
             }
             else
             {
                 monitorTimer.Enabled = true;
                 btnStart.Text = LocRM.GetString("btnStart_StopText");
                 btnStart.BackColor = OnColor;
+                Logging.AddLog("Starting monitoring...",LogLevel.Activity);
             }
         }
         

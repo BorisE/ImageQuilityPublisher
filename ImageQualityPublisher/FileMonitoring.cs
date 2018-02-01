@@ -71,7 +71,8 @@ namespace ImageQualityPublisher
         /// </summary>
         public void AbortThread()
         {
-            monitorThread.Abort();
+            if (monitorThread != null && monitorThread.ThreadState == ThreadState.Running)
+                monitorThread.Abort();
             bMonitoringThreadRun = false;
         }
 
@@ -158,9 +159,11 @@ namespace ImageQualityPublisher
         /// </summary>
         public void ClearDirIMSData()
         {
-            foreach(string curDirName in DirListToMonitor.Keys)
+            List<string> keys = new List<string>(DirListToMonitor.Keys); //Copying keys first (changing dic will reset iterator)
+
+            foreach (string curDir in keys)
             {
-                DirListToMonitor[curDirName] = VERY_OLD_TIME;
+                DirListToMonitor[curDir] = VERY_OLD_TIME;
             }
         }
 
