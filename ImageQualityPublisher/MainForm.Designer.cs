@@ -30,11 +30,11 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.chkSearchSubdirs = new System.Windows.Forms.CheckBox();
             this.cmbMonitorPath = new System.Windows.Forms.ComboBox();
@@ -58,6 +58,14 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabList = new System.Windows.Forms.TabPage();
             this.dataGridFileData = new System.Windows.Forms.DataGridView();
+            this.dataGridData_filename = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridData_DateTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridData_Alt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridData_Stars = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridData_FWHM = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridData_MeanRadius = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridData_Bg = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridData_Exp = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabLog = new System.Windows.Forms.TabPage();
             this.tabSettings = new System.Windows.Forms.TabPage();
             this.btnSettings_Save = new System.Windows.Forms.Button();
@@ -87,14 +95,6 @@
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.dataGridData_filename = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridData_DateTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridData_Alt = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridData_Stars = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridData_FWHM = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridData_MeanRadius = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridData_Bg = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridData_Exp = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -300,6 +300,68 @@
             this.dataGridFileData.Name = "dataGridFileData";
             this.dataGridFileData.RowHeadersVisible = false;
             this.toolTip1.SetToolTip(this.dataGridFileData, resources.GetString("dataGridFileData.ToolTip"));
+            // 
+            // dataGridData_filename
+            // 
+            this.dataGridData_filename.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridData_filename.FillWeight = 50F;
+            resources.ApplyResources(this.dataGridData_filename, "dataGridData_filename");
+            this.dataGridData_filename.Name = "dataGridData_filename";
+            this.dataGridData_filename.ReadOnly = true;
+            // 
+            // dataGridData_DateTime
+            // 
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.Format = "G";
+            dataGridViewCellStyle6.NullValue = null;
+            this.dataGridData_DateTime.DefaultCellStyle = dataGridViewCellStyle6;
+            resources.ApplyResources(this.dataGridData_DateTime, "dataGridData_DateTime");
+            this.dataGridData_DateTime.Name = "dataGridData_DateTime";
+            this.dataGridData_DateTime.ReadOnly = true;
+            // 
+            // dataGridData_Alt
+            // 
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dataGridData_Alt.DefaultCellStyle = dataGridViewCellStyle7;
+            resources.ApplyResources(this.dataGridData_Alt, "dataGridData_Alt");
+            this.dataGridData_Alt.Name = "dataGridData_Alt";
+            this.dataGridData_Alt.ReadOnly = true;
+            // 
+            // dataGridData_Stars
+            // 
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dataGridData_Stars.DefaultCellStyle = dataGridViewCellStyle8;
+            resources.ApplyResources(this.dataGridData_Stars, "dataGridData_Stars");
+            this.dataGridData_Stars.Name = "dataGridData_Stars";
+            this.dataGridData_Stars.ReadOnly = true;
+            // 
+            // dataGridData_FWHM
+            // 
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dataGridData_FWHM.DefaultCellStyle = dataGridViewCellStyle9;
+            resources.ApplyResources(this.dataGridData_FWHM, "dataGridData_FWHM");
+            this.dataGridData_FWHM.Name = "dataGridData_FWHM";
+            this.dataGridData_FWHM.ReadOnly = true;
+            // 
+            // dataGridData_MeanRadius
+            // 
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dataGridData_MeanRadius.DefaultCellStyle = dataGridViewCellStyle10;
+            resources.ApplyResources(this.dataGridData_MeanRadius, "dataGridData_MeanRadius");
+            this.dataGridData_MeanRadius.Name = "dataGridData_MeanRadius";
+            this.dataGridData_MeanRadius.ReadOnly = true;
+            // 
+            // dataGridData_Bg
+            // 
+            resources.ApplyResources(this.dataGridData_Bg, "dataGridData_Bg");
+            this.dataGridData_Bg.Name = "dataGridData_Bg";
+            this.dataGridData_Bg.ReadOnly = true;
+            // 
+            // dataGridData_Exp
+            // 
+            resources.ApplyResources(this.dataGridData_Exp, "dataGridData_Exp");
+            this.dataGridData_Exp.Name = "dataGridData_Exp";
+            this.dataGridData_Exp.ReadOnly = true;
             // 
             // tabLog
             // 
@@ -508,68 +570,6 @@
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.TabStop = false;
             this.toolTip1.SetToolTip(this.groupBox5, resources.GetString("groupBox5.ToolTip"));
-            // 
-            // dataGridData_filename
-            // 
-            this.dataGridData_filename.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridData_filename.FillWeight = 50F;
-            resources.ApplyResources(this.dataGridData_filename, "dataGridData_filename");
-            this.dataGridData_filename.Name = "dataGridData_filename";
-            this.dataGridData_filename.ReadOnly = true;
-            // 
-            // dataGridData_DateTime
-            // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.Format = "G";
-            dataGridViewCellStyle1.NullValue = null;
-            this.dataGridData_DateTime.DefaultCellStyle = dataGridViewCellStyle1;
-            resources.ApplyResources(this.dataGridData_DateTime, "dataGridData_DateTime");
-            this.dataGridData_DateTime.Name = "dataGridData_DateTime";
-            this.dataGridData_DateTime.ReadOnly = true;
-            // 
-            // dataGridData_Alt
-            // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dataGridData_Alt.DefaultCellStyle = dataGridViewCellStyle2;
-            resources.ApplyResources(this.dataGridData_Alt, "dataGridData_Alt");
-            this.dataGridData_Alt.Name = "dataGridData_Alt";
-            this.dataGridData_Alt.ReadOnly = true;
-            // 
-            // dataGridData_Stars
-            // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dataGridData_Stars.DefaultCellStyle = dataGridViewCellStyle3;
-            resources.ApplyResources(this.dataGridData_Stars, "dataGridData_Stars");
-            this.dataGridData_Stars.Name = "dataGridData_Stars";
-            this.dataGridData_Stars.ReadOnly = true;
-            // 
-            // dataGridData_FWHM
-            // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dataGridData_FWHM.DefaultCellStyle = dataGridViewCellStyle4;
-            resources.ApplyResources(this.dataGridData_FWHM, "dataGridData_FWHM");
-            this.dataGridData_FWHM.Name = "dataGridData_FWHM";
-            this.dataGridData_FWHM.ReadOnly = true;
-            // 
-            // dataGridData_MeanRadius
-            // 
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dataGridData_MeanRadius.DefaultCellStyle = dataGridViewCellStyle5;
-            resources.ApplyResources(this.dataGridData_MeanRadius, "dataGridData_MeanRadius");
-            this.dataGridData_MeanRadius.Name = "dataGridData_MeanRadius";
-            this.dataGridData_MeanRadius.ReadOnly = true;
-            // 
-            // dataGridData_Bg
-            // 
-            resources.ApplyResources(this.dataGridData_Bg, "dataGridData_Bg");
-            this.dataGridData_Bg.Name = "dataGridData_Bg";
-            this.dataGridData_Bg.ReadOnly = true;
-            // 
-            // dataGridData_Exp
-            // 
-            resources.ApplyResources(this.dataGridData_Exp, "dataGridData_Exp");
-            this.dataGridData_Exp.Name = "dataGridData_Exp";
-            this.dataGridData_Exp.ReadOnly = true;
             // 
             // MainForm
             // 
