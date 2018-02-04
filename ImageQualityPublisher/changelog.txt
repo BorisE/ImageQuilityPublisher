@@ -13,6 +13,9 @@ to do:
 bugs:
 - crash when non existent directory
 
+1.3.8 [04.02.18]
+- add option: skip frame publishing if it isn't light frame
+
 1.3.7 [01.02.18]
 - bug: crash during reread (due to incorrect dictionary foreach handling)
 - light improvements

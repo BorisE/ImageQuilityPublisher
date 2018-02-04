@@ -50,6 +50,7 @@ namespace ImageQualityPublisher
         public uint settingsMaxThreads = 1;             //how many threads run simultaneously
         public bool settingsSkipIMSfiles = true;        //use IMS setting (check last modified file in directory)
         public bool settingsDSSForceRecheck = false;    //rebuild .info files always
+        public bool settingsPublishLightFramesOnly = true;    //publish only lightframes
 
         internal uint curActiveThreads = 0;              //currently active threads
 
@@ -148,21 +149,38 @@ namespace ImageQualityPublisher
                 FileResObj.QualityData = DSSObj.QualityEstimate;
                 FileResObj.HeaderData = FITSobj.FITSData;
 
-                //6. Pulbish to form
-                ParentMF.Invoke(new Action(() => ParentMF.PublishFITSData(FileResObj)));
-
-                //7. Publsh to web (GROUP)
-                if (PublishToWeb)
-                { 
-                    if (!settingsSkipIMSfiles || (settingsSkipIMSfiles && ParentMF.MonitorObj.CheckFileForIMS(FullFileName)))
+                //6.1. Check - if this light frame or not
+                bool skipPublishFlag = false;
+                if (settingsPublishLightFramesOnly)
+                {
+                    skipPublishFlag = true;
+                    if (FileResObj.HeaderData.ImageType == "Light Frame" || FileResObj.HeaderData.ImageType == "")
                     {
-                        ParentMF.WebPublishObj.PublishData(FileResObj);
+                        skipPublishFlag = false;
                     }
                 }
+                if (!skipPublishFlag)
+                {
+                    //6. Pulbish to form
+                    ParentMF.Invoke(new Action(() => ParentMF.PublishFITSData(FileResObj)));
 
-                //8. Publsh to web (PRIVATE)
-                if (PublishToWeb2)
-                    ParentMF.WebPublishObj2.PublishData(FileResObj);
+                    //7. Publsh to web (GROUP)
+                    if (PublishToWeb)
+                    {
+                        if (!settingsSkipIMSfiles || (settingsSkipIMSfiles && ParentMF.MonitorObj.CheckFileForIMS(FullFileName)))
+                        {
+                            ParentMF.WebPublishObj.PublishData(FileResObj);
+                        }
+                    }
+
+                    //8. Publsh to web (PRIVATE)
+                    if (PublishToWeb2)
+                        ParentMF.WebPublishObj2.PublishData(FileResObj);
+                }
+                else
+                {
+                    Logging.AddLog("Skipping publishing frame ["+ FullFileName + "]. ImageType = [" + FileResObj.HeaderData.ImageType + "]" , LogLevel.Activity, Highlight.Error);
+                }
 
                 //9. Update IMS Directory date
                 ParentMF.MonitorObj.UpdateDirIMS(FullFileName);

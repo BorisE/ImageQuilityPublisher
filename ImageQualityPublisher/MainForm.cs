@@ -378,7 +378,7 @@ namespace ImageQualityPublisher
             ProcessingObj.settingsMaxThreads = (uint) (ConfigManagement.getInt("options", "checkThreads_max") ?? 1);
             ProcessingObj.settingsSkipIMSfiles = ConfigManagement.getBool("options", "checkDirIMS") ?? true;
             ProcessingObj.settingsDSSForceRecheck = ConfigManagement.getBool("options", "alwaysRebuildDSSInfoFile") ?? false;
-
+            ProcessingObj.settingsPublishLightFramesOnly = ConfigManagement.getBool("options", "publishLightFramesOnly") ?? true;
 
             Logging.AddLog("Program parameters were set according to configuration file", LogLevel.Activity);
         }
@@ -466,7 +466,7 @@ namespace ImageQualityPublisher
             ConfigManagement.UpdateConfigValue("options", "checkThreads_max", ProcessingObj.settingsMaxThreads.ToString());
             ConfigManagement.UpdateConfigValue("options", "checkDirIMS", ProcessingObj.settingsSkipIMSfiles.ToString());
             ConfigManagement.UpdateConfigValue("options", "alwaysRebuildDSSInfoFile", ProcessingObj.settingsDSSForceRecheck.ToString());
-
+            ConfigManagement.UpdateConfigValue("options", "publishLightFramesOnly", ProcessingObj.settingsPublishLightFramesOnly.ToString());
 
             //2. Save ConfigXML to disk
             ConfigManagement.Save();
