@@ -117,161 +117,270 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="groupBox1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="chkSearchSubdirs.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="chkSearchSubdirs.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 65</value>
-  </data>
-  <data name="chkSearchSubdirs.Size" type="System.Drawing.Size, System.Drawing">
-    <value>202, 24</value>
-  </data>
-  <data name="chkSearchSubdirs.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="chkSearchSubdirs.Text" xml:space="preserve">
-    <value>Including subdirectories</value>
-  </data>
   <data name="&gt;&gt;chkSearchSubdirs.Name" xml:space="preserve">
     <value>chkSearchSubdirs</value>
   </data>
-  <data name="&gt;&gt;chkSearchSubdirs.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="dataGridData_DateTime.MinimumWidth" type="System.Int32, mscorlib">
+    <value>50</value>
   </data>
-  <data name="&gt;&gt;chkSearchSubdirs.Parent" xml:space="preserve">
-    <value>groupBox1</value>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="linkMilantiev.Size" type="System.Drawing.Size, System.Drawing">
+    <value>103, 13</value>
   </data>
-  <data name="&gt;&gt;chkSearchSubdirs.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>CenterScreen</value>
   </data>
-  <data name="cmbMonitorPath.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <data name="cmbMonitorPath.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 26</value>
-  </data>
-  <data name="cmbMonitorPath.Size" type="System.Drawing.Size, System.Drawing">
-    <value>730, 28</value>
-  </data>
-  <data name="cmbMonitorPath.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;cmbMonitorPath.Name" xml:space="preserve">
-    <value>cmbMonitorPath</value>
-  </data>
-  <data name="&gt;&gt;cmbMonitorPath.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cmbMonitorPath.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;cmbMonitorPath.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="btnDelFolder.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
-  </data>
-  <data name="btnDelFolder.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="btnDelFolder.Location" type="System.Drawing.Point, System.Drawing">
-    <value>792, 23</value>
-  </data>
-  <data name="btnDelFolder.Size" type="System.Drawing.Size, System.Drawing">
-    <value>39, 38</value>
-  </data>
-  <data name="btnDelFolder.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="btnDelFolder.Text" xml:space="preserve">
-    <value>-</value>
-  </data>
-  <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>487, 17</value>
-  </metadata>
-  <data name="btnDelFolder.ToolTip" xml:space="preserve">
-    <value>Delete current directory from monitoring list</value>
-  </data>
-  <data name="&gt;&gt;btnDelFolder.Name" xml:space="preserve">
-    <value>btnDelFolder</value>
-  </data>
-  <data name="&gt;&gt;btnDelFolder.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnDelFolder.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;btnDelFolder.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="lblDirsMonitoringCount.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
-  </data>
-  <data name="lblDirsMonitoringCount.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="lblDirsMonitoringCount.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblDirsMonitoringCount.Location" type="System.Drawing.Point, System.Drawing">
-    <value>813, 66</value>
-  </data>
-  <data name="lblDirsMonitoringCount.Size" type="System.Drawing.Size, System.Drawing">
-    <value>18, 20</value>
-  </data>
-  <data name="lblDirsMonitoringCount.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="lblDirsMonitoringCount.Text" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="lblDirsMonitoringCount.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>TopRight</value>
-  </data>
-  <data name="&gt;&gt;lblDirsMonitoringCount.Name" xml:space="preserve">
-    <value>lblDirsMonitoringCount</value>
-  </data>
-  <data name="&gt;&gt;lblDirsMonitoringCount.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblDirsMonitoringCount.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;lblDirsMonitoringCount.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;txtServerKey_Group.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="btnAddFolder.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
+  <data name="chkSearchSubdirs.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="btnAddFolder.Location" type="System.Drawing.Point, System.Drawing">
-    <value>744, 23</value>
+  <data name="&gt;&gt;cmbLang.Parent" xml:space="preserve">
+    <value>groupBox2</value>
   </data>
-  <data name="btnAddFolder.Size" type="System.Drawing.Size, System.Drawing">
-    <value>39, 38</value>
+  <data name="chkSearchSubdirs.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 42</value>
   </data>
-  <data name="btnAddFolder.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+  <data name="&gt;&gt;toolStripStatus_FilesWaiting.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="btnAddFolder.Text" xml:space="preserve">
     <value>+</value>
   </data>
-  <data name="btnAddFolder.ToolTip" xml:space="preserve">
-    <value>Add directory to monitoring list</value>
+  <data name="dataGridFileData.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
   </data>
-  <data name="&gt;&gt;btnAddFolder.Name" xml:space="preserve">
-    <value>btnAddFolder</value>
+  <data name="cmbMonitorPath.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
-  <data name="&gt;&gt;btnAddFolder.Type" xml:space="preserve">
+  <data name="btnStart.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;label3.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;toolTip1.Name" xml:space="preserve">
+    <value>toolTip1</value>
+  </data>
+  <data name="dataGridData_Exp.ToolTipText" xml:space="preserve">
+    <value>Exposure length, sec</value>
+  </data>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
+  </data>
+  <data name="tabAbout.Text" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="label17.Text" xml:space="preserve">
+    <value>(C) 2018 by Emchenko Boris</value>
+  </data>
+  <data name="lblDirsMonitoringCount.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="linkDSS.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="dataGridData_Bg.HeaderText" xml:space="preserve">
+    <value>Bg</value>
+  </data>
+  <data name="tabAbout.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>95, 13</value>
+  </data>
+  <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;btnTest.Name" xml:space="preserve">
+    <value>btnTest</value>
+  </data>
+  <data name="groupBox1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="txtSettings_urlgorup.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="linkMilantiev.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="btnAddFolder.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="statusBar.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 14, 0</value>
+  </data>
+  <data name="linkDSS.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
+  </data>
+  <data name="dataGridData_filename.HeaderText" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="&gt;&gt;label14.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="cmbMonitorPath.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;chkSettings_Autostart.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="chkSettings_Autostart.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;txtSettings_urlgorup.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="lblVersion.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="label14.Size" type="System.Drawing.Size, System.Drawing">
+    <value>352, 31</value>
+  </data>
+  <data name="&gt;&gt;statusBar.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="btnAddFolder.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>and Oleg Milantiev</value>
+  </data>
+  <data name="txtServerKey_Private.ToolTip" xml:space="preserve">
+    <value>Server key. Optional.
+Used to check valid clients. You can get it from your service provider. </value>
+  </data>
+  <data name="&gt;&gt;dataGridData_DateTime.Name" xml:space="preserve">
+    <value>dataGridData_DateTime</value>
+  </data>
+  <data name="&gt;&gt;dataGridData_DateTime.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="btnTest.Text" xml:space="preserve">
+    <value>test</value>
+  </data>
+  <data name="&gt;&gt;tabLog.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="txtLog.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="tabControl1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="btnDelFolder.Text" xml:space="preserve">
+    <value>-</value>
+  </data>
+  <data name="&gt;&gt;chkSettings_Autostart.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dataGridData_Exp.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="pictureBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>226, 115</value>
+  </data>
+  <data name="&gt;&gt;logRefreshTimer.Name" xml:space="preserve">
+    <value>logRefreshTimer</value>
+  </data>
+  <data name="&gt;&gt;lblVersion.Parent" xml:space="preserve">
+    <value>tabAbout</value>
+  </data>
+  <data name="&gt;&gt;label5.Name" xml:space="preserve">
+    <value>label5</value>
+  </data>
+  <data name="cmbMonitorPath.Size" type="System.Drawing.Size, System.Drawing">
+    <value>488, 21</value>
+  </data>
+  <data name="btnDelFolder.Size" type="System.Drawing.Size, System.Drawing">
+    <value>26, 25</value>
+  </data>
+  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>560, 62</value>
+  </data>
+  <data name="&gt;&gt;btnDelFolder.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;btnAddFolder.Parent" xml:space="preserve">
-    <value>groupBox1</value>
+  <data name="lblDirsMonitoringCount.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
+  </data>
+  <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>99, 92</value>
+  </data>
+  <data name="&gt;&gt;btnDelFolder.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="label17.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label14.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
+  </data>
+  <data name="dataGridData_DateTime.Width" type="System.Int32, mscorlib">
+    <value>120</value>
+  </data>
+  <data name="&gt;&gt;txtServerKey_Group.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="tabSettings.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="txtSettings_DSS.Size" type="System.Drawing.Size, System.Drawing">
+    <value>396, 20</value>
+  </data>
+  <data name="toolStripStatus_FilesFound.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 26</value>
+  </data>
+  <data name="&gt;&gt;tabLog.Name" xml:space="preserve">
+    <value>tabLog</value>
+  </data>
+  <data name="&gt;&gt;chkSettings_publishgroup.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="tabList.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="dataGridData_Stars.Width" type="System.Int32, mscorlib">
+    <value>35</value>
+  </data>
+  <data name="&gt;&gt;groupBox5.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="lblDirsMonitoringCount.Text" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="lblDirsMonitoringCount.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="txtServerKey_Group.Size" type="System.Drawing.Size, System.Drawing">
+    <value>122, 20</value>
+  </data>
+  <data name="label2.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;statusBar.Name" xml:space="preserve">
+    <value>statusBar</value>
+  </data>
+  <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>714, 85</value>
+  </data>
+  <data name="lblDirsMonitoringCount.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>TopRight</value>
+  </data>
+  <data name="&gt;&gt;label5.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="linkAstromania.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
+  </data>
+  <data name="tabList.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="&gt;&gt;btnAddFolder.ZOrder" xml:space="preserve">
     <value>4</value>
@@ -279,1331 +388,419 @@
   <data name="label1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
   </data>
-  <data name="label1.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="$this.Text" xml:space="preserve">
+    <value>ImageQualityPublisher</value>
   </data>
-  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>741, 66</value>
+  <data name="&gt;&gt;pictureBox1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>41, 20</value>
+  <data name="lblDirsMonitoringCount.Size" type="System.Drawing.Size, System.Drawing">
+    <value>13, 13</value>
   </data>
-  <data name="label1.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+  <data name="pictureBox1.InitialImage" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
   </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>Dirs:</value>
-  </data>
-  <data name="&gt;&gt;label1.Name" xml:space="preserve">
-    <value>label1</value>
-  </data>
-  <data name="&gt;&gt;label1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 8</value>
-  </data>
-  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>840, 95</value>
-  </data>
-  <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
+  <data name="&gt;&gt;statusBar.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="groupBox1.Text" xml:space="preserve">
-    <value>Monitor dirs</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="btnTest.Location" type="System.Drawing.Point, System.Drawing">
-    <value>321, 17</value>
-  </data>
-  <data name="btnTest.Size" type="System.Drawing.Size, System.Drawing">
-    <value>57, 40</value>
-  </data>
-  <data name="btnTest.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="btnTest.Text" xml:space="preserve">
-    <value>test</value>
-  </data>
-  <data name="btnTest.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;btnTest.Name" xml:space="preserve">
-    <value>btnTest</value>
-  </data>
-  <data name="&gt;&gt;btnTest.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnTest.Parent" xml:space="preserve">
-    <value>groupBox5</value>
-  </data>
-  <data name="&gt;&gt;btnTest.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="btnRecheck.Location" type="System.Drawing.Point, System.Drawing">
-    <value>138, 26</value>
-  </data>
-  <data name="btnRecheck.Size" type="System.Drawing.Size, System.Drawing">
-    <value>99, 40</value>
-  </data>
-  <data name="btnRecheck.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="btnRecheck.Text" xml:space="preserve">
-    <value>Reread</value>
-  </data>
-  <data name="btnRecheck.ToolTip" xml:space="preserve">
-    <value>Force reread all data for all files</value>
-  </data>
-  <data name="&gt;&gt;btnRecheck.Name" xml:space="preserve">
-    <value>btnRecheck</value>
-  </data>
-  <data name="&gt;&gt;btnRecheck.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnRecheck.Parent" xml:space="preserve">
-    <value>groupBox5</value>
-  </data>
-  <data name="&gt;&gt;btnRecheck.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="btnStart.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 26</value>
-  </data>
-  <data name="btnStart.Size" type="System.Drawing.Size, System.Drawing">
-    <value>99, 40</value>
-  </data>
-  <data name="btnStart.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="btnStart.Text" xml:space="preserve">
-    <value>Start</value>
-  </data>
-  <data name="&gt;&gt;btnStart.Name" xml:space="preserve">
-    <value>btnStart</value>
-  </data>
-  <data name="&gt;&gt;btnStart.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnStart.Parent" xml:space="preserve">
-    <value>groupBox5</value>
-  </data>
-  <data name="&gt;&gt;btnStart.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <metadata name="folderBrowserDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>649, 17</value>
-  </metadata>
-  <data name="groupBox2.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <data name="label38.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label38.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label38.Location" type="System.Drawing.Point, System.Drawing">
-    <value>18, 97</value>
-  </data>
-  <data name="label38.Size" type="System.Drawing.Size, System.Drawing">
-    <value>81, 20</value>
-  </data>
-  <data name="label38.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="label38.Text" xml:space="preserve">
-    <value>Language</value>
-  </data>
-  <data name="&gt;&gt;label38.Name" xml:space="preserve">
-    <value>label38</value>
-  </data>
-  <data name="&gt;&gt;label38.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label38.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;label38.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="cmbLang.Location" type="System.Drawing.Point, System.Drawing">
-    <value>267, 92</value>
-  </data>
-  <data name="cmbLang.Size" type="System.Drawing.Size, System.Drawing">
-    <value>214, 28</value>
-  </data>
-  <data name="cmbLang.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="cmbLang.ToolTip" xml:space="preserve">
-    <value>Interface language. For switching needs program restart
-Выбор языка интерфейса. Для переключения, необходимо перезапустить программу</value>
-  </data>
-  <data name="&gt;&gt;cmbLang.Name" xml:space="preserve">
-    <value>cmbLang</value>
-  </data>
-  <data name="&gt;&gt;cmbLang.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cmbLang.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;cmbLang.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="linkDSS.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
-  </data>
-  <data name="linkDSS.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="linkDSS.Location" type="System.Drawing.Point, System.Drawing">
-    <value>933, 65</value>
-  </data>
-  <data name="linkDSS.Size" type="System.Drawing.Size, System.Drawing">
-    <value>118, 20</value>
-  </data>
-  <data name="linkDSS.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="linkDSS.Text" xml:space="preserve">
-    <value>Download DSS</value>
-  </data>
-  <data name="&gt;&gt;linkDSS.Name" xml:space="preserve">
-    <value>linkDSS</value>
-  </data>
-  <data name="&gt;&gt;linkDSS.Type" xml:space="preserve">
-    <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;linkDSS.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;linkDSS.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="btnLoadDSSPath.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
-  </data>
-  <data name="btnLoadDSSPath.Location" type="System.Drawing.Point, System.Drawing">
-    <value>867, 58</value>
-  </data>
-  <data name="btnLoadDSSPath.Size" type="System.Drawing.Size, System.Drawing">
-    <value>57, 32</value>
-  </data>
-  <data name="btnLoadDSSPath.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="btnLoadDSSPath.Text" xml:space="preserve">
-    <value>...</value>
-  </data>
-  <data name="&gt;&gt;btnLoadDSSPath.Name" xml:space="preserve">
-    <value>btnLoadDSSPath</value>
-  </data>
-  <data name="&gt;&gt;btnLoadDSSPath.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnLoadDSSPath.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;btnLoadDSSPath.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="label5.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>18, 65</value>
-  </data>
-  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>165, 20</value>
-  </data>
-  <data name="label5.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="label5.Text" xml:space="preserve">
-    <value>DeepSkyStacker path</value>
-  </data>
-  <data name="label5.ToolTip" xml:space="preserve">
-    <value>Path to file DeepSkyStackerCL.exe</value>
-  </data>
-  <data name="&gt;&gt;label5.Name" xml:space="preserve">
-    <value>label5</value>
-  </data>
-  <data name="&gt;&gt;label5.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label5.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="txtSettings_DSS.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <data name="txtSettings_DSS.Location" type="System.Drawing.Point, System.Drawing">
-    <value>267, 60</value>
-  </data>
-  <data name="txtSettings_DSS.Size" type="System.Drawing.Size, System.Drawing">
-    <value>592, 26</value>
-  </data>
-  <data name="txtSettings_DSS.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;txtSettings_DSS.Name" xml:space="preserve">
-    <value>txtSettings_DSS</value>
-  </data>
-  <data name="&gt;&gt;txtSettings_DSS.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtSettings_DSS.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;txtSettings_DSS.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="chkSettings_Autostart.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="chkSettings_Autostart.Location" type="System.Drawing.Point, System.Drawing">
-    <value>18, 26</value>
-  </data>
-  <data name="chkSettings_Autostart.Size" type="System.Drawing.Size, System.Drawing">
-    <value>179, 24</value>
-  </data>
-  <data name="chkSettings_Autostart.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="chkSettings_Autostart.Text" xml:space="preserve">
-    <value>Autostart monitoring</value>
-  </data>
-  <data name="chkSettings_Autostart.ToolTip" xml:space="preserve">
-    <value>Autostart monitoring with starting of program</value>
-  </data>
-  <data name="&gt;&gt;chkSettings_Autostart.Name" xml:space="preserve">
-    <value>chkSettings_Autostart</value>
-  </data>
-  <data name="&gt;&gt;chkSettings_Autostart.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;chkSettings_Autostart.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;chkSettings_Autostart.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 5</value>
-  </data>
-  <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1071, 131</value>
+  <data name="&gt;&gt;chkSettings_publishgroup.Name" xml:space="preserve">
+    <value>chkSettings_publishgroup</value>
   </data>
   <data name="groupBox2.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="groupBox2.Text" xml:space="preserve">
-    <value>Options</value>
+  <data name="toolStripDropDownLogLevel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>169, 29</value>
   </data>
-  <data name="&gt;&gt;groupBox2.Name" xml:space="preserve">
-    <value>groupBox2</value>
+  <data name="groupBox2.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
-  <data name="&gt;&gt;groupBox2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;txtSettings_urlgorup.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;groupBox2.Parent" xml:space="preserve">
-    <value>tabSettings</value>
+  <data name="chkSettings_publishprivate.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 69</value>
+  </data>
+  <data name="label17.Size" type="System.Drawing.Size, System.Drawing">
+    <value>141, 13</value>
+  </data>
+  <data name="&gt;&gt;dataGridData_FWHM.Name" xml:space="preserve">
+    <value>dataGridData_FWHM</value>
+  </data>
+  <data name="&gt;&gt;tabAbout.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;chkSettings_publishprivate.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="dataGridData_DateTime.HeaderText" xml:space="preserve">
+    <value>DateTime</value>
+  </data>
+  <data name="linkAstrohostel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="txtServerKey_Group.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="btnRecheck.Size" type="System.Drawing.Size, System.Drawing">
+    <value>66, 26</value>
+  </data>
+  <data name="&gt;&gt;dataGridData_Alt.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="pictureBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>2, 5</value>
+  </data>
+  <data name="&gt;&gt;pictureBox1.Parent" xml:space="preserve">
+    <value>tabAbout</value>
+  </data>
+  <data name="groupBox1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="groupBox5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>162, 62</value>
+  </data>
+  <data name="&gt;&gt;dataGridData_Stars.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;linkAstrohostel.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;label7.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="linkAstrohostel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="&gt;&gt;chkSettings_publishprivate.Name" xml:space="preserve">
+    <value>chkSettings_publishprivate</value>
+  </data>
+  <data name="tabLog.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="&gt;&gt;groupBox2.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="txtLog.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left, Right</value>
+  <data name="btnRecheck.ToolTip" xml:space="preserve">
+    <value>Force reread all data for all files</value>
   </data>
-  <data name="txtLog.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
+  <data name="linkAstromania.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
   </data>
-  <data name="txtLog.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1087, 424</value>
+  <data name="linkDSS.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="txtLog.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+  <data name="label1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="txtLog.Text" xml:space="preserve">
+  <data name="chkSettings_publishprivate.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="linkAstromania.Text" xml:space="preserve">
+    <value>(www.astromania.info)</value>
+  </data>
+  <data name="txtSettings_urlprivate.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;tabSettings.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;label17.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="label6.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="&gt;&gt;txtLog.Name" xml:space="preserve">
-    <value>txtLog</value>
+  <data name="btnStart.Size" type="System.Drawing.Size, System.Drawing">
+    <value>66, 26</value>
   </data>
-  <data name="&gt;&gt;txtLog.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RichTextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="btnTest.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
-  <data name="&gt;&gt;txtLog.Parent" xml:space="preserve">
-    <value>tabLog</value>
-  </data>
-  <data name="&gt;&gt;txtLog.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="tabControl1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left, Right</value>
-  </data>
-  <data name="dataGridFileData.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left, Right</value>
-  </data>
-  <metadata name="dataGridData_filename.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="dataGridData_filename.HeaderText" xml:space="preserve">
-    <value>Name</value>
-  </data>
-  <data name="dataGridData_filename.MinimumWidth" type="System.Int32, mscorlib">
-    <value>100</value>
-  </data>
-  <metadata name="dataGridData_DateTime.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="dataGridData_DateTime.HeaderText" xml:space="preserve">
-    <value>DateTime</value>
-  </data>
-  <data name="dataGridData_DateTime.MinimumWidth" type="System.Int32, mscorlib">
-    <value>50</value>
-  </data>
-  <data name="dataGridData_DateTime.ToolTipText" xml:space="preserve">
-    <value>Time of exposure, local time</value>
-  </data>
-  <data name="dataGridData_DateTime.Width" type="System.Int32, mscorlib">
-    <value>120</value>
-  </data>
-  <metadata name="dataGridData_Alt.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="dataGridData_Alt.HeaderText" xml:space="preserve">
-    <value>Alt</value>
-  </data>
-  <data name="dataGridData_Alt.ToolTipText" xml:space="preserve">
-    <value>Altitude of object during exposure</value>
-  </data>
-  <data name="dataGridData_Alt.Width" type="System.Int32, mscorlib">
-    <value>30</value>
-  </data>
-  <metadata name="dataGridData_Stars.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="dataGridData_Stars.HeaderText" xml:space="preserve">
-    <value>Stars</value>
-  </data>
-  <data name="dataGridData_Stars.ToolTipText" xml:space="preserve">
-    <value>Number of detected stars (DSS)</value>
-  </data>
-  <data name="dataGridData_Stars.Width" type="System.Int32, mscorlib">
-    <value>35</value>
-  </data>
-  <metadata name="dataGridData_FWHM.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="dataGridData_FWHM.HeaderText" xml:space="preserve">
-    <value>FWHM"</value>
-  </data>
-  <data name="dataGridData_FWHM.ToolTipText" xml:space="preserve">
-    <value>FWHM"</value>
-  </data>
-  <data name="dataGridData_FWHM.Width" type="System.Int32, mscorlib">
-    <value>47</value>
-  </data>
-  <metadata name="dataGridData_MeanRadius.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="dataGridData_MeanRadius.HeaderText" xml:space="preserve">
-    <value>MeanRadius</value>
-  </data>
-  <data name="dataGridData_MeanRadius.ToolTipText" xml:space="preserve">
-    <value>Mean Radius (DSS)</value>
-  </data>
-  <data name="dataGridData_MeanRadius.Width" type="System.Int32, mscorlib">
-    <value>40</value>
-  </data>
-  <metadata name="dataGridData_Bg.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="dataGridData_Bg.HeaderText" xml:space="preserve">
-    <value>Bg</value>
-  </data>
-  <data name="dataGridData_Bg.ToolTipText" xml:space="preserve">
-    <value>Background brightness (DSS)</value>
-  </data>
-  <data name="dataGridData_Bg.Width" type="System.Int32, mscorlib">
-    <value>40</value>
-  </data>
-  <metadata name="dataGridData_Exp.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="dataGridData_Exp.HeaderText" xml:space="preserve">
-    <value>Exp</value>
-  </data>
-  <data name="dataGridData_Exp.ToolTipText" xml:space="preserve">
-    <value>Exposure length, sec</value>
-  </data>
-  <data name="dataGridData_Exp.Width" type="System.Int32, mscorlib">
-    <value>35</value>
-  </data>
-  <data name="dataGridFileData.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="dataGridFileData.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 5, 3, 5</value>
-  </data>
-  <data name="dataGridFileData.RowHeadersWidth" type="System.Int32, mscorlib">
-    <value>10</value>
-  </data>
-  <data name="dataGridFileData.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1089, 432</value>
-  </data>
-  <data name="dataGridFileData.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;dataGridFileData.Name" xml:space="preserve">
-    <value>dataGridFileData</value>
-  </data>
-  <data name="&gt;&gt;dataGridFileData.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;dataGridFileData.Parent" xml:space="preserve">
-    <value>tabList</value>
-  </data>
-  <data name="&gt;&gt;dataGridFileData.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="tabList.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 29</value>
-  </data>
-  <data name="tabList.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="tabList.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1093, 433</value>
-  </data>
-  <data name="tabList.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="tabList.Text" xml:space="preserve">
-    <value>Images</value>
-  </data>
-  <data name="&gt;&gt;tabList.Name" xml:space="preserve">
-    <value>tabList</value>
-  </data>
-  <data name="&gt;&gt;tabList.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabList.Parent" xml:space="preserve">
-    <value>tabControl1</value>
-  </data>
-  <data name="&gt;&gt;tabList.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="tabLog.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 29</value>
-  </data>
-  <data name="tabLog.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="tabLog.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1093, 433</value>
-  </data>
-  <data name="tabLog.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="tabLog.Text" xml:space="preserve">
-    <value>Log</value>
-  </data>
-  <data name="&gt;&gt;tabLog.Name" xml:space="preserve">
-    <value>tabLog</value>
-  </data>
-  <data name="&gt;&gt;tabLog.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabLog.Parent" xml:space="preserve">
-    <value>tabControl1</value>
-  </data>
-  <data name="&gt;&gt;tabLog.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="btnSettings_Save.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 382</value>
-  </data>
-  <data name="btnSettings_Save.Size" type="System.Drawing.Size, System.Drawing">
-    <value>168, 34</value>
-  </data>
-  <data name="btnSettings_Save.TabIndex" type="System.Int32, mscorlib">
+  <data name="btnTest.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
-  <data name="btnSettings_Save.Text" xml:space="preserve">
-    <value>Save settings</value>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>25, 13</value>
   </data>
-  <data name="&gt;&gt;btnSettings_Save.Name" xml:space="preserve">
-    <value>btnSettings_Save</value>
+  <data name="label17.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="&gt;&gt;btnSettings_Save.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;btnSettings_Save.Parent" xml:space="preserve">
-    <value>tabSettings</value>
-  </data>
-  <data name="&gt;&gt;btnSettings_Save.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="groupBox4.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <data name="label3.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label3.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>148, 136</value>
-  </data>
-  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>35, 20</value>
-  </data>
-  <data name="label3.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="label3.Text" xml:space="preserve">
-    <value>Key</value>
-  </data>
-  <data name="&gt;&gt;label3.Name" xml:space="preserve">
-    <value>label3</value>
-  </data>
-  <data name="&gt;&gt;label3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label3.Parent" xml:space="preserve">
-    <value>groupBox4</value>
-  </data>
-  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="label2.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>146, 60</value>
-  </data>
-  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>35, 20</value>
-  </data>
-  <data name="label2.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>Key</value>
-  </data>
-  <data name="&gt;&gt;label2.Name" xml:space="preserve">
-    <value>label2</value>
-  </data>
-  <data name="&gt;&gt;label2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
-    <value>groupBox4</value>
+  <data name="&gt;&gt;tabList.Parent" xml:space="preserve">
+    <value>tabControl1</value>
   </data>
   <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="txtServerKey_Private.Location" type="System.Drawing.Point, System.Drawing">
-    <value>267, 133</value>
+  <data name="tabLog.ToolTip" xml:space="preserve">
+    <value />
   </data>
-  <data name="txtServerKey_Private.Size" type="System.Drawing.Size, System.Drawing">
-    <value>181, 26</value>
+  <data name="toolStripStatus_FilesWaiting.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 26</value>
   </data>
-  <data name="txtServerKey_Private.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
+    <value>5</value>
   </data>
-  <data name="txtServerKey_Private.ToolTip" xml:space="preserve">
-    <value>Server key. Optional.
-Used to check valid clients. You can get it from your service provider. </value>
+  <data name="&gt;&gt;tabSettings.Parent" xml:space="preserve">
+    <value>tabControl1</value>
   </data>
-  <data name="&gt;&gt;txtServerKey_Private.Name" xml:space="preserve">
-    <value>txtServerKey_Private</value>
+  <data name="&gt;&gt;linkAstromania.ZOrder" xml:space="preserve">
+    <value>7</value>
   </data>
-  <data name="&gt;&gt;txtServerKey_Private.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>112, 13</value>
   </data>
-  <data name="&gt;&gt;txtServerKey_Private.Parent" xml:space="preserve">
-    <value>groupBox4</value>
+  <data name="&gt;&gt;toolStripStatus_FilesWaiting.Name" xml:space="preserve">
+    <value>toolStripStatus_FilesWaiting</value>
   </data>
-  <data name="&gt;&gt;txtServerKey_Private.ZOrder" xml:space="preserve">
-    <value>2</value>
+  <data name="&gt;&gt;btnStart.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
-  <data name="txtServerKey_Group.Location" type="System.Drawing.Point, System.Drawing">
-    <value>267, 57</value>
+  <data name="btnAddFolder.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
   </data>
-  <data name="txtServerKey_Group.Size" type="System.Drawing.Size, System.Drawing">
-    <value>181, 26</value>
+  <data name="groupBox5.ToolTip" xml:space="preserve">
+    <value />
   </data>
-  <data name="txtServerKey_Group.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>25, 13</value>
+  </data>
+  <data name="label3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
+  </data>
+  <data name="btnRecheck.Location" type="System.Drawing.Point, System.Drawing">
+    <value>92, 17</value>
+  </data>
+  <data name="&gt;&gt;txtServerKey_Group.Name" xml:space="preserve">
+    <value>txtServerKey_Group</value>
+  </data>
+  <data name="cmbLang.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="label17.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;label7.Parent" xml:space="preserve">
+    <value>tabAbout</value>
+  </data>
+  <data name="dataGridFileData.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
   </data>
   <data name="txtServerKey_Group.ToolTip" xml:space="preserve">
     <value>Server key. Optional.
 Used to check valid clients. You can get it from your service provider. </value>
   </data>
-  <data name="&gt;&gt;txtServerKey_Group.Name" xml:space="preserve">
-    <value>txtServerKey_Group</value>
-  </data>
-  <data name="&gt;&gt;txtServerKey_Group.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtServerKey_Group.Parent" xml:space="preserve">
-    <value>groupBox4</value>
-  </data>
-  <data name="&gt;&gt;txtServerKey_Group.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="txtSettings_urlprivate.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <data name="txtSettings_urlprivate.Location" type="System.Drawing.Point, System.Drawing">
-    <value>267, 102</value>
-  </data>
-  <data name="txtSettings_urlprivate.Size" type="System.Drawing.Size, System.Drawing">
-    <value>784, 26</value>
-  </data>
-  <data name="txtSettings_urlprivate.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;txtSettings_urlprivate.Name" xml:space="preserve">
-    <value>txtSettings_urlprivate</value>
-  </data>
-  <data name="&gt;&gt;txtSettings_urlprivate.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtSettings_urlprivate.Parent" xml:space="preserve">
-    <value>groupBox4</value>
-  </data>
-  <data name="&gt;&gt;txtSettings_urlprivate.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="txtSettings_urlgorup.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <data name="txtSettings_urlgorup.Location" type="System.Drawing.Point, System.Drawing">
-    <value>267, 27</value>
-  </data>
-  <data name="txtSettings_urlgorup.Size" type="System.Drawing.Size, System.Drawing">
-    <value>784, 26</value>
-  </data>
-  <data name="txtSettings_urlgorup.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;txtSettings_urlgorup.Name" xml:space="preserve">
-    <value>txtSettings_urlgorup</value>
-  </data>
-  <data name="&gt;&gt;txtSettings_urlgorup.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtSettings_urlgorup.Parent" xml:space="preserve">
-    <value>groupBox4</value>
-  </data>
-  <data name="&gt;&gt;txtSettings_urlgorup.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="chkSettings_publishprivate.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="chkSettings_publishprivate.Location" type="System.Drawing.Point, System.Drawing">
-    <value>18, 106</value>
-  </data>
-  <data name="chkSettings_publishprivate.Size" type="System.Drawing.Size, System.Drawing">
-    <value>188, 24</value>
-  </data>
-  <data name="chkSettings_publishprivate.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="chkSettings_publishprivate.Text" xml:space="preserve">
-    <value>Publish to private web</value>
-  </data>
-  <data name="chkSettings_publishprivate.ToolTip" xml:space="preserve">
-    <value>Publish data to private web resouce</value>
-  </data>
-  <data name="&gt;&gt;chkSettings_publishprivate.Name" xml:space="preserve">
-    <value>chkSettings_publishprivate</value>
-  </data>
-  <data name="&gt;&gt;chkSettings_publishprivate.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;chkSettings_publishprivate.Parent" xml:space="preserve">
-    <value>groupBox4</value>
-  </data>
-  <data name="&gt;&gt;chkSettings_publishprivate.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="chkSettings_publishgroup.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="chkSettings_publishgroup.Location" type="System.Drawing.Point, System.Drawing">
-    <value>18, 29</value>
-  </data>
-  <data name="chkSettings_publishgroup.Size" type="System.Drawing.Size, System.Drawing">
-    <value>182, 24</value>
-  </data>
-  <data name="chkSettings_publishgroup.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="chkSettings_publishgroup.Text" xml:space="preserve">
-    <value>Publish to public web</value>
-  </data>
-  <data name="&gt;&gt;chkSettings_publishgroup.Name" xml:space="preserve">
-    <value>chkSettings_publishgroup</value>
-  </data>
-  <data name="&gt;&gt;chkSettings_publishgroup.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;chkSettings_publishgroup.Parent" xml:space="preserve">
-    <value>groupBox4</value>
-  </data>
-  <data name="&gt;&gt;chkSettings_publishgroup.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="groupBox4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 155</value>
-  </data>
-  <data name="groupBox4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1071, 185</value>
-  </data>
-  <data name="groupBox4.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="groupBox4.Text" xml:space="preserve">
-    <value>Web</value>
-  </data>
-  <data name="&gt;&gt;groupBox4.Name" xml:space="preserve">
-    <value>groupBox4</value>
-  </data>
-  <data name="&gt;&gt;groupBox4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBox4.Parent" xml:space="preserve">
-    <value>tabSettings</value>
-  </data>
-  <data name="&gt;&gt;groupBox4.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="tabSettings.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 29</value>
-  </data>
-  <data name="tabSettings.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="tabSettings.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1093, 433</value>
-  </data>
-  <data name="tabSettings.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="tabSettings.Text" xml:space="preserve">
-    <value>Settings</value>
-  </data>
-  <data name="&gt;&gt;tabSettings.Name" xml:space="preserve">
-    <value>tabSettings</value>
-  </data>
-  <data name="&gt;&gt;tabSettings.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabSettings.Parent" xml:space="preserve">
-    <value>tabControl1</value>
-  </data>
-  <data name="&gt;&gt;tabSettings.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="label7.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label7.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>744, 55</value>
-  </data>
-  <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>138, 20</value>
-  </data>
-  <data name="label7.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
-  </data>
-  <data name="label7.Text" xml:space="preserve">
-    <value>and Oleg Milantiev</value>
-  </data>
-  <data name="&gt;&gt;label7.Name" xml:space="preserve">
-    <value>label7</value>
-  </data>
-  <data name="&gt;&gt;label7.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label7.Parent" xml:space="preserve">
-    <value>tabAbout</value>
-  </data>
-  <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="lblVersion.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblVersion.Location" type="System.Drawing.Point, System.Drawing">
-    <value>366, 129</value>
-  </data>
-  <data name="lblVersion.Size" type="System.Drawing.Size, System.Drawing">
-    <value>525, 129</value>
-  </data>
-  <data name="lblVersion.TabIndex" type="System.Int32, mscorlib">
-    <value>12</value>
-  </data>
-  <data name="&gt;&gt;lblVersion.Name" xml:space="preserve">
-    <value>lblVersion</value>
+  <data name="lblVersion.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="&gt;&gt;lblVersion.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;lblVersion.Parent" xml:space="preserve">
-    <value>tabAbout</value>
+  <data name="&gt;&gt;dataGridData_Bg.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;lblVersion.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="&gt;&gt;dataGridData_Alt.Name" xml:space="preserve">
+    <value>dataGridData_Alt</value>
   </data>
-  <data name="label14.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 9pt, style=Bold</value>
+  <data name="dataGridData_FWHM.ToolTipText" xml:space="preserve">
+    <value>FWHM"</value>
   </data>
-  <data name="label14.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="tabControl1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>734, 303</value>
   </data>
-  <data name="label14.Location" type="System.Drawing.Point, System.Drawing">
-    <value>363, 8</value>
+  <data name="btnStart.Text" xml:space="preserve">
+    <value>Start</value>
   </data>
-  <data name="label14.Size" type="System.Drawing.Size, System.Drawing">
-    <value>528, 48</value>
-  </data>
-  <data name="label14.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
-  </data>
-  <data name="label14.Text" xml:space="preserve">
-    <value>Image Quality Publisher</value>
-  </data>
-  <data name="&gt;&gt;label14.Name" xml:space="preserve">
-    <value>label14</value>
-  </data>
-  <data name="&gt;&gt;label14.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label14.Parent" xml:space="preserve">
-    <value>tabAbout</value>
-  </data>
-  <data name="&gt;&gt;label14.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="label6.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label6.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>363, 97</value>
-  </data>
-  <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>211, 20</value>
-  </data>
-  <data name="label6.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
-  </data>
-  <data name="label6.Text" xml:space="preserve">
-    <value>Part of Astrohostel.ru project</value>
-  </data>
-  <data name="&gt;&gt;label6.Name" xml:space="preserve">
-    <value>label6</value>
-  </data>
-  <data name="&gt;&gt;label6.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label6.Parent" xml:space="preserve">
-    <value>tabAbout</value>
-  </data>
-  <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="label17.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label17.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label17.Location" type="System.Drawing.Point, System.Drawing">
-    <value>363, 55</value>
-  </data>
-  <data name="label17.Size" type="System.Drawing.Size, System.Drawing">
-    <value>210, 20</value>
-  </data>
-  <data name="label17.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
-  </data>
-  <data name="label17.Text" xml:space="preserve">
-    <value>(C) 2018 by Emchenko Boris</value>
-  </data>
-  <data name="&gt;&gt;label17.Name" xml:space="preserve">
-    <value>label17</value>
-  </data>
-  <data name="&gt;&gt;label17.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label17.Parent" xml:space="preserve">
-    <value>tabAbout</value>
-  </data>
-  <data name="&gt;&gt;label17.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="linkAstrohostel.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="linkAstrohostel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="linkAstrohostel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>582, 97</value>
-  </data>
-  <data name="linkAstrohostel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>106, 20</value>
-  </data>
-  <data name="linkAstrohostel.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="linkAstrohostel.Text" xml:space="preserve">
-    <value>astrohostel.ru</value>
-  </data>
-  <data name="&gt;&gt;linkAstrohostel.Name" xml:space="preserve">
-    <value>linkAstrohostel</value>
-  </data>
-  <data name="&gt;&gt;linkAstrohostel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;linkAstrohostel.Parent" xml:space="preserve">
-    <value>tabAbout</value>
-  </data>
-  <data name="&gt;&gt;linkAstrohostel.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="linkMilantiev.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="linkMilantiev.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="linkMilantiev.Location" type="System.Drawing.Point, System.Drawing">
-    <value>885, 55</value>
-  </data>
-  <data name="linkMilantiev.Size" type="System.Drawing.Size, System.Drawing">
-    <value>154, 20</value>
-  </data>
-  <data name="linkMilantiev.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="linkMilantiev.Text" xml:space="preserve">
-    <value>(astro.milantiev.com)</value>
-  </data>
-  <data name="&gt;&gt;linkMilantiev.Name" xml:space="preserve">
-    <value>linkMilantiev</value>
-  </data>
-  <data name="&gt;&gt;linkMilantiev.Type" xml:space="preserve">
-    <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="tabSettings.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
   </data>
   <data name="&gt;&gt;linkMilantiev.Parent" xml:space="preserve">
     <value>tabAbout</value>
   </data>
+  <data name="statusBar.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 370</value>
+  </data>
+  <data name="chkSettings_Autostart.ToolTip" xml:space="preserve">
+    <value>Autostart monitoring with starting of program</value>
+  </data>
+  <data name="&gt;&gt;openFileDialog1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.OpenFileDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabSettings.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="btnTest.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="statusBar.Size" type="System.Drawing.Size, System.Drawing">
+    <value>734, 31</value>
+  </data>
+  <data name="&gt;&gt;lblDirsMonitoringCount.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;linkMilantiev.Name" xml:space="preserve">
+    <value>linkMilantiev</value>
+  </data>
   <data name="&gt;&gt;linkMilantiev.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
-  <data name="linkAstromania.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="linkAstromania.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="linkAstromania.Location" type="System.Drawing.Point, System.Drawing">
-    <value>573, 55</value>
-  </data>
-  <data name="linkAstromania.Size" type="System.Drawing.Size, System.Drawing">
-    <value>165, 20</value>
-  </data>
-  <data name="linkAstromania.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="linkAstromania.Text" xml:space="preserve">
-    <value>(www.astromania.info)</value>
-  </data>
-  <data name="&gt;&gt;linkAstromania.Name" xml:space="preserve">
-    <value>linkAstromania</value>
-  </data>
-  <data name="&gt;&gt;linkAstromania.Type" xml:space="preserve">
-    <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;linkAstromania.Parent" xml:space="preserve">
+  <data name="&gt;&gt;label14.Parent" xml:space="preserve">
     <value>tabAbout</value>
   </data>
-  <data name="&gt;&gt;linkAstromania.ZOrder" xml:space="preserve">
-    <value>7</value>
+  <data name="&gt;&gt;cmbLang.Name" xml:space="preserve">
+    <value>cmbLang</value>
   </data>
-  <data name="pictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        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
-</value>
+  <data name="chkSettings_publishgroup.Size" type="System.Drawing.Size, System.Drawing">
+    <value>126, 17</value>
   </data>
-  <data name="pictureBox1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="groupBox4.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
-  <data name="pictureBox1.InitialImage" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="dataGridData_FWHM.Width" type="System.Int32, mscorlib">
+    <value>47</value>
   </data>
-  <data name="pictureBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 8</value>
+  <data name="&gt;&gt;txtLog.Parent" xml:space="preserve">
+    <value>tabLog</value>
+  </data>
+  <data name="groupBox5.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
   </data>
   <data name="pictureBox1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 5, 3, 5</value>
+    <value>2, 3, 2, 3</value>
   </data>
-  <data name="pictureBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>339, 177</value>
+  <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
-  <data name="pictureBox1.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
-    <value>CenterImage</value>
+  <data name="&gt;&gt;btnTest.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="pictureBox1.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
+  <data name="dataGridData_Alt.ToolTipText" xml:space="preserve">
+    <value>Altitude of object during exposure</value>
   </data>
-  <data name="&gt;&gt;pictureBox1.Name" xml:space="preserve">
-    <value>pictureBox1</value>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value />
   </data>
-  <data name="&gt;&gt;pictureBox1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;logRefreshTimer.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;pictureBox1.Parent" xml:space="preserve">
-    <value>tabAbout</value>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;pictureBox1.ZOrder" xml:space="preserve">
-    <value>8</value>
+  <data name="label14.Location" type="System.Drawing.Point, System.Drawing">
+    <value>242, 5</value>
+  </data>
+  <data name="chkSettings_publishprivate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>130, 17</value>
+  </data>
+  <data name="&gt;&gt;linkDSS.Name" xml:space="preserve">
+    <value>linkDSS</value>
+  </data>
+  <data name="dataGridFileData.RowHeadersWidth" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;btnRecheck.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="chkSettings_publishgroup.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="chkSettings_Autostart.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
+    <value>groupBox1</value>
   </data>
   <data name="tabAbout.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 29</value>
+    <value>4, 22</value>
   </data>
-  <data name="tabAbout.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
+  <data name="btnTest.Location" type="System.Drawing.Point, System.Drawing">
+    <value>214, 11</value>
+  </data>
+  <data name="&gt;&gt;cmbMonitorPath.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="txtSettings_urlgorup.Size" type="System.Drawing.Size, System.Drawing">
+    <value>524, 20</value>
+  </data>
+  <data name="tabSettings.Size" type="System.Drawing.Size, System.Drawing">
+    <value>726, 277</value>
+  </data>
+  <data name="groupBox5.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="&gt;&gt;btnDelFolder.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;linkMilantiev.Type" xml:space="preserve">
+    <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="btnLoadDSSPath.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="tabAbout.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="tabAbout.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1093, 433</value>
+    <value>726, 277</value>
   </data>
-  <data name="tabAbout.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+  <data name="btnStart.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
-  <data name="tabAbout.Text" xml:space="preserve">
-    <value>About</value>
+  <data name="&gt;&gt;label2.Name" xml:space="preserve">
+    <value>label2</value>
   </data>
-  <data name="&gt;&gt;tabAbout.Name" xml:space="preserve">
-    <value>tabAbout</value>
+  <data name="&gt;&gt;dataGridData_Exp.Name" xml:space="preserve">
+    <value>dataGridData_Exp</value>
   </data>
-  <data name="&gt;&gt;tabAbout.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;groupBox4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tabAbout.Parent" xml:space="preserve">
-    <value>tabControl1</value>
+  <data name="txtSettings_urlgorup.Location" type="System.Drawing.Point, System.Drawing">
+    <value>178, 17</value>
   </data>
-  <data name="&gt;&gt;tabAbout.ZOrder" xml:space="preserve">
-    <value>3</value>
+  <data name="&gt;&gt;openFileDialog1.Name" xml:space="preserve">
+    <value>openFileDialog1</value>
   </data>
-  <data name="tabControl1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 109</value>
-  </data>
-  <data name="tabControl1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1101, 466</value>
-  </data>
-  <data name="tabControl1.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;tabControl1.Name" xml:space="preserve">
-    <value>tabControl1</value>
-  </data>
-  <data name="&gt;&gt;tabControl1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabControl1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;tabControl1.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <metadata name="logRefreshTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>237, 17</value>
-  </metadata>
-  <metadata name="statusBar.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1205, 17</value>
-  </metadata>
-  <data name="toolStripStatus_FilesFound.AutoSize" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="toolStripStatus_FilesFound.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 26</value>
-  </data>
-  <data name="toolStripStatus_FilesFound.Text" xml:space="preserve">
-    <value>Files found: 0</value>
-  </data>
-  <data name="toolStripStatus_FilesFound.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleLeft</value>
-  </data>
-  <data name="toolStripStatus_FilesProcessed.AutoSize" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="toolStripStatus_FilesProcessed.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 26</value>
-  </data>
-  <data name="toolStripStatus_FilesProcessed.Text" xml:space="preserve">
-    <value>File processed: 0</value>
-  </data>
-  <data name="toolStripStatus_FilesProcessed.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleLeft</value>
-  </data>
-  <data name="toolStripStatus_FilesWaiting.AutoSize" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="toolStripStatus_FilesWaiting.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 26</value>
+  <data name="label38.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="toolStripStatus_FilesWaiting.Text" xml:space="preserve">
     <value>Quequed: 0</value>
   </data>
-  <data name="toolStripStatus_FilesWaiting.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleLeft</value>
+  <data name="label17.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="label38.Size" type="System.Drawing.Size, System.Drawing">
+    <value>55, 13</value>
+  </data>
+  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;toolStripStatus_FilesFound.Name" xml:space="preserve">
+    <value>toolStripStatus_FilesFound</value>
+  </data>
+  <data name="&gt;&gt;txtLog.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RichTextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="chkSettings_Autostart.Size" type="System.Drawing.Size, System.Drawing">
+    <value>119, 17</value>
+  </data>
+  <data name="chkSettings_publishgroup.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 19</value>
+  </data>
+  <data name="&gt;&gt;txtLog.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="toolStripDropDownLogLevel.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
+        YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
         YKxG6WBogkMZKgPNCEVJFBGdGETEvgwyO9DJE5syZw3PIlPEE9pgBCLZ5XvdMB8Ew8gXbl54nuf63dd9
         0OGSnwCahxbPRNPAPMw9Xpg6ZmF46kZZ0xSKzJPIrhpDWsVnpBhGkKx3nAX8Pv7z1zg8OoY/cITdn4fw
         bf/C0kYAN3Ma/w3gWfZL5kzTKBxjWyK2DftwI9tyMYCZKXbNHaD91bLYJrDXsYbrWfUKwJrPE9M2M1Oc
@@ -1615,89 +812,987 @@ Used to check valid clients. You can get it from your service provider. </value>
         TgDQASA1MVpwzwAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="toolStripDropDownLogLevel.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
+  <data name="linkAstromania.Location" type="System.Drawing.Point, System.Drawing">
+    <value>382, 36</value>
   </data>
-  <data name="toolStripDropDownLogLevel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>255, 29</value>
+  <data name="&gt;&gt;dataGridData_filename.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="toolStripDropDownLogLevel.Text" xml:space="preserve">
+  <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>746, 388</value>
+  </data>
+  <data name="toolStripStatus_FilesProcessed.Text" xml:space="preserve">
+    <value>File processed: 0</value>
+  </data>
+  <data name="toolStripStatus_FilesFound.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="label3.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="groupBox1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="label38.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="groupBox4.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
+    <value>496, 36</value>
+  </data>
+  <data name="statusBar.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;chkSettings_publishgroup.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripDropDownLogLevel.Name" xml:space="preserve">
     <value>toolStripDropDownLogLevel</value>
   </data>
-  <data name="toolStripLogSize.Size" type="System.Drawing.Size, System.Drawing">
-    <value>73, 26</value>
+  <data name="txtLog.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
-  <data name="toolStripLogSize.Text" xml:space="preserve">
-    <value>LogRec:</value>
+  <data name="txtSettings_DSS.Location" type="System.Drawing.Point, System.Drawing">
+    <value>178, 39</value>
   </data>
-  <data name="statusBar.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 586</value>
+  <data name="linkMilantiev.ToolTip" xml:space="preserve">
+    <value />
   </data>
-  <data name="statusBar.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 0, 21, 0</value>
+  <data name="&gt;&gt;txtServerKey_Private.Parent" xml:space="preserve">
+    <value>groupBox4</value>
   </data>
-  <data name="statusBar.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1101, 31</value>
+  <data name="btnAddFolder.Size" type="System.Drawing.Size, System.Drawing">
+    <value>26, 25</value>
   </data>
-  <data name="statusBar.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
+  <data name="&gt;&gt;tabLog.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="statusBar.Text" xml:space="preserve">
-    <value>statusBar</value>
+  <data name="groupBox4.Text" xml:space="preserve">
+    <value>Web</value>
   </data>
-  <data name="&gt;&gt;statusBar.Name" xml:space="preserve">
-    <value>statusBar</value>
-  </data>
-  <data name="&gt;&gt;statusBar.Type" xml:space="preserve">
-    <value>System.Windows.Forms.StatusStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;statusBar.Parent" xml:space="preserve">
+  <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;statusBar.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;txtServerKey_Group.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="tabSettings.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="&gt;&gt;txtSettings_urlgorup.Name" xml:space="preserve">
+    <value>txtSettings_urlgorup</value>
+  </data>
+  <data name="dataGridFileData.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="&gt;&gt;monitorTimer.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="btnDelFolder.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="groupBox2.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="&gt;&gt;label1.Name" xml:space="preserve">
+    <value>label1</value>
+  </data>
+  <data name="&gt;&gt;dataGridFileData.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="label7.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="&gt;&gt;linkDSS.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="label5.ToolTip" xml:space="preserve">
+    <value>Path to file DeepSkyStackerCL.exe</value>
+  </data>
+  <data name="chkSettings_Autostart.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="tabAbout.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="btnLoadDSSPath.Text" xml:space="preserve">
+    <value>...</value>
+  </data>
+  <data name="&gt;&gt;txtLog.Name" xml:space="preserve">
+    <value>txtLog</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Dirs:</value>
+  </data>
+  <data name="&gt;&gt;chkSettings_Autostart.Name" xml:space="preserve">
+    <value>chkSettings_Autostart</value>
+  </data>
+  <data name="linkDSS.Text" xml:space="preserve">
+    <value>Download DSS</value>
+  </data>
+  <data name="&gt;&gt;dataGridFileData.Name" xml:space="preserve">
+    <value>dataGridFileData</value>
+  </data>
+  <data name="toolStripLogSize.Size" type="System.Drawing.Size, System.Drawing">
+    <value>49, 26</value>
+  </data>
+  <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>140, 13</value>
+  </data>
+  <data name="&gt;&gt;folderBrowserDialog1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FolderBrowserDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtSettings_DSS.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label6.Parent" xml:space="preserve">
+    <value>tabAbout</value>
+  </data>
+  <data name="label2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
+  </data>
+  <data name="txtSettings_urlgorup.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 5</value>
+  </data>
+  <data name="&gt;&gt;dataGridData_FWHM.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="tabList.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="&gt;&gt;chkSettings_Autostart.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;chkSettings_publishprivate.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="tabLog.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="&gt;&gt;tabControl1.Name" xml:space="preserve">
+    <value>tabControl1</value>
+  </data>
+  <data name="label7.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;btnLoadDSSPath.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="chkSearchSubdirs.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="&gt;&gt;toolStripStatus_FilesFound.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="toolStripStatus_FilesProcessed.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="dataGridData_DateTime.ToolTipText" xml:space="preserve">
+    <value>Time of exposure, local time</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>DeepSkyStacker path</value>
+  </data>
+  <data name="&gt;&gt;btnDelFolder.Name" xml:space="preserve">
+    <value>btnDelFolder</value>
+  </data>
+  <data name="linkAstrohostel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>388, 63</value>
+  </data>
+  <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="dataGridData_Bg.ToolTipText" xml:space="preserve">
+    <value>Background brightness (DSS)</value>
+  </data>
+  <data name="&gt;&gt;dataGridData_Stars.Name" xml:space="preserve">
+    <value>dataGridData_Stars</value>
+  </data>
+  <data name="&gt;&gt;btnLoadDSSPath.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="dataGridData_MeanRadius.HeaderText" xml:space="preserve">
+    <value>MeanRadius</value>
+  </data>
+  <data name="groupBox4.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="linkMilantiev.Text" xml:space="preserve">
+    <value>(astro.milantiev.com)</value>
+  </data>
+  <data name="chkSearchSubdirs.Text" xml:space="preserve">
+    <value>Including subdirectories</value>
+  </data>
+  <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 42</value>
+  </data>
+  <data name="&gt;&gt;cmbMonitorPath.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <metadata name="monitorTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <metadata name="openFileDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>956, 17</value>
-  </metadata>
-  <data name="groupBox5.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
+  <data name="groupBox4.ToolTip" xml:space="preserve">
+    <value />
   </data>
-  <data name="groupBox5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>852, 8</value>
+  <data name="txtSettings_urlprivate.Location" type="System.Drawing.Point, System.Drawing">
+    <value>178, 67</value>
   </data>
-  <data name="groupBox5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>243, 95</value>
+  <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 3</value>
   </data>
-  <data name="groupBox5.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="groupBox5.Text" xml:space="preserve">
-    <value>Actions</value>
-  </data>
-  <data name="&gt;&gt;groupBox5.Name" xml:space="preserve">
-    <value>groupBox5</value>
+  <data name="label7.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="&gt;&gt;groupBox5.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;groupBox5.Parent" xml:space="preserve">
+  <data name="btnSettings_Save.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 248</value>
+  </data>
+  <data name="lblVersion.Size" type="System.Drawing.Size, System.Drawing">
+    <value>350, 84</value>
+  </data>
+  <data name="&gt;&gt;btnLoadDSSPath.Name" xml:space="preserve">
+    <value>btnLoadDSSPath</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;cmbMonitorPath.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox4.Parent" xml:space="preserve">
+    <value>tabSettings</value>
+  </data>
+  <data name="btnSettings_Save.Text" xml:space="preserve">
+    <value>Save settings</value>
+  </data>
+  <data name="label1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
+  </data>
+  <data name="btnLoadDSSPath.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="&gt;&gt;groupBox4.Name" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;txtSettings_urlprivate.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="txtSettings_urlprivate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>524, 20</value>
+  </data>
+  <data name="tabControl1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="btnLoadDSSPath.Location" type="System.Drawing.Point, System.Drawing">
+    <value>578, 38</value>
+  </data>
+  <data name="linkAstrohostel.Text" xml:space="preserve">
+    <value>astrohostel.ru</value>
+  </data>
+  <data name="&gt;&gt;lblDirsMonitoringCount.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="txtServerKey_Group.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="cmbLang.ToolTip" xml:space="preserve">
+    <value>Interface language. For switching needs program restart
+Выбор языка интерфейса. Для переключения, необходимо перезапустить программу</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Key</value>
+  </data>
+  <data name="&gt;&gt;label17.Parent" xml:space="preserve">
+    <value>tabAbout</value>
+  </data>
+  <data name="btnSettings_Save.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;btnLoadDSSPath.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="dataGridData_FWHM.HeaderText" xml:space="preserve">
+    <value>FWHM"</value>
+  </data>
+  <data name="linkMilantiev.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="toolStripStatus_FilesProcessed.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 26</value>
+  </data>
+  <data name="toolStripDropDownLogLevel.Text" xml:space="preserve">
+    <value>toolStripDropDownLogLevel</value>
+  </data>
+  <data name="groupBox4.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;toolStripDropDownLogLevel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripDropDownButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="label3.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;lblDirsMonitoringCount.Name" xml:space="preserve">
+    <value>lblDirsMonitoringCount</value>
+  </data>
+  <data name="txtSettings_urlprivate.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="chkSettings_publishprivate.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="lblDirsMonitoringCount.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="txtSettings_DSS.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="label38.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="txtLog.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="tabLog.Size" type="System.Drawing.Size, System.Drawing">
+    <value>726, 277</value>
+  </data>
+  <data name="btnRecheck.Text" xml:space="preserve">
+    <value>Reread</value>
+  </data>
+  <data name="label38.Text" xml:space="preserve">
+    <value>Language</value>
+  </data>
+  <data name="groupBox2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="&gt;&gt;toolStripLogSize.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cmbMonitorPath.Name" xml:space="preserve">
+    <value>cmbMonitorPath</value>
+  </data>
+  <data name="&gt;&gt;tabList.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="statusBar.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="lblDirsMonitoringCount.Location" type="System.Drawing.Point, System.Drawing">
+    <value>542, 43</value>
+  </data>
+  <data name="cmbLang.Location" type="System.Drawing.Point, System.Drawing">
+    <value>178, 60</value>
+  </data>
+  <data name="txtServerKey_Private.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="&gt;&gt;tabControl1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.Parent" xml:space="preserve">
+    <value>tabSettings</value>
+  </data>
+  <data name="txtSettings_DSS.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;label38.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="toolStripStatus_FilesWaiting.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="label14.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;label17.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>99, 42</value>
+  </data>
+  <data name="txtServerKey_Private.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;label2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pictureBox1.Name" xml:space="preserve">
+    <value>pictureBox1</value>
+  </data>
+  <data name="&gt;&gt;label14.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="label7.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="linkAstromania.Size" type="System.Drawing.Size, System.Drawing">
+    <value>111, 13</value>
+  </data>
+  <data name="label38.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 63</value>
+  </data>
+  <data name="&gt;&gt;tabLog.Parent" xml:space="preserve">
+    <value>tabControl1</value>
+  </data>
+  <data name="&gt;&gt;chkSearchSubdirs.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtSettings_urlprivate.Name" xml:space="preserve">
+    <value>txtSettings_urlprivate</value>
+  </data>
+  <data name="chkSettings_Autostart.Text" xml:space="preserve">
+    <value>Autostart monitoring</value>
+  </data>
+  <data name="btnDelFolder.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="toolStripStatus_FilesProcessed.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="linkDSS.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 13</value>
+  </data>
+  <data name="lblVersion.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="pictureBox1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="&gt;&gt;lblVersion.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;chkSearchSubdirs.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="label14.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="linkMilantiev.Location" type="System.Drawing.Point, System.Drawing">
+    <value>590, 36</value>
+  </data>
+  <data name="label14.Text" xml:space="preserve">
+    <value>Image Quality Publisher</value>
+  </data>
+  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>494, 43</value>
+  </data>
+  <data name="txtLog.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="dataGridData_Alt.HeaderText" xml:space="preserve">
+    <value>Alt</value>
+  </data>
+  <data name="&gt;&gt;dataGridData_filename.Name" xml:space="preserve">
+    <value>dataGridData_filename</value>
+  </data>
+  <data name="tabList.Size" type="System.Drawing.Size, System.Drawing">
+    <value>726, 277</value>
+  </data>
+  <data name="lblDirsMonitoringCount.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="chkSettings_publishgroup.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblVersion.Location" type="System.Drawing.Point, System.Drawing">
+    <value>244, 84</value>
+  </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="btnRecheck.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>28, 13</value>
+  </data>
+  <data name="txtLog.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="txtSettings_urlprivate.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="btnLoadDSSPath.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="linkAstromania.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="dataGridData_MeanRadius.ToolTipText" xml:space="preserve">
+    <value>Mean Radius (DSS)</value>
+  </data>
+  <data name="btnStart.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 17</value>
+  </data>
+  <data name="cmbMonitorPath.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="tabList.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="tabSettings.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="&gt;&gt;txtServerKey_Private.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;linkDSS.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="dataGridFileData.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 3, 2, 3</value>
+  </data>
+  <data name="&gt;&gt;toolStripStatus_FilesProcessed.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Key</value>
+  </data>
+  <data name="&gt;&gt;linkDSS.Type" xml:space="preserve">
+    <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dataGridData_MeanRadius.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="tabAbout.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;btnRecheck.Parent" xml:space="preserve">
+    <value>groupBox5</value>
+  </data>
+  <data name="chkSettings_publishprivate.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="chkSettings_publishprivate.Text" xml:space="preserve">
+    <value>Publish to private web</value>
+  </data>
+  <data name="linkAstrohostel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>Monitor dirs</value>
+  </data>
+  <data name="&gt;&gt;tabControl1.Parent" xml:space="preserve">
     <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btnStart.Parent" xml:space="preserve">
+    <value>groupBox5</value>
+  </data>
+  <data name="dataGridData_Bg.Width" type="System.Int32, mscorlib">
+    <value>40</value>
+  </data>
+  <data name="groupBox5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>568, 5</value>
+  </data>
+  <data name="label3.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;tabSettings.Name" xml:space="preserve">
+    <value>tabSettings</value>
+  </data>
+  <data name="label6.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
+  </data>
+  <data name="linkMilantiev.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
+  </data>
+  <data name="label5.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="toolStripLogSize.Text" xml:space="preserve">
+    <value>LogRec:</value>
+  </data>
+  <data name="dataGridData_Exp.Width" type="System.Int32, mscorlib">
+    <value>35</value>
+  </data>
+  <data name="btnLoadDSSPath.Size" type="System.Drawing.Size, System.Drawing">
+    <value>38, 21</value>
+  </data>
+  <data name="txtLog.Size" type="System.Drawing.Size, System.Drawing">
+    <value>726, 277</value>
+  </data>
+  <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
+    <value>242, 63</value>
+  </data>
+  <data name="label5.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;groupBox4.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;chkSettings_publishprivate.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="linkDSS.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;linkAstromania.Parent" xml:space="preserve">
+    <value>tabAbout</value>
+  </data>
+  <data name="&gt;&gt;btnTest.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="txtSettings_DSS.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="chkSettings_publishprivate.ToolTip" xml:space="preserve">
+    <value>Publish data to private web resouce</value>
+  </data>
+  <data name="btnDelFolder.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="tabLog.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>Options</value>
+  </data>
+  <data name="&gt;&gt;pictureBox1.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;btnSettings_Save.Parent" xml:space="preserve">
+    <value>tabSettings</value>
+  </data>
+  <data name="&gt;&gt;btnRecheck.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="label6.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="groupBox1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label38.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;linkAstrohostel.Name" xml:space="preserve">
+    <value>linkAstrohostel</value>
+  </data>
+  <data name="&gt;&gt;linkAstromania.Type" xml:space="preserve">
+    <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chkSettings_publishgroup.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;folderBrowserDialog1.Name" xml:space="preserve">
+    <value>folderBrowserDialog1</value>
+  </data>
+  <data name="txtSettings_urlgorup.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;btnTest.Parent" xml:space="preserve">
+    <value>groupBox5</value>
+  </data>
+  <data name="&gt;&gt;btnAddFolder.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="tabLog.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;tabAbout.Parent" xml:space="preserve">
+    <value>tabControl1</value>
+  </data>
+  <data name="&gt;&gt;btnRecheck.Name" xml:space="preserve">
+    <value>btnRecheck</value>
+  </data>
+  <data name="lblDirsMonitoringCount.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="pictureBox1.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="groupBox4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>714, 121</value>
+  </data>
+  <data name="label6.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>Part of Astrohostel.ru project</value>
+  </data>
+  <data name="&gt;&gt;label7.Name" xml:space="preserve">
+    <value>label7</value>
+  </data>
+  <data name="&gt;&gt;chkSearchSubdirs.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;dataGridFileData.Parent" xml:space="preserve">
+    <value>tabList</value>
+  </data>
+  <data name="&gt;&gt;groupBox5.Name" xml:space="preserve">
+    <value>groupBox5</value>
+  </data>
+  <data name="dataGridData_Stars.HeaderText" xml:space="preserve">
+    <value>Stars</value>
+  </data>
+  <data name="chkSearchSubdirs.Size" type="System.Drawing.Size, System.Drawing">
+    <value>137, 17</value>
+  </data>
+  <data name="chkSettings_publishgroup.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="&gt;&gt;btnSettings_Save.Name" xml:space="preserve">
+    <value>btnSettings_Save</value>
+  </data>
+  <data name="tabLog.Text" xml:space="preserve">
+    <value>Log</value>
+  </data>
+  <data name="linkAstrohostel.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="txtSettings_urlgorup.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="lblVersion.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="&gt;&gt;statusBar.Type" xml:space="preserve">
+    <value>System.Windows.Forms.StatusStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.Name" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="linkDSS.Location" type="System.Drawing.Point, System.Drawing">
+    <value>622, 42</value>
+  </data>
+  <data name="&gt;&gt;label5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="label7.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="&gt;&gt;lblVersion.Name" xml:space="preserve">
+    <value>lblVersion</value>
+  </data>
+  <data name="&gt;&gt;txtSettings_urlprivate.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="groupBox5.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="btnAddFolder.ToolTip" xml:space="preserve">
+    <value>Add directory to monitoring list</value>
+  </data>
+  <data name="tabList.Text" xml:space="preserve">
+    <value>Images</value>
+  </data>
+  <data name="linkAstrohostel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>70, 13</value>
+  </data>
+  <data name="chkSearchSubdirs.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;label17.Name" xml:space="preserve">
+    <value>label17</value>
+  </data>
+  <data name="&gt;&gt;tabControl1.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="btnDelFolder.Location" type="System.Drawing.Point, System.Drawing">
+    <value>528, 15</value>
+  </data>
+  <data name="linkAstromania.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;label38.Name" xml:space="preserve">
+    <value>label38</value>
+  </data>
+  <data name="&gt;&gt;linkAstromania.Name" xml:space="preserve">
+    <value>linkAstromania</value>
+  </data>
+  <data name="label2.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;btnStart.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripLogSize.Name" xml:space="preserve">
+    <value>toolStripLogSize</value>
+  </data>
+  <data name="tabSettings.Text" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="label1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="txtServerKey_Private.Size" type="System.Drawing.Size, System.Drawing">
+    <value>122, 20</value>
+  </data>
+  <data name="&gt;&gt;toolTip1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="groupBox5.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="&gt;&gt;label6.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="label17.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
+  </data>
+  <data name="btnSettings_Save.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="tabList.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="linkAstromania.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="toolStripStatus_FilesFound.Text" xml:space="preserve">
+    <value>Files found: 0</value>
+  </data>
+  <data name="&gt;&gt;tabList.Name" xml:space="preserve">
+    <value>tabList</value>
+  </data>
+  <data name="dataGridData_Alt.Width" type="System.Int32, mscorlib">
+    <value>30</value>
+  </data>
+  <data name="toolStripStatus_FilesWaiting.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="txtLog.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="cmbLang.Size" type="System.Drawing.Size, System.Drawing">
+    <value>144, 21</value>
+  </data>
+  <data name="pictureBox1.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
+    <value>CenterImage</value>
+  </data>
+  <data name="txtServerKey_Group.Location" type="System.Drawing.Point, System.Drawing">
+    <value>178, 39</value>
+  </data>
+  <data name="&gt;&gt;tabAbout.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnStart.Name" xml:space="preserve">
+    <value>btnStart</value>
+  </data>
+  <data name="btnStart.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="dataGridFileData.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;linkAstrohostel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>MainForm</value>
+  </data>
+  <data name="btnSettings_Save.Size" type="System.Drawing.Size, System.Drawing">
+    <value>112, 22</value>
+  </data>
+  <data name="label14.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt, style=Bold</value>
+  </data>
+  <data name="linkAstrohostel.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="txtSettings_DSS.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;label3.Name" xml:space="preserve">
+    <value>label3</value>
+  </data>
+  <data name="&gt;&gt;dataGridData_MeanRadius.Name" xml:space="preserve">
+    <value>dataGridData_MeanRadius</value>
   </data>
   <data name="&gt;&gt;groupBox5.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>9, 20</value>
+  <data name="dataGridFileData.Size" type="System.Drawing.Size, System.Drawing">
+    <value>726, 281</value>
+  </data>
+  <data name="dataGridData_Exp.HeaderText" xml:space="preserve">
+    <value>Exp</value>
+  </data>
+  <data name="label17.Location" type="System.Drawing.Point, System.Drawing">
+    <value>242, 36</value>
+  </data>
+  <data name="&gt;&gt;label1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cmbLang.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="dataGridData_filename.MinimumWidth" type="System.Int32, mscorlib">
+    <value>100</value>
+  </data>
+  <data name="tabControl1.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="$this.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;btnAddFolder.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="groupBox2.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1101, 617</value>
+    <value>734, 401</value>
+  </data>
+  <data name="&gt;&gt;txtSettings_DSS.Name" xml:space="preserve">
+    <value>txtSettings_DSS</value>
+  </data>
+  <data name="linkDSS.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="&gt;&gt;txtSettings_urlprivate.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="tabSettings.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="cmbLang.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="chkSearchSubdirs.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="groupBox4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 101</value>
+  </data>
+  <data name="&gt;&gt;cmbLang.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="btnSettings_Save.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;toolStripStatus_FilesProcessed.Name" xml:space="preserve">
+    <value>toolStripStatus_FilesProcessed</value>
+  </data>
+  <data name="&gt;&gt;btnSettings_Save.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;dataGridData_Bg.Name" xml:space="preserve">
+    <value>dataGridData_Bg</value>
+  </data>
+  <data name="cmbMonitorPath.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="&gt;&gt;txtServerKey_Private.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;monitorTimer.Name" xml:space="preserve">
+    <value>monitorTimer</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -7871,127 +7966,290 @@ Used to check valid clients. You can get it from your service provider. </value>
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=
 </value>
   </data>
-  <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1111, 576</value>
+  <data name="statusBar.Text" xml:space="preserve">
+    <value>statusBar</value>
   </data>
-  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
-    <value>CenterScreen</value>
+  <data name="btnAddFolder.Location" type="System.Drawing.Point, System.Drawing">
+    <value>496, 15</value>
   </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>ImageQualityPublisher</value>
+  <data name="&gt;&gt;tabList.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;folderBrowserDialog1.Name" xml:space="preserve">
-    <value>folderBrowserDialog1</value>
+  <data name="txtSettings_urlprivate.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
-  <data name="&gt;&gt;folderBrowserDialog1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FolderBrowserDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="btnTest.Size" type="System.Drawing.Size, System.Drawing">
+    <value>38, 26</value>
   </data>
-  <data name="&gt;&gt;dataGridData_filename.Name" xml:space="preserve">
-    <value>dataGridData_filename</value>
+  <data name="&gt;&gt;txtServerKey_Private.Name" xml:space="preserve">
+    <value>txtServerKey_Private</value>
   </data>
-  <data name="&gt;&gt;dataGridData_filename.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="btnRecheck.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
-  <data name="&gt;&gt;dataGridData_DateTime.Name" xml:space="preserve">
-    <value>dataGridData_DateTime</value>
+  <data name="&gt;&gt;txtSettings_DSS.Parent" xml:space="preserve">
+    <value>groupBox2</value>
   </data>
-  <data name="&gt;&gt;dataGridData_DateTime.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="txtServerKey_Private.Location" type="System.Drawing.Point, System.Drawing">
+    <value>178, 89</value>
   </data>
-  <data name="&gt;&gt;dataGridData_Alt.Name" xml:space="preserve">
-    <value>dataGridData_Alt</value>
+  <data name="btnTest.ToolTip" xml:space="preserve">
+    <value />
   </data>
-  <data name="&gt;&gt;dataGridData_Alt.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="label38.ToolTip" xml:space="preserve">
+    <value />
   </data>
-  <data name="&gt;&gt;dataGridData_Stars.Name" xml:space="preserve">
-    <value>dataGridData_Stars</value>
+  <data name="chkSettings_publishgroup.Text" xml:space="preserve">
+    <value>Publish to public web</value>
   </data>
-  <data name="&gt;&gt;dataGridData_Stars.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;tabAbout.Name" xml:space="preserve">
+    <value>tabAbout</value>
   </data>
-  <data name="&gt;&gt;dataGridData_FWHM.Name" xml:space="preserve">
-    <value>dataGridData_FWHM</value>
+  <data name="chkSettings_publishgroup.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
-  <data name="&gt;&gt;dataGridData_FWHM.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="linkMilantiev.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
   </data>
-  <data name="&gt;&gt;dataGridData_MeanRadius.Name" xml:space="preserve">
-    <value>dataGridData_MeanRadius</value>
+  <data name="label5.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
-  <data name="&gt;&gt;dataGridData_MeanRadius.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="pictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        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
+</value>
   </data>
-  <data name="&gt;&gt;dataGridData_Bg.Name" xml:space="preserve">
-    <value>dataGridData_Bg</value>
+  <data name="&gt;&gt;lblDirsMonitoringCount.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;dataGridData_Bg.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="btnDelFolder.ToolTip" xml:space="preserve">
+    <value>Delete current directory from monitoring list</value>
   </data>
-  <data name="&gt;&gt;dataGridData_Exp.Name" xml:space="preserve">
-    <value>dataGridData_Exp</value>
+  <data name="pictureBox1.ToolTip" xml:space="preserve">
+    <value />
   </data>
-  <data name="&gt;&gt;dataGridData_Exp.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="btnLoadDSSPath.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
   </data>
-  <data name="&gt;&gt;logRefreshTimer.Name" xml:space="preserve">
-    <value>logRefreshTimer</value>
+  <data name="&gt;&gt;dataGridFileData.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
-  <data name="&gt;&gt;logRefreshTimer.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;label38.Parent" xml:space="preserve">
+    <value>groupBox2</value>
   </data>
-  <data name="&gt;&gt;toolStripStatus_FilesFound.Name" xml:space="preserve">
-    <value>toolStripStatus_FilesFound</value>
+  <data name="label14.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
-  <data name="&gt;&gt;toolStripStatus_FilesFound.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="toolStripStatus_FilesFound.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
   </data>
-  <data name="&gt;&gt;toolStripStatus_FilesProcessed.Name" xml:space="preserve">
-    <value>toolStripStatus_FilesProcessed</value>
+  <data name="toolStripDropDownLogLevel.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
   </data>
-  <data name="&gt;&gt;toolStripStatus_FilesProcessed.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
-  <data name="&gt;&gt;toolStripStatus_FilesWaiting.Name" xml:space="preserve">
-    <value>toolStripStatus_FilesWaiting</value>
+  <data name="&gt;&gt;txtSettings_urlgorup.Parent" xml:space="preserve">
+    <value>groupBox4</value>
   </data>
-  <data name="&gt;&gt;toolStripStatus_FilesWaiting.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;txtSettings_DSS.ZOrder" xml:space="preserve">
+    <value>5</value>
   </data>
-  <data name="&gt;&gt;toolStripDropDownLogLevel.Name" xml:space="preserve">
-    <value>toolStripDropDownLogLevel</value>
+  <data name="btnDelFolder.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
   </data>
-  <data name="&gt;&gt;toolStripDropDownLogLevel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripDropDownButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="dataGridData_Stars.ToolTipText" xml:space="preserve">
+    <value>Number of detected stars (DSS)</value>
   </data>
-  <data name="&gt;&gt;toolStripLogSize.Name" xml:space="preserve">
-    <value>toolStripLogSize</value>
+  <data name="groupBox5.Text" xml:space="preserve">
+    <value>Actions</value>
   </data>
-  <data name="&gt;&gt;toolStripLogSize.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;linkAstrohostel.Parent" xml:space="preserve">
+    <value>tabAbout</value>
   </data>
-  <data name="&gt;&gt;monitorTimer.Name" xml:space="preserve">
-    <value>monitorTimer</value>
+  <data name="chkSettings_Autostart.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 17</value>
   </data>
-  <data name="&gt;&gt;monitorTimer.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
-  <data name="&gt;&gt;openFileDialog1.Name" xml:space="preserve">
-    <value>openFileDialog1</value>
+  <data name="cmbMonitorPath.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 17</value>
   </data>
-  <data name="&gt;&gt;openFileDialog1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.OpenFileDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;label38.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
-  <data name="&gt;&gt;toolTip1.Name" xml:space="preserve">
-    <value>toolTip1</value>
+  <data name="&gt;&gt;label3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;toolTip1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;label6.Name" xml:space="preserve">
+    <value>label6</value>
   </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>MainForm</value>
+  <data name="tabControl1.ToolTip" xml:space="preserve">
+    <value />
   </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="label6.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
   </data>
+  <data name="&gt;&gt;btnAddFolder.Name" xml:space="preserve">
+    <value>btnAddFolder</value>
+  </data>
+  <data name="tabControl1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 71</value>
+  </data>
+  <data name="dataGridData_MeanRadius.Width" type="System.Int32, mscorlib">
+    <value>40</value>
+  </data>
+  <data name="&gt;&gt;label14.Name" xml:space="preserve">
+    <value>label14</value>
+  </data>
+  <metadata name="dataGridData_Stars.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="dataGridData_MeanRadius.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="folderBrowserDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>649, 17</value>
+  </metadata>
+  <metadata name="dataGridData_filename.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="dataGridData_DateTime.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="dataGridData_Bg.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="dataGridData_Exp.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="openFileDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>956, 17</value>
+  </metadata>
+  <metadata name="dataGridData_Alt.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="monitorTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="statusBar.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>1205, 17</value>
+  </metadata>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>487, 17</value>
+  </metadata>
+  <metadata name="dataGridData_FWHM.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="logRefreshTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>237, 17</value>
+  </metadata>
 </root>

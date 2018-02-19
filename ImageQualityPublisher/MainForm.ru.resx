@@ -124,6 +124,15 @@
   <data name="chkSearchSubdirs.Text" xml:space="preserve">
     <value>Искать в подкаталогах</value>
   </data>
+  <data name="chkSearchSubdirs.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="cmbMonitorPath.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblDirsMonitoringCount.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
     <value>475, 43</value>
   </data>
@@ -133,8 +142,17 @@
   <data name="label1.Text" xml:space="preserve">
     <value>Каталогов:</value>
   </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="groupBox1.Text" xml:space="preserve">
     <value>Отслеживать</value>
+  </data>
+  <data name="groupBox1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="btnTest.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="btnRecheck.Text" xml:space="preserve">
     <value>Заново</value>
@@ -145,8 +163,8 @@
   <data name="btnStart.Text" xml:space="preserve">
     <value>Запуск</value>
   </data>
-  <data name="groupBox2.Text" xml:space="preserve">
-    <value>Общие настройки</value>
+  <data name="btnStart.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="label38.Size" type="System.Drawing.Size, System.Drawing">
     <value>99, 13</value>
@@ -154,11 +172,20 @@
   <data name="label38.Text" xml:space="preserve">
     <value>Язык интерфейса</value>
   </data>
+  <data name="label38.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="linkDSS.Size" type="System.Drawing.Size, System.Drawing">
     <value>84, 13</value>
   </data>
   <data name="linkDSS.Text" xml:space="preserve">
     <value>Загрузить DSS</value>
+  </data>
+  <data name="linkDSS.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="btnLoadDSSPath.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
     <value>124, 13</value>
@@ -169,6 +196,9 @@
   <data name="label5.ToolTip" xml:space="preserve">
     <value>Сохранить настройки</value>
   </data>
+  <data name="txtSettings_DSS.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="chkSettings_Autostart.Size" type="System.Drawing.Size, System.Drawing">
     <value>157, 17</value>
   </data>
@@ -178,8 +208,14 @@
   <data name="chkSettings_Autostart.ToolTip" xml:space="preserve">
     <value>Автозапуск  мониторинга вместе с запуском программы</value>
   </data>
-  <data name="tabList.Text" xml:space="preserve">
-    <value>Изображения</value>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>Общие настройки</value>
+  </data>
+  <data name="groupBox2.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="txtLog.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="dataGridData_filename.HeaderText" xml:space="preserve">
     <value>Имя файла</value>
@@ -217,26 +253,65 @@
   <data name="dataGridData_Exp.ToolTipText" xml:space="preserve">
     <value>в секундах</value>
   </data>
+  <data name="dataGridFileData.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="tabList.Text" xml:space="preserve">
+    <value>Изображения</value>
+  </data>
+  <data name="tabList.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="tabLog.Text" xml:space="preserve">
     <value>Лог</value>
   </data>
-  <data name="tabSettings.Text" xml:space="preserve">
-    <value>Настройки</value>
+  <data name="tabLog.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="btnSettings_Save.Text" xml:space="preserve">
     <value>Сохранить настройки</value>
   </data>
+  <data name="btnSettings_Save.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="txtServerKey_Private.Location" type="System.Drawing.Point, System.Drawing">
+    <value>197, 89</value>
+  </data>
+  <data name="txtServerKey_Private.ToolTip" xml:space="preserve">
+    <value>Серверный ключ. Необязательно для некоторых серверов (спрашивать у хостера).
+Используется сервером при публикации для проверки на то, что данный клиент может отправлять данные. Заспросите его у своего хостеродателя
+</value>
+  </data>
+  <data name="txtServerKey_Group.Location" type="System.Drawing.Point, System.Drawing">
+    <value>197, 39</value>
+  </data>
+  <data name="txtServerKey_Group.ToolTip" xml:space="preserve">
+    <value>Серверный ключ. Необязательно для некоторых серверов (спрашивать у хостера).
+Используется сервером при публикации для проверки на то, что данный клиент может отправлять данные. Заспросите его у своего хостеродателя</value>
+  </data>
   <data name="txtSettings_urlprivate.Location" type="System.Drawing.Point, System.Drawing">
-    <value>197, 38</value>
+    <value>197, 67</value>
   </data>
   <data name="txtSettings_urlprivate.Size" type="System.Drawing.Size, System.Drawing">
     <value>508, 20</value>
   </data>
+  <data name="txtSettings_urlprivate.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="txtSettings_urlgorup.Location" type="System.Drawing.Point, System.Drawing">
-    <value>197, 16</value>
+    <value>197, 17</value>
   </data>
   <data name="txtSettings_urlgorup.Size" type="System.Drawing.Size, System.Drawing">
     <value>508, 20</value>
+  </data>
+  <data name="txtSettings_urlgorup.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="chkSettings_publishprivate.Size" type="System.Drawing.Size, System.Drawing">
     <value>185, 17</value>
@@ -250,8 +325,17 @@
   <data name="chkSettings_publishgroup.Text" xml:space="preserve">
     <value>Публиковать на общий ресурс</value>
   </data>
-  <data name="tabAbout.Text" xml:space="preserve">
-    <value>О программе</value>
+  <data name="chkSettings_publishgroup.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="groupBox4.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="tabSettings.Text" xml:space="preserve">
+    <value>Настройки</value>
+  </data>
+  <data name="tabSettings.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
     <value>491, 36</value>
@@ -262,11 +346,23 @@
   <data name="label7.Text" xml:space="preserve">
     <value>и Олегом Милантьевым</value>
   </data>
+  <data name="label7.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblVersion.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label14.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
     <value>149, 13</value>
   </data>
   <data name="label6.Text" xml:space="preserve">
     <value>Часть проекта Astrohostel.ru</value>
+  </data>
+  <data name="label6.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="label17.Size" type="System.Drawing.Size, System.Drawing">
     <value>142, 13</value>
@@ -274,8 +370,20 @@
   <data name="label17.Text" xml:space="preserve">
     <value>(C) 2018 Борисом Емченко</value>
   </data>
+  <data name="label17.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="linkAstrohostel.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="linkMilantiev.Location" type="System.Drawing.Point, System.Drawing">
     <value>620, 36</value>
+  </data>
+  <data name="linkMilantiev.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="linkAstromania.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="pictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -386,6 +494,18 @@
         pzQ2TbN7SmPTNLvmwqXeCvfUQP1j4F+nAAAAAElFTkSuQmCC
 </value>
   </data>
+  <data name="pictureBox1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="tabAbout.Text" xml:space="preserve">
+    <value>О программе</value>
+  </data>
+  <data name="tabAbout.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="tabControl1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="toolStripDropDownLogLevel.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -401,8 +521,14 @@
         TgDQASA1MVpwzwAAAABJRU5ErkJggg==
 </value>
   </data>
+  <data name="statusBar.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="groupBox5.Text" xml:space="preserve">
     <value>Действия</value>
+  </data>
+  <data name="groupBox5.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -6575,5 +6701,8 @@
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=
 </value>
+  </data>
+  <data name="$this.ToolTip" xml:space="preserve">
+    <value />
   </data>
 </root>
