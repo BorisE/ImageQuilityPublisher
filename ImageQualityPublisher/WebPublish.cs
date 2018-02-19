@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -12,6 +14,7 @@ namespace ImageQualityPublisher
     public class WebPublish
     {
         public string PublishURL = "http://localhost/astropublisher/fitspublish.php";
+        public string ServerKey ="";
 
         public WebPublish(string URLPath)
         {
@@ -21,6 +24,10 @@ namespace ImageQualityPublisher
         public WebPublish():this("http://localhost/astropublisher/fitspublish.php")
         { }
 
+        private class DataToPublishWebExtension
+        {
+            public string ServerKey = "";
+        }
 
         /// <summary>
         /// Set URL to upload
@@ -31,9 +38,13 @@ namespace ImageQualityPublisher
             PublishURL = URLPath;
         }
 
-
+        /// <summary>
+        /// Publish data
+        /// </summary>
+        /// <param name="DataToPublish"></param>
         public void PublishData(FileParseResult DataToPublish)
         {
+
             Logging.AddLog("Publishing data on ["+ DataToPublish.FITSFileName + "] to "+ PublishURL, LogLevel.Debug);
             try
             {
@@ -41,14 +52,35 @@ namespace ImageQualityPublisher
                 httpWebRequest.ContentType = "application/json";
                 httpWebRequest.Method = "POST";
 
+                //POST parameters
                 using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
                 {
                     string json = new JavaScriptSerializer().Serialize(DataToPublish);
+                    var final = JsonConvert.SerializeObject(DataToPublish);
+                    var final2 = JsonConvert.SerializeObject(
+                    new
+                    {
+                        DataToPublish,
+                        ServerKey
+                    }
+                    );
 
-                    streamWriter.Write(json);
+
+                    DataToPublishWebExtension objDataToPublishWebExtension = new DataToPublishWebExtension();
+                    objDataToPublishWebExtension.ServerKey = ServerKey;
+
+                    var json2 = JsonConvert.SerializeObject(objDataToPublishWebExtension);
+                    var arrayOfObjects = JsonConvert.SerializeObject(
+                        new[] { JsonConvert.DeserializeObject(json), JsonConvert.DeserializeObject(json2) }
+                    );
+
+
+                    streamWriter.Write(arrayOfObjects);
                 }
 
+                // Send the 'WebRequest' and wait for response.
                 var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+
                 using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
                 {
                     var result = streamReader.ReadToEnd();

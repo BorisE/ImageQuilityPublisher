@@ -369,9 +369,11 @@ namespace ImageQualityPublisher
 
             ProcessingObj.settingsPublishToGroup = ConfigManagement.getBool("options", "PUBLISHTOGROUP") ?? true;
             WebPublishObj.SetURL(ConfigManagement.getString("publishURL", "url1") ?? "http://localhost");
+            WebPublishObj.ServerKey = ConfigManagement.getString("publishURL", "key1") ?? "";
 
             ProcessingObj.settingsPublishToPrivate = ConfigManagement.getBool("options", "PUBLISHTOPRIVATE") ?? true;
             WebPublishObj2.SetURL(ConfigManagement.getString("publishURL", "url2") ?? "http://localhost");
+            WebPublishObj2.ServerKey = ConfigManagement.getString("publishURL", "key2") ?? "";
 
             //hidden settings
             MonitorObj.settingsExtensionToSearch = ConfigManagement.getString("options", "extensionsToSearch") ?? "*.fit*";
@@ -432,9 +434,11 @@ namespace ImageQualityPublisher
 
             chkSettings_publishgroup.Checked = ProcessingObj.settingsPublishToGroup;
             txtSettings_urlgorup.Text = WebPublishObj.PublishURL;
+            txtServerKey_Group.Text = WebPublishObj.ServerKey;
 
             chkSettings_publishprivate.Checked = ProcessingObj.settingsPublishToPrivate;
             txtSettings_urlprivate.Text = WebPublishObj2.PublishURL;
+            txtServerKey_Private.Text = WebPublishObj2.ServerKey;
 
         }
 
@@ -457,9 +461,11 @@ namespace ImageQualityPublisher
 
             ConfigManagement.UpdateConfigValue("options", "PUBLISHTOGROUP", chkSettings_publishgroup.Checked.ToString());
             ConfigManagement.UpdateConfigValue("publishURL", "url1", txtSettings_urlgorup.Text);
+            ConfigManagement.UpdateConfigValue("publishURL", "key1", txtServerKey_Group.Text);
 
             ConfigManagement.UpdateConfigValue("options", "PUBLISHTOPRIVATE", chkSettings_publishprivate.Checked.ToString());
             ConfigManagement.UpdateConfigValue("publishURL", "url2", txtSettings_urlprivate.Text);
+            ConfigManagement.UpdateConfigValue("publishURL", "key3", txtServerKey_Private.Text);
 
             //hidden settings
             ConfigManagement.UpdateConfigValue("options", "extensionsToSearch", MonitorObj.settingsExtensionToSearch);
