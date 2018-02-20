@@ -7,6 +7,8 @@
 <publishURL>
     <url1 value="http://localhost/astropublisher/fitspublish.php" />
     <url2 value="http://localhost/astropublisher/fitspublish.php" />
+    <key1 value="" />
+    <key2 value="" />
 </publishURL>
 
 <options>
@@ -20,6 +22,7 @@
     <checkThreads_max value="1" />
     <checkDirIMS value="True" />
     <alwaysRebuildDSSInfoFile value="False" />
+	<publishLightFramesOnly value="True" />
 </options>
  
 </configuration>

@@ -426,7 +426,7 @@ namespace ImageQualityPublisher
             {
                 cmbMonitorPath.Items.Add(curDir);
             }
-            cmbMonitorPath.SelectedIndex = (cmbMonitorPath.Items.Count <1 ? -1 : 0);
+            if (cmbMonitorPath.Items.Count >= 1) cmbMonitorPath.SelectedIndex = 0;
 
             lblDirsMonitoringCount.Text = cmbMonitorPath.Items.Count.ToString();
 
