@@ -272,7 +272,7 @@
     <value>Сохранить настройки</value>
   </data>
   <data name="btnSettings_Save.ToolTip" xml:space="preserve">
-    <value />
+    <value>Обычно, это кнопку можно не нажимать, так как настрйоки автоматически сохраняются после каждого изменения</value>
   </data>
   <data name="label3.ToolTip" xml:space="preserve">
     <value />
