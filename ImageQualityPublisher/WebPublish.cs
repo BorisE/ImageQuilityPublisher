@@ -11,6 +11,14 @@ using System.Web.Script.Serialization;
 
 namespace ImageQualityPublisher
 {
+    /// <summary>
+    /// Class to be included in FileParseResult (since version 1.3.9)
+    /// </summary>
+    public class WebExtensionsClass
+    {
+        public string ServerKey = "";
+    }
+
     public class WebPublish
     {
         public string PublishURL = "http://localhost/astropublisher/fitspublish.php";
@@ -24,10 +32,6 @@ namespace ImageQualityPublisher
         public WebPublish():this("http://localhost/astropublisher/fitspublish.php")
         { }
 
-        private class DataToPublishWebExtension
-        {
-            public string ServerKey = "";
-        }
 
         /// <summary>
         /// Set URL to upload
@@ -44,6 +48,11 @@ namespace ImageQualityPublisher
         /// <param name="DataToPublish"></param>
         public void PublishData(FileParseResult DataToPublish)
         {
+            // Extend DataToPublish data
+            DataToPublish.WebExtensions = new WebExtensionsClass();
+            // Add special web data to class, which would be sent to server 
+            DataToPublish.WebExtensions.ServerKey = ServerKey;
+
 
             Logging.AddLog("Publishing data on ["+ DataToPublish.FITSFileName + "] to "+ PublishURL, LogLevel.Debug);
             try
@@ -52,30 +61,13 @@ namespace ImageQualityPublisher
                 httpWebRequest.ContentType = "application/json";
                 httpWebRequest.Method = "POST";
 
-                //POST parameters
+                // POST parameters
+                // Data would be sent on GetRequestStream() method
                 using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
                 {
                     string json = new JavaScriptSerializer().Serialize(DataToPublish);
-                    var final = JsonConvert.SerializeObject(DataToPublish);
-                    var final2 = JsonConvert.SerializeObject(
-                    new
-                    {
-                        DataToPublish,
-                        ServerKey
-                    }
-                    );
-
-
-                    DataToPublishWebExtension objDataToPublishWebExtension = new DataToPublishWebExtension();
-                    objDataToPublishWebExtension.ServerKey = ServerKey;
-
-                    var json2 = JsonConvert.SerializeObject(objDataToPublishWebExtension);
-                    var arrayOfObjects = JsonConvert.SerializeObject(
-                        new[] { JsonConvert.DeserializeObject(json), JsonConvert.DeserializeObject(json2) }
-                    );
-
-
-                    streamWriter.Write(arrayOfObjects);
+                    //var final = JsonConvert.SerializeObject(DataToPublish); Newtonsoft.JSON converter
+                    streamWriter.Write(json);
                 }
 
                 // Send the 'WebRequest' and wait for response.

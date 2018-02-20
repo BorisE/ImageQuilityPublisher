@@ -390,6 +390,9 @@ namespace ImageQualityPublisher
         /// </summary>
         private void UpdateSettingsDialogFields()
         {
+            //cancel autosasve settings events
+            bTrapEvents = false;
+
             //Init Log DropDown box (в statusbar)
             foreach (LogLevel C in Enum.GetValues(typeof(LogLevel)))
             {
@@ -440,6 +443,9 @@ namespace ImageQualityPublisher
             txtSettings_urlprivate.Text = WebPublishObj2.PublishURL;
             txtServerKey_Private.Text = WebPublishObj2.ServerKey;
 
+            //restore autosasve settings events
+            bTrapEvents = true;
+
         }
 
         private void SaveSettingsToConfigFile()
@@ -465,7 +471,7 @@ namespace ImageQualityPublisher
 
             ConfigManagement.UpdateConfigValue("options", "PUBLISHTOPRIVATE", chkSettings_publishprivate.Checked.ToString());
             ConfigManagement.UpdateConfigValue("publishURL", "url2", txtSettings_urlprivate.Text);
-            ConfigManagement.UpdateConfigValue("publishURL", "key3", txtServerKey_Private.Text);
+            ConfigManagement.UpdateConfigValue("publishURL", "key2", txtServerKey_Private.Text);
 
             //hidden settings
             ConfigManagement.UpdateConfigValue("options", "extensionsToSearch", MonitorObj.settingsExtensionToSearch);
@@ -524,6 +530,30 @@ namespace ImageQualityPublisher
             SaveSettingsToConfigFile();
         }
 
+        bool bTrapEvents = true;
+        bool bOptionsChanged = false;
+
+        private void SettingsControl_Valuechanged(object sender, EventArgs e)
+        {
+            if (bTrapEvents)
+                bOptionsChanged = true;
+        }
+
+        private void SettingsControl_Leave(object sender, EventArgs e)
+        {
+            if (bTrapEvents)
+            {
+                if (bOptionsChanged)
+                {
+                    bOptionsChanged = false;
+                    SaveSettingsToConfigFile();
+                }
+            }
+        }
+
+
+
+
         private void btnLoadDSSPath_Click(object sender, EventArgs e)
         {
             openFileDialog1.InitialDirectory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86), "DeepSkyStacker");
@@ -571,8 +601,6 @@ namespace ImageQualityPublisher
         {
             Process.Start(e.Link.LinkData.ToString());
         }
-
-
 
         #endregion About information
         /**************************************************************************************************/

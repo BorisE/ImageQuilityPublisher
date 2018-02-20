@@ -29,6 +29,8 @@ namespace ImageQualityPublisher
                 return QualityData.MeanRadius * PixelResolution;
             }
         }
+
+        public WebExtensionsClass WebExtensions;
     }
 
 
