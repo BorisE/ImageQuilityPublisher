@@ -22,6 +22,10 @@ namespace ImageQualityPublisher
         public string settingsExtensionToSearch = "*.fit*"; //which extension to loop
         public bool settingsScanSubdirs = false;             //scan subdirs also
 
+        public bool settingsUseDateFilters = true;
+        public DateTime settingsDateFiltersAfter = new DateTime(1970, 1, 1);
+        public DateTime settingsDateFiltersBefore = new DateTime(2017, 12, 12);
+
         /**************************************************************************************************
         * Private vars
         **************************************************************************************************/
@@ -121,26 +125,31 @@ namespace ImageQualityPublisher
                 return;
             }
 
-            //check them all
+            //2. ENUMERATE ALL FILES
             foreach (FileInfo fileEl in fileArray)
             {
-                //string FileNameOnly = Path.GetFileName(filename);
-                string filename = fileEl.FullName;
+                //2.1. CHECK FOR DATE FILTER (if needed)
+                if (!settingsUseDateFilters || settingsUseDateFilters && (fileEl.LastWriteTime.Date >= settingsDateFiltersAfter && fileEl.LastWriteTime.Date <= settingsDateFiltersBefore))
+                {
+                    
+                    //string FileNameOnly = Path.GetFileName(filename);
+                    string filename = fileEl.FullName;
 
-                //is the file new?
-                if (!FileListParsed.ContainsKey(filename))
-                { 
-                    //1. Add to filelist with time
-                    FileListParsed.Add(filename, fileEl.LastWriteTime);
+                    //2.2. Is the file new to us?
+                    if (!FileListParsed.ContainsKey(filename))
+                    {
+                        //2.3.1. Add to filelist with time
+                        FileListParsed.Add(filename, fileEl.LastWriteTime);
 
-                    //3. PROCESS
-                    ParentMF.ProcessingObj.QuequeAdd(filename);
+                        //2.3.2. PROCESS
+                        ParentMF.ProcessingObj.QuequeAdd(filename);
 
-                    Logging.AddLog("New file [" + filename + "] was detected and added to queque...", LogLevel.Activity, Highlight.Emphasize);
+                        Logging.AddLog("New file [" + filename + "] was detected and added to queque...", LogLevel.Activity, Highlight.Emphasize);
+                    }
                 }
             }
 
-            //2. If set option to scan subdirs, run recursion
+            //3. If set option to scan subdirs, run recursion
             if (settingsScanSubdirs)
             {
                 //get directories

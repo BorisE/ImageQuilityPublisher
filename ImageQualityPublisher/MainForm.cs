@@ -23,7 +23,6 @@ namespace ImageQualityPublisher
         public WebPublish WebPublishObj;    //for public
         public WebPublish WebPublishObj2;   //for private
 
-
         /// <summary>
         /// Link to NON LOCALISED resource manager
         /// </summary>
@@ -46,6 +45,8 @@ namespace ImageQualityPublisher
 
         private bool AlreadyRunning = false; //flag to block concurent timer run
 
+        private FiltersForm FiltersFormObj;
+
         /// <summary>
         /// Constructor
         /// </summary>
@@ -55,6 +56,8 @@ namespace ImageQualityPublisher
             MonitorObj = new FileMonitoring(this);
             WebPublishObj = new WebPublish();
             WebPublishObj2 = new WebPublish();
+
+            FiltersFormObj = new FiltersForm();
 
             //Load config file
             ConfigManagement.Load();
@@ -604,5 +607,18 @@ namespace ImageQualityPublisher
 
         #endregion About information
         /**************************************************************************************************/
+
+
+        /**************************************************************************************************/
+        #region = Filters =
+        private void btnShowFilters_Click(object sender, EventArgs e)
+        {
+            FiltersFormObj.Show();
+        }
+        #endregion End of = Filters =
+        /**************************************************************************************************/
+
+
+
     }
 }

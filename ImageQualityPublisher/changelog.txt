@@ -9,6 +9,7 @@ For FWHM estimate it uses DeepSkyStacker program by Luc Coiffier http://deepskys
 to do:
 - save IMS data on exit
 - minimize to tray
+- add date and some other filters...
 
 bugs:
 - crash when non existent directory

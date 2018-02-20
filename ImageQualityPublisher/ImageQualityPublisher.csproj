@@ -98,6 +98,12 @@
     <Compile Include="ConfigManagement.cs" />
     <Compile Include="DSSQualityReader.cs" />
     <Compile Include="FileQuequeProcessing.cs" />
+    <Compile Include="FiltersForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FiltersForm.Designer.cs">
+      <DependentUpon>FiltersForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="FITSHeaderReader.cs" />
     <Compile Include="Logging.cs" />
     <Compile Include="MainForm.cs">
@@ -116,6 +122,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>WinStrings.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="FiltersForm.resx">
+      <DependentUpon>FiltersForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.en.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
