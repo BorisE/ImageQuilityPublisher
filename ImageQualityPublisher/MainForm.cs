@@ -57,7 +57,7 @@ namespace ImageQualityPublisher
             WebPublishObj = new WebPublish();
             WebPublishObj2 = new WebPublish();
 
-            FiltersFormObj = new FiltersForm();
+            FiltersFormObj = new FiltersForm(this);
 
             //Load config file
             ConfigManagement.Load();

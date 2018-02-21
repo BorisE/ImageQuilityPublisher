@@ -54,6 +54,19 @@ namespace ImageQualityPublisher
         public bool settingsDSSForceRecheck = false;    //rebuild .info files always
         public bool settingsPublishLightFramesOnly = true;    //publish only lightframes
 
+        //settings for filter
+        public bool settingsFilterHistoryTag_UseFlag = false;    //use HISTORY tag filter
+        public UInt16 settingsFilterHistoryTag_MaxCount = 1;     //max count for HISTORY tag
+        public bool settingsFilterObserverTag_UseFlag = false;   //use OBSERVER tag filter
+        public string settingsFilterObserverTag_Contains = "";  //string OBSERVER tag filter max contains
+        public bool settingsFilterTelescopTag_UseFlag = false;   //use TELESCOP tag filter
+        public string settingsFilterTelescopTag_Contains = "";  //string TELESCOP tag filter max contains
+        public bool settingsFilterInstrumeTag_UseFlag = false;   //use INSTRUME tag filter
+        public string settingsFilterInstrumeTag_Contains = "";  //string INSTRUME tag filter max contains
+
+
+
+
         internal uint curActiveThreads = 0;              //currently active threads
 
         //link to mainform for callback functions
@@ -136,7 +149,7 @@ namespace ImageQualityPublisher
                 FITSHeaderReader FITSobj = new FITSHeaderReader();
 
                 //2. Run evaluation in sync mode
-                DSSObj.EvaluateFile(FullFileName,false);
+                DSSObj.EvaluateFile(FullFileName, false);
                 Logging.AddLog("Quality evaluation procedure for file [" + FullFileName + "] finished", LogLevel.Activity);
 
                 //3. Parse evaluation results
@@ -151,22 +164,62 @@ namespace ImageQualityPublisher
                 FileResObj.QualityData = DSSObj.QualityEstimate;
                 FileResObj.HeaderData = FITSobj.FITSData;
 
-                //6.1. Check - if this light frame or not
+                //6. Filter file if needed
                 bool skipPublishFlag = false;
-                if (settingsPublishLightFramesOnly)
+                //6.1. HISTORY tag
+                if (settingsFilterHistoryTag_UseFlag)
                 {
-                    skipPublishFlag = true;
-                    if (FileResObj.HeaderData.ImageType == "Light Frame" || FileResObj.HeaderData.ImageType == "")
+                    if (FileResObj.HeaderData.HistoryCount > settingsFilterHistoryTag_MaxCount)
                     {
-                        skipPublishFlag = false;
+                        skipPublishFlag = true; //don't publish data
+                        Logging.AddLog("Skipping publishing frame [" + FullFileName + "]. HISTORY count = [" + FileResObj.HeaderData.HistoryCount + "]", LogLevel.Activity, Highlight.Error);
                     }
                 }
+                //6.2. OBSERVER tag
+                if (settingsFilterObserverTag_UseFlag)
+                {
+                    if (!FileResObj.HeaderData.Observer.Contains(settingsFilterObserverTag_Contains))
+                    {
+                        skipPublishFlag = true; //don't publish data
+                        Logging.AddLog("Skipping publishing frame [" + FullFileName + "]. OBSERVER = [" + FileResObj.HeaderData.Observer + "]", LogLevel.Activity, Highlight.Error);
+                    }
+                }
+                //6.3. TELECOP tag
+                if (settingsFilterTelescopTag_UseFlag)
+                {
+                    if (!FileResObj.HeaderData.TelescopeName.Contains(settingsFilterTelescopTag_Contains))
+                    { 
+                        skipPublishFlag = true; //don't publish data
+                        Logging.AddLog("Skipping publishing frame [" + FullFileName + "]. TELECOP = [" + FileResObj.HeaderData.TelescopeName + "]", LogLevel.Activity, Highlight.Error);
+                    }
+                }
+                //6.4. INSTRUME tag
+                if (settingsFilterInstrumeTag_UseFlag)
+                {
+                    if (!FileResObj.HeaderData.CameraName.Contains(settingsFilterInstrumeTag_Contains))
+                    {
+                        skipPublishFlag = true; //don't publish data
+                        Logging.AddLog("Skipping publishing frame [" + FullFileName + "]. INSTRUME = [" + FileResObj.HeaderData.CameraName + "]", LogLevel.Activity, Highlight.Error);
+                    }
+                }
+
+                //7.1. Check - if this light frame or not
+                if (settingsPublishLightFramesOnly)
+                {
+                    if ( !(FileResObj.HeaderData.ImageType == "Light Frame" || FileResObj.HeaderData.ImageType == ""))
+                    {
+                        skipPublishFlag = true;
+                        Logging.AddLog("Skipping publishing frame [" + FullFileName + "]. ImageType = [" + FileResObj.HeaderData.ImageType + "]", LogLevel.Activity, Highlight.Error);
+                    }
+                }
+
+                //8. Check - file should be published?
                 if (!skipPublishFlag)
                 {
-                    //6. Pulbish to form
+                    //8.1. Pulbish to form
                     ParentMF.Invoke(new Action(() => ParentMF.PublishFITSData(FileResObj)));
 
-                    //7. Publsh to web (GROUP)
+                    //8.2. Publsh to web (GROUP)
                     if (PublishToWeb)
                     {
                         if (!settingsSkipIMSfiles || (settingsSkipIMSfiles && ParentMF.MonitorObj.CheckFileForIMS(FullFileName)))
@@ -178,10 +231,6 @@ namespace ImageQualityPublisher
                     //8. Publsh to web (PRIVATE)
                     if (PublishToWeb2)
                         ParentMF.WebPublishObj2.PublishData(FileResObj);
-                }
-                else
-                {
-                    Logging.AddLog("Skipping publishing frame ["+ FullFileName + "]. ImageType = [" + FileResObj.HeaderData.ImageType + "]" , LogLevel.Activity, Highlight.Error);
                 }
 
                 //9. Update IMS Directory date

@@ -36,6 +36,8 @@ namespace ImageQualityPublisher
         public string TelescopeName;    //TELESCOP
         public double TelescopeFocusLen;    //FOCALLEN
         public double TelescopeDiameter;    //APTDIA
+
+        public UInt16 HistoryCount = 0; //HISTORY tag count
     }
 
 
@@ -339,7 +341,11 @@ namespace ImageQualityPublisher
             {
                 FITSData.TelescopeDiameter = Utils.ConvertToDouble(FITSVal);
             }
-
+            //public UInt16 HistoryCount = 0; //HISTORY tag count
+            else if (FITSKeyword == "HISTORY")
+            {
+                FITSData.HistoryCount++;
+            }
         }
 
     }

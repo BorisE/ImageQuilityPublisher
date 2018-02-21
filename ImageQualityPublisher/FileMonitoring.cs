@@ -22,9 +22,9 @@ namespace ImageQualityPublisher
         public string settingsExtensionToSearch = "*.fit*"; //which extension to loop
         public bool settingsScanSubdirs = false;             //scan subdirs also
 
-        public bool settingsUseDateFilters = true;
-        public DateTime settingsDateFiltersAfter = new DateTime(1970, 1, 1);
-        public DateTime settingsDateFiltersBefore = new DateTime(2017, 12, 12);
+        public bool settingsFilterDate_UseFlag = false;
+        public DateTime settingsFilterDateAfter = new DateTime(1970, 1, 1);
+        public DateTime settingsFilterDateBefore = new DateTime(2017, 12, 12);
 
         /**************************************************************************************************
         * Private vars
@@ -129,7 +129,7 @@ namespace ImageQualityPublisher
             foreach (FileInfo fileEl in fileArray)
             {
                 //2.1. CHECK FOR DATE FILTER (if needed)
-                if (!settingsUseDateFilters || settingsUseDateFilters && (fileEl.LastWriteTime.Date >= settingsDateFiltersAfter && fileEl.LastWriteTime.Date <= settingsDateFiltersBefore))
+                if (!settingsFilterDate_UseFlag || settingsFilterDate_UseFlag && (fileEl.LastWriteTime.Date >= settingsFilterDateAfter && fileEl.LastWriteTime.Date <= settingsFilterDateBefore))
                 {
                     
                     //string FileNameOnly = Path.GetFileName(filename);
