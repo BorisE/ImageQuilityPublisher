@@ -40,12 +40,15 @@ namespace ImageQualityPublisher
         private uint statImagesFound = 0;
         private uint statImagesWaiting = 0;
 
+        //Color constants
         Color OnColor = Color.DarkSeaGreen;
         Color DefBackColor;
 
         private bool AlreadyRunning = false; //flag to block concurent timer run
 
+        //Filters
         private FiltersForm FiltersFormObj;
+        bool bFiltersEnabled = false;
 
         /// <summary>
         /// Constructor
@@ -614,6 +617,17 @@ namespace ImageQualityPublisher
         private void btnShowFilters_Click(object sender, EventArgs e)
         {
             FiltersFormObj.Show();
+        }
+
+        public void FiltersEnable()
+        {
+            bFiltersEnabled = true;
+            btnFilters.BackColor = OnColor;
+        }
+        public void FiltersDisabe()
+        {
+            bFiltersEnabled = false;
+            btnFilters.BackColor = DefBackColor;
         }
         #endregion End of = Filters =
         /**************************************************************************************************/

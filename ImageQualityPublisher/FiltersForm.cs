@@ -58,11 +58,20 @@ namespace ImageQualityPublisher
             //InstrumeFilter
             ParentMF.ProcessingObj.settingsFilterInstrumeTag_UseFlag = chkFilterInstrume.Checked;
             ParentMF.ProcessingObj.settingsFilterInstrumeTag_Contains = txtFilterInstrumeContains.Text;
+
+            ParentMF.Invoke(new Action(() => ParentMF.FiltersEnable()));
         }
 
         private void btnRemove_Click(object sender, EventArgs e)
         {
+            ParentMF.MonitorObj.settingsFilterDate_UseFlag = false;
 
+            ParentMF.ProcessingObj.settingsFilterHistoryTag_UseFlag = false;
+            ParentMF.ProcessingObj.settingsFilterObserverTag_UseFlag = false;
+            ParentMF.ProcessingObj.settingsFilterTelescopTag_UseFlag = false;
+            ParentMF.ProcessingObj.settingsFilterInstrumeTag_UseFlag = false;
+
+            ParentMF.Invoke(new Action(() => ParentMF.FiltersDisabe()));
         }
 
         private void btnClose_Click(object sender, EventArgs e)

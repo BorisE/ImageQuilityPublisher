@@ -7,12 +7,15 @@ http://astrohostel.ru
 For FWHM estimate it uses DeepSkyStacker program by Luc Coiffier http://deepskystacker.free.fr/
 
 to do:
+- filters on filename
 - save IMS data on exit
 - minimize to tray
-- add date and some other filters...
 
 bugs:
-- crash when non existent directory
+- MO reported some bug on upgrade
+
+1.4 [22.02.2018]
+- filters for file processing: date and some FITS tag filters (HISTORY, OBSERVER, TELECOP, INTRUME)
 
 1.3.9 [19.02.18]
 - add option: server key

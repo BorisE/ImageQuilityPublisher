@@ -101,7 +101,7 @@ namespace ImageQualityPublisher
                     {
                         stBlock += ReadFITSBlock(i);
 
-                        if (stBlock.Contains("END") || i > MAX_FITS_DATA_BLOCKS)
+                        if (stBlock.Contains(" END ") || i > MAX_FITS_DATA_BLOCKS)
                         {
                             bHeaderRead = true;
                         }
