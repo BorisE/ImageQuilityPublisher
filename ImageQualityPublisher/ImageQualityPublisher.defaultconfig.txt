@@ -24,5 +24,10 @@
     <alwaysRebuildDSSInfoFile value="False" />
 	<publishLightFramesOnly value="True" />
 </options>
- 
+<filters>
+    <historycount value="1" />
+    <minstars value="1" />
+    <maxfwhm value="10" />
+    <minaltitude value="19" />
+</filters>
 </configuration>

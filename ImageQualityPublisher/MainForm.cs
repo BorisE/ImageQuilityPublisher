@@ -484,10 +484,7 @@ namespace ImageQualityPublisher
             FiltersFormObj.txtFilterMinStarsCount.Text = ProcessingObj.settingsFilterStarsNum_MinCount.ToString();
             FiltersFormObj.txtFilterMaxFWHM.Text = ProcessingObj.settingsFilterFWHM_MaxVal.ToString();
             FiltersFormObj.txtFilterMinAltitude.Text = ProcessingObj.settingsFilterMinAltitude_MinVal.ToString();
-            FiltersFormObj.txtFilterMaxBackground.Text = ProcessingObj.settingsFilterBackground_MaxVal.ToString();
-
-            ProcessingObj.settingsFilterBackground_MaxVal = ConfigManagement.getDouble("filters", "maxbackground") ?? 30.0;
-
+            FiltersFormObj.txtFilterMaxBackground.Text = (ProcessingObj.settingsFilterBackground_MaxVal*100.0).ToString();
 
             //restore autosasve settings events
             bTrapEvents = true;

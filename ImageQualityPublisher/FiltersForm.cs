@@ -91,8 +91,9 @@ namespace ImageQualityPublisher
             ParentMF.ProcessingObj.settingsFilterBackground_UseFlag = chkFilterQualityBackgroundLevel.Checked;
             if (!Double.TryParse(txtFilterMaxBackground.Text, out ParentMF.ProcessingObj.settingsFilterBackground_MaxVal))
             {
-                ParentMF.ProcessingObj.settingsFilterBackground_MaxVal = 0.30;
+                ParentMF.ProcessingObj.settingsFilterBackground_MaxVal = 30.0;
             }
+            ParentMF.ProcessingObj.settingsFilterBackground_MaxVal = ParentMF.ProcessingObj.settingsFilterBackground_MaxVal / 100.0; //from percent to double
 
             ParentMF.Invoke(new Action(() => ParentMF.FiltersEnable()));
         }
