@@ -127,10 +127,13 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="chkSearchSubdirs.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 63</value>
+    <value>6, 41</value>
+  </data>
+  <data name="chkSearchSubdirs.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="chkSearchSubdirs.Size" type="System.Drawing.Size, System.Drawing">
-    <value>202, 24</value>
+    <value>137, 17</value>
   </data>
   <data name="chkSearchSubdirs.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -154,10 +157,13 @@
     <value>Top, Left, Right</value>
   </data>
   <data name="cmbMonitorPath.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 26</value>
+    <value>6, 17</value>
+  </data>
+  <data name="cmbMonitorPath.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="cmbMonitorPath.Size" type="System.Drawing.Size, System.Drawing">
-    <value>632, 28</value>
+    <value>423, 21</value>
   </data>
   <data name="cmbMonitorPath.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -181,10 +187,13 @@
     <value>NoControl</value>
   </data>
   <data name="btnDelFolder.Location" type="System.Drawing.Point, System.Drawing">
-    <value>698, 22</value>
+    <value>465, 14</value>
+  </data>
+  <data name="btnDelFolder.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="btnDelFolder.Size" type="System.Drawing.Size, System.Drawing">
-    <value>39, 38</value>
+    <value>26, 25</value>
   </data>
   <data name="btnDelFolder.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -217,10 +226,13 @@
     <value>NoControl</value>
   </data>
   <data name="btnFilters.Location" type="System.Drawing.Point, System.Drawing">
-    <value>744, 20</value>
+    <value>496, 13</value>
+  </data>
+  <data name="btnFilters.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="btnFilters.Size" type="System.Drawing.Size, System.Drawing">
-    <value>108, 65</value>
+    <value>72, 42</value>
   </data>
   <data name="btnFilters.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -253,10 +265,13 @@
     <value>NoControl</value>
   </data>
   <data name="lblDirsMonitoringCount.Location" type="System.Drawing.Point, System.Drawing">
-    <value>718, 65</value>
+    <value>479, 42</value>
+  </data>
+  <data name="lblDirsMonitoringCount.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="lblDirsMonitoringCount.Size" type="System.Drawing.Size, System.Drawing">
-    <value>18, 20</value>
+    <value>13, 13</value>
   </data>
   <data name="lblDirsMonitoringCount.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -283,10 +298,13 @@
     <value>Top, Right</value>
   </data>
   <data name="btnAddFolder.Location" type="System.Drawing.Point, System.Drawing">
-    <value>650, 22</value>
+    <value>433, 14</value>
+  </data>
+  <data name="btnAddFolder.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="btnAddFolder.Size" type="System.Drawing.Size, System.Drawing">
-    <value>39, 38</value>
+    <value>26, 25</value>
   </data>
   <data name="btnAddFolder.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -316,10 +334,13 @@
     <value>True</value>
   </data>
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>646, 65</value>
+    <value>431, 42</value>
+  </data>
+  <data name="label1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>41, 20</value>
+    <value>28, 13</value>
   </data>
   <data name="label1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -340,10 +361,16 @@
     <value>6</value>
   </data>
   <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 8</value>
+    <value>4, 5</value>
+  </data>
+  <data name="groupBox1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="groupBox1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>858, 95</value>
+    <value>572, 62</value>
   </data>
   <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -364,10 +391,13 @@
     <value>3</value>
   </data>
   <data name="btnTest.Location" type="System.Drawing.Point, System.Drawing">
-    <value>321, 17</value>
+    <value>214, 11</value>
+  </data>
+  <data name="btnTest.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="btnTest.Size" type="System.Drawing.Size, System.Drawing">
-    <value>57, 40</value>
+    <value>38, 26</value>
   </data>
   <data name="btnTest.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -391,10 +421,13 @@
     <value>2</value>
   </data>
   <data name="btnRecheck.Location" type="System.Drawing.Point, System.Drawing">
-    <value>138, 26</value>
+    <value>92, 17</value>
+  </data>
+  <data name="btnRecheck.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="btnRecheck.Size" type="System.Drawing.Size, System.Drawing">
-    <value>99, 40</value>
+    <value>66, 26</value>
   </data>
   <data name="btnRecheck.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -418,10 +451,13 @@
     <value>0</value>
   </data>
   <data name="btnStart.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 26</value>
+    <value>4, 17</value>
+  </data>
+  <data name="btnStart.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="btnStart.Size" type="System.Drawing.Size, System.Drawing">
-    <value>99, 40</value>
+    <value>66, 26</value>
   </data>
   <data name="btnStart.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -454,10 +490,13 @@
     <value>NoControl</value>
   </data>
   <data name="label38.Location" type="System.Drawing.Point, System.Drawing">
-    <value>18, 97</value>
+    <value>12, 63</value>
+  </data>
+  <data name="label38.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="label38.Size" type="System.Drawing.Size, System.Drawing">
-    <value>81, 20</value>
+    <value>55, 13</value>
   </data>
   <data name="label38.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -478,10 +517,13 @@
     <value>0</value>
   </data>
   <data name="cmbLang.Location" type="System.Drawing.Point, System.Drawing">
-    <value>267, 92</value>
+    <value>178, 60</value>
+  </data>
+  <data name="cmbLang.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="cmbLang.Size" type="System.Drawing.Size, System.Drawing">
-    <value>214, 28</value>
+    <value>144, 21</value>
   </data>
   <data name="cmbLang.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -509,10 +551,13 @@
     <value>True</value>
   </data>
   <data name="linkDSS.Location" type="System.Drawing.Point, System.Drawing">
-    <value>933, 65</value>
+    <value>622, 42</value>
+  </data>
+  <data name="linkDSS.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="linkDSS.Size" type="System.Drawing.Size, System.Drawing">
-    <value>118, 20</value>
+    <value>80, 13</value>
   </data>
   <data name="linkDSS.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -536,10 +581,13 @@
     <value>Top, Right</value>
   </data>
   <data name="btnLoadDSSPath.Location" type="System.Drawing.Point, System.Drawing">
-    <value>867, 58</value>
+    <value>578, 38</value>
+  </data>
+  <data name="btnLoadDSSPath.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="btnLoadDSSPath.Size" type="System.Drawing.Size, System.Drawing">
-    <value>57, 32</value>
+    <value>38, 21</value>
   </data>
   <data name="btnLoadDSSPath.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -563,10 +611,13 @@
     <value>True</value>
   </data>
   <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>18, 65</value>
+    <value>12, 42</value>
+  </data>
+  <data name="label5.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>165, 20</value>
+    <value>112, 13</value>
   </data>
   <data name="label5.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -593,10 +644,13 @@
     <value>Top, Left, Right</value>
   </data>
   <data name="txtSettings_DSS.Location" type="System.Drawing.Point, System.Drawing">
-    <value>267, 60</value>
+    <value>178, 39</value>
+  </data>
+  <data name="txtSettings_DSS.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="txtSettings_DSS.Size" type="System.Drawing.Size, System.Drawing">
-    <value>592, 26</value>
+    <value>396, 20</value>
   </data>
   <data name="txtSettings_DSS.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -617,10 +671,13 @@
     <value>True</value>
   </data>
   <data name="chkSettings_Autostart.Location" type="System.Drawing.Point, System.Drawing">
-    <value>18, 26</value>
+    <value>12, 17</value>
+  </data>
+  <data name="chkSettings_Autostart.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="chkSettings_Autostart.Size" type="System.Drawing.Size, System.Drawing">
-    <value>179, 24</value>
+    <value>119, 17</value>
   </data>
   <data name="chkSettings_Autostart.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -644,10 +701,16 @@
     <value>6</value>
   </data>
   <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 5</value>
+    <value>6, 3</value>
+  </data>
+  <data name="groupBox2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="groupBox2.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1071, 131</value>
+    <value>714, 85</value>
   </data>
   <data name="groupBox2.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -673,8 +736,11 @@
   <data name="txtLog.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
+  <data name="txtLog.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
   <data name="txtLog.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1087, 424</value>
+    <value>726, 277</value>
   </data>
   <data name="txtLog.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -800,13 +866,13 @@
     <value>0, 0</value>
   </data>
   <data name="dataGridFileData.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 5, 3, 5</value>
+    <value>2, 3, 2, 3</value>
   </data>
   <data name="dataGridFileData.RowHeadersWidth" type="System.Int32, mscorlib">
     <value>10</value>
   </data>
   <data name="dataGridFileData.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1107, 425</value>
+    <value>738, 276</value>
   </data>
   <data name="dataGridFileData.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -824,13 +890,16 @@
     <value>0</value>
   </data>
   <data name="tabList.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 29</value>
+    <value>4, 22</value>
+  </data>
+  <data name="tabList.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="tabList.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="tabList.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1111, 425</value>
+    <value>738, 272</value>
   </data>
   <data name="tabList.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -851,13 +920,16 @@
     <value>0</value>
   </data>
   <data name="tabLog.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 29</value>
+    <value>4, 22</value>
+  </data>
+  <data name="tabLog.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="tabLog.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="tabLog.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1111, 425</value>
+    <value>738, 272</value>
   </data>
   <data name="tabLog.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -878,10 +950,13 @@
     <value>1</value>
   </data>
   <data name="btnSettings_Save.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 382</value>
+    <value>7, 248</value>
+  </data>
+  <data name="btnSettings_Save.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="btnSettings_Save.Size" type="System.Drawing.Size, System.Drawing">
-    <value>168, 34</value>
+    <value>112, 22</value>
   </data>
   <data name="btnSettings_Save.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -914,10 +989,13 @@
     <value>NoControl</value>
   </data>
   <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>148, 142</value>
+    <value>99, 92</value>
+  </data>
+  <data name="label3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>35, 20</value>
+    <value>25, 13</value>
   </data>
   <data name="label3.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -941,10 +1019,13 @@
     <value>True</value>
   </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>148, 65</value>
+    <value>99, 42</value>
+  </data>
+  <data name="label2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>35, 20</value>
+    <value>25, 13</value>
   </data>
   <data name="label2.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -965,10 +1046,13 @@
     <value>1</value>
   </data>
   <data name="txtServerKey_Private.Location" type="System.Drawing.Point, System.Drawing">
-    <value>267, 137</value>
+    <value>178, 89</value>
+  </data>
+  <data name="txtServerKey_Private.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="txtServerKey_Private.Size" type="System.Drawing.Size, System.Drawing">
-    <value>181, 26</value>
+    <value>122, 20</value>
   </data>
   <data name="txtServerKey_Private.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -990,10 +1074,13 @@ Used to check valid clients. You can get it from your service provider. </value>
     <value>2</value>
   </data>
   <data name="txtServerKey_Group.Location" type="System.Drawing.Point, System.Drawing">
-    <value>267, 60</value>
+    <value>178, 39</value>
+  </data>
+  <data name="txtServerKey_Group.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="txtServerKey_Group.Size" type="System.Drawing.Size, System.Drawing">
-    <value>181, 26</value>
+    <value>122, 20</value>
   </data>
   <data name="txtServerKey_Group.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -1018,10 +1105,13 @@ Used to check valid clients. You can get it from your service provider. </value>
     <value>Top, Left, Right</value>
   </data>
   <data name="txtSettings_urlprivate.Location" type="System.Drawing.Point, System.Drawing">
-    <value>267, 103</value>
+    <value>178, 67</value>
+  </data>
+  <data name="txtSettings_urlprivate.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="txtSettings_urlprivate.Size" type="System.Drawing.Size, System.Drawing">
-    <value>784, 26</value>
+    <value>524, 20</value>
   </data>
   <data name="txtSettings_urlprivate.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -1042,10 +1132,13 @@ Used to check valid clients. You can get it from your service provider. </value>
     <value>Top, Left, Right</value>
   </data>
   <data name="txtSettings_urlgorup.Location" type="System.Drawing.Point, System.Drawing">
-    <value>267, 26</value>
+    <value>178, 17</value>
+  </data>
+  <data name="txtSettings_urlgorup.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="txtSettings_urlgorup.Size" type="System.Drawing.Size, System.Drawing">
-    <value>784, 26</value>
+    <value>524, 20</value>
   </data>
   <data name="txtSettings_urlgorup.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -1066,10 +1159,13 @@ Used to check valid clients. You can get it from your service provider. </value>
     <value>True</value>
   </data>
   <data name="chkSettings_publishprivate.Location" type="System.Drawing.Point, System.Drawing">
-    <value>18, 106</value>
+    <value>12, 69</value>
+  </data>
+  <data name="chkSettings_publishprivate.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="chkSettings_publishprivate.Size" type="System.Drawing.Size, System.Drawing">
-    <value>188, 24</value>
+    <value>130, 17</value>
   </data>
   <data name="chkSettings_publishprivate.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1096,10 +1192,13 @@ Used to check valid clients. You can get it from your service provider. </value>
     <value>True</value>
   </data>
   <data name="chkSettings_publishgroup.Location" type="System.Drawing.Point, System.Drawing">
-    <value>18, 29</value>
+    <value>12, 19</value>
+  </data>
+  <data name="chkSettings_publishgroup.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="chkSettings_publishgroup.Size" type="System.Drawing.Size, System.Drawing">
-    <value>182, 24</value>
+    <value>126, 17</value>
   </data>
   <data name="chkSettings_publishgroup.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1120,10 +1219,16 @@ Used to check valid clients. You can get it from your service provider. </value>
     <value>7</value>
   </data>
   <data name="groupBox4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 155</value>
+    <value>6, 101</value>
+  </data>
+  <data name="groupBox4.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="groupBox4.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="groupBox4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1071, 186</value>
+    <value>714, 121</value>
   </data>
   <data name="groupBox4.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -1144,13 +1249,16 @@ Used to check valid clients. You can get it from your service provider. </value>
     <value>1</value>
   </data>
   <data name="tabSettings.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 29</value>
+    <value>4, 22</value>
+  </data>
+  <data name="tabSettings.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="tabSettings.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="tabSettings.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1111, 425</value>
+    <value>738, 272</value>
   </data>
   <data name="tabSettings.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -1177,10 +1285,13 @@ Used to check valid clients. You can get it from your service provider. </value>
     <value>NoControl</value>
   </data>
   <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>744, 55</value>
+    <value>496, 36</value>
+  </data>
+  <data name="label7.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>138, 20</value>
+    <value>95, 13</value>
   </data>
   <data name="label7.TabIndex" type="System.Int32, mscorlib">
     <value>13</value>
@@ -1204,10 +1315,13 @@ Used to check valid clients. You can get it from your service provider. </value>
     <value>NoControl</value>
   </data>
   <data name="lblVersion.Location" type="System.Drawing.Point, System.Drawing">
-    <value>366, 129</value>
+    <value>244, 84</value>
+  </data>
+  <data name="lblVersion.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="lblVersion.Size" type="System.Drawing.Size, System.Drawing">
-    <value>525, 129</value>
+    <value>350, 84</value>
   </data>
   <data name="lblVersion.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
@@ -1231,10 +1345,13 @@ Used to check valid clients. You can get it from your service provider. </value>
     <value>NoControl</value>
   </data>
   <data name="label14.Location" type="System.Drawing.Point, System.Drawing">
-    <value>363, 8</value>
+    <value>242, 5</value>
+  </data>
+  <data name="label14.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="label14.Size" type="System.Drawing.Size, System.Drawing">
-    <value>528, 48</value>
+    <value>352, 31</value>
   </data>
   <data name="label14.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
@@ -1261,10 +1378,13 @@ Used to check valid clients. You can get it from your service provider. </value>
     <value>NoControl</value>
   </data>
   <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>363, 97</value>
+    <value>242, 63</value>
+  </data>
+  <data name="label6.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>211, 20</value>
+    <value>140, 13</value>
   </data>
   <data name="label6.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -1291,10 +1411,13 @@ Used to check valid clients. You can get it from your service provider. </value>
     <value>NoControl</value>
   </data>
   <data name="label17.Location" type="System.Drawing.Point, System.Drawing">
-    <value>363, 55</value>
+    <value>242, 36</value>
+  </data>
+  <data name="label17.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="label17.Size" type="System.Drawing.Size, System.Drawing">
-    <value>210, 20</value>
+    <value>141, 13</value>
   </data>
   <data name="label17.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -1321,10 +1444,13 @@ Used to check valid clients. You can get it from your service provider. </value>
     <value>NoControl</value>
   </data>
   <data name="linkAstrohostel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>582, 97</value>
+    <value>388, 63</value>
+  </data>
+  <data name="linkAstrohostel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="linkAstrohostel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>106, 20</value>
+    <value>70, 13</value>
   </data>
   <data name="linkAstrohostel.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -1351,10 +1477,13 @@ Used to check valid clients. You can get it from your service provider. </value>
     <value>NoControl</value>
   </data>
   <data name="linkMilantiev.Location" type="System.Drawing.Point, System.Drawing">
-    <value>885, 55</value>
+    <value>590, 36</value>
+  </data>
+  <data name="linkMilantiev.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="linkMilantiev.Size" type="System.Drawing.Size, System.Drawing">
-    <value>154, 20</value>
+    <value>103, 13</value>
   </data>
   <data name="linkMilantiev.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -1381,10 +1510,13 @@ Used to check valid clients. You can get it from your service provider. </value>
     <value>NoControl</value>
   </data>
   <data name="linkAstromania.Location" type="System.Drawing.Point, System.Drawing">
-    <value>573, 55</value>
+    <value>382, 36</value>
+  </data>
+  <data name="linkAstromania.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="linkAstromania.Size" type="System.Drawing.Size, System.Drawing">
-    <value>165, 20</value>
+    <value>111, 13</value>
   </data>
   <data name="linkAstromania.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -1520,13 +1652,13 @@ Used to check valid clients. You can get it from your service provider. </value>
     <value />
   </data>
   <data name="pictureBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 8</value>
+    <value>2, 5</value>
   </data>
   <data name="pictureBox1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 5, 3, 5</value>
+    <value>2, 3, 2, 3</value>
   </data>
   <data name="pictureBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>339, 177</value>
+    <value>226, 115</value>
   </data>
   <data name="pictureBox1.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
     <value>CenterImage</value>
@@ -1547,13 +1679,16 @@ Used to check valid clients. You can get it from your service provider. </value>
     <value>8</value>
   </data>
   <data name="tabAbout.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 29</value>
+    <value>4, 22</value>
+  </data>
+  <data name="tabAbout.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="tabAbout.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="tabAbout.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1111, 425</value>
+    <value>738, 272</value>
   </data>
   <data name="tabAbout.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -1574,10 +1709,13 @@ Used to check valid clients. You can get it from your service provider. </value>
     <value>3</value>
   </data>
   <data name="tabControl1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 103</value>
+    <value>0, 67</value>
+  </data>
+  <data name="tabControl1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="tabControl1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1119, 458</value>
+    <value>746, 298</value>
   </data>
   <data name="tabControl1.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -1639,7 +1777,7 @@ Used to check valid clients. You can get it from your service provider. </value>
   <data name="toolStripDropDownLogLevel.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
         YKxG6WBogkMZKgPNCEVJFBGdGETEvgwyO9DJE5syZw3PIlPEE9pgBCLZ5XvdMB8Ew8gXbl54nuf63dd9
         0OGSnwCahxbPRNPAPMw9Xpg6ZmF46kZZ0xSKzJPIrhpDWsVnpBhGkKx3nAX8Pv7z1zg8OoY/cITdn4fw
         bf/C0kYAN3Ma/w3gWfZL5kzTKBxjWyK2DftwI9tyMYCZKXbNHaD91bLYJrDXsYbrWfUKwJrPE9M2M1Oc
@@ -1655,25 +1793,25 @@ Used to check valid clients. You can get it from your service provider. </value>
     <value>Magenta</value>
   </data>
   <data name="toolStripDropDownLogLevel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>255, 29</value>
+    <value>169, 29</value>
   </data>
   <data name="toolStripDropDownLogLevel.Text" xml:space="preserve">
     <value>toolStripDropDownLogLevel</value>
   </data>
   <data name="toolStripLogSize.Size" type="System.Drawing.Size, System.Drawing">
-    <value>73, 26</value>
+    <value>49, 26</value>
   </data>
   <data name="toolStripLogSize.Text" xml:space="preserve">
     <value>LogRec:</value>
   </data>
   <data name="statusBar.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 572</value>
+    <value>0, 361</value>
   </data>
   <data name="statusBar.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 0, 21, 0</value>
+    <value>2, 0, 14, 0</value>
   </data>
   <data name="statusBar.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1119, 31</value>
+    <value>746, 31</value>
   </data>
   <data name="statusBar.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -1703,10 +1841,16 @@ Used to check valid clients. You can get it from your service provider. </value>
     <value>Top, Right</value>
   </data>
   <data name="groupBox5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>870, 8</value>
+    <value>580, 5</value>
+  </data>
+  <data name="groupBox5.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="groupBox5.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="groupBox5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>243, 95</value>
+    <value>162, 62</value>
   </data>
   <data name="groupBox5.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -1726,14 +1870,17 @@ Used to check valid clients. You can get it from your service provider. </value>
   <data name="&gt;&gt;groupBox5.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>ru</value>
+  </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>9, 20</value>
+    <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1119, 603</value>
+    <value>746, 392</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -7907,8 +8054,11 @@ Used to check valid clients. You can get it from your service provider. </value>
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=
 </value>
   </data>
+  <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
   <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1102, 548</value>
+    <value>740, 369</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterScreen</value>
