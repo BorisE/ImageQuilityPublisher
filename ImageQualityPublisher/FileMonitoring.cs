@@ -168,8 +168,9 @@ namespace ImageQualityPublisher
                 //3.1. FILTER CHECK
                 skipFile = false;
                 //3.1.1. CHECK FOR DATE FILTER (if needed)
-                if (settingsFilterDate_UseFlag && (fileEl.LastWriteTime.Date >= settingsFilterDateAfter && fileEl.LastWriteTime.Date <= settingsFilterDateBefore))
+                if (settingsFilterDate_UseFlag && (fileEl.LastWriteTime.Date < settingsFilterDateAfter || fileEl.LastWriteTime.Date > settingsFilterDateBefore))
                 {
+                    Logging.AddLog("Skiping filename [" + fileEl.Name + "] because of filedate [" + fileEl.LastWriteTime.Date + "]...", LogLevel.Activity, Highlight.Error);
                     skipFile = true;
                 }
                 //3.1.2. CHECK FOR FILENAME FILTER (if needed)
@@ -178,7 +179,10 @@ namespace ImageQualityPublisher
                     foreach(string FileNameExcludeSt in settingsFilterFileName_ExcludeSt)
                     {
                         if (fileEl.Name.Contains(FileNameExcludeSt))
+                        { 
+                            Logging.AddLog("Skiping filename [" + fileEl.Name + "] because of filename [" + FileNameExcludeSt + "]...", LogLevel.Activity, Highlight.Error);
                             skipFile = true;
+                        }
                     }
                 }
 
@@ -192,7 +196,6 @@ namespace ImageQualityPublisher
                     {
                         //3.2.2. Add to filelist with time
                         FileListProcessed.Add(filename, fileEl.LastWriteTime);
-                        Logging.AddLog("Skiping filename [" + fileEl.Name + "] because of filter...", LogLevel.Activity, Highlight.Error);
                     }
                 }
                 else
@@ -204,7 +207,7 @@ namespace ImageQualityPublisher
                         //3.4.1. Add to filelist with time
                         FileListProcessed.Add(filename, fileEl.LastWriteTime);
 
-                        //3.4.2. PROCESS
+                        //3.4.2. ADD TO PROCESSING QUEQUE
                         ParentMF.ProcessingObj.QuequeAdd(filename);
 
                         Logging.AddLog("New file [" + filename + "] was detected and added to queque...", LogLevel.Activity, Highlight.Emphasize);
