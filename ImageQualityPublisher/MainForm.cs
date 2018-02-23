@@ -389,6 +389,7 @@ namespace ImageQualityPublisher
                 ProcessingObj.settingsSkipIMSfiles = ConfigManagement.getBool("options", "checkDirIMS") ?? true;
                 ProcessingObj.settingsDSSForceRecheck = ConfigManagement.getBool("options", "alwaysRebuildDSSInfoFile") ?? false;
                 ProcessingObj.settingsPublishLightFramesOnly = ConfigManagement.getBool("options", "publishLightFramesOnly") ?? true;
+                ProcessingObj.settingsDSSInfoFileAutoDelete = ConfigManagement.getBool("options", "autoDeleteDSSInfoFile") ?? false;
 
                 //Filter settings
                 string st = ConfigManagement.getString("filters", "excludedirs") ?? "";
@@ -521,6 +522,7 @@ namespace ImageQualityPublisher
             ConfigManagement.UpdateConfigValue("options", "checkThreads_max", ProcessingObj.settingsMaxThreads.ToString());
             ConfigManagement.UpdateConfigValue("options", "checkDirIMS", ProcessingObj.settingsSkipIMSfiles.ToString());
             ConfigManagement.UpdateConfigValue("options", "alwaysRebuildDSSInfoFile", ProcessingObj.settingsDSSForceRecheck.ToString());
+            ConfigManagement.UpdateConfigValue("options", "autoDeleteDSSInfoFile", ProcessingObj.settingsDSSInfoFileAutoDelete.ToString());
             ConfigManagement.UpdateConfigValue("options", "publishLightFramesOnly", ProcessingObj.settingsPublishLightFramesOnly.ToString());
 
             //Filter settings

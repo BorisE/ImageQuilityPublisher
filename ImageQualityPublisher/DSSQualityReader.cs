@@ -127,8 +127,9 @@ namespace ImageQualityPublisher
         /// <summary>
         /// 2. Get result
         /// After running his function get FITSQualityData
+        /// And file could be deleted after
         /// </summary>
-        public DSSQualityData GetEvaluationResults()
+        public DSSQualityData GetEvaluationResults(bool DeleteFileAfterRead = false)
         {
             //0. Compose file name
             string InfoFileName = Path.Combine(FITSFilePath, Path.GetFileNameWithoutExtension(FITSFileName) + ".Info.txt");
@@ -145,6 +146,12 @@ namespace ImageQualityPublisher
                     }
                 }
                 Logging.AddLog("Info file [" + InfoFileName + "] readed", LogLevel.Debug);
+
+                //2. If needed - delete file
+                File.Delete(InfoFileName);
+                Logging.AddLog("Info file [" + InfoFileName + "] deleted", LogLevel.Debug);
+
+
             }
             catch (Exception ex)
             {

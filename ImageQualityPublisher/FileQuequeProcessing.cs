@@ -53,6 +53,7 @@ namespace ImageQualityPublisher
         public bool settingsSkipIMSfiles = true;        //use IMS setting (check last modified file in directory)
         public bool settingsDSSForceRecheck = false;    //rebuild .info files always
         public bool settingsPublishLightFramesOnly = true;    //publish only lightframes
+        public bool settingsDSSInfoFileAutoDelete = false;    //delete .info files after reading
 
         //settings for filter
         public bool settingsFilterHistoryTag_UseFlag = false;    //use HISTORY tag filter
@@ -159,7 +160,7 @@ namespace ImageQualityPublisher
                 Logging.AddLog("Quality evaluation procedure for file [" + FullFileName + "] finished", LogLevel.Activity);
 
                 //3. Parse evaluation results
-                DSSObj.GetEvaluationResults();
+                DSSObj.GetEvaluationResults(settingsDSSInfoFileAutoDelete);
                 Logging.AddLog("Quality results for file [" + FullFileName + "] were read", LogLevel.Activity);
 
                 //4. Get FITS Header fields
