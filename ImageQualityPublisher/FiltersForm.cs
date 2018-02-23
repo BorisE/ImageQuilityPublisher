@@ -40,6 +40,16 @@ namespace ImageQualityPublisher
             ParentMF.MonitorObj.settingsFilterDateAfter = dateTimePickerAfter.Value;
             ParentMF.MonitorObj.settingsFilterDateBefore = dateTimePickerBefore.Value;
 
+            //FileFilter
+            ParentMF.MonitorObj.settingsFilterFileName_UseFlag = chkFilterExclueFileName.Checked;
+            string[] FileExcl = txtFilterFileNameExclude.Text.Split(';');
+            ParentMF.MonitorObj.settingsFilterFileName_ExcludeSt = new List<string>(FileExcl);
+
+            //DirFilter
+            ParentMF.MonitorObj.settingsFilterDirName_UseFlag = chkFilterExclueDirName.Checked;
+            string[] DirExcl = txtFilterDirNameExclude.Text.Split(';');
+            ParentMF.MonitorObj.settingsFilterDirName_ExcludeSt = new List<string>(DirExcl);
+
             //HistoryFilter
             ParentMF.ProcessingObj.settingsFilterHistoryTag_UseFlag = chkFilterHistory.Checked;
             if (! UInt16.TryParse (txtHistoryMaxCount.Text,out ParentMF.ProcessingObj.settingsFilterHistoryTag_MaxCount))
@@ -58,6 +68,31 @@ namespace ImageQualityPublisher
             //InstrumeFilter
             ParentMF.ProcessingObj.settingsFilterInstrumeTag_UseFlag = chkFilterInstrume.Checked;
             ParentMF.ProcessingObj.settingsFilterInstrumeTag_Contains = txtFilterInstrumeContains.Text;
+
+            //QualityFilters: StarsNum
+            ParentMF.ProcessingObj.settingsFilterStarsNum_UseFlag = chkFilterQualityStarsCount.Checked;
+            if (!UInt16.TryParse(txtFilterMinStarsCount.Text, out ParentMF.ProcessingObj.settingsFilterStarsNum_MinCount))
+            {
+                ParentMF.ProcessingObj.settingsFilterStarsNum_MinCount = 1;
+            }
+            //QualityFilters: FWHM
+            ParentMF.ProcessingObj.settingsFilterFWHM_UseFlag = chkFilterQualityFWHM.Checked;
+            if (!Double.TryParse(txtFilterMaxFWHM.Text, out ParentMF.ProcessingObj.settingsFilterFWHM_MaxVal))
+            {
+                ParentMF.ProcessingObj.settingsFilterFWHM_MaxVal = 10.0;
+            }
+            //QualityFilters: MinAltitude
+            ParentMF.ProcessingObj.settingsFilterMinAltitude_UseFlag = chkFilterQualityMinAltitude.Checked;
+            if (!Double.TryParse(txtFilterMinAltitude.Text, out ParentMF.ProcessingObj.settingsFilterMinAltitude_MinVal))
+            {
+                ParentMF.ProcessingObj.settingsFilterMinAltitude_MinVal = 19.0;
+            }
+            //QualityFilters: BgLevel
+            ParentMF.ProcessingObj.settingsFilterBackground_UseFlag = chkFilterQualityBackgroundLevel.Checked;
+            if (!Double.TryParse(txtFilterMaxBackground.Text, out ParentMF.ProcessingObj.settingsFilterBackground_MaxVal))
+            {
+                ParentMF.ProcessingObj.settingsFilterBackground_MaxVal = 0.30;
+            }
 
             ParentMF.Invoke(new Action(() => ParentMF.FiltersEnable()));
         }

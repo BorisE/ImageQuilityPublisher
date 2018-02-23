@@ -362,33 +362,56 @@ namespace ImageQualityPublisher
 
         private void LoadParamsFromConfigFile()
         {
-            List<string> dirNodesList = ConfigManagement.getAllSectionNamesList("monitorPath");
-            foreach (string curDirNode in dirNodesList)
+            try
             {
-                FileMonitorPath.Add(ConfigManagement.getString("monitorPath", curDirNode));
+                List<string> dirNodesList = ConfigManagement.getAllSectionNamesList("monitorPath");
+                foreach (string curDirNode in dirNodesList)
+                {
+                    FileMonitorPath.Add(ConfigManagement.getString("monitorPath", curDirNode));
+                }
+
+                MonitorObj.settingsScanSubdirs = ConfigManagement.getBool("options", "ScanSubDirs") ?? false;
+                settingsAutoStartMonitoring = ConfigManagement.getBool("options", "AUTOSTARTMONITORING") ?? false;
+                ProcessingObj.settingsDSSCLPath = ConfigManagement.getString("options", "DSS_PATH") ?? Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86), @"\DeepSkyStacker\DeepSkyStackerCL.exe");
+                currentLang = ConfigManagement.getString("options", "Language") ?? currentLangDefault;
+
+                ProcessingObj.settingsPublishToGroup = ConfigManagement.getBool("options", "PUBLISHTOGROUP") ?? true;
+                WebPublishObj.SetURL(ConfigManagement.getString("publishURL", "url1") ?? "http://localhost");
+                WebPublishObj.ServerKey = ConfigManagement.getString("publishURL", "key1") ?? "";
+
+                ProcessingObj.settingsPublishToPrivate = ConfigManagement.getBool("options", "PUBLISHTOPRIVATE") ?? true;
+                WebPublishObj2.SetURL(ConfigManagement.getString("publishURL", "url2") ?? "http://localhost");
+                WebPublishObj2.ServerKey = ConfigManagement.getString("publishURL", "key2") ?? "";
+
+                //hidden settings
+                MonitorObj.settingsExtensionToSearch = ConfigManagement.getString("options", "extensionsToSearch") ?? "*.fit*";
+                ProcessingObj.settingsMaxThreads = (uint)(ConfigManagement.getInt("options", "checkThreads_max") ?? 1);
+                ProcessingObj.settingsSkipIMSfiles = ConfigManagement.getBool("options", "checkDirIMS") ?? true;
+                ProcessingObj.settingsDSSForceRecheck = ConfigManagement.getBool("options", "alwaysRebuildDSSInfoFile") ?? false;
+                ProcessingObj.settingsPublishLightFramesOnly = ConfigManagement.getBool("options", "publishLightFramesOnly") ?? true;
+
+                //Filter settings
+                string st = ConfigManagement.getString("filters", "excludedirs") ?? "";
+                MonitorObj.settingsFilterDirName_ExcludeSt = new List<string>(st.Split(';'));
+                st = ConfigManagement.getString("filters", "excludefiles") ?? "";
+                MonitorObj.settingsFilterFileName_ExcludeSt = new List<string>(st.Split(';'));
+                ProcessingObj.settingsFilterObserverTag_Contains = ConfigManagement.getString("filters", "observer") ?? "";
+                ProcessingObj.settingsFilterTelescopTag_Contains = ConfigManagement.getString("filters", "telescop") ?? "";
+                ProcessingObj.settingsFilterInstrumeTag_Contains = ConfigManagement.getString("filters", "instrume") ?? "";
+                //Filter settings: quality
+                ProcessingObj.settingsFilterHistoryTag_MaxCount = (UInt16) (ConfigManagement.getInt("filters", "historycount") ?? 1);
+                ProcessingObj.settingsFilterStarsNum_MinCount = (UInt16)(ConfigManagement.getInt("filters", "minstars") ?? 1);
+                ProcessingObj.settingsFilterFWHM_MaxVal = ConfigManagement.getDouble("filters", "maxfwhm") ?? 10.0;
+                ProcessingObj.settingsFilterMinAltitude_MinVal = ConfigManagement.getDouble("filters", "minaltitude") ?? 19.0;
+                ProcessingObj.settingsFilterBackground_MaxVal = ConfigManagement.getDouble("filters", "maxbackground") ?? 0.30;
+
+                Logging.AddLog("Program parameters were set according to configuration file", LogLevel.Activity);
             }
-
-            MonitorObj.settingsScanSubdirs = ConfigManagement.getBool("options", "ScanSubDirs") ?? false;
-            settingsAutoStartMonitoring = ConfigManagement.getBool("options", "AUTOSTARTMONITORING") ?? false;
-            ProcessingObj.settingsDSSCLPath = ConfigManagement.getString("options", "DSS_PATH") ?? Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86),@"\DeepSkyStacker\DeepSkyStackerCL.exe");
-            currentLang = ConfigManagement.getString("options", "Language") ?? currentLangDefault;
-
-            ProcessingObj.settingsPublishToGroup = ConfigManagement.getBool("options", "PUBLISHTOGROUP") ?? true;
-            WebPublishObj.SetURL(ConfigManagement.getString("publishURL", "url1") ?? "http://localhost");
-            WebPublishObj.ServerKey = ConfigManagement.getString("publishURL", "key1") ?? "";
-
-            ProcessingObj.settingsPublishToPrivate = ConfigManagement.getBool("options", "PUBLISHTOPRIVATE") ?? true;
-            WebPublishObj2.SetURL(ConfigManagement.getString("publishURL", "url2") ?? "http://localhost");
-            WebPublishObj2.ServerKey = ConfigManagement.getString("publishURL", "key2") ?? "";
-
-            //hidden settings
-            MonitorObj.settingsExtensionToSearch = ConfigManagement.getString("options", "extensionsToSearch") ?? "*.fit*";
-            ProcessingObj.settingsMaxThreads = (uint) (ConfigManagement.getInt("options", "checkThreads_max") ?? 1);
-            ProcessingObj.settingsSkipIMSfiles = ConfigManagement.getBool("options", "checkDirIMS") ?? true;
-            ProcessingObj.settingsDSSForceRecheck = ConfigManagement.getBool("options", "alwaysRebuildDSSInfoFile") ?? false;
-            ProcessingObj.settingsPublishLightFramesOnly = ConfigManagement.getBool("options", "publishLightFramesOnly") ?? true;
-
-            Logging.AddLog("Program parameters were set according to configuration file", LogLevel.Activity);
+            catch (Exception ex)
+            {
+                Logging.AddLog("Couldn't load options" + ex.Message, LogLevel.Important, Highlight.Error);
+                Logging.AddLog("Exception details: " + ex.ToString(), LogLevel.Debug, Highlight.Error);
+            }
         }
   
         /// <summary>
@@ -449,6 +472,23 @@ namespace ImageQualityPublisher
             txtSettings_urlprivate.Text = WebPublishObj2.PublishURL;
             txtServerKey_Private.Text = WebPublishObj2.ServerKey;
 
+            //Filter settings
+            FiltersFormObj.txtFilterDirNameExclude.Text = String.Join(";", MonitorObj.settingsFilterDirName_ExcludeSt.ToArray());
+            FiltersFormObj.txtFilterFileNameExclude.Text = String.Join(";", MonitorObj.settingsFilterFileName_ExcludeSt.ToArray());
+            FiltersFormObj.txtFilterObserverContains.Text = ProcessingObj.settingsFilterObserverTag_Contains;
+            FiltersFormObj.txtFilterTelescopContains.Text = ProcessingObj.settingsFilterTelescopTag_Contains;
+            FiltersFormObj.txtFilterInstrumeContains.Text = ProcessingObj.settingsFilterInstrumeTag_Contains;
+
+            //Filter settings: quality
+            FiltersFormObj.txtHistoryMaxCount.Text =  ProcessingObj.settingsFilterHistoryTag_MaxCount.ToString();
+            FiltersFormObj.txtFilterMinStarsCount.Text = ProcessingObj.settingsFilterStarsNum_MinCount.ToString();
+            FiltersFormObj.txtFilterMaxFWHM.Text = ProcessingObj.settingsFilterFWHM_MaxVal.ToString();
+            FiltersFormObj.txtFilterMinAltitude.Text = ProcessingObj.settingsFilterMinAltitude_MinVal.ToString();
+            FiltersFormObj.txtFilterMaxBackground.Text = ProcessingObj.settingsFilterBackground_MaxVal.ToString();
+
+            ProcessingObj.settingsFilterBackground_MaxVal = ConfigManagement.getDouble("filters", "maxbackground") ?? 30.0;
+
+
             //restore autosasve settings events
             bTrapEvents = true;
 
@@ -485,6 +525,18 @@ namespace ImageQualityPublisher
             ConfigManagement.UpdateConfigValue("options", "checkDirIMS", ProcessingObj.settingsSkipIMSfiles.ToString());
             ConfigManagement.UpdateConfigValue("options", "alwaysRebuildDSSInfoFile", ProcessingObj.settingsDSSForceRecheck.ToString());
             ConfigManagement.UpdateConfigValue("options", "publishLightFramesOnly", ProcessingObj.settingsPublishLightFramesOnly.ToString());
+
+            //Filter settings
+            ConfigManagement.UpdateConfigValue("filters", "excludedirs", String.Join(";", MonitorObj.settingsFilterDirName_ExcludeSt.ToArray()));
+            ConfigManagement.UpdateConfigValue("filters", "excludefiles", String.Join(";", MonitorObj.settingsFilterFileName_ExcludeSt.ToArray()));
+            ConfigManagement.UpdateConfigValue("filters", "observer", ProcessingObj.settingsFilterObserverTag_Contains);
+            ConfigManagement.UpdateConfigValue("filters", "telescop", ProcessingObj.settingsFilterTelescopTag_Contains);
+            ConfigManagement.UpdateConfigValue("filters", "instrume", ProcessingObj.settingsFilterInstrumeTag_Contains);
+            ConfigManagement.UpdateConfigValue("filters", "historycount", ProcessingObj.settingsFilterHistoryTag_MaxCount.ToString());
+            ConfigManagement.UpdateConfigValue("filters", "minstars", ProcessingObj.settingsFilterStarsNum_MinCount.ToString());
+            ConfigManagement.UpdateConfigValue("filters", "maxfwhm", ProcessingObj.settingsFilterFWHM_MaxVal.ToString());
+            ConfigManagement.UpdateConfigValue("filters", "minaltitude", ProcessingObj.settingsFilterMinAltitude_MinVal.ToString());
+            ConfigManagement.UpdateConfigValue("filters", "maxbackground", ProcessingObj.settingsFilterBackground_MaxVal.ToString());
 
             //2. Save ConfigXML to disk
             ConfigManagement.Save();

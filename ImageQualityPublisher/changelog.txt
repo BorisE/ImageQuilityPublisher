@@ -14,6 +14,11 @@ to do:
 bugs:
 - MO reported some bug on upgrade
 
+1.4.1 [23.02.2018]
+- filters for file processing: quality (StarsNum, FWHM, MinAltitude, MaxBgLevel)
+- save filter settings
+- configXML can now create new sections
+
 1.4 [22.02.2018]
 - filters for file processing: date and some FITS tag filters (HISTORY, OBSERVER, TELECOP, INTRUME)
 

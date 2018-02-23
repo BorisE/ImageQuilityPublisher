@@ -63,8 +63,14 @@ namespace ImageQualityPublisher
         public string settingsFilterTelescopTag_Contains = "";  //string TELESCOP tag filter max contains
         public bool settingsFilterInstrumeTag_UseFlag = false;   //use INSTRUME tag filter
         public string settingsFilterInstrumeTag_Contains = "";  //string INSTRUME tag filter max contains
-
-
+        public bool settingsFilterStarsNum_UseFlag = false;     //Quality Filter: stars count
+        public UInt16 settingsFilterStarsNum_MinCount = 0;      //Quality Filter: stars count min count
+        public bool settingsFilterFWHM_UseFlag = false;         //Quality Filter: FWHM
+        public double settingsFilterFWHM_MaxVal = 10.0;         //Quality Filter: max FWHM
+        public bool settingsFilterMinAltitude_UseFlag = false;  //Quality Filter: Minimum altitude
+        public double settingsFilterMinAltitude_MinVal = 19.0;  //Quality Filter: Minimum altitude value
+        public bool settingsFilterBackground_UseFlag = false;   //Quality Filter: Max Background level
+        public double settingsFilterBackground_MaxVal = 0.30;   //Quality Filter: Max Background level value
 
 
         internal uint curActiveThreads = 0;              //currently active threads
@@ -202,6 +208,45 @@ namespace ImageQualityPublisher
                         Logging.AddLog("Skipping publishing frame [" + FullFileName + "]. INSTRUME = [" + FileResObj.HeaderData.CameraName + "]", LogLevel.Activity, Highlight.Error);
                     }
                 }
+                //6.5. Quality Filter: stars num
+                if (settingsFilterStarsNum_UseFlag)
+                {
+                    if (FileResObj.QualityData.StarsNumber <= settingsFilterStarsNum_MinCount)
+                    {
+                        skipPublishFlag = true; //don't publish data
+                        Logging.AddLog("Skipping publishing frame [" + FullFileName + "]. StarsNum = [" + FileResObj.QualityData.StarsNumber + "]", LogLevel.Activity, Highlight.Error);
+                    }
+                }
+                //6.6. Quality Filter: FWHM
+                if (settingsFilterFWHM_UseFlag)
+                {
+                    if (FileResObj.FWHM > settingsFilterFWHM_MaxVal)
+                    {
+                        skipPublishFlag = true; //don't publish data
+                        Logging.AddLog("Skipping publishing frame [" + FullFileName + "]. FWHM = [" + FileResObj.FWHM + "]", LogLevel.Activity, Highlight.Error);
+                    }
+                }
+                //6.7. Quality Filter: Min Altitude
+                if (settingsFilterMinAltitude_UseFlag)
+                {
+                    if (FileResObj.HeaderData.ObjAlt <= settingsFilterMinAltitude_MinVal)
+                    {
+                        skipPublishFlag = true; //don't publish data
+                        Logging.AddLog("Skipping publishing frame [" + FullFileName + "]. Altitude = [" + FileResObj.HeaderData.ObjAlt + "]", LogLevel.Activity, Highlight.Error);
+                    }
+                }
+                //6.8. Quality Filter: Max Background
+                if (settingsFilterBackground_UseFlag)
+                {
+                    if (FileResObj.QualityData.SkyBackground >= settingsFilterBackground_MaxVal)
+                    {
+                        skipPublishFlag = true; //don't publish data
+                        Logging.AddLog("Skipping publishing frame [" + FullFileName + "]. BgLevel = [" + FileResObj.QualityData.SkyBackground + "]", LogLevel.Activity, Highlight.Error);
+                    }
+                }
+
+
+
 
                 //7.1. Check - if this light frame or not
                 if (settingsPublishLightFramesOnly)
@@ -239,7 +284,7 @@ namespace ImageQualityPublisher
             catch (Exception ex)
             {
                 Logging.AddLog("RunFileFullProcessing error: " + ex.Message, LogLevel.Important, Highlight.Error);
-                Logging.AddLog("Exception details: " + ex.ToString(), LogLevel.Debug, Highlight.Debug);
+                Logging.AddLog("Exception details: " + ex.ToString(), LogLevel.Debug, Highlight.Error);
             }
             return FileResObj;
         }

@@ -307,10 +307,22 @@ namespace ImageQualityPublisher
             try
             {
                 // Получить перечень Узлов из текущей секции
-                XmlNode xnlNodes = ConfigManagement.configXML.SelectSingleNode("//" + sectionName);
+                XmlNode xmlSectionNode = ConfigManagement.configXML.SelectSingleNode("//" + sectionName);
+                // Если не существует, то создать секцию!
+                if (xmlSectionNode == null)
+                {
+                    XmlNode root = ConfigManagement.configXML.SelectSingleNode("configuration");
+                    xmlSectionNode = ConfigManagement.configXML.CreateElement(sectionName);
+                    XmlNode newNode = ConfigManagement.configXML.CreateElement(curName);
+                    xmlSectionNode.AppendChild(newNode);
+                    root.AppendChild(xmlSectionNode);
+                    //root.AppendChild(newNodeEnd);
+                    //XElement
+                }
+
                 bool bFound = false;
                 // Перебрать их всех и поправить аттрибуты для текущего
-                foreach (XmlNode xndNode in xnlNodes.ChildNodes)
+                foreach (XmlNode xndNode in xmlSectionNode.ChildNodes)
                 {
                     //Update data
                     if (xndNode.Name == curName)
@@ -335,7 +347,7 @@ namespace ImageQualityPublisher
                         att.Value = curValue;
                         newNode.Attributes.SetNamedItem(att);
                     }
-                    xnlNodes.AppendChild(newNode);
+                    xmlSectionNode.AppendChild(newNode);
                 }
  
             }

@@ -25,14 +25,20 @@ namespace ImageQualityPublisher
         public bool settingsFilterDate_UseFlag = false;
         public DateTime settingsFilterDateAfter = new DateTime(1970, 1, 1);
         public DateTime settingsFilterDateBefore = new DateTime(2017, 12, 12);
+        public bool settingsFilterDirName_UseFlag = false;
+        public List<string> settingsFilterDirName_ExcludeSt = new List<string> { "bad", "ифв" };
+        public bool settingsFilterFileName_UseFlag = false;
+        public List<string> settingsFilterFileName_ExcludeSt = new List<string> { "++-", "+++"} ;
 
         /**************************************************************************************************
         * Private vars
         **************************************************************************************************/
-        //file list where to keep already parsed file
-        private Dictionary<string, DateTime> FileListParsed = new Dictionary<string, DateTime>();
-        //Dir list as point of entry
+        //dir list which was scanned (including all subdirs)
         private Dictionary<string, DateTime> DirListToMonitor = new Dictionary<string, DateTime>();
+        //dir list which was scanned (including all subdirs)
+        //private Dictionary<string, DateTime> DirListProcessed = new Dictionary<string, DateTime>();
+        //file list where to keep already parsed file
+        private Dictionary<string, DateTime> FileListProcessed = new Dictionary<string, DateTime>();
 
         //link to mainform for callback functions
         private MainForm ParentMF;
@@ -110,7 +116,35 @@ namespace ImageQualityPublisher
         /// <param name="FileMonitorPathSt"></param>
         public void CheckForNewFiles(string FileMonitorPathSt)
         {
-            //1. SCAN CURRENT DIR
+            //1. CHECK FOR DIRNAME FILTER (if needed)
+            bool skipDir = false;
+            if (settingsFilterDirName_UseFlag)
+            {
+                foreach (string DirNameExcludeSt in settingsFilterDirName_ExcludeSt)
+                {
+                    if (FileMonitorPathSt.Contains(DirNameExcludeSt))
+                        skipDir = true;
+                }
+            }
+            
+            //1.2. ADD CURRENT DIR TO DirNameProcessing
+            if (!DirListToMonitor.ContainsKey(FileMonitorPathSt))
+            {
+                //1.2.2. Add to skipdirlist
+                DirListToMonitor.Add(FileMonitorPathSt, VERY_OLD_TIME );
+                if (skipDir)
+                {
+                    Logging.AddLog("Skiping dirname [" + FileMonitorPathSt + "] because of filter...", LogLevel.Activity, Highlight.Error);
+                }
+            }
+
+            //1.3. SKIP PROCESSING IF NEEDED
+            if (skipDir)
+            {
+                return;
+            }
+
+            //2. SCAN CURRENT DIR
             //get all files
             //string[] fileArray = Directory.GetFiles(FileMonitorPathSt, settingsExtensionToSearch);
             FileInfo[] fileArray;
@@ -125,23 +159,52 @@ namespace ImageQualityPublisher
                 return;
             }
 
-            //2. ENUMERATE ALL FILES
+            //3. ENUMERATE ALL FILES
+            bool skipFile = false;
             foreach (FileInfo fileEl in fileArray)
             {
-                //2.1. CHECK FOR DATE FILTER (if needed)
-                if (!settingsFilterDate_UseFlag || settingsFilterDate_UseFlag && (fileEl.LastWriteTime.Date >= settingsFilterDateAfter && fileEl.LastWriteTime.Date <= settingsFilterDateBefore))
+                string filename = fileEl.FullName;
+
+                //3.1. FILTER CHECK
+                skipFile = false;
+                //3.1.1. CHECK FOR DATE FILTER (if needed)
+                if (settingsFilterDate_UseFlag && (fileEl.LastWriteTime.Date >= settingsFilterDateAfter && fileEl.LastWriteTime.Date <= settingsFilterDateBefore))
                 {
-                    
-                    //string FileNameOnly = Path.GetFileName(filename);
-                    string filename = fileEl.FullName;
-
-                    //2.2. Is the file new to us?
-                    if (!FileListParsed.ContainsKey(filename))
+                    skipFile = true;
+                }
+                //3.1.2. CHECK FOR FILENAME FILTER (if needed)
+                if (settingsFilterFileName_UseFlag)
+                {
+                    foreach(string FileNameExcludeSt in settingsFilterFileName_ExcludeSt)
                     {
-                        //2.3.1. Add to filelist with time
-                        FileListParsed.Add(filename, fileEl.LastWriteTime);
+                        if (fileEl.Name.Contains(FileNameExcludeSt))
+                            skipFile = true;
+                    }
+                }
 
-                        //2.3.2. PROCESS
+
+                //3.2. Skip file?
+                if (skipFile)
+                {
+                    //3.2. Add record for skipped file 
+                    //3.2.1 Is the file new to us?
+                    if (!FileListProcessed.ContainsKey(filename))
+                    {
+                        //3.2.2. Add to filelist with time
+                        FileListProcessed.Add(filename, fileEl.LastWriteTime);
+                        Logging.AddLog("Skiping filename [" + fileEl.Name + "] because of filter...", LogLevel.Activity, Highlight.Error);
+                    }
+                }
+                else
+                {
+                //3.3. PROCESSING
+                    //3.3. Is the file new to us?
+                    if (!FileListProcessed.ContainsKey(filename))
+                    {
+                        //3.4.1. Add to filelist with time
+                        FileListProcessed.Add(filename, fileEl.LastWriteTime);
+
+                        //3.4.2. PROCESS
                         ParentMF.ProcessingObj.QuequeAdd(filename);
 
                         Logging.AddLog("New file [" + filename + "] was detected and added to queque...", LogLevel.Activity, Highlight.Emphasize);
@@ -149,7 +212,7 @@ namespace ImageQualityPublisher
                 }
             }
 
-            //3. If set option to scan subdirs, run recursion
+            //4. If set option to scan subdirs, run recursion
             if (settingsScanSubdirs)
             {
                 //get directories
@@ -168,7 +231,8 @@ namespace ImageQualityPublisher
         /// </summary>
         public void ClearFileList()
         {
-            FileListParsed.Clear();
+            FileListProcessed.Clear();
+            DirListToMonitor.Clear();
         }
 
         /// <summary>
@@ -176,8 +240,8 @@ namespace ImageQualityPublisher
         /// </summary>
         public void ClearDirIMSData()
         {
+            //1. Reset DirListToMonitor
             List<string> keys = new List<string>(DirListToMonitor.Keys); //Copying keys first (changing dic will reset iterator)
-
             foreach (string curDir in keys)
             {
                 DirListToMonitor[curDir] = VERY_OLD_TIME;
@@ -192,9 +256,13 @@ namespace ImageQualityPublisher
         /// <returns></returns>
         public bool CheckFileForIMS(string FileName)
         {
-            DateTime FileDate = FileListParsed[FileName];
+            //Current file DateTime
+            DateTime FileDate = FileListProcessed[FileName];
 
+            //Get Dir of current file
             string DirName = Path.GetDirectoryName(FileName);
+
+            //Get IMS date for current file
             DateTime DirIMSDate = DirListToMonitor[DirName];
 
             bool res = (FileDate > DirIMSDate);
@@ -209,7 +277,7 @@ namespace ImageQualityPublisher
         /// <param name="FileName"></param>
         public void UpdateDirIMS(string FileName)
         {
-            DateTime FileDate = FileListParsed[FileName];
+            DateTime FileDate = FileListProcessed[FileName];
 
             string DirName = Path.GetDirectoryName(FileName);
             DateTime DirIMSDate = DirListToMonitor[DirName];
