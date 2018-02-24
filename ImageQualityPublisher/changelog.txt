@@ -16,6 +16,7 @@ bugs:
 
 1.4.2 [24.02.2018]
 - add hidden option: autodelete DSS Info File
+- corrected infinite skipping
 
 1.4.1 [23.02.2018]
 - filters for file processing: quality (StarsNum, FWHM, MinAltitude, MaxBgLevel)

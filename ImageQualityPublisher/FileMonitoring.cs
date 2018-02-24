@@ -35,10 +35,12 @@ namespace ImageQualityPublisher
         **************************************************************************************************/
         //dir list which was scanned (including all subdirs)
         private Dictionary<string, DateTime> DirListToMonitor = new Dictionary<string, DateTime>();
-        //dir list which was scanned (including all subdirs)
-        //private Dictionary<string, DateTime> DirListProcessed = new Dictionary<string, DateTime>();
+        //dir list which was skipped
+        private Dictionary<string, DateTime> DirListSkipped = new Dictionary<string, DateTime>();
         //file list where to keep already parsed file
         private Dictionary<string, DateTime> FileListProcessed = new Dictionary<string, DateTime>();
+        //file list skipped
+        private Dictionary<string, DateTime> FileListSkipped = new Dictionary<string, DateTime>();
 
         //link to mainform for callback functions
         private MainForm ParentMF;
@@ -118,24 +120,33 @@ namespace ImageQualityPublisher
         {
             //1. CHECK FOR DIRNAME FILTER (if needed)
             bool skipDir = false;
-            if (settingsFilterDirName_UseFlag)
+
+            if (!DirListSkipped.ContainsKey(FileMonitorPathSt))
             {
-                foreach (string DirNameExcludeSt in settingsFilterDirName_ExcludeSt)
+                if (settingsFilterDirName_UseFlag)
                 {
-                    if (FileMonitorPathSt.Contains(DirNameExcludeSt))
-                        skipDir = true;
+                    foreach (string DirNameExcludeSt in settingsFilterDirName_ExcludeSt)
+                    {
+                        if (FileMonitorPathSt.Contains(DirNameExcludeSt))
+                        {
+                            skipDir = true;
+                            //Add to DirListSkipped
+                            DirListSkipped[FileMonitorPathSt] = VERY_OLD_TIME;
+                            Logging.AddLog("Skiping dirname [" + FileMonitorPathSt + "] because of filter [" + DirNameExcludeSt + "]...", LogLevel.Activity, Highlight.Error);
+                        }
+                    }
                 }
             }
-            
-            //1.2. ADD CURRENT DIR TO DirNameProcessing
+            else
+            {
+                skipDir = true;
+            }
+
+            //1.2. ADD CURRENT DIR TO DirListProcessed
             if (!DirListToMonitor.ContainsKey(FileMonitorPathSt))
             {
-                //1.2.2. Add to skipdirlist
-                DirListToMonitor.Add(FileMonitorPathSt, VERY_OLD_TIME );
-                if (skipDir)
-                {
-                    Logging.AddLog("Skiping dirname [" + FileMonitorPathSt + "] because of filter...", LogLevel.Activity, Highlight.Error);
-                }
+                //1.2.2. Add to DirListProcessed
+                DirListToMonitor.Add(FileMonitorPathSt, VERY_OLD_TIME);
             }
 
             //1.3. SKIP PROCESSING IF NEEDED
@@ -165,45 +176,37 @@ namespace ImageQualityPublisher
             {
                 string filename = fileEl.FullName;
 
-                //3.1. FILTER CHECK
-                skipFile = false;
-                //3.1.1. CHECK FOR DATE FILTER (if needed)
-                if (settingsFilterDate_UseFlag && (fileEl.LastWriteTime.Date < settingsFilterDateAfter || fileEl.LastWriteTime.Date > settingsFilterDateBefore))
+                //3.1. CHECK: Already processed/skipped?
+                if (!FileListProcessed.ContainsKey(filename) && !FileListSkipped.ContainsKey(filename))
                 {
-                    Logging.AddLog("Skiping filename [" + fileEl.Name + "] because of filedate [" + fileEl.LastWriteTime.Date + "]...", LogLevel.Activity, Highlight.Error);
-                    skipFile = true;
-                }
-                //3.1.2. CHECK FOR FILENAME FILTER (if needed)
-                if (settingsFilterFileName_UseFlag)
-                {
-                    foreach(string FileNameExcludeSt in settingsFilterFileName_ExcludeSt)
+                    //3.2. FILTER CHECK
+                    skipFile = false;
+
+                    //3.2.1. CHECK FOR DATE FILTER (if needed)
+                    if (settingsFilterDate_UseFlag && (fileEl.LastWriteTime.Date < settingsFilterDateAfter || fileEl.LastWriteTime.Date > settingsFilterDateBefore))
                     {
-                        if (fileEl.Name.Contains(FileNameExcludeSt))
-                        { 
-                            Logging.AddLog("Skiping filename [" + fileEl.Name + "] because of filename [" + FileNameExcludeSt + "]...", LogLevel.Activity, Highlight.Error);
-                            skipFile = true;
+                        Logging.AddLog("Skiping filename [" + fileEl.Name + "] because of filedate [" + fileEl.LastWriteTime.Date + "]...", LogLevel.Activity, Highlight.Error);
+                        FileListSkipped[filename] = fileEl.LastWriteTime; //Add to filelist with time
+                        skipFile = true;
+                    }
+                    //3.2.2. CHECK FOR FILENAME FILTER (if needed)
+                    if (settingsFilterFileName_UseFlag)
+                    {
+                        foreach (string FileNameExcludeSt in settingsFilterFileName_ExcludeSt)
+                        {
+                            if (fileEl.Name.Contains(FileNameExcludeSt))
+                            {
+                                Logging.AddLog("Skiping filename [" + fileEl.Name + "] because of filename [" + FileNameExcludeSt + "]...", LogLevel.Activity, Highlight.Error);
+                                FileListSkipped[filename] = fileEl.LastWriteTime; //Add to filelist with time
+                                skipFile = true;
+                            }
                         }
                     }
-                }
 
-
-                //3.2. Skip file?
-                if (skipFile)
-                {
-                    //3.2. Add record for skipped file 
-                    //3.2.1 Is the file new to us?
-                    if (!FileListProcessed.ContainsKey(filename))
+                    //3.3. Skip file?
+                    if (!skipFile)
                     {
-                        //3.2.2. Add to filelist with time
-                        FileListProcessed.Add(filename, fileEl.LastWriteTime);
-                    }
-                }
-                else
-                {
-                //3.3. PROCESSING
-                    //3.3. Is the file new to us?
-                    if (!FileListProcessed.ContainsKey(filename))
-                    {
+                        //3.4. PROCESSING
                         //3.4.1. Add to filelist with time
                         FileListProcessed.Add(filename, fileEl.LastWriteTime);
 

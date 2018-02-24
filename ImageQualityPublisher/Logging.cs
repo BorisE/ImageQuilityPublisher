@@ -64,6 +64,9 @@ namespace ImageQualityPublisher
         public static Int32 _MAX_DIPSLAYED_PROG_LOG_LINES = 100;
         public static Int32 _MAX_LOGLIST_SIZE = 65000;
 
+        //Block log operations flag (for asynchrouneous operations)
+        private static bool LOCKLOGFILE = false;
+
         static Logging()
         {
             LOGLIST = new List<LogRecord>();
@@ -159,7 +162,9 @@ namespace ImageQualityPublisher
             LogRec.Message = logMessage;
             LogRec.LogLevel = LogLevel;
             LogRec.Highlight = ColorHighlight;
+            LOCKLOGFILE = true; // <<<
             LOGLIST.Add(LogRec);
+            LOCKLOGFILE = false;// >>>
         }
 
         /// <summary>
@@ -169,6 +174,8 @@ namespace ImageQualityPublisher
         {
             List<LogRecord> LogListNewAll = new List<LogRecord>();
             List<LogRecord> LogListNewMainOnly = new List<LogRecord>();
+
+            LOCKLOGFILE = true; // <<<
 
             //sort new (not saved) records
             for (var i = 0; i < LOGLIST.Count; i++)
@@ -183,6 +190,8 @@ namespace ImageQualityPublisher
                     LOGLIST[i].dumpedToFile = true; //mark as written
                 }
             }
+
+            LOCKLOGFILE = false;// >>>
 
             //Save new (not saved) records
             if (LogListNewAll.Count > 0)
@@ -361,6 +370,7 @@ namespace ImageQualityPublisher
                     {
                         if (LOGLIST[i - _MAX_LOGLIST_SIZE].dumpedToFile)
                         {
+                            if (LOCKLOGFILE) return;
                             // if current line was written to file remove it
                             LOGLIST.RemoveAt(i - _MAX_LOGLIST_SIZE);
                         }
@@ -368,7 +378,8 @@ namespace ImageQualityPublisher
                 }
                 catch (Exception Ex)
                 {
-                    MessageBox.Show("Log error during cleanup [" + Ex.Message + "]");
+                    // Disabled MessageBox because of errors out of asynchroneous nature
+                    // MessageBox.Show("Log error during cleanup [" + Ex.Message + "]");
                 }
             }
         }
