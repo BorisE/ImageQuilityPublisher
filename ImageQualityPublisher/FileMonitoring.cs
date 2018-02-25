@@ -43,7 +43,7 @@ namespace ImageQualityPublisher
         private Dictionary<string, DateTime> FileListSkipped = new Dictionary<string, DateTime>();
 
         //link to mainform for callback functions
-        private MainForm ParentMF;
+        private IQPEngine ParentEngine;
 
         //status flag not to overlap threads
         private bool bMonitoringThreadRun = false;
@@ -55,9 +55,9 @@ namespace ImageQualityPublisher
         /**************************************************************************************************
         * Methods
         **************************************************************************************************/
-        public FileMonitoring(MainForm extMF)
+        public FileMonitoring(IQPEngine extIQP)
         {
-            ParentMF = extMF;
+            ParentEngine = extIQP;
         }
 
         /// <summary>
@@ -211,7 +211,7 @@ namespace ImageQualityPublisher
                         FileListProcessed.Add(filename, fileEl.LastWriteTime);
 
                         //3.4.2. ADD TO PROCESSING QUEQUE
-                        ParentMF.ProcessingObj.QuequeAdd(filename);
+                        ParentEngine.ProcessingObj.QuequeAdd(filename);
 
                         Logging.AddLog("New file [" + filename + "] was detected and added to queque...", LogLevel.Activity, Highlight.Emphasize);
                     }

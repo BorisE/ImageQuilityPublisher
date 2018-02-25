@@ -17,11 +17,7 @@ namespace ImageQualityPublisher
 {
     public partial class MainForm : Form
     {
-        public FileMonitoring MonitorObj;
-        public FileProcessing ProcessingObj;
-
-        public WebPublish WebPublishObj;    //for public
-        public WebPublish WebPublishObj2;   //for private
+        public IQPEngine EngineObj;
 
         /// <summary>
         /// Link to NON LOCALISED resource manager
@@ -55,10 +51,8 @@ namespace ImageQualityPublisher
         /// </summary>
         public MainForm()
         {
-            ProcessingObj = new FileProcessing(this);
-            MonitorObj = new FileMonitoring(this);
-            WebPublishObj = new WebPublish();
-            WebPublishObj2 = new WebPublish();
+
+            EngineObj = new IQPEngine();
 
             FiltersFormObj = new FiltersForm(this);
 
@@ -151,10 +145,10 @@ namespace ImageQualityPublisher
 
                 //1. Give some time to MonitorObj
                 List<string> dirList = cmbMonitorPath.Items.Cast<String>().ToList();
-                MonitorObj.CheckForNewFiles_async(dirList);
+                EngineObj.MonitorObj.CheckForNewFiles_async(dirList);
 
                 //2. Give some time to FileQueQue processing
-                ProcessingObj.ProcessAll();
+                EngineObj.ProcessingObj.ProcessAll();
 
                 AlreadyRunning = false;
             }
@@ -193,14 +187,14 @@ namespace ImageQualityPublisher
         public void ResetData()
         {
             //Stop current processing activity
-            MonitorObj.AbortThread();
+            EngineObj.MonitorObj.AbortThread();
             //reset already monitored filelist
-            MonitorObj.ClearFileList();
+            EngineObj.MonitorObj.ClearFileList();
             //Clear queque
-            ProcessingObj.Clear();
+            EngineObj.ProcessingObj.Clear();
 
             //Clear IMS data
-            MonitorObj.ClearDirIMSData();
+            EngineObj.MonitorObj.ClearDirIMSData();
 
             //clear Grid block
             dataGridFileData.Rows.Clear();
@@ -214,7 +208,7 @@ namespace ImageQualityPublisher
         private void UpdateStatistics()
         {
             //calc
-            statImagesWaiting = ProcessingObj.QuequeLen(); 
+            statImagesWaiting = EngineObj.ProcessingObj.QuequeLen(); 
             statImagesFound = statImagesProcessed + statImagesWaiting; //пока так
 
             //status 
@@ -234,7 +228,7 @@ namespace ImageQualityPublisher
                 //stop timer
                 monitorTimer.Enabled = false;
                 //end monitor thread
-                MonitorObj.AbortThread();
+                EngineObj.MonitorObj.AbortThread();
                 
                 btnStart.Text = LocWinFormRM.GetString("btnStart.Text");
                 btnStart.BackColor = DefBackColor;
@@ -296,7 +290,7 @@ namespace ImageQualityPublisher
 
         private void chkSearchSubdirs_CheckedChanged(object sender, EventArgs e)
         {
-            MonitorObj.settingsScanSubdirs = chkSearchSubdirs.Checked;
+            EngineObj.MonitorObj.settingsScanSubdirs = chkSearchSubdirs.Checked;
         }
 
         private void btnRecheck_Click(object sender, EventArgs e)
@@ -311,7 +305,7 @@ namespace ImageQualityPublisher
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             //Stop current processing activity
-            MonitorObj.AbortThread();
+            EngineObj.MonitorObj.AbortThread();
             //Save settings
             SaveSettingsToConfigFile();
         }
@@ -339,7 +333,7 @@ namespace ImageQualityPublisher
             DirList.Add(@"D:\2");
             DirList.Add(@"D:\2\2");
 
-            MonitorObj.CheckForNewFiles(DirList);
+            EngineObj.MonitorObj.CheckForNewFiles(DirList);
 
         }
 
@@ -370,41 +364,41 @@ namespace ImageQualityPublisher
                     FileMonitorPath.Add(ConfigManagement.getString("monitorPath", curDirNode));
                 }
 
-                MonitorObj.settingsScanSubdirs = ConfigManagement.getBool("options", "ScanSubDirs") ?? false;
+                EngineObj.MonitorObj.settingsScanSubdirs = ConfigManagement.getBool("options", "ScanSubDirs") ?? false;
                 settingsAutoStartMonitoring = ConfigManagement.getBool("options", "AUTOSTARTMONITORING") ?? false;
-                ProcessingObj.settingsDSSCLPath = ConfigManagement.getString("options", "DSS_PATH") ?? Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86), @"\DeepSkyStacker\DeepSkyStackerCL.exe");
+                EngineObj.ProcessingObj.settingsDSSCLPath = ConfigManagement.getString("options", "DSS_PATH") ?? Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86), @"\DeepSkyStacker\DeepSkyStackerCL.exe");
                 currentLang = ConfigManagement.getString("options", "Language") ?? currentLangDefault;
 
-                ProcessingObj.settingsPublishToGroup = ConfigManagement.getBool("options", "PUBLISHTOGROUP") ?? true;
-                WebPublishObj.SetURL(ConfigManagement.getString("publishURL", "url1") ?? "http://localhost");
-                WebPublishObj.ServerKey = ConfigManagement.getString("publishURL", "key1") ?? "";
+                EngineObj.ProcessingObj.settingsPublishToGroup = ConfigManagement.getBool("options", "PUBLISHTOGROUP") ?? true;
+                EngineObj.WebPublishObj.SetURL(ConfigManagement.getString("publishURL", "url1") ?? "http://localhost");
+                EngineObj.WebPublishObj.ServerKey = ConfigManagement.getString("publishURL", "key1") ?? "";
 
-                ProcessingObj.settingsPublishToPrivate = ConfigManagement.getBool("options", "PUBLISHTOPRIVATE") ?? true;
-                WebPublishObj2.SetURL(ConfigManagement.getString("publishURL", "url2") ?? "http://localhost");
-                WebPublishObj2.ServerKey = ConfigManagement.getString("publishURL", "key2") ?? "";
+                EngineObj.ProcessingObj.settingsPublishToPrivate = ConfigManagement.getBool("options", "PUBLISHTOPRIVATE") ?? true;
+                EngineObj.WebPublishObj2.SetURL(ConfigManagement.getString("publishURL", "url2") ?? "http://localhost");
+                EngineObj.WebPublishObj2.ServerKey = ConfigManagement.getString("publishURL", "key2") ?? "";
 
                 //hidden settings
-                MonitorObj.settingsExtensionToSearch = ConfigManagement.getString("options", "extensionsToSearch") ?? "*.fit*";
-                ProcessingObj.settingsMaxThreads = (uint)(ConfigManagement.getInt("options", "checkThreads_max") ?? 1);
-                ProcessingObj.settingsSkipIMSfiles = ConfigManagement.getBool("options", "checkDirIMS") ?? true;
-                ProcessingObj.settingsDSSForceRecheck = ConfigManagement.getBool("options", "alwaysRebuildDSSInfoFile") ?? false;
-                ProcessingObj.settingsPublishLightFramesOnly = ConfigManagement.getBool("options", "publishLightFramesOnly") ?? true;
-                ProcessingObj.settingsDSSInfoFileAutoDelete = ConfigManagement.getBool("options", "autoDeleteDSSInfoFile") ?? false;
+                EngineObj.MonitorObj.settingsExtensionToSearch = ConfigManagement.getString("options", "extensionsToSearch") ?? "*.fit*";
+                EngineObj.ProcessingObj.settingsMaxThreads = (uint)(ConfigManagement.getInt("options", "checkThreads_max") ?? 1);
+                EngineObj.ProcessingObj.settingsSkipIMSfiles = ConfigManagement.getBool("options", "checkDirIMS") ?? true;
+                EngineObj.ProcessingObj.settingsDSSForceRecheck = ConfigManagement.getBool("options", "alwaysRebuildDSSInfoFile") ?? false;
+                EngineObj.ProcessingObj.settingsPublishLightFramesOnly = ConfigManagement.getBool("options", "publishLightFramesOnly") ?? true;
+                EngineObj.ProcessingObj.settingsDSSInfoFileAutoDelete = ConfigManagement.getBool("options", "autoDeleteDSSInfoFile") ?? false;
 
                 //Filter settings
                 string st = ConfigManagement.getString("filters", "excludedirs") ?? "";
-                MonitorObj.settingsFilterDirName_ExcludeSt = new List<string>(st.Split(';'));
+                EngineObj.MonitorObj.settingsFilterDirName_ExcludeSt = new List<string>(st.Split(';'));
                 st = ConfigManagement.getString("filters", "excludefiles") ?? "";
-                MonitorObj.settingsFilterFileName_ExcludeSt = new List<string>(st.Split(';'));
-                ProcessingObj.settingsFilterObserverTag_Contains = ConfigManagement.getString("filters", "observer") ?? "";
-                ProcessingObj.settingsFilterTelescopTag_Contains = ConfigManagement.getString("filters", "telescop") ?? "";
-                ProcessingObj.settingsFilterInstrumeTag_Contains = ConfigManagement.getString("filters", "instrume") ?? "";
+                EngineObj.MonitorObj.settingsFilterFileName_ExcludeSt = new List<string>(st.Split(';'));
+                EngineObj.ProcessingObj.settingsFilterObserverTag_Contains = ConfigManagement.getString("filters", "observer") ?? "";
+                EngineObj.ProcessingObj.settingsFilterTelescopTag_Contains = ConfigManagement.getString("filters", "telescop") ?? "";
+                EngineObj.ProcessingObj.settingsFilterInstrumeTag_Contains = ConfigManagement.getString("filters", "instrume") ?? "";
                 //Filter settings: quality
-                ProcessingObj.settingsFilterHistoryTag_MaxCount = (UInt16) (ConfigManagement.getInt("filters", "historycount") ?? 1);
-                ProcessingObj.settingsFilterStarsNum_MinCount = (UInt16)(ConfigManagement.getInt("filters", "minstars") ?? 1);
-                ProcessingObj.settingsFilterFWHM_MaxVal = ConfigManagement.getDouble("filters", "maxfwhm") ?? 10.0;
-                ProcessingObj.settingsFilterMinAltitude_MinVal = ConfigManagement.getDouble("filters", "minaltitude") ?? 19.0;
-                ProcessingObj.settingsFilterBackground_MaxVal = ConfigManagement.getDouble("filters", "maxbackground") ?? 0.30;
+                EngineObj.ProcessingObj.settingsFilterHistoryTag_MaxCount = (UInt16) (ConfigManagement.getInt("filters", "historycount") ?? 1);
+                EngineObj.ProcessingObj.settingsFilterStarsNum_MinCount = (UInt16)(ConfigManagement.getInt("filters", "minstars") ?? 1);
+                EngineObj.ProcessingObj.settingsFilterFWHM_MaxVal = ConfigManagement.getDouble("filters", "maxfwhm") ?? 10.0;
+                EngineObj.ProcessingObj.settingsFilterMinAltitude_MinVal = ConfigManagement.getDouble("filters", "minaltitude") ?? 19.0;
+                EngineObj.ProcessingObj.settingsFilterBackground_MaxVal = ConfigManagement.getDouble("filters", "maxbackground") ?? 0.30;
 
                 Logging.AddLog("Program parameters were set according to configuration file", LogLevel.Activity);
             }
@@ -460,32 +454,32 @@ namespace ImageQualityPublisher
 
             lblDirsMonitoringCount.Text = cmbMonitorPath.Items.Count.ToString();
 
-            chkSearchSubdirs.Checked = MonitorObj.settingsScanSubdirs;
+            chkSearchSubdirs.Checked = EngineObj.MonitorObj.settingsScanSubdirs;
 
             chkSettings_Autostart.Checked = settingsAutoStartMonitoring;
-            txtSettings_DSS.Text = ProcessingObj.settingsDSSCLPath;
+            txtSettings_DSS.Text = EngineObj.ProcessingObj.settingsDSSCLPath;
 
-            chkSettings_publishgroup.Checked = ProcessingObj.settingsPublishToGroup;
-            txtSettings_urlgorup.Text = WebPublishObj.PublishURL;
-            txtServerKey_Group.Text = WebPublishObj.ServerKey;
+            chkSettings_publishgroup.Checked = EngineObj.ProcessingObj.settingsPublishToGroup;
+            txtSettings_urlgorup.Text = EngineObj.WebPublishObj.PublishURL;
+            txtServerKey_Group.Text = EngineObj.WebPublishObj.ServerKey;
 
-            chkSettings_publishprivate.Checked = ProcessingObj.settingsPublishToPrivate;
-            txtSettings_urlprivate.Text = WebPublishObj2.PublishURL;
-            txtServerKey_Private.Text = WebPublishObj2.ServerKey;
+            chkSettings_publishprivate.Checked = EngineObj.ProcessingObj.settingsPublishToPrivate;
+            txtSettings_urlprivate.Text = EngineObj.WebPublishObj2.PublishURL;
+            txtServerKey_Private.Text = EngineObj.WebPublishObj2.ServerKey;
 
             //Filter settings
-            FiltersFormObj.txtFilterDirNameExclude.Text = String.Join(";", MonitorObj.settingsFilterDirName_ExcludeSt.ToArray());
-            FiltersFormObj.txtFilterFileNameExclude.Text = String.Join(";", MonitorObj.settingsFilterFileName_ExcludeSt.ToArray());
-            FiltersFormObj.txtFilterObserverContains.Text = ProcessingObj.settingsFilterObserverTag_Contains;
-            FiltersFormObj.txtFilterTelescopContains.Text = ProcessingObj.settingsFilterTelescopTag_Contains;
-            FiltersFormObj.txtFilterInstrumeContains.Text = ProcessingObj.settingsFilterInstrumeTag_Contains;
+            FiltersFormObj.txtFilterDirNameExclude.Text = String.Join(";", EngineObj.MonitorObj.settingsFilterDirName_ExcludeSt.ToArray());
+            FiltersFormObj.txtFilterFileNameExclude.Text = String.Join(";", EngineObj.MonitorObj.settingsFilterFileName_ExcludeSt.ToArray());
+            FiltersFormObj.txtFilterObserverContains.Text = EngineObj.ProcessingObj.settingsFilterObserverTag_Contains;
+            FiltersFormObj.txtFilterTelescopContains.Text = EngineObj.ProcessingObj.settingsFilterTelescopTag_Contains;
+            FiltersFormObj.txtFilterInstrumeContains.Text = EngineObj.ProcessingObj.settingsFilterInstrumeTag_Contains;
 
             //Filter settings: quality
-            FiltersFormObj.txtHistoryMaxCount.Text =  ProcessingObj.settingsFilterHistoryTag_MaxCount.ToString();
-            FiltersFormObj.txtFilterMinStarsCount.Text = ProcessingObj.settingsFilterStarsNum_MinCount.ToString();
-            FiltersFormObj.txtFilterMaxFWHM.Text = ProcessingObj.settingsFilterFWHM_MaxVal.ToString();
-            FiltersFormObj.txtFilterMinAltitude.Text = ProcessingObj.settingsFilterMinAltitude_MinVal.ToString();
-            FiltersFormObj.txtFilterMaxBackground.Text = (ProcessingObj.settingsFilterBackground_MaxVal*100.0).ToString();
+            FiltersFormObj.txtHistoryMaxCount.Text = EngineObj.ProcessingObj.settingsFilterHistoryTag_MaxCount.ToString();
+            FiltersFormObj.txtFilterMinStarsCount.Text = EngineObj.ProcessingObj.settingsFilterStarsNum_MinCount.ToString();
+            FiltersFormObj.txtFilterMaxFWHM.Text = EngineObj.ProcessingObj.settingsFilterFWHM_MaxVal.ToString();
+            FiltersFormObj.txtFilterMinAltitude.Text = EngineObj.ProcessingObj.settingsFilterMinAltitude_MinVal.ToString();
+            FiltersFormObj.txtFilterMaxBackground.Text = (EngineObj.ProcessingObj.settingsFilterBackground_MaxVal*100.0).ToString();
 
             //restore autosasve settings events
             bTrapEvents = true;
@@ -518,24 +512,24 @@ namespace ImageQualityPublisher
             ConfigManagement.UpdateConfigValue("publishURL", "key2", txtServerKey_Private.Text);
 
             //hidden settings
-            ConfigManagement.UpdateConfigValue("options", "extensionsToSearch", MonitorObj.settingsExtensionToSearch);
-            ConfigManagement.UpdateConfigValue("options", "checkThreads_max", ProcessingObj.settingsMaxThreads.ToString());
-            ConfigManagement.UpdateConfigValue("options", "checkDirIMS", ProcessingObj.settingsSkipIMSfiles.ToString());
-            ConfigManagement.UpdateConfigValue("options", "alwaysRebuildDSSInfoFile", ProcessingObj.settingsDSSForceRecheck.ToString());
-            ConfigManagement.UpdateConfigValue("options", "autoDeleteDSSInfoFile", ProcessingObj.settingsDSSInfoFileAutoDelete.ToString());
-            ConfigManagement.UpdateConfigValue("options", "publishLightFramesOnly", ProcessingObj.settingsPublishLightFramesOnly.ToString());
+            ConfigManagement.UpdateConfigValue("options", "extensionsToSearch", EngineObj.MonitorObj.settingsExtensionToSearch);
+            ConfigManagement.UpdateConfigValue("options", "checkThreads_max", EngineObj.ProcessingObj.settingsMaxThreads.ToString());
+            ConfigManagement.UpdateConfigValue("options", "checkDirIMS", EngineObj.ProcessingObj.settingsSkipIMSfiles.ToString());
+            ConfigManagement.UpdateConfigValue("options", "alwaysRebuildDSSInfoFile", EngineObj.ProcessingObj.settingsDSSForceRecheck.ToString());
+            ConfigManagement.UpdateConfigValue("options", "autoDeleteDSSInfoFile", EngineObj.ProcessingObj.settingsDSSInfoFileAutoDelete.ToString());
+            ConfigManagement.UpdateConfigValue("options", "publishLightFramesOnly", EngineObj.ProcessingObj.settingsPublishLightFramesOnly.ToString());
 
             //Filter settings
-            ConfigManagement.UpdateConfigValue("filters", "excludedirs", String.Join(";", MonitorObj.settingsFilterDirName_ExcludeSt.ToArray()));
-            ConfigManagement.UpdateConfigValue("filters", "excludefiles", String.Join(";", MonitorObj.settingsFilterFileName_ExcludeSt.ToArray()));
-            ConfigManagement.UpdateConfigValue("filters", "observer", ProcessingObj.settingsFilterObserverTag_Contains);
-            ConfigManagement.UpdateConfigValue("filters", "telescop", ProcessingObj.settingsFilterTelescopTag_Contains);
-            ConfigManagement.UpdateConfigValue("filters", "instrume", ProcessingObj.settingsFilterInstrumeTag_Contains);
-            ConfigManagement.UpdateConfigValue("filters", "historycount", ProcessingObj.settingsFilterHistoryTag_MaxCount.ToString());
-            ConfigManagement.UpdateConfigValue("filters", "minstars", ProcessingObj.settingsFilterStarsNum_MinCount.ToString());
-            ConfigManagement.UpdateConfigValue("filters", "maxfwhm", ProcessingObj.settingsFilterFWHM_MaxVal.ToString());
-            ConfigManagement.UpdateConfigValue("filters", "minaltitude", ProcessingObj.settingsFilterMinAltitude_MinVal.ToString());
-            ConfigManagement.UpdateConfigValue("filters", "maxbackground", ProcessingObj.settingsFilterBackground_MaxVal.ToString());
+            ConfigManagement.UpdateConfigValue("filters", "excludedirs", String.Join(";", EngineObj.MonitorObj.settingsFilterDirName_ExcludeSt.ToArray()));
+            ConfigManagement.UpdateConfigValue("filters", "excludefiles", string.Join(";", EngineObj.MonitorObj.settingsFilterFileName_ExcludeSt.ToArray()));
+            ConfigManagement.UpdateConfigValue("filters", "observer", EngineObj.ProcessingObj.settingsFilterObserverTag_Contains);
+            ConfigManagement.UpdateConfigValue("filters", "telescop", EngineObj.ProcessingObj.settingsFilterTelescopTag_Contains);
+            ConfigManagement.UpdateConfigValue("filters", "instrume", EngineObj.ProcessingObj.settingsFilterInstrumeTag_Contains);
+            ConfigManagement.UpdateConfigValue("filters", "historycount", EngineObj.ProcessingObj.settingsFilterHistoryTag_MaxCount.ToString());
+            ConfigManagement.UpdateConfigValue("filters", "minstars", EngineObj.ProcessingObj.settingsFilterStarsNum_MinCount.ToString());
+            ConfigManagement.UpdateConfigValue("filters", "maxfwhm", EngineObj.ProcessingObj.settingsFilterFWHM_MaxVal.ToString());
+            ConfigManagement.UpdateConfigValue("filters", "minaltitude", EngineObj.ProcessingObj.settingsFilterMinAltitude_MinVal.ToString());
+            ConfigManagement.UpdateConfigValue("filters", "maxbackground", EngineObj.ProcessingObj.settingsFilterBackground_MaxVal.ToString());
 
             //2. Save ConfigXML to disk
             ConfigManagement.Save();

@@ -77,11 +77,11 @@ namespace ImageQualityPublisher
         internal uint curActiveThreads = 0;              //currently active threads
 
         //link to mainform for callback functions
-        private MainForm ParentMF;
+        private IQPEngine ParentEngine;
 
-        public FileProcessing(MainForm extMF)
+        public FileProcessing(IQPEngine extIQP)
         {
-            ParentMF = extMF;
+            ParentEngine = extIQP;
         }
 
         /// <summary>
@@ -263,24 +263,24 @@ namespace ImageQualityPublisher
                 if (!skipPublishFlag)
                 {
                     //8.1. Pulbish to form
-                    ParentMF.Invoke(new Action(() => ParentMF.PublishFITSData(FileResObj)));
+                    ParentEngine.Invoke(new Action(() => ParentEngine.PublishFITSData(FileResObj)));
 
                     //8.2. Publsh to web (GROUP)
                     if (PublishToWeb)
                     {
-                        if (!settingsSkipIMSfiles || (settingsSkipIMSfiles && ParentMF.MonitorObj.CheckFileForIMS(FullFileName)))
+                        if (!settingsSkipIMSfiles || (settingsSkipIMSfiles && ParentEngine.MonitorObj.CheckFileForIMS(FullFileName)))
                         {
-                            ParentMF.WebPublishObj.PublishData(FileResObj);
+                            ParentEngine.WebPublishObj.PublishData(FileResObj);
                         }
                     }
 
                     //8. Publsh to web (PRIVATE)
                     if (PublishToWeb2)
-                        ParentMF.WebPublishObj2.PublishData(FileResObj);
+                        ParentEngine.WebPublishObj2.PublishData(FileResObj);
                 }
 
                 //9. Update IMS Directory date
-                ParentMF.MonitorObj.UpdateDirIMS(FullFileName);
+                ParentEngine.MonitorObj.UpdateDirIMS(FullFileName);
             }
             catch (Exception ex)
             {

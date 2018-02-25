@@ -36,76 +36,76 @@ namespace ImageQualityPublisher
         private void btnApply_Click(object sender, EventArgs e)
         {
             //DateFilter
-            ParentMF.MonitorObj.settingsFilterDate_UseFlag = chkFilterDate.Checked;
-            ParentMF.MonitorObj.settingsFilterDateAfter = dateTimePickerAfter.Value;
-            ParentMF.MonitorObj.settingsFilterDateBefore = dateTimePickerBefore.Value;
+            ParentMF.EngineObj.MonitorObj.settingsFilterDate_UseFlag = chkFilterDate.Checked;
+            ParentMF.EngineObj.MonitorObj.settingsFilterDateAfter = dateTimePickerAfter.Value;
+            ParentMF.EngineObj.MonitorObj.settingsFilterDateBefore = dateTimePickerBefore.Value;
 
             //FileFilter
-            ParentMF.MonitorObj.settingsFilterFileName_UseFlag = chkFilterExclueFileName.Checked;
+            ParentMF.EngineObj.MonitorObj.settingsFilterFileName_UseFlag = chkFilterExclueFileName.Checked;
             string[] FileExcl = txtFilterFileNameExclude.Text.Split(';');
-            ParentMF.MonitorObj.settingsFilterFileName_ExcludeSt = new List<string>(FileExcl);
+            ParentMF.EngineObj.MonitorObj.settingsFilterFileName_ExcludeSt = new List<string>(FileExcl);
 
             //DirFilter
-            ParentMF.MonitorObj.settingsFilterDirName_UseFlag = chkFilterExclueDirName.Checked;
+            ParentMF.EngineObj.MonitorObj.settingsFilterDirName_UseFlag = chkFilterExclueDirName.Checked;
             string[] DirExcl = txtFilterDirNameExclude.Text.Split(';');
-            ParentMF.MonitorObj.settingsFilterDirName_ExcludeSt = new List<string>(DirExcl);
+            ParentMF.EngineObj.MonitorObj.settingsFilterDirName_ExcludeSt = new List<string>(DirExcl);
 
             //HistoryFilter
-            ParentMF.ProcessingObj.settingsFilterHistoryTag_UseFlag = chkFilterHistory.Checked;
-            if (! UInt16.TryParse (txtHistoryMaxCount.Text,out ParentMF.ProcessingObj.settingsFilterHistoryTag_MaxCount))
+            ParentMF.EngineObj.ProcessingObj.settingsFilterHistoryTag_UseFlag = chkFilterHistory.Checked;
+            if (! UInt16.TryParse (txtHistoryMaxCount.Text,out ParentMF.EngineObj.ProcessingObj.settingsFilterHistoryTag_MaxCount))
             {
-                ParentMF.ProcessingObj.settingsFilterHistoryTag_MaxCount = 1;
+                ParentMF.EngineObj.ProcessingObj.settingsFilterHistoryTag_MaxCount = 1;
             }
 
             //ObserverFilter
-            ParentMF.ProcessingObj.settingsFilterObserverTag_UseFlag = chkFilterObserver.Checked;
-            ParentMF.ProcessingObj.settingsFilterObserverTag_Contains = txtFilterObserverContains.Text;
+            ParentMF.EngineObj.ProcessingObj.settingsFilterObserverTag_UseFlag = chkFilterObserver.Checked;
+            ParentMF.EngineObj.ProcessingObj.settingsFilterObserverTag_Contains = txtFilterObserverContains.Text;
 
             //TelescopeFilter
-            ParentMF.ProcessingObj.settingsFilterTelescopTag_UseFlag = chkFilterTelescop.Checked;
-            ParentMF.ProcessingObj.settingsFilterTelescopTag_Contains = txtFilterTelescopContains.Text;
+            ParentMF.EngineObj.ProcessingObj.settingsFilterTelescopTag_UseFlag = chkFilterTelescop.Checked;
+            ParentMF.EngineObj.ProcessingObj.settingsFilterTelescopTag_Contains = txtFilterTelescopContains.Text;
 
             //InstrumeFilter
-            ParentMF.ProcessingObj.settingsFilterInstrumeTag_UseFlag = chkFilterInstrume.Checked;
-            ParentMF.ProcessingObj.settingsFilterInstrumeTag_Contains = txtFilterInstrumeContains.Text;
+            ParentMF.EngineObj.ProcessingObj.settingsFilterInstrumeTag_UseFlag = chkFilterInstrume.Checked;
+            ParentMF.EngineObj.ProcessingObj.settingsFilterInstrumeTag_Contains = txtFilterInstrumeContains.Text;
 
             //QualityFilters: StarsNum
-            ParentMF.ProcessingObj.settingsFilterStarsNum_UseFlag = chkFilterQualityStarsCount.Checked;
-            if (!UInt16.TryParse(txtFilterMinStarsCount.Text, out ParentMF.ProcessingObj.settingsFilterStarsNum_MinCount))
+            ParentMF.EngineObj.ProcessingObj.settingsFilterStarsNum_UseFlag = chkFilterQualityStarsCount.Checked;
+            if (!UInt16.TryParse(txtFilterMinStarsCount.Text, out ParentMF.EngineObj.ProcessingObj.settingsFilterStarsNum_MinCount))
             {
-                ParentMF.ProcessingObj.settingsFilterStarsNum_MinCount = 1;
+                ParentMF.EngineObj.ProcessingObj.settingsFilterStarsNum_MinCount = 1;
             }
             //QualityFilters: FWHM
-            ParentMF.ProcessingObj.settingsFilterFWHM_UseFlag = chkFilterQualityFWHM.Checked;
-            if (!Double.TryParse(txtFilterMaxFWHM.Text, out ParentMF.ProcessingObj.settingsFilterFWHM_MaxVal))
+            ParentMF.EngineObj.ProcessingObj.settingsFilterFWHM_UseFlag = chkFilterQualityFWHM.Checked;
+            if (!Double.TryParse(txtFilterMaxFWHM.Text, out ParentMF.EngineObj.ProcessingObj.settingsFilterFWHM_MaxVal))
             {
-                ParentMF.ProcessingObj.settingsFilterFWHM_MaxVal = 10.0;
+                ParentMF.EngineObj.ProcessingObj.settingsFilterFWHM_MaxVal = 10.0;
             }
             //QualityFilters: MinAltitude
-            ParentMF.ProcessingObj.settingsFilterMinAltitude_UseFlag = chkFilterQualityMinAltitude.Checked;
-            if (!Double.TryParse(txtFilterMinAltitude.Text, out ParentMF.ProcessingObj.settingsFilterMinAltitude_MinVal))
+            ParentMF.EngineObj.ProcessingObj.settingsFilterMinAltitude_UseFlag = chkFilterQualityMinAltitude.Checked;
+            if (!Double.TryParse(txtFilterMinAltitude.Text, out ParentMF.EngineObj.ProcessingObj.settingsFilterMinAltitude_MinVal))
             {
-                ParentMF.ProcessingObj.settingsFilterMinAltitude_MinVal = 19.0;
+                ParentMF.EngineObj.ProcessingObj.settingsFilterMinAltitude_MinVal = 19.0;
             }
             //QualityFilters: BgLevel
-            ParentMF.ProcessingObj.settingsFilterBackground_UseFlag = chkFilterQualityBackgroundLevel.Checked;
-            if (!Double.TryParse(txtFilterMaxBackground.Text, out ParentMF.ProcessingObj.settingsFilterBackground_MaxVal))
+            ParentMF.EngineObj.ProcessingObj.settingsFilterBackground_UseFlag = chkFilterQualityBackgroundLevel.Checked;
+            if (!Double.TryParse(txtFilterMaxBackground.Text, out ParentMF.EngineObj.ProcessingObj.settingsFilterBackground_MaxVal))
             {
-                ParentMF.ProcessingObj.settingsFilterBackground_MaxVal = 30.0;
+                ParentMF.EngineObj.ProcessingObj.settingsFilterBackground_MaxVal = 30.0;
             }
-            ParentMF.ProcessingObj.settingsFilterBackground_MaxVal = ParentMF.ProcessingObj.settingsFilterBackground_MaxVal / 100.0; //from percent to double
+            ParentMF.EngineObj.ProcessingObj.settingsFilterBackground_MaxVal = ParentMF.EngineObj.ProcessingObj.settingsFilterBackground_MaxVal / 100.0; //from percent to double
 
             ParentMF.Invoke(new Action(() => ParentMF.FiltersEnable()));
         }
 
         private void btnRemove_Click(object sender, EventArgs e)
         {
-            ParentMF.MonitorObj.settingsFilterDate_UseFlag = false;
+            ParentMF.EngineObj.MonitorObj.settingsFilterDate_UseFlag = false;
 
-            ParentMF.ProcessingObj.settingsFilterHistoryTag_UseFlag = false;
-            ParentMF.ProcessingObj.settingsFilterObserverTag_UseFlag = false;
-            ParentMF.ProcessingObj.settingsFilterTelescopTag_UseFlag = false;
-            ParentMF.ProcessingObj.settingsFilterInstrumeTag_UseFlag = false;
+            ParentMF.EngineObj.ProcessingObj.settingsFilterHistoryTag_UseFlag = false;
+            ParentMF.EngineObj.ProcessingObj.settingsFilterObserverTag_UseFlag = false;
+            ParentMF.EngineObj.ProcessingObj.settingsFilterTelescopTag_UseFlag = false;
+            ParentMF.EngineObj.ProcessingObj.settingsFilterInstrumeTag_UseFlag = false;
 
             ParentMF.Invoke(new Action(() => ParentMF.FiltersDisabe()));
         }
