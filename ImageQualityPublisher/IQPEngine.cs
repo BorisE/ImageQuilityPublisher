@@ -13,6 +13,9 @@ namespace ImageQualityPublisher
         public WebPublish WebPublishObj;    //for public
         public WebPublish WebPublishObj2;   //for private
 
+        public Action InovokeForm;
+
+
         public IQPEngine()
         {
             ProcessingObj = new FileProcessing(this);
