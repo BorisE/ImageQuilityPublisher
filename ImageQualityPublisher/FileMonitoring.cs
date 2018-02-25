@@ -132,7 +132,7 @@ namespace ImageQualityPublisher
                             skipDir = true;
                             //Add to DirListSkipped
                             DirListSkipped[FileMonitorPathSt] = VERY_OLD_TIME;
-                            Logging.AddLog("Skiping dirname [" + FileMonitorPathSt + "] because of filter [" + DirNameExcludeSt + "]...", LogLevel.Activity, Highlight.Error);
+                            Logging.AddLog("Skiping dirname [" + FileMonitorPathSt + "] because of filter [" + DirNameExcludeSt + "]...", LogLevel.Debug, Highlight.Error);
                         }
                     }
                 }
@@ -185,7 +185,7 @@ namespace ImageQualityPublisher
                     //3.2.1. CHECK FOR DATE FILTER (if needed)
                     if (settingsFilterDate_UseFlag && (fileEl.LastWriteTime.Date < settingsFilterDateAfter || fileEl.LastWriteTime.Date > settingsFilterDateBefore))
                     {
-                        Logging.AddLog("Skiping filename [" + fileEl.Name + "] because of filedate [" + fileEl.LastWriteTime.Date + "]...", LogLevel.Activity, Highlight.Error);
+                        Logging.AddLog("Skiping filename [" + fileEl.Name + "] because of filedate [" + fileEl.LastWriteTime.Date + "]...", LogLevel.Debug, Highlight.Error);
                         FileListSkipped[filename] = fileEl.LastWriteTime; //Add to filelist with time
                         skipFile = true;
                     }
@@ -196,7 +196,7 @@ namespace ImageQualityPublisher
                         {
                             if (fileEl.Name.Contains(FileNameExcludeSt))
                             {
-                                Logging.AddLog("Skiping filename [" + fileEl.Name + "] because of filename [" + FileNameExcludeSt + "]...", LogLevel.Activity, Highlight.Error);
+                                Logging.AddLog("Skiping filename [" + fileEl.Name + "] because of filename [" + FileNameExcludeSt + "]...", LogLevel.Debug, Highlight.Error);
                                 FileListSkipped[filename] = fileEl.LastWriteTime; //Add to filelist with time
                                 skipFile = true;
                             }

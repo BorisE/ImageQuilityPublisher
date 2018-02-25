@@ -7,7 +7,6 @@ http://astrohostel.ru
 For FWHM estimate it uses DeepSkyStacker program by Luc Coiffier http://deepskystacker.free.fr/
 
 to do:
-- filters on filename
 - save IMS data on exit
 - minimize to tray
 

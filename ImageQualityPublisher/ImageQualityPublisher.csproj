@@ -32,7 +32,7 @@
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>imagequalitypublisher.htm</WebPage>
     <TrustUrlParameters>true</TrustUrlParameters>
-    <ApplicationRevision>31</ApplicationRevision>
+    <ApplicationRevision>32</ApplicationRevision>
     <ApplicationVersion>1.4.2.%2a</ApplicationVersion>
     <UseApplicationTrust>true</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
