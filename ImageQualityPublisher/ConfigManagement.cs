@@ -7,6 +7,7 @@ using System.IO;
 using System.Windows.Forms;
 using System.Xml;
 using System.Diagnostics;
+using LoggingLib;
 
 namespace ImageQualityPublisher
 {
@@ -18,7 +19,7 @@ namespace ImageQualityPublisher
     {
 
         public static string ProgDocumentsFolderName = "AstrohostelTools"; //set this property to change 
-        public static string ProgDocumentsPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), ProgDocumentsFolderName) + "\\";
+        public static string ProgDocumentsFullPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), ProgDocumentsFolderName) + "\\";
 
 
         public static XmlDocument configXML = new XmlDocument();
@@ -36,7 +37,7 @@ namespace ImageQualityPublisher
         // Обновлять лучше так: редактируем дефолтный (txt) в папке с SourceCode (ПОМНИ НЕ .../DEBUG!!!), при компиляции он скопируется сам, а рабочий просто удаляем (при запуске перепишется). Ну или рабочий копировать в текстовый, но опять же - в папку с SourceCode.
 
         public static string CONFIG_FILENAME = "ImageQualityPublisher.config";
-        public static string CONFIG_PATH = Path.Combine(ProgDocumentsPath, "Config") + "\\";
+        public static string CONFIG_PATH = Path.Combine(ProgDocumentsFullPath, "Config") + "\\";
         public static string DEFAULT_CONFIG_FILENAME = "ImageQualityPublisher.defaultconfig.txt"; //Default config file
 
         /// <summary>
@@ -418,18 +419,10 @@ namespace ImageQualityPublisher
             try
             {
                 //Is - Documents/ObservatoryControl
-                if (!Directory.Exists(ProgDocumentsPath))
+                if (!Directory.Exists(ProgDocumentsFullPath))
                 {
-                    Directory.CreateDirectory(ProgDocumentsPath);
-                    Logging.AddLog("Root directory [" + ProgDocumentsPath + "] created", LogLevel.Important, Highlight.Emphasize);
-                    wasCreated = true;
-                }
-
-                //Is - Documents/ObservatoryControl/Logs
-                if (!Directory.Exists(Logging.LogFilePath))
-                {
-                    Directory.CreateDirectory(Logging.LogFilePath);
-                    Logging.AddLog("Log directory [" + Logging.LogFilePath + "] created", LogLevel.Important, Highlight.Emphasize);
+                    Directory.CreateDirectory(ProgDocumentsFullPath);
+                    Logging.AddLog("Root directory [" + ProgDocumentsFullPath + "] created", LogLevel.Important, Highlight.Emphasize);
                     wasCreated = true;
                 }
 

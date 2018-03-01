@@ -8,8 +8,9 @@ using System.Net;
 using System.Reflection;
 using System.Text;
 using System.Web.Script.Serialization;
+using LoggingLib;
 
-namespace ImageQualityPublisher
+namespace IQPEngineLib
 {
     /// <summary>
     /// Class to be included in FileParseResult (since version 1.3.9)

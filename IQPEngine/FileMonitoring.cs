@@ -4,8 +4,9 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
+using LoggingLib;
 
-namespace ImageQualityPublisher
+namespace IQPEngineLib
 {
     /// <summary>
     /// Monitor folder for new files and run estimation procedures

@@ -12,12 +12,14 @@ using System.Resources;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
+using IQPEngineLib;
+using LoggingLib;
 
 namespace ImageQualityPublisher
 {
     public partial class MainForm : Form
     {
-        public IQPEngine EngineObj;
+        public IQPEngineLib.IQPEngine EngineObj;
 
         /// <summary>
         /// Link to NON LOCALISED resource manager
@@ -51,9 +53,13 @@ namespace ImageQualityPublisher
         /// </summary>
         public MainForm()
         {
+            ConfigManagement.ProgDocumentsFolderName = "AstrohostelTools";          //set this property to change 
+            Logging.InitLogging(ConfigManagement.ProgDocumentsFullPath, "imagepublisher_", false); //set log folder and log file name
+           
 
-            EngineObj = new IQPEngine();
-
+            EngineObj = new IQPEngineLib.IQPEngine(new IQPEngineLib.IQPEngine.CallBackFunction(PublishFITSData));
+            //this.Invoke(new Action(() => this.PublishFITSData(FileResObj)));
+            
             FiltersFormObj = new FiltersForm(this);
 
             //Load config file
@@ -160,6 +166,11 @@ namespace ImageQualityPublisher
         /// </summary>
         /// <param name="FileResObj"></param>
         public void PublishFITSData(FileParseResult FileResObj)
+        {
+            this.Invoke(new Action(() => this.PublishFITSDataInvoke(FileResObj)));
+        }
+
+        private void PublishFITSDataInvoke(FileParseResult FileResObj)
         {
             //Grid block
             int curRowIndex = dataGridFileData.Rows.Add();

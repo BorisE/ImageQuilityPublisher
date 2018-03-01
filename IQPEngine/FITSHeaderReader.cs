@@ -5,8 +5,10 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using LoggingLib;
 
-namespace ImageQualityPublisher
+
+namespace IQPEngineLib
 {
     public class FITSHeaderData
     {
@@ -241,7 +243,7 @@ namespace ImageQualityPublisher
             //EXPOSURE=   600.00000000000000 /Exposure time in seconds                        
             else if(FITSKeyword == "EXPOSURE")
             {
-                FITSData.ImageExposure = Utils.ConvertToDouble(FITSVal);
+                FITSData.ImageExposure = UtilsFunctions.ConvertToDouble(FITSVal);
             }
             //public string ImageFilter; //FILTER
             //FILTER = 'L       ' / Filter used when taking image
@@ -258,32 +260,32 @@ namespace ImageQualityPublisher
             //public double ImageBinningX; //XBINNING
             else if (FITSKeyword == "XBINNING")
             {
-                FITSData.ImageBinningX = Utils.ConvertToDouble(FITSVal);
+                FITSData.ImageBinningX = UtilsFunctions.ConvertToDouble(FITSVal);
             }
             //public double ImageBinningY; //YBINNING
             else if (FITSKeyword == "YBINNING")
             {
-                FITSData.ImageBinningY = Utils.ConvertToDouble(FITSVal);
+                FITSData.ImageBinningY = UtilsFunctions.ConvertToDouble(FITSVal);
             }
             //public double ImageSetTemp; //SET-TEMP
             else if (FITSKeyword == "SET-TEMP")
             {
-                FITSData.ImageSetTemp = Utils.ConvertToDouble(FITSVal);
+                FITSData.ImageSetTemp = UtilsFunctions.ConvertToDouble(FITSVal);
             }
             //public double ImageTemp; //CCD-TEMP
             else if (FITSKeyword == "CCD-TEMP")
             {
-                FITSData.ImageTemp = Utils.ConvertToDouble(FITSVal);
+                FITSData.ImageTemp = UtilsFunctions.ConvertToDouble(FITSVal);
             }
             //public double CameraPixelSizeX; //XPIXSZ
             else if (FITSKeyword == "XPIXSZ")
             {
-                FITSData.CameraPixelSizeX = Utils.ConvertToDouble(FITSVal);
+                FITSData.CameraPixelSizeX = UtilsFunctions.ConvertToDouble(FITSVal);
             }
             //public double CameraPixelSizeY; //YPIXSZ
             else if (FITSKeyword == "YPIXSZ")
             {
-                FITSData.CameraPixelSizeY = Utils.ConvertToDouble(FITSVal);
+                FITSData.CameraPixelSizeY = UtilsFunctions.ConvertToDouble(FITSVal);
             }
             //public string ObjName;  //OBJECT
             //OBJECT = 'NGC247  '
@@ -307,13 +309,13 @@ namespace ImageQualityPublisher
             //OBJCTALT = ' 23.7854' / Nominal altitude of center of image
             else if (FITSKeyword == "OBJCTALT")
             {
-                FITSData.ObjAlt = Utils.ConvertToDouble(FITSVal);
+                FITSData.ObjAlt = UtilsFunctions.ConvertToDouble(FITSVal);
             }
             //public double ObjAz;    //OBJCTAZ
             //OBJCTAZ = '168.2074' / Nominal azimuth of center of image
             else if (FITSKeyword == "OBJCTAZ")
             {
-                FITSData.ObjAz = Utils.ConvertToDouble(FITSVal);
+                FITSData.ObjAz = UtilsFunctions.ConvertToDouble(FITSVal);
             }
 
             //public string CameraName; //INSTRUME   
@@ -334,12 +336,12 @@ namespace ImageQualityPublisher
             //public double TelescopeFocusLen;    //FOCALLEN
             else if (FITSKeyword == "FOCALLEN")
             {
-                FITSData.TelescopeFocusLen = Utils.ConvertToDouble(FITSVal);
+                FITSData.TelescopeFocusLen = UtilsFunctions.ConvertToDouble(FITSVal);
             }
             //public double TelescopeDiameter;    //APTDIA
             else if (FITSKeyword == "APTDIA")
             {
-                FITSData.TelescopeDiameter = Utils.ConvertToDouble(FITSVal);
+                FITSData.TelescopeDiameter = UtilsFunctions.ConvertToDouble(FITSVal);
             }
             //public UInt16 HistoryCount = 0; //HISTORY tag count
             else if (FITSKeyword == "HISTORY")

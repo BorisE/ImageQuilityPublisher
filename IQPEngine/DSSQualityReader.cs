@@ -5,8 +5,9 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using LoggingLib;
 
-namespace ImageQualityPublisher
+namespace IQPEngineLib
 {
     public class DSSQualityData
     {
@@ -170,7 +171,7 @@ namespace ImageQualityPublisher
             {
                 int beg1 = LineSt.LastIndexOf("=")+1;
                 string Val = LineSt.Substring(beg1).Trim();
-                if (!Utils.TryParseToDouble(Val, out QualityEstimate.SkyBackground))
+                if (!UtilsFunctions.TryParseToDouble(Val, out QualityEstimate.SkyBackground))
                     QualityEstimate.SkyBackground = 0.0;
             }
             //NrStars = 77
@@ -189,7 +190,7 @@ namespace ImageQualityPublisher
                 int beg1 = LineSt.LastIndexOf("=") + 1;
                 string Val = LineSt.Substring(beg1).Trim();
                 double dblVal = 0.0;
-                if (Utils.TryParseToDouble(Val, out dblVal))
+                if (UtilsFunctions.TryParseToDouble(Val, out dblVal))
                 {
                     QualityEstimate.MeanRadiusSum += dblVal;
                     QualityEstimate.MeanRadiusNum++;

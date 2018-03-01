@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading;
+using LoggingLib;
 
-namespace ImageQualityPublisher
+
+namespace IQPEngineLib
 {
     /// <summary>
     /// Class FileParseResult
@@ -263,7 +265,8 @@ namespace ImageQualityPublisher
                 if (!skipPublishFlag)
                 {
                     //8.1. Pulbish to form
-                    ParentEngine.Invoke(new Action(() => ParentEngine.PublishFITSData(FileResObj)));
+                    //ParentEngine.Invoke(new Action(() => ParentEngine.PublishFITSData(FileResObj)));
+                    ParentEngine.CallBackFunction_Outputreslut(FileResObj);
 
                     //8.2. Publsh to web (GROUP)
                     if (PublishToWeb)
