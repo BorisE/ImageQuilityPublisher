@@ -11,12 +11,7 @@ namespace IQPEngineLib
     /// <summary>
     /// Monitor folder for new files and run estimation procedures
     /// 1. Run CheckForNewFiles to check new files
-    /// 2. For each new file RunQualityEstimation_async in separate thread
-    /// RunQualityEstimation_async in separate thread runs:
-    ///     - quality estimation through DSSQualityReader class
-    ///     - fits header data reading through FITSHeaderReader class
-    ///     - publish result with the help of FileParseResult class to form
-    ///     - publish result with the help of FileParseResult class to web
+    /// 2. Add every valid file (checking using filters and settings) to processing QUEQUE
     /// </summary>
     public class FileMonitoring
     {

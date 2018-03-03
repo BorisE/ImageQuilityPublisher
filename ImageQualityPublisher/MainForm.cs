@@ -154,7 +154,7 @@ namespace ImageQualityPublisher
                 EngineObj.MonitorObj.CheckForNewFiles_async(dirList);
 
                 //2. Give some time to FileQueQue processing
-                EngineObj.ProcessingObj.ProcessAll();
+                EngineObj.ProcessingObj.ProcessAll_async();
 
                 AlreadyRunning = false;
             }

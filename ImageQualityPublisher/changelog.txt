@@ -13,6 +13,10 @@ to do:
 bugs:
 - MO reported some bug on upgrade
 
+2.0.0 [03.03.2018]
+- new architecture (engine)
+- logging was moved to separate lib and a bit developed
+
 1.4.2 [24.02.2018]
 - add hidden option: autodelete DSS Info File
 - corrected infinite skipping

@@ -9,7 +9,6 @@ using LoggingLib;
 namespace IQPEngineLib
 {
     /// <summary>
-    /// Class FileParseResult
     /// Contains all results to use
     /// </summary>
     public class FileParseResult
@@ -38,8 +37,15 @@ namespace IQPEngineLib
 
     /// <summary>
     /// Process FileQueque
+    /// ----------------------------------
+    /// 1. Run ProcessAll() or ProcessOne() to process all queque or just 1 element
+    /// 2. For each file in queque will be ran RunFileFullProcessing() in separate thread
+    ///     - quality estimation through DSSQualityReader class
+    ///     - fits header data reading through FITSHeaderReader class
+    ///     - publish result with the help of FileParseResult class to form
+    ///     - publish result with the help of FileParseResult class to web
     /// </summary>
-    public class FileProcessing
+    public class FileQueQueProcessing
     {
         //file list where to keep already parsed file
         private Queue<string> FileQuequeList = new Queue<string>();
@@ -81,7 +87,7 @@ namespace IQPEngineLib
         //link to mainform for callback functions
         private IQPEngine ParentEngine;
 
-        public FileProcessing(IQPEngine extIQP)
+        public FileQueQueProcessing(IQPEngine extIQP)
         {
             ParentEngine = extIQP;
         }
@@ -99,6 +105,14 @@ namespace IQPEngineLib
         /// <summary>
         /// Process All Queque
         /// </summary>
+        public void ProcessAll_async()
+        {
+            while (FileQuequeList.Count > 0 && curActiveThreads < settingsMaxThreads)
+            {
+                ProcessOne_async();
+            }
+        }
+
         public void ProcessAll()
         {
             while (FileQuequeList.Count > 0 && curActiveThreads < settingsMaxThreads)
@@ -110,7 +124,7 @@ namespace IQPEngineLib
         /// <summary>
         /// Process first file in queque
         /// </summary>
-        public void ProcessOne()
+        public void ProcessOne_async()
         {
             //if there is free threads
             if (curActiveThreads < settingsMaxThreads)
@@ -134,6 +148,22 @@ namespace IQPEngineLib
             else
             {
                 //??
+            }
+        }
+
+        /// <summary>
+        /// Process first file in queque
+        /// </summary>
+        public void ProcessOne()
+        {
+            //if there is non empty queque
+            if (FileQuequeList.Count > 0)
+            {
+                //1. Get the first file
+                string filename = FileQuequeList.Dequeue();
+
+                //2. run file processing async
+                RunFileFullProcessing(filename, settingsPublishToGroup, settingsPublishToPrivate);
             }
         }
 
@@ -248,9 +278,6 @@ namespace IQPEngineLib
                     }
                 }
 
-
-
-
                 //7.1. Check - if this light frame or not
                 if (settingsPublishLightFramesOnly)
                 {
@@ -266,7 +293,7 @@ namespace IQPEngineLib
                 {
                     //8.1. Pulbish to form
                     //ParentEngine.Invoke(new Action(() => ParentEngine.PublishFITSData(FileResObj)));
-                    ParentEngine.CallBackFunction_Outputreslut(FileResObj);
+                    ParentEngine.CallBackFunction_Outputreslut?.Invoke(FileResObj);
 
                     //8.2. Publsh to web (GROUP)
                     if (PublishToWeb)

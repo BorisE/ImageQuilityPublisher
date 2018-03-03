@@ -41,6 +41,17 @@ namespace LoggingLib
         All = 999
     }
 
+    /// <summary>
+    /// Custom Logging class (by Boris Emchenko)
+    /// 
+    /// 2.1 [03-03-2018]
+    /// - bugfix
+    /// 2.0 [02-03-2018]
+    /// - standalone module!
+    /// - rewrited Log dir control and recreation
+    /// - InitLogging method
+    /// - some improvements
+    /// </summary>
     public class Logging
     {
         /// <summary>
@@ -61,44 +72,38 @@ namespace LoggingLib
         //  4. Указать, нужен ли вообще полный файл (settingsLOG_NOTICES)
         //  Можно делать напрямую, а можно, чтобы не забыть, вызывать InitLogging
         //******************************************************
-        #region LOG FILES DATA
+        #region LOG FILES STORAGE
             /// <summary>
             /// Log Parent Dir, where LOG_FOLDER_NAME folder with log files will be
             /// </summary>
             public static string GlobalLogFolderContext = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments); 
-                        //should be set on creation (as below). Otherwise - use Document folder
+                    //should be set on creation (as below). Otherwise - use Document folder
                     //public static string ProgDocumentsFolderName = "AstrohostelTools"; //set this property to change 
                     //public static string ProgDocumentsPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), ProgDocumentsFolderName) + "\\";
         
-                /// <summary>
-                /// Folder with log files
-                /// </summary>
-                public static string LOG_FOLDER_NAME = "Logs";
+            /// <summary>
+            /// Folder with log files
+            /// </summary>
+            public static string LOG_FOLDER_NAME = "Logs";
 
-                /// <summary>
-                /// Log file with Main Events (debug, activity, important)
-                /// </summary>
-                public static string LOG_FILE_NAME_MAIN = "logs_";      //file name prefis (suffix will be data)
+            /// <summary>
+            /// Log file with Main Events (debug, activity, important)
+            /// </summary>
+            public static string LOG_FILE_NAME_MAIN = "logs_";      //file name prefis (suffix will be data)
 
-                /// <summary>
-                /// Log file with Notices (all events)
-                /// </summary>
-                public static string LOG_FILE_NAME_ALL = "logs_trace_"; //file name prefis (suffix will be data)
+            /// <summary>
+            /// Log file with Notices (all events)
+            /// </summary>
+            public static string LOG_FILE_NAME_ALL = "logs_trace_"; //file name prefis (suffix will be data)
 
-                /// <summary>
-                /// Log file extensions
-                /// </summary>
-                public static string LOG_FILE_EXT = "log"; //file log extensions
+            /// <summary>
+            /// Log file extensions
+            /// </summary>
+            public static string LOG_FILE_EXT = "log"; //file log extensions
 
-                public static bool settingsLOG_NOTICES = false; //should notices also be logged???
-        #endregion LOG FILES DATA
+            public static bool settingsLOG_NOTICES = false; //should notices also be logged???
+        #endregion LOG FILES STORAGE
 
-
-
-
-
-
-        
         //DEBUG LEVEL
         public static LogLevel DEBUG_LEVEL = LogLevel.All;
 
@@ -109,10 +114,10 @@ namespace LoggingLib
         // PRIVATE PROPERTIES
         //**************************************************
         #region Private Properies
-            private static string LogFilePath="";   //полный путь к папке с логами. Устанавливается GetLogDirectory()
+            private static string calculatedLogFilePath="";   //полный путь к папке с логами. Устанавливается GetLogDirectory()
 
-            private static string currentLogAllFileFullName = ""; //путь и имя файла лога текущей сессии
-            private static string currentLogMainFileFullName = ""; //путь и имя файла лога текущей сессии
+            private static string calculatedLogAllFileFullName = ""; //путь и имя файла лога текущей сессии
+            private static string calculatedLogMainFileFullName = ""; //путь и имя файла лога текущей сессии
 
             //Block log operations flag (for asynchrouneous operations)
             private static bool LOCKLOGFILE = false;
@@ -141,31 +146,31 @@ namespace LoggingLib
         /// <summary>
         /// Get current log files names with path (full log file)
         /// </summary>
-        private static string LogAllFileFullName
+        private static string getLogAllFileFullName
         {
             get
             {
-                if (currentLogAllFileFullName == "")
+                if (calculatedLogAllFileFullName == "")
                 {
-                    LogFilePath = GetLogDirectory();
-                    currentLogAllFileFullName = Path.Combine(LogFilePath, LOG_FILE_NAME_ALL + DateTime.Now.ToString("yyyy-MM-dd HH-mm-ss") + "." + LOG_FILE_EXT);
+                    calculatedLogFilePath = GetLogDirectory();
+                    calculatedLogAllFileFullName = Path.Combine(calculatedLogFilePath, LOG_FILE_NAME_ALL + DateTime.Now.ToString("yyyy-MM-dd HH-mm-ss") + "." + LOG_FILE_EXT);
                 }
-                return currentLogAllFileFullName;
+                return calculatedLogAllFileFullName;
             }
         }
         /// <summary>
         /// Get current log files names with path (main log file)
         /// </summary>
-        private static string LogMainFileFullName
+        private static string getLogMainFileFullName
         {
             get
             {
-                if (currentLogMainFileFullName == "")
+                if (calculatedLogMainFileFullName == "")
                 {
-                    LogFilePath = GetLogDirectory();
-                    currentLogMainFileFullName = Path.Combine(LogFilePath, LOG_FILE_NAME_MAIN + DateTime.Now.ToString("yyyy-MM-dd HH-mm-ss") + "." + LOG_FILE_EXT);
+                    calculatedLogFilePath = GetLogDirectory();
+                    calculatedLogMainFileFullName = Path.Combine(calculatedLogFilePath, LOG_FILE_NAME_MAIN + DateTime.Now.ToString("yyyy-MM-dd HH-mm-ss") + "." + LOG_FILE_EXT);
                 }
-                return currentLogMainFileFullName;
+                return calculatedLogMainFileFullName;
             }
         }
 
@@ -175,7 +180,7 @@ namespace LoggingLib
         /// <returns>Current log file path</returns>
         private static string GetLogDirectory(bool ForceCheckDir = false)
         {
-            if (LogFilePath == "" || ForceCheckDir)
+            if (calculatedLogFilePath == "" || ForceCheckDir)
             {
                 string st = "";
                 //Check if root folder exists. If not - create it
@@ -188,18 +193,18 @@ namespace LoggingLib
                 if (Directory.Exists(Path.Combine(GlobalLogFolderContext, LOG_FOLDER_NAME) + "\\"))
                 {
                     //use default folder
-                    LogFilePath = Path.Combine(GlobalLogFolderContext, LOG_FOLDER_NAME);
+                    calculatedLogFilePath = Path.Combine(GlobalLogFolderContext, LOG_FOLDER_NAME);
                 }
                 else
                 {
                     //if not - use app folder
-                    LogFilePath = Application.StartupPath;
+                    calculatedLogFilePath = Application.StartupPath;
                 }
-                return LogFilePath;
+                return calculatedLogFilePath;
             }
             else
             {
-                return LogFilePath;
+                return calculatedLogFilePath;
             }
         }
 
@@ -259,7 +264,7 @@ namespace LoggingLib
                     if (settingsLOG_NOTICES)  
                     {
                         // Write all (trace) log file 
-                        using (StreamWriter LogFile = new StreamWriter(LogAllFileFullName, true))
+                        using (StreamWriter LogFile = new StreamWriter(getLogAllFileFullName, true))
                         {
                             for (var i = 0; i < LogListNewAll.Count; i++)
                             {
@@ -279,7 +284,7 @@ namespace LoggingLib
                     }
 
                     // Write main (debug, activity, important) log file 
-                    using (StreamWriter LogFile2 = new StreamWriter(LogMainFileFullName, true))
+                    using (StreamWriter LogFile2 = new StreamWriter(getLogMainFileFullName, true))
                     {
                         for (var i = 0; i < LogListNewMainOnly.Count; i++)
                         {
@@ -465,10 +470,10 @@ namespace LoggingLib
                 }
 
                 //Is - Documents/ObservatoryControl/Logs
-                if (!Directory.Exists(GetLogDirectory()))
+                if (!Directory.Exists(Path.Combine(GlobalLogFolderContext, LOG_FOLDER_NAME)))
                 {
-                    Directory.CreateDirectory(Logging.LogFilePath);
-                    Logging.AddLog("Log directory [" + Logging.LogFilePath + "] created", LogLevel.Important, Highlight.Emphasize);
+                    Directory.CreateDirectory(Path.Combine(GlobalLogFolderContext, LOG_FOLDER_NAME));
+                    Logging.AddLog("Log directory [" + Path.Combine(GlobalLogFolderContext, LOG_FOLDER_NAME) + "] created", LogLevel.Important, Highlight.Emphasize);
                     wasCreated = true;
                 }
             }

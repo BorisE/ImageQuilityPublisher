@@ -14,6 +14,11 @@ namespace ImageQualityPublisher
 
     /// <summary>
     /// Config based on custom XML file
+    /// 
+    /// 1.2 [2018-03-02]
+    /// - create directory (CreateDocumentsDirStructure) now creates only Config dir (earlier also Log)
+    /// 1.1 [2018-02-01]
+    /// - can now create sections
     /// </summary>
     public static class ConfigManagement
     {
