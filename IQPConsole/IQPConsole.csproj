@@ -53,9 +53,9 @@
       <Project>{8bb03dce-91f3-4ebc-879c-b7ecc0642d60}</Project>
       <Name>IQPEngine</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Logging\Logging.csproj">
+    <ProjectReference Include="..\Logging\LoggingAndConfig.csproj">
       <Project>{31e056ee-0c45-46ea-b20b-fc0b7c3a5292}</Project>
-      <Name>Logging</Name>
+      <Name>LoggingAndConfig</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

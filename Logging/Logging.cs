@@ -66,7 +66,7 @@ namespace LoggingLib
         //******************************************************
         //  BEFORE 1ST RUN NEED TO SETUP:
         //******************************************************
-        //  1. Установить глобальную папку, где будет храниться папка с логами (GlobalLogFolderContext)
+        //  1. Установить глобальную папку, где будет храниться папка с логами (GlobalConfigFolderContext)
         //  2. В ней будет автоматически создана папка LOG_FOLDER_NAME
         //  3. Указать префикс имени лог файла LOG_FILE_NAME_MAIN
         //  4. Указать, нужен ли вообще полный файл (settingsLOG_NOTICES)
@@ -76,16 +76,14 @@ namespace LoggingLib
             /// <summary>
             /// Log Parent Dir, where LOG_FOLDER_NAME folder with log files will be
             /// </summary>
-            public static string GlobalLogFolderContext = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments); 
-                    //should be set on creation (as below). Otherwise - use Document folder
-                    //public static string ProgDocumentsFolderName = "AstrohostelTools"; //set this property to change 
-                    //public static string ProgDocumentsPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), ProgDocumentsFolderName) + "\\";
-        
+            public static string GlobalLogFolderContext = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments); //"c:\Users\Emchenko Boris\Documents\AstrohostelTools" 
+                                                                                                                            //should be set on creation (as below). Otherwise - use Document folder
+
             /// <summary>
             /// Folder with log files
             /// </summary>
-            public static string LOG_FOLDER_NAME = "Logs";
-
+            public static string LOG_FOLDER_NAME = "Logs";  //last part, full path would be smt like "c:\Users\Emchenko Boris\Documents\AstrohostelTools\Logs
+         
             /// <summary>
             /// Log file with Main Events (debug, activity, important)
             /// </summary>
@@ -176,6 +174,7 @@ namespace LoggingLib
 
         /// <summary>
         /// Check if log folder exits, and if not - create it
+        /// Also cache this value in [calculatedLogFilePath]
         /// </summary>
         /// <returns>Current log file path</returns>
         private static string GetLogDirectory(bool ForceCheckDir = false)

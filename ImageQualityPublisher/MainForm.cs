@@ -48,13 +48,16 @@ namespace ImageQualityPublisher
         private FiltersForm FiltersFormObj;
         bool bFiltersEnabled = false;
 
+
         /// <summary>
         /// Constructor
         /// </summary>
         public MainForm()
         {
-            ConfigManagement.ProgDocumentsFolderName = "AstrohostelTools";          //set this property to change 
-            Logging.InitLogging(ConfigManagement.ProgDocumentsFullPath, "imagepublisher_", false); //set log folder and log file name
+            //Name settings
+            string ProgDocumentFullPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "AstrohostelTools");
+            ConfigManagement.InitConfig(ProgDocumentFullPath, "ImageQualityPublisher.config", "ImageQualityPublisher.defaultconfig.txt"); 
+            Logging.InitLogging(ProgDocumentFullPath, "imagepublisher_", false); //set log folder and log file name
            
 
             EngineObj = new IQPEngineLib.IQPEngine(new IQPEngineLib.IQPEngine.CallBackFunction(PublishFITSData));
