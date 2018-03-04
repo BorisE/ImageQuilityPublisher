@@ -7,8 +7,8 @@
     <ProjectGuid>{31E056EE-0C45-46EA-B20B-FC0B7C3A5292}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Logging</RootNamespace>
-    <AssemblyName>Logging</AssemblyName>
+    <RootNamespace>LoggingLib</RootNamespace>
+    <AssemblyName>LoggingLib</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

@@ -265,12 +265,10 @@ namespace LoggingLib
             LogRec.Message = logMessage;
             LogRec.LogLevel = LogLevel;
             LogRec.Highlight = ColorHighlight;
-            LOCKLOGFILE = true; // <<<
             lock(logLock)
             { 
                 LOGLIST.Add(LogRec);
             }
-            LOCKLOGFILE = false;// >>>
         }
 
         /// <summary>
@@ -283,7 +281,11 @@ namespace LoggingLib
             List<LogRecord> LogListNewMainOnly = new List<LogRecord>();
 
             //Copy LOGLIST
-            List<LogRecord> LOGLIST_COPY = new List<LogRecord>(LOGLIST);
+            List<LogRecord> LOGLIST_COPY;
+            lock (logLock)
+            {
+                LOGLIST_COPY = new List<LogRecord>(LOGLIST);
+            }
 
             //sort new (not saved) records
             for (int i=0; i< LOGLIST_COPY.Count; i++)
@@ -369,7 +371,11 @@ namespace LoggingLib
             string RetStr = "";
 
             //Copy LOGLIST
-            List<LogRecord> LOGLIST_COPY = new List<LogRecord>(LOGLIST);
+            List<LogRecord> LOGLIST_COPY;
+            lock (logLock)
+            {
+                LOGLIST_COPY = new List<LogRecord>(LOGLIST);
+            }
 
             for (var i = 0; i < LOGLIST_COPY.Count; i++)
             {
@@ -399,7 +405,11 @@ namespace LoggingLib
             List<LogRecord> LogListNew = new List<LogRecord>();
 
             //Copy LOGLIST
-            List<LogRecord> LOGLIST_COPY = new List<LogRecord>(LOGLIST);
+            List<LogRecord> LOGLIST_COPY;
+            lock (logLock)
+            { 
+                LOGLIST_COPY = new List<LogRecord>(LOGLIST);
+            }
 
             //sort new (not saved) records
             for (var i = 0; i < LOGLIST_COPY.Count; i++)

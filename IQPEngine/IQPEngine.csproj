@@ -58,9 +58,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Logging\LoggingAndConfig.csproj">
+    <ProjectReference Include="..\Logging\BE.LoggingAndConfig.csproj">
       <Project>{31e056ee-0c45-46ea-b20b-fc0b7c3a5292}</Project>
-      <Name>Logging</Name>
+      <Name>BE.LoggingAndConfig</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
