@@ -8,6 +8,7 @@ using System.IO;
 using System.Windows.Forms;
 using System.Drawing;
 using System.Diagnostics;
+using System.Collections.Concurrent;
 
 namespace LoggingLib
 {
@@ -44,6 +45,8 @@ namespace LoggingLib
     /// <summary>
     /// Custom Logging class (by Boris Emchenko)
     /// 
+    /// 2.2 [04-03-2018]
+    /// - using SynchronizedCollection instead of List to store LogRecords (add System.ServiceModel reference)
     /// 2.1 [03-03-2018]
     /// - bugfix
     /// 2.0 [02-03-2018]
@@ -57,7 +60,8 @@ namespace LoggingLib
         /// <summary>
         /// Log main structure
         /// </summary>
-        public static List<LogRecord> LOGLIST;
+        private static List<LogRecord> LOGLIST;
+        private static Object logLock = new Object();
 
         //******************************************************
         // Пишет логи в два файла:
@@ -73,10 +77,10 @@ namespace LoggingLib
         //  Можно делать напрямую, а можно, чтобы не забыть, вызывать InitLogging
         //******************************************************
         #region LOG FILES STORAGE
-            /// <summary>
-            /// Log Parent Dir, where LOG_FOLDER_NAME folder with log files will be
-            /// </summary>
-            public static string GlobalLogFolderContext = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments); //"c:\Users\Emchenko Boris\Documents\AstrohostelTools" 
+        /// <summary>
+        /// Log Parent Dir, where LOG_FOLDER_NAME folder with log files will be
+        /// </summary>
+        public static string GlobalLogFolderContext = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments); //"c:\Users\Emchenko Boris\Documents\AstrohostelTools" 
                                                                                                                             //should be set on creation (as below). Otherwise - use Document folder
 
             /// <summary>
@@ -141,6 +145,8 @@ namespace LoggingLib
             LOG_FILE_NAME_ALL = (NoticesLogFileNamePrefix == "" ? MainEventsLogFileNamePrefix + "trace_" : NoticesLogFileNamePrefix);
         }
 
+        //**********************************************************************************************************************
+        #region FileStorage
         /// <summary>
         /// Get current log files names with path (full log file)
         /// </summary>
@@ -207,6 +213,42 @@ namespace LoggingLib
             }
         }
 
+        /// <summary>
+        /// Создает папку, в которую будут писаться логи, храниться конфиги и т.д.
+        /// </summary>
+        /// <returns></returns>
+        public static bool CreateDocumentsDirStructure()
+        {
+            bool wasCreated = false;
+
+            try
+            {
+                //Is - Documents/ObservatoryControl
+                if (!Directory.Exists(GlobalLogFolderContext))
+                {
+                    Directory.CreateDirectory(GlobalLogFolderContext);
+                    Logging.AddLog("Root directory [" + GlobalLogFolderContext + "] created", LogLevel.Important, Highlight.Emphasize);
+                    wasCreated = true;
+                }
+
+                //Is - Documents/ObservatoryControl/Logs
+                if (!Directory.Exists(Path.Combine(GlobalLogFolderContext, LOG_FOLDER_NAME)))
+                {
+                    Directory.CreateDirectory(Path.Combine(GlobalLogFolderContext, LOG_FOLDER_NAME));
+                    Logging.AddLog("Log directory [" + Path.Combine(GlobalLogFolderContext, LOG_FOLDER_NAME) + "] created", LogLevel.Important, Highlight.Emphasize);
+                    wasCreated = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                Logging.AddLog("Create directory structure error: " + ex.Message, LogLevel.Important, Highlight.Error);
+                Logging.AddLog("Exception details: " + ex.ToString(), LogLevel.Debug, Highlight.Debug);
+            }
+
+            return wasCreated;
+        }
+        #endregion
+        //**********************************************************************************************************************
 
         /// <summary>
         /// Add log record to DataBase (LogList LIST)
@@ -224,35 +266,42 @@ namespace LoggingLib
             LogRec.LogLevel = LogLevel;
             LogRec.Highlight = ColorHighlight;
             LOCKLOGFILE = true; // <<<
-            LOGLIST.Add(LogRec);
+            lock(logLock)
+            { 
+                LOGLIST.Add(LogRec);
+            }
             LOCKLOGFILE = false;// >>>
         }
 
         /// <summary>
         /// Dump to file Log Contents (LogList LIST)
+        /// NOW THREAD SAFE
         /// </summary>
         public static void DumpToFile(LogLevel LogLevel = LogLevel.All)
         {
             List<LogRecord> LogListNewAll = new List<LogRecord>();
             List<LogRecord> LogListNewMainOnly = new List<LogRecord>();
 
-            LOCKLOGFILE = true; // <<<
+            //Copy LOGLIST
+            List<LogRecord> LOGLIST_COPY = new List<LogRecord>(LOGLIST);
 
             //sort new (not saved) records
-            for (var i = 0; i < LOGLIST.Count; i++)
+            for (int i=0; i< LOGLIST_COPY.Count; i++)
             {
+                LogRecord curRec = LOGLIST_COPY[i];
                 // if current line wasn't written to file
-                if (LOGLIST[i] != null && !LOGLIST[i].dumpedToFile) //Always check for null due to multithreading!!!
+                if (curRec != null && !curRec.dumpedToFile) //Always check for null due to multithreading!!!
                 {
-                    LogListNewAll.Add(LOGLIST[i]); //add to newrecords array
-                    if (LOGLIST[i].LogLevel <= LogLevel.Debug)
-                        LogListNewMainOnly.Add(LOGLIST[i]); //add Important, Activity, Debug level only to array
+                    LogListNewAll.Add(curRec); //add to newrecords array
+                    if (curRec.LogLevel <= LogLevel.Debug)
+                        LogListNewMainOnly.Add(curRec); //add Important, Activity, Debug level only to array
 
-                    LOGLIST[i].dumpedToFile = true; //mark as written
+                    lock (logLock)
+                    {
+                        LOGLIST[i].dumpedToFile = true; //mark as written
+                    }
                 }
             }
-
-            LOCKLOGFILE = false;// >>>
 
             //Save new (not saved) records
             if (LogListNewAll.Count > 0)
@@ -309,27 +358,34 @@ namespace LoggingLib
 
             //Cleanup old records
             CleanupLogList();
-
         }
 
         /// <summary>
         /// Dump to screen Log Contents
+        /// Now TreadSafe
         /// </summary>
         public static string DumpToString(LogLevel LogLevel = LogLevel.Activity)
         {
             string RetStr = "";
-            for (var i = 0; i < LOGLIST.Count; i++)
+
+            //Copy LOGLIST
+            List<LogRecord> LOGLIST_COPY = new List<LogRecord>(LOGLIST);
+
+            for (var i = 0; i < LOGLIST_COPY.Count; i++)
             {
                 // if current line wasn't written to file
-                if (!LOGLIST[i].displayed)
+                if (!LOGLIST_COPY[i].displayed)
                 {
                     // if current log level is less then DebugLevel
-                    if (LOGLIST[i].LogLevel <= LogLevel)
+                    if (LOGLIST_COPY[i].LogLevel <= LogLevel)
                     {
-                        RetStr += String.Format("{0} {1}", LOGLIST[i].Time.ToString("yyyy-MM-dd"), LOGLIST[i].Time.ToString("HH:mm:ss"));
-                        RetStr += String.Format(": {0}", LOGLIST[i].Message) + Environment.NewLine;
+                        RetStr += String.Format("{0} {1}", LOGLIST_COPY[i].Time.ToString("yyyy-MM-dd"), LOGLIST_COPY[i].Time.ToString("HH:mm:ss"));
+                        RetStr += String.Format(": {0}", LOGLIST_COPY[i].Message) + Environment.NewLine;
                     }
-                    LOGLIST[i].displayed = true;
+                    lock (logLock)
+                    {
+                        LOGLIST[i].displayed = true;
+                    }
                 }
             }
             return RetStr;
@@ -342,14 +398,20 @@ namespace LoggingLib
         {
             List<LogRecord> LogListNew = new List<LogRecord>();
 
+            //Copy LOGLIST
+            List<LogRecord> LOGLIST_COPY = new List<LogRecord>(LOGLIST);
+
             //sort new (not saved) records
-            for (var i = 0; i < LOGLIST.Count; i++)
+            for (var i = 0; i < LOGLIST_COPY.Count; i++)
             {
                 // if current line wasn't displayed
-                if (LOGLIST[i] !=null && !LOGLIST[i].displayed) //Always check for null due to multithreading!!!
+                if (LOGLIST_COPY[i] !=null && !LOGLIST_COPY[i].displayed) //Always check for null due to multithreading!!!
                 {
-                    LogListNew.Add(LOGLIST[i]); //add to newrecords array
-                    LOGLIST[i].displayed = true; //mark as written
+                    LogListNew.Add(LOGLIST_COPY[i]); //add to newrecords array
+                    lock (logLock)
+                    {
+                        LOGLIST[i].displayed = true; //mark as written
+                    }
                 }
             }
 
@@ -426,18 +488,24 @@ namespace LoggingLib
         /// </summary>
         private static void CleanupLogList()
         {
-            if (LOGLIST.Count() > _MAX_LOGLIST_SIZE)
+            if (LOGLIST.Count > _MAX_LOGLIST_SIZE)
             {
                 try
                 {
-                    //Clean LOGFILE from records already dumped
-                    for (var i = _MAX_LOGLIST_SIZE; i < LOGLIST.Count; i++)
-                    {
-                        if (LOGLIST[i - _MAX_LOGLIST_SIZE].dumpedToFile)
+                    lock(logLock)
+                    { 
+                        //Clean LOGFILE from records already dumped
+                        for (var i = _MAX_LOGLIST_SIZE; i < LOGLIST.Count; i++)
                         {
-                            if (LOCKLOGFILE) return;
-                            // if current line was written to file remove it
-                            LOGLIST.RemoveAt(i - _MAX_LOGLIST_SIZE);
+                            if (LOGLIST[i - _MAX_LOGLIST_SIZE].dumpedToFile)
+                            {
+                                // if current line was written to file remove it
+                                LOGLIST.RemoveAt(i - _MAX_LOGLIST_SIZE);
+                            }
+                            else
+                            {
+                                break;
+                            }
                         }
                     }
                 }
@@ -449,40 +517,9 @@ namespace LoggingLib
             }
         }
 
-
-        /// <summary>
-        /// Создает папку, в которую будут писаться логи, храниться конфиги и т.д.
-        /// </summary>
-        /// <returns></returns>
-        public static bool CreateDocumentsDirStructure()
+        public static int GetCount()
         {
-            bool wasCreated = false;
-
-            try
-            {
-                //Is - Documents/ObservatoryControl
-                if (!Directory.Exists(GlobalLogFolderContext))
-                {
-                    Directory.CreateDirectory(GlobalLogFolderContext);
-                    Logging.AddLog("Root directory [" + GlobalLogFolderContext + "] created", LogLevel.Important, Highlight.Emphasize);
-                    wasCreated = true;
-                }
-
-                //Is - Documents/ObservatoryControl/Logs
-                if (!Directory.Exists(Path.Combine(GlobalLogFolderContext, LOG_FOLDER_NAME)))
-                {
-                    Directory.CreateDirectory(Path.Combine(GlobalLogFolderContext, LOG_FOLDER_NAME));
-                    Logging.AddLog("Log directory [" + Path.Combine(GlobalLogFolderContext, LOG_FOLDER_NAME) + "] created", LogLevel.Important, Highlight.Emphasize);
-                    wasCreated = true;
-                }
-            }
-            catch (Exception ex)
-            {
-                Logging.AddLog("Create directory structure error: " + ex.Message, LogLevel.Important, Highlight.Error);
-                Logging.AddLog("Exception details: " + ex.ToString(), LogLevel.Debug, Highlight.Debug);
-            }
-
-            return wasCreated;
+            return LOGLIST.Count;
         }
 
 

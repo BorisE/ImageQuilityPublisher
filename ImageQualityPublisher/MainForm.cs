@@ -58,6 +58,7 @@ namespace ImageQualityPublisher
             string ProgDocumentFullPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "AstrohostelTools");
             ConfigManagement.InitConfig(ProgDocumentFullPath, "ImageQualityPublisher.config", "ImageQualityPublisher.defaultconfig.txt"); 
             Logging.InitLogging(ProgDocumentFullPath, "imagepublisher_", false); //set log folder and log file name
+            Logging.AddLog("Program has been started");
            
 
             EngineObj = new IQPEngineLib.IQPEngine(new IQPEngineLib.IQPEngine.CallBackFunction(PublishFITSData));
@@ -128,7 +129,7 @@ namespace ImageQualityPublisher
             //add line to richtextbox
             Logging.DisplayLogInTextBox(txtLog, CurLogLevel);
 
-            toolStripLogSize.Text = "LogRec: " + Logging.LOGLIST.Count();
+            toolStripLogSize.Text = "LogRec: " + Logging.GetCount();
 
             //write to file
             Logging.DumpToFile();
@@ -322,6 +323,8 @@ namespace ImageQualityPublisher
             EngineObj.MonitorObj.AbortThread();
             //Save settings
             SaveSettingsToConfigFile();
+            Logging.AddLog("Program exit");
+            Logging.DumpToFile();
         }
 
         private void toolStripDropDownLogLevel_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)

@@ -13,6 +13,10 @@ to do:
 bugs:
 - MO reported some bug on upgrade
 
+2.0.1 [04.03.2018]
+- logging thread safe
+- some bugfixes
+
 2.0.0 [03.03.2018]
 - new architecture (engine)
 - logging was moved to separate lib and a bit developed
