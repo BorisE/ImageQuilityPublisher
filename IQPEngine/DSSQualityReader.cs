@@ -41,6 +41,7 @@ namespace IQPEngineLib
         //settings
         public string settingsDSSCLPath;
         public bool settingsDSSForceRecheck = false;
+        public bool settingsDSSForceRunHidden = false;
 
         //current File
         public string FITSFileName = "";
@@ -104,7 +105,7 @@ namespace IQPEngineLib
             try
             {
                 objProcess.StartInfo.FileName = settingsDSSCLPath;
-                objProcess.StartInfo.WindowStyle = ProcessWindowStyle.Minimized;
+                objProcess.StartInfo.WindowStyle = (settingsDSSForceRunHidden ? ProcessWindowStyle.Hidden : ProcessWindowStyle.Minimized);
                 objProcess.StartInfo.UseShellExecute = true;
                 objProcess.StartInfo.Arguments = " " + DSSOption + " " + dsslistFileName; // /R for rechecking
                 objProcess.Start();

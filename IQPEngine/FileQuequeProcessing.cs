@@ -60,6 +60,7 @@ namespace IQPEngineLib
         public uint settingsMaxThreads = 1;             //how many threads run simultaneously
         public bool settingsSkipIMSfiles = true;        //use IMS setting (check last modified file in directory)
         public bool settingsDSSForceRecheck = false;    //rebuild .info files always
+        public bool settingsDSSForceRunHidden = false;  //run DSS with hidden window status (instead of minimize)
         public bool settingsPublishLightFramesOnly = true;    //publish only lightframes
         public bool settingsDSSInfoFileAutoDelete = false;    //delete .info files after reading
 
@@ -185,6 +186,7 @@ namespace IQPEngineLib
 
                 DSSQualityReader DSSObj = new DSSQualityReader(settingsDSSCLPath);
                 DSSObj.settingsDSSForceRecheck = settingsDSSForceRecheck; //copy setting
+                DSSObj.settingsDSSForceRunHidden = settingsDSSForceRunHidden;//copy setting
                 FITSHeaderReader FITSobj = new FITSHeaderReader();
 
                 //2. Run evaluation in sync mode

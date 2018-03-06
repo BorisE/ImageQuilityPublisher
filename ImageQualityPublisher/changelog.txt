@@ -13,8 +13,11 @@ to do:
 bugs:
 - MO reported some bug on upgrade
 
+2.0.2 [04.03.2017]
+- [engine] new hidden option: "RunDSSHidden"
+
 2.0.1 [04.03.2018]
-- logging thread safe
+- [logging] logging thread safe
 - some bugfixes
 
 2.0.0 [03.03.2018]

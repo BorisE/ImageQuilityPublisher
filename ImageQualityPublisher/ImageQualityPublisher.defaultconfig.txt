@@ -22,6 +22,7 @@
     <checkThreads_max value="1" />
     <checkDirIMS value="True" />
     <alwaysRebuildDSSInfoFile value="False" />
+    <RunDSSHidden value="False" />
     <autoDeleteDSSInfoFile value="False" />
 	<publishLightFramesOnly value="True" />
 </options>
@@ -30,5 +31,11 @@
     <minstars value="1" />
     <maxfwhm value="10" />
     <minaltitude value="19" />
+    <maxbackground value="" />
+    <excludedirs value="" />
+    <excludefiles value="" />
+    <observer value="" />
+    <telescop value="" />
+    <instrume value="" />
 </filters>
 </configuration>

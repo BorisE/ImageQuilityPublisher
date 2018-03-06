@@ -110,7 +110,7 @@ namespace LoggingLib
         public static LogLevel DEBUG_LEVEL = LogLevel.All;
 
         public static Int32 _MAX_DIPSLAYED_PROG_LOG_LINES = 100;
-        public static Int32 _MAX_LOGLIST_SIZE = 65000;
+        public static Int32 _MAX_LOGLIST_SIZE = 5000;
 
         //**************************************************
         // PRIVATE PROPERTIES
