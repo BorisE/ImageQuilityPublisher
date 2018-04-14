@@ -16,8 +16,9 @@ bugs:
 - MO reported some bug on upgrade
 
 2.0.3 [14.04.2017]
-- [engine] AspectRation calculation
-- [engine] bug in AspectRation field name
+- [engine] AspectRatio calculation
+- [engine] bug in AspectRatio field name
+- [iqpform] displaying AspectRatio in Form
 
 2.0.2 [04.03.2017]
 - [engine] new hidden option: "RunDSSHidden"
