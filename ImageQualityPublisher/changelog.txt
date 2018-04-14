@@ -7,11 +7,17 @@ http://astrohostel.ru
 For FWHM estimate it uses DeepSkyStacker program by Luc Coiffier http://deepskystacker.free.fr/
 
 to do:
+- save filters
+- aspect ration data display
 - save IMS data on exit
 - minimize to tray
 
 bugs:
 - MO reported some bug on upgrade
+
+2.0.3 [14.04.2017]
+- [engine] AspectRation calculation
+- [engine] bug in AspectRation field name
 
 2.0.2 [04.03.2017]
 - [engine] new hidden option: "RunDSSHidden"

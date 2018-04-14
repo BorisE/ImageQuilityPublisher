@@ -12,11 +12,13 @@ namespace IQPEngineLib
     public class DSSQualityData
     {
         public Int32 StarsNumber = 0;
-        public Double AspecRatio = 0.0;
         public Double SkyBackground = 0.0;
 
         internal Double MeanRadiusSum = 0.0;
         internal Int32 MeanRadiusNum = 0;
+
+        internal Double AspectRationSum = 0.0;
+        internal Int32 AspectRationNum = 0;
 
         internal const double Multiplier = 1.566;
 
@@ -25,6 +27,14 @@ namespace IQPEngineLib
             get
             {
                 return MeanRadiusSum/ MeanRadiusNum * Multiplier;
+            }
+        }
+
+        public double AspectRatio
+        {
+            get
+            {
+                return AspectRationSum / AspectRationNum;
             }
         }
     }
@@ -197,6 +207,43 @@ namespace IQPEngineLib
                     QualityEstimate.MeanRadiusNum++;
                 }
             }
+
+            //Axises = 10.00, 2.64, 2.65, 2.54, 2.53
+            //fMajorAxisAngle, fLargeMajorAxis, fSmallMajorAxis, fLargeMinorAxis, fSmallMinorAxis
+            else if (LineSt.Contains("Axises"))
+            {
+                int beg1 = LineSt.LastIndexOf("=") + 1;
+                string AxisValuesSt = LineSt.Substring(beg1).Trim();
+                string[] AxisValues = AxisValuesSt.Split(',');
+                double fMajorAxisAngle = 0.0, fLargeMajorAxis = 0.0, fSmallMajorAxis = 0.0, fLargeMinorAxis = 0.0, fSmallMinorAxis = 0.0;
+                //fMajorAxisAngle
+                if (UtilsFunctions.TryParseToDouble(AxisValues[0], out fMajorAxisAngle))
+                {
+                }
+                //fLargeMajorAxis
+                if (UtilsFunctions.TryParseToDouble(AxisValues[1], out fLargeMajorAxis))
+                {
+                    //fSmallMajorAxis
+                    if (UtilsFunctions.TryParseToDouble(AxisValues[2], out fSmallMajorAxis))
+                    {
+                        //fLargeMinorAxis
+                        if (UtilsFunctions.TryParseToDouble(AxisValues[3], out fLargeMinorAxis))
+                        {
+                            //fSmallMinorAxis
+                            if (UtilsFunctions.TryParseToDouble(AxisValues[4], out fSmallMinorAxis))
+                            {
+                                //(star.m_fLargeMinorAxis+star.m_fSmallMinorAxis)/(star.m_fLargeMajorAxis+star.m_fSmallMajorAxis)
+                                double AspRation = (fLargeMinorAxis + fSmallMinorAxis) / (fLargeMajorAxis + fSmallMajorAxis);
+
+                                QualityEstimate.AspectRationSum += AspRation;
+                                QualityEstimate.AspectRationNum++;
+
+                            }
+                        }
+                    }
+                }
+            }
+
         }
 
     }
