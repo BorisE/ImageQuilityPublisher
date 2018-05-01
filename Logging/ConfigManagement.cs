@@ -510,7 +510,7 @@ namespace LoggingLib
                     if (xndNode.Name == curName)
                     {
                         bFound = true;
-                        if (curValue != "")
+                        if (curValue != "" || curValue == "") //<-- @todo
                         {
                             XmlAttribute att = ConfigManagement.configXML.CreateAttribute("value");
                             att.Value = curValue;

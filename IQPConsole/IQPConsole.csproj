@@ -32,6 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="LoggingLib">
+      <HintPath>..\..\Logging\Logging\bin\Release\LoggingLib.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -45,17 +48,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ImageQualityPublisher\ImageQualityPublisher.csproj">
-      <Project>{8bf74c9d-6b7b-4245-b2c8-666e0a530aa5}</Project>
-      <Name>ImageQualityPublisher</Name>
-    </ProjectReference>
     <ProjectReference Include="..\IQPEngine\IQPEngine.csproj">
       <Project>{8bb03dce-91f3-4ebc-879c-b7ecc0642d60}</Project>
       <Name>IQPEngine</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Logging\BE.LoggingAndConfig.csproj">
-      <Project>{31e056ee-0c45-46ea-b20b-fc0b7c3a5292}</Project>
-      <Name>BE.LoggingAndConfig</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
