@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IQPEngine", "IQPEngine\IQPE
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BE.LoggingAndConfig", "..\Logging\BE.LoggingAndConfig.csproj", "{31E056EE-0C45-46EA-B20B-FC0B7C3A5292}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{63877184-579E-491D-B402-A665D2EAB237}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,5 +38,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{31E056EE-0C45-46EA-B20B-FC0B7C3A5292} = {63877184-579E-491D-B402-A665D2EAB237}
 	EndGlobalSection
 EndGlobal
