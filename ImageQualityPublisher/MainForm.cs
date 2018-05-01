@@ -399,7 +399,7 @@ namespace ImageQualityPublisher
                 EngineObj.ProcessingObj.settingsMaxThreads = (uint)(ConfigManagement.getInt("options", "checkThreads_max") ?? 1);
                 EngineObj.ProcessingObj.settingsSkipIMSfiles = ConfigManagement.getBool("options", "checkDirIMS") ?? true;
                 EngineObj.ProcessingObj.settingsDSSForceRecheck = ConfigManagement.getBool("options", "alwaysRebuildDSSInfoFile") ?? false;
-                EngineObj.ProcessingObj.settingsDSSForceRunHidden = ConfigManagement.getBool("options", "RunDSSHidden") ?? false;
+                EngineObj.ProcessingObj.settingsDSSForceRunHidden = ConfigManagement.getBool("options", "RunDSSHidden") ?? true;
                 EngineObj.ProcessingObj.settingsPublishLightFramesOnly = ConfigManagement.getBool("options", "publishLightFramesOnly") ?? true;
                 EngineObj.ProcessingObj.settingsDSSInfoFileAutoDelete = ConfigManagement.getBool("options", "autoDeleteDSSInfoFile") ?? false;
 
