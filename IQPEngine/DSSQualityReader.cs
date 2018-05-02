@@ -17,8 +17,8 @@ namespace IQPEngineLib
         internal Double MeanRadiusSum = 0.0;
         internal Int32 MeanRadiusNum = 0;
 
-        internal Double AspectRationSum = 0.0;
-        internal Int32 AspectRationNum = 0;
+        internal Double AspectRatioSum = 0.0;
+        internal Int32 AspectRatioNum = 0;
 
         internal const double Multiplier = 1.566;
 
@@ -34,7 +34,7 @@ namespace IQPEngineLib
         {
             get
             {
-                return AspectRationSum / AspectRationNum;
+                return AspectRatioSum / AspectRatioNum;
             }
         }
     }
@@ -235,8 +235,8 @@ namespace IQPEngineLib
                                 //(star.m_fLargeMinorAxis+star.m_fSmallMinorAxis)/(star.m_fLargeMajorAxis+star.m_fSmallMajorAxis)
                                 double AspRation = (fLargeMinorAxis + fSmallMinorAxis) / (fLargeMajorAxis + fSmallMajorAxis);
 
-                                QualityEstimate.AspectRationSum += AspRation;
-                                QualityEstimate.AspectRationNum++;
+                                QualityEstimate.AspectRatioSum += AspRation;
+                                QualityEstimate.AspectRatioNum++;
 
                             }
                         }
