@@ -15,6 +15,9 @@ to do:
 bugs:
 - MO reported some bug on upgrade
 
+2.1.0 [17.05.2018]
+- Minimize to system tray option
+
 2.0.4 [01.05.2018]
 - [all] LoggingLib was moved to external
 

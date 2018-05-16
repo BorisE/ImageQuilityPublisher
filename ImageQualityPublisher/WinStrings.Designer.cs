@@ -113,5 +113,23 @@ namespace ImageQualityPublisher {
                 return ResourceManager.GetString("statusbar_imageswaiting", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Will continue running, hiding itself in SystemTray.
+        /// </summary>
+        internal static string tooltip_balloon_text {
+            get {
+                return ResourceManager.GetString("tooltip_balloon_text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Current status: idle.
+        /// </summary>
+        internal static string tooltip_maintext_idle {
+            get {
+                return ResourceManager.GetString("tooltip_maintext_idle", resourceCulture);
+            }
+        }
     }
 }

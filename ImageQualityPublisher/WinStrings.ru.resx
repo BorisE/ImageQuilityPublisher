@@ -135,4 +135,10 @@
   <data name="ChangeLanguage_text" xml:space="preserve">
     <value>To change Interface language restart now the program</value>
   </data>
+  <data name="tooltip_balloon_text" xml:space="preserve">
+    <value>Продолжит работать, прячась в трее</value>
+  </data>
+  <data name="tooltip_maintext_idle" xml:space="preserve">
+    <value>Текущий статус: неактивна</value>
+  </data>
 </root>

@@ -31,6 +31,7 @@ namespace ImageQualityPublisher
 
         //Settings
         public bool settingsAutoStartMonitoring = false;
+        public bool settingsMinimizeToSystemTray = false;
         public List<string> FileMonitorPath = new List<string>();
 
         //Statistics
@@ -108,10 +109,15 @@ namespace ImageQualityPublisher
             {
                 btnStart_Click(btnStart, new EventArgs());
             }
+
+            //SysTray Baloon icon
+            notifyIcon1.BalloonTipText = LocRM.GetString("tooltip_balloon_text");
+            notifyIcon1.Text = LocRM.GetString("tooltip_maintext_idle"); 
         }
 
-      
 
+
+        bool LogRefreshRunning = false;
         /// <summary>
         /// Log refresh cycle
         /// </summary>
@@ -119,21 +125,26 @@ namespace ImageQualityPublisher
         /// <param name="e"></param>
         private void logRefreshTimer_Tick(object sender, EventArgs e)
         {
-            //Get current loglevel value
-            LogLevel CurLogLevel = LogLevel.Activity;
-            if (!Enum.TryParse(toolStripDropDownLogLevel.Text, out CurLogLevel))
-            {
-                CurLogLevel = LogLevel.Activity;
-            }
-
-            //add line to richtextbox
-            Logging.DisplayLogInTextBox(txtLog, CurLogLevel);
-
             toolStripLogSize.Text = "LogRec: " + Logging.GetCount();
 
-            //write to file
-            Logging.DumpToFile();
+            if (!LogRefreshRunning)
+            {
+                LogRefreshRunning = true;
+                //Get current loglevel value
+                LogLevel CurLogLevel = LogLevel.Activity;
+                if (!Enum.TryParse(toolStripDropDownLogLevel.Text, out CurLogLevel))
+                {
+                    CurLogLevel = LogLevel.Activity;
+                }
 
+                //add line to richtextbox
+                Logging.DisplayLogInTextBox(txtLog, CurLogLevel);
+
+                //write to file
+                Logging.DumpToFile();
+
+                LogRefreshRunning = false;
+            }
         }
         
         
@@ -230,6 +241,22 @@ namespace ImageQualityPublisher
             toolStripStatus_FilesFound.Text = LocRM.GetString("statusbar_images") + ": " + statImagesFound;
             toolStripStatus_FilesProcessed.Text = LocRM.GetString("statusbar_imagesprocessed") + ": " + statImagesProcessed;
             toolStripStatus_FilesWaiting.Text = LocRM.GetString("statusbar_imageswaiting") + ": " + statImagesWaiting;
+
+
+            //IconTray
+            string SystrayToolTip = "";
+            if (!monitorTimer.Enabled)
+            {
+                SystrayToolTip = LocRM.GetString("tooltip_maintext_idle");
+            }
+            else
+            { 
+                SystrayToolTip += LocRM.GetString("statusbar_images") + ": " + statImagesFound + Environment.NewLine;
+                SystrayToolTip += LocRM.GetString("statusbar_imagesprocessed") + ": " + statImagesProcessed + Environment.NewLine;
+                SystrayToolTip += LocRM.GetString("statusbar_imageswaiting") + ": " + statImagesWaiting;
+            }
+            notifyIcon1.Text = SystrayToolTip.Substring(0, Math.Min(SystrayToolTip.Length,63));
+
         }
 
 
@@ -359,6 +386,49 @@ namespace ImageQualityPublisher
             MessageBox.Show(LocRM.GetString("ChangeLanguage_text"), LocRM.GetString("ChangeLanguage_caption"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
+        private void chkSettings_MinimizeToSystemTray_CheckedChanged(object sender, EventArgs e)
+        {
+            settingsMinimizeToSystemTray = ((CheckBox)sender).Checked;
+            notifyIcon1.Visible = ((CheckBox)sender).Checked;
+
+            if (bTrapEvents)
+                bOptionsChanged = true;
+
+        }
+
+        /// <summary>
+        /// Event handler for SystemTray minimizing
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void MainForm_Resize(object sender, EventArgs e)
+        {
+            if (settingsMinimizeToSystemTray)
+            {
+                if (FormWindowState.Minimized == this.WindowState)
+                {
+                    //notifyIcon1.Visible = true;
+                    notifyIcon1.ShowBalloonTip(500);
+                    this.Hide();
+                }
+                else if (FormWindowState.Normal == this.WindowState)
+                {
+                    //notifyIcon1.Visible = false;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Event handler for SystemTrayRestore
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void notifyIcon1_Click(object sender, EventArgs e)
+        {
+            this.Show();
+            this.WindowState = FormWindowState.Normal;
+        }
+
         #endregion Events hadler
         /**************************************************************************************************/
 
@@ -383,6 +453,8 @@ namespace ImageQualityPublisher
 
                 EngineObj.MonitorObj.settingsScanSubdirs = ConfigManagement.getBool("options", "ScanSubDirs") ?? false;
                 settingsAutoStartMonitoring = ConfigManagement.getBool("options", "AUTOSTARTMONITORING") ?? false;
+                settingsMinimizeToSystemTray = ConfigManagement.getBool("options", "HideToTray") ?? true;
+
                 EngineObj.ProcessingObj.settingsDSSCLPath = ConfigManagement.getString("options", "DSS_PATH") ?? Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86), @"\DeepSkyStacker\DeepSkyStackerCL.exe");
                 currentLang = ConfigManagement.getString("options", "Language") ?? currentLangDefault;
 
@@ -475,6 +547,8 @@ namespace ImageQualityPublisher
             chkSearchSubdirs.Checked = EngineObj.MonitorObj.settingsScanSubdirs;
 
             chkSettings_Autostart.Checked = settingsAutoStartMonitoring;
+            chkSettings_MinimizeToSystemTray.Checked = settingsMinimizeToSystemTray;
+
             txtSettings_DSS.Text = EngineObj.ProcessingObj.settingsDSSCLPath;
 
             chkSettings_publishgroup.Checked = EngineObj.ProcessingObj.settingsPublishToGroup;
@@ -518,6 +592,7 @@ namespace ImageQualityPublisher
 
             ConfigManagement.UpdateConfigValue("options", "ScanSubDirs", chkSearchSubdirs.Checked.ToString());
             ConfigManagement.UpdateConfigValue("options", "AUTOSTARTMONITORING", chkSettings_Autostart.Checked.ToString());
+            ConfigManagement.UpdateConfigValue("options", "HideToTray", chkSettings_MinimizeToSystemTray.Checked.ToString());
             ConfigManagement.UpdateConfigValue("options", "DSS_PATH", txtSettings_DSS.Text);
             ConfigManagement.UpdateConfigValue("options", "Language", cmbLang.SelectedValue.ToString());
 
@@ -693,6 +768,8 @@ namespace ImageQualityPublisher
             bFiltersEnabled = false;
             btnFilters.BackColor = DefBackColor;
         }
+
+    
         #endregion End of = Filters =
         /**************************************************************************************************/
 

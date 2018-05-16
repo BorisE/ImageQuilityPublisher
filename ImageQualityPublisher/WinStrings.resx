@@ -135,4 +135,10 @@
   <data name="ChangeLanguage_text" xml:space="preserve">
     <value>Для изменения языка, перезапустите программу</value>
   </data>
+  <data name="tooltip_balloon_text" xml:space="preserve">
+    <value>Will continue running, hiding itself in SystemTray</value>
+  </data>
+  <data name="tooltip_maintext_idle" xml:space="preserve">
+    <value>Current status: idle</value>
+  </data>
 </root>

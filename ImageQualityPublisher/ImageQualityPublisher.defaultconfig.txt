@@ -14,6 +14,7 @@
 <options>
     <Language value="ru-RU" />
     <AUTOSTARTMONITORING value="False" />
+    <HideToTray value="True" />
     <DSS_PATH value="c:\Program Files (x86)\DeepSkyStacker\DeepSkyStackerCL.exe" />
     <PUBLISHTOGROUP value="True" />
     <PUBLISHTOPRIVATE value="False" />
@@ -22,8 +23,8 @@
     <checkThreads_max value="1" />
     <checkDirIMS value="True" />
     <alwaysRebuildDSSInfoFile value="False" />
-    <RunDSSHidden value="False" />
-    <autoDeleteDSSInfoFile value="False" />
+    <RunDSSHidden value="True" />
+    <autoDeleteDSSInfoFile value="True" />
 	<publishLightFramesOnly value="True" />
 </options>
 <filters>
@@ -31,7 +32,7 @@
     <minstars value="1" />
     <maxfwhm value="10" />
     <minaltitude value="19" />
-    <maxbackground value="" />
+    <maxbackground value="0,3" />
     <excludedirs value="" />
     <excludefiles value="" />
     <observer value="" />
