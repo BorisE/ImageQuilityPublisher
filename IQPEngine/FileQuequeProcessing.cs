@@ -178,118 +178,130 @@ namespace IQPEngineLib
         public FileParseResult RunFileFullProcessing(string FileName, bool PublishToWeb = true, bool PublishToWeb2 = false)
         {
             FileParseResult FileResObj = new FileParseResult();
+            //string FullFileName = Path.Combine(sFileMonitorPath, FileName); //in case filename contains full path - it will be used. If no - monitor path would be added
+            string FullFileName = FileName; //there is no default path now :(
+
             try
             {
-                //1. Init vars and objects
-                //string FullFileName = Path.Combine(sFileMonitorPath, FileName); //in case filename contains full path - it will be used. If no - monitor path would be added
-                string FullFileName = FileName; //there is no default path now :(
+                //I. READ AND PARSR FITS HEADER
 
-                DSSQualityReader DSSObj = new DSSQualityReader(settingsDSSCLPath);
-                DSSObj.settingsDSSForceRecheck = settingsDSSForceRecheck; //copy setting
-                DSSObj.settingsDSSForceRunHidden = settingsDSSForceRunHidden;//copy setting
                 FITSHeaderReader FITSobj = new FITSHeaderReader();
 
-                //2. Run evaluation in sync mode
-                DSSObj.EvaluateFile(FullFileName, false);
-                Logging.AddLog("Quality evaluation procedure for file [" + FullFileName + "] finished", LogLevel.Activity);
-
-                //3. Parse evaluation results
-                DSSObj.GetEvaluationResults(settingsDSSInfoFileAutoDelete);
-                Logging.AddLog("Quality results for file [" + FullFileName + "] were read", LogLevel.Activity);
-
-                //4. Get FITS Header fields
+                //1. Get FITS Header fields
                 FITSobj.ReadFITSHeader(FullFileName);
 
-                //5. Make Res obj
+                // Add header data
                 FileResObj.FITSFileName = FullFileName;
-                FileResObj.QualityData = DSSObj.QualityEstimate;
                 FileResObj.HeaderData = FITSobj.FITSData;
 
-                //6. Filter file if needed
+                //2. Filter on header data
                 bool skipPublishFlag = false;
-                //6.1. HISTORY tag
+                //2.1. HISTORY tag
                 if (settingsFilterHistoryTag_UseFlag)
                 {
                     if (FileResObj.HeaderData.HistoryCount > settingsFilterHistoryTag_MaxCount)
                     {
                         skipPublishFlag = true; //don't publish data
-                        Logging.AddLog("Skipping publishing frame [" + FullFileName + "]. HISTORY count = [" + FileResObj.HeaderData.HistoryCount + "]", LogLevel.Activity, Highlight.Error);
+                        Logging.AddLog("Skipping processing frame [" + FullFileName + "]. HISTORY count = [" + FileResObj.HeaderData.HistoryCount + "]", LogLevel.Activity, Highlight.Error);
                     }
                 }
-                //6.2. OBSERVER tag
+                //2.2. OBSERVER tag
                 if (settingsFilterObserverTag_UseFlag)
                 {
                     if (!FileResObj.HeaderData.Observer.Contains(settingsFilterObserverTag_Contains))
                     {
                         skipPublishFlag = true; //don't publish data
-                        Logging.AddLog("Skipping publishing frame [" + FullFileName + "]. OBSERVER = [" + FileResObj.HeaderData.Observer + "]", LogLevel.Activity, Highlight.Error);
+                        Logging.AddLog("Skipping processing frame [" + FullFileName + "]. OBSERVER = [" + FileResObj.HeaderData.Observer + "]", LogLevel.Activity, Highlight.Error);
                     }
                 }
-                //6.3. TELECOP tag
+                //2.3. TELECOP tag
                 if (settingsFilterTelescopTag_UseFlag)
                 {
                     if (!FileResObj.HeaderData.TelescopeName.Contains(settingsFilterTelescopTag_Contains))
-                    { 
+                    {
                         skipPublishFlag = true; //don't publish data
-                        Logging.AddLog("Skipping publishing frame [" + FullFileName + "]. TELECOP = [" + FileResObj.HeaderData.TelescopeName + "]", LogLevel.Activity, Highlight.Error);
+                        Logging.AddLog("Skipping processing frame [" + FullFileName + "]. TELECOP = [" + FileResObj.HeaderData.TelescopeName + "]", LogLevel.Activity, Highlight.Error);
                     }
                 }
-                //6.4. INSTRUME tag
+                //2.4. INSTRUME tag
                 if (settingsFilterInstrumeTag_UseFlag)
                 {
                     if (!FileResObj.HeaderData.CameraName.Contains(settingsFilterInstrumeTag_Contains))
                     {
                         skipPublishFlag = true; //don't publish data
-                        Logging.AddLog("Skipping publishing frame [" + FullFileName + "]. INSTRUME = [" + FileResObj.HeaderData.CameraName + "]", LogLevel.Activity, Highlight.Error);
+                        Logging.AddLog("Skipping processing frame [" + FullFileName + "]. INSTRUME = [" + FileResObj.HeaderData.CameraName + "]", LogLevel.Activity, Highlight.Error);
                     }
                 }
-                //6.5. Quality Filter: stars num
-                if (settingsFilterStarsNum_UseFlag)
-                {
-                    if (FileResObj.QualityData.StarsNumber <= settingsFilterStarsNum_MinCount)
-                    {
-                        skipPublishFlag = true; //don't publish data
-                        Logging.AddLog("Skipping publishing frame [" + FullFileName + "]. StarsNum = [" + FileResObj.QualityData.StarsNumber + "]", LogLevel.Activity, Highlight.Error);
-                    }
-                }
-                //6.6. Quality Filter: FWHM
-                if (settingsFilterFWHM_UseFlag)
-                {
-                    if (FileResObj.FWHM > settingsFilterFWHM_MaxVal)
-                    {
-                        skipPublishFlag = true; //don't publish data
-                        Logging.AddLog("Skipping publishing frame [" + FullFileName + "]. FWHM = [" + FileResObj.FWHM + "]", LogLevel.Activity, Highlight.Error);
-                    }
-                }
-                //6.7. Quality Filter: Min Altitude
-                if (settingsFilterMinAltitude_UseFlag)
-                {
-                    if (FileResObj.HeaderData.ObjAlt <= settingsFilterMinAltitude_MinVal)
-                    {
-                        skipPublishFlag = true; //don't publish data
-                        Logging.AddLog("Skipping publishing frame [" + FullFileName + "]. Altitude = [" + FileResObj.HeaderData.ObjAlt + "]", LogLevel.Activity, Highlight.Error);
-                    }
-                }
-                //6.8. Quality Filter: Max Background
-                if (settingsFilterBackground_UseFlag)
-                {
-                    if (FileResObj.QualityData.SkyBackground >= settingsFilterBackground_MaxVal)
-                    {
-                        skipPublishFlag = true; //don't publish data
-                        Logging.AddLog("Skipping publishing frame [" + FullFileName + "]. BgLevel = [" + FileResObj.QualityData.SkyBackground + "]", LogLevel.Activity, Highlight.Error);
-                    }
-                }
-
-                //7.1. Check - if this light frame or not
+                //2.5. Check - if this light frame or not
                 if (settingsPublishLightFramesOnly)
                 {
-                    if ( !(FileResObj.HeaderData.ImageType == "Light Frame" || FileResObj.HeaderData.ImageType == ""))
+                    if (!(FileResObj.HeaderData.ImageType == "Light Frame" || FileResObj.HeaderData.ImageType == ""))
                     {
                         skipPublishFlag = true;
-                        Logging.AddLog("Skipping publishing frame [" + FullFileName + "]. ImageType = [" + FileResObj.HeaderData.ImageType + "]", LogLevel.Activity, Highlight.Error);
+                        Logging.AddLog("Skipping processing frame [" + FullFileName + "]. ImageType = [" + FileResObj.HeaderData.ImageType + "]", LogLevel.Activity, Highlight.Error);
                     }
                 }
 
+
+                //II. MEASURE AND PARSE FITS QUALITY
+                //If filtering PART1 (based on HeaderData) was passed, then measure it
+                if (!skipPublishFlag)
+                {
+                    DSSQualityReader DSSObj = new DSSQualityReader(settingsDSSCLPath);
+                    DSSObj.settingsDSSForceRecheck = settingsDSSForceRecheck; //copy setting
+                    DSSObj.settingsDSSForceRunHidden = settingsDSSForceRunHidden;//copy setting
+
+                    //3. Run evaluation in sync mode
+                    DSSObj.EvaluateFile(FullFileName, false);
+                    Logging.AddLog("Quality evaluation procedure for file [" + FullFileName + "] finished", LogLevel.Activity);
+
+                    //3.2 Add to Res obj
+                    FileResObj.QualityData = DSSObj.QualityEstimate;
+
+                    //4. Parse evaluation results
+                    DSSObj.GetEvaluationResults(settingsDSSInfoFileAutoDelete);
+                    Logging.AddLog("Quality results for file [" + FullFileName + "] were read", LogLevel.Activity);
+
+                    //5.1. Quality Filter: stars num
+                    if (settingsFilterStarsNum_UseFlag)
+                    {
+                        if (FileResObj.QualityData.StarsNumber <= settingsFilterStarsNum_MinCount)
+                        {
+                            skipPublishFlag = true; //don't publish data
+                            Logging.AddLog("Skipping publishing frame [" + FullFileName + "]. StarsNum = [" + FileResObj.QualityData.StarsNumber + "]", LogLevel.Activity, Highlight.Error);
+                        }
+                    }
+                    //5.2. Quality Filter: FWHM
+                    if (settingsFilterFWHM_UseFlag)
+                    {
+                        if (FileResObj.FWHM > settingsFilterFWHM_MaxVal)
+                        {
+                            skipPublishFlag = true; //don't publish data
+                            Logging.AddLog("Skipping publishing frame [" + FullFileName + "]. FWHM = [" + FileResObj.FWHM + "]", LogLevel.Activity, Highlight.Error);
+                        }
+                    }
+                    //5.3. Quality Filter: Min Altitude
+                    if (settingsFilterMinAltitude_UseFlag)
+                    {
+                        if (FileResObj.HeaderData.ObjAlt <= settingsFilterMinAltitude_MinVal)
+                        {
+                            skipPublishFlag = true; //don't publish data
+                            Logging.AddLog("Skipping publishing frame [" + FullFileName + "]. Altitude = [" + FileResObj.HeaderData.ObjAlt + "]", LogLevel.Activity, Highlight.Error);
+                        }
+                    }
+                    //5.4. Quality Filter: Max Background
+                    if (settingsFilterBackground_UseFlag)
+                    {
+                        if (FileResObj.QualityData.SkyBackground >= settingsFilterBackground_MaxVal)
+                        {
+                            skipPublishFlag = true; //don't publish data
+                            Logging.AddLog("Skipping publishing frame [" + FullFileName + "]. BgLevel = [" + FileResObj.QualityData.SkyBackground + "]", LogLevel.Activity, Highlight.Error);
+                        }
+                    }
+                }
+
+
+                //III. Publish data
                 //8. Check - file should be published?
                 if (!skipPublishFlag)
                 {

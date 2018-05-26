@@ -8,15 +8,17 @@ For FWHM estimate it uses DeepSkyStacker program by Luc Coiffier http://deepskys
 
 to do:
 - save filters
-- aspect ration data display
 - save IMS data on exit
-- minimize to tray
+
 
 bugs:
 - MO reported some bug on upgrade
 
+2.1.2 [26.05.2018]
+- [engine] Two stage filtering for faster work on large number of files: if not passed by FITSheader filter, no QualityMeasuring is performed
+
 2.1.1 [17.05.2018]
-- Bugfix (logging textbox hanging)
+- [logging] Bugfix (logging textbox hanging)
 
 2.1.0 [17.05.2018]
 - Minimize to system tray option
@@ -27,7 +29,7 @@ bugs:
 2.0.3 [14.04.2018]
 - [engine] AspectRatio calculation
 - [engine] bug in AspectRatio field name
-- [iqpform] displaying AspectRatio in Form
+- displaying AspectRatio in Form
 
 2.0.2 [04.03.2018]
 - [engine] new hidden option: "RunDSSHidden"
