@@ -10,38 +10,6 @@ using LoggingLib;
 
 namespace IQPEngineLib
 {
-    public class FITSHeaderData
-    {
-        public DateTime DateObsUTC; //DATE-OBS
-
-        public double ImageExposure; //EXPOSURE
-        public string ImageFilter; //FILTER
-        public string ImageType; //IMAGETYP
-
-        public double ImageBinningX; //XBINNING
-        public double ImageBinningY; //YBINNING
-
-        public double ImageSetTemp; //SET-TEMP
-        public double ImageTemp; //CCD-TEMP
-
-        public double CameraPixelSizeX; //XPIXSZ
-        public double CameraPixelSizeY; //YPIXSZ
-
-        public string ObjName;  //OBJECT
-        public string ObjRA;    //OBJCTRA
-        public string ObjDec;   //OBJCTDEC
-        public double ObjAlt;   //OBJCTALT
-        public double ObjAz;    //OBJCTAZ
-
-        public string CameraName; //INSTRUME    
-        public string Observer;  //OBSERVER
-        public string TelescopeName;    //TELESCOP
-        public double TelescopeFocusLen;    //FOCALLEN
-        public double TelescopeDiameter;    //APTDIA
-
-        public UInt16 HistoryCount = 0; //HISTORY tag count
-    }
-
 
     /************************************************************************************************************************************************/
     /// <summary>

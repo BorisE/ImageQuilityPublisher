@@ -9,36 +9,6 @@ using LoggingLib;
 
 namespace IQPEngineLib
 {
-    public class DSSQualityData
-    {
-        public Int32 StarsNumber = 0;
-        public Double SkyBackground = 0.0;
-
-        internal Double MeanRadiusSum = 0.0;
-        internal Int32 MeanRadiusNum = 0;
-
-        internal Double AspectRatioSum = 0.0;
-        internal Int32 AspectRatioNum = 0;
-
-        internal const double Multiplier = 1.566;
-
-        public double MeanRadius
-        {
-            get
-            {
-                return MeanRadiusSum/ MeanRadiusNum * Multiplier;
-            }
-        }
-
-        public double AspectRatio
-        {
-            get
-            {
-                return AspectRatioSum / AspectRatioNum;
-            }
-        }
-    }
-
     /************************************************************************************************************************************************/
     /// <summary>
     /// Main class for getting QulityEstimation data

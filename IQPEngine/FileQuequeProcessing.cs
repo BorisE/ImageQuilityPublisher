@@ -9,33 +9,6 @@ using LoggingLib;
 namespace IQPEngineLib
 {
     /// <summary>
-    /// Contains all results to use
-    /// </summary>
-    public class FileParseResult
-    {
-        public string FITSFileName = "";
-        public DSSQualityData QualityData;
-        public FITSHeaderData HeaderData;
-        public double PixelResolution
-        {
-            get
-            {
-                return HeaderData.CameraPixelSizeX / HeaderData.TelescopeFocusLen * 206.265;    //  Formula:   (   Pixel Size   /   Telescope Focal Length   )   X 206.265
-            }
-        }
-        public double FWHM
-        {
-            get
-            {
-                return QualityData.MeanRadius * PixelResolution;
-            }
-        }
-
-        public WebExtensionsClass WebExtensions;
-    }
-
-
-    /// <summary>
     /// Process FileQueque
     /// ----------------------------------
     /// 1. Run ProcessAll() or ProcessOne() to process all queque or just 1 element
