@@ -37,7 +37,8 @@ namespace IQPEngineLib
 
     public class FITSHeaderData
     {
-        public DateTime DateObsUTC; //DATE-OBS
+        public DateTime DateObsUTC_dt; //DATE-OBS
+        public string DateObsUTC; //DATE-OBS
 
         public double ImageExposure; //EXPOSURE
         public string ImageFilter; //FILTER

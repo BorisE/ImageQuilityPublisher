@@ -205,7 +205,10 @@ namespace IQPEngineLib
             //DATE - OBS = '2017-12-12T15:51:25' / YYYY-MM-DDThh:mm:ss observation start, UT
             if (FITSKeyword== "DATE-OBS")
             {
-                FITSData.DateObsUTC = DateTime.ParseExact(FITSVal, "yyyy-MM-ddTHH:mm:ss", CultureInfo.InvariantCulture);
+                FITSData.DateObsUTC_dt = DateTime.ParseExact(FITSVal, "yyyy-MM-ddTHH:mm:ss", CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal).ToUniversalTime();
+                FITSData.DateObsUTC = FITSData.DateObsUTC_dt.ToUniversalTime().ToString("yyyy-MM-dd HH:mm:ss");
+
+
             }
             //public double ImageExposure; //EXPOSURE
             //EXPOSURE=   600.00000000000000 /Exposure time in seconds                        
